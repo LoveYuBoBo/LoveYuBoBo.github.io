@@ -61,9 +61,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-MySql笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/23/MySql%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2019/11/23/2/" class="article-date">
   <time datetime="2019-11-23T05:28:37.481Z" itemprop="datePublished">2019-11-23</time>
 </a>
     
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/23/MySql%E7%AC%94%E8%AE%B0/">MySql笔记</a>
+      <a class="article-title" href="/2019/11/23/2/">2</a>
     </h1>
   
 
@@ -123,16 +123,139 @@
         *is null(因为null值不能用=号判断)
         *between(效果等效and)
         *in(效果等效于or)
-        ...</code></pre><p>###DQL中的排序查询<br>    1.语法：order by 子句<br>        <em>order by 排序字段1….<br>    2.asc是升序，desc是降序<br>###聚合函数<br>    1.count:计算个数<br>    2.max,min,sum，avg函数<br>    3.聚合函数会排除NULL<br>        *选择不包含空的列计算<br>        *使用ifnull()<br>###分组查询<br>    1.语法：group by 分组字段<br>    2.注意：<br>        *分组以后查询的字段应该是分组字段或者是聚合函数<br>        *where和having的区别<br>            *where是分组之前限定，不满足条件则不参与分组；having是在分组之后进行限定，如果不满足，则不会被查询出来<br>            *where后不能跟聚合函数，having后可以跟聚合函数<br>###分页查询<br>    1.语法：limit 开始的索引，每页查询的条数<br>    2.公式：开始的索引 = (当前页码-1)</em>每页显示的条数</p>
-<p>##表的约束<br>    1.概念：对表中数据进行限定，保证数据的正确的先和完整性。<br>    2.分类：<br>        1.主键约束<br>            *primary key<br>            *删除语法：alter table 表名 drop primary key<br>            *自动增长：auto_increment<br>        2.非空约束<br>            *NOT NULL(创建表的时候添加，也可以创建完成后添加)<br>            *删除语法：alter table 表名 modify 字段名<br>        3.外键约束<br>            *foreign key<br>            *创建语法：<br>                creat table 表名(<br>                    …<br>                    外键列<br>                    constraint 外键名称 foreign key(外键名称) references 主表名称(主表列名称)<br>                );<br>            *删除外键：alter table 表名 drop foreign 外键字段名<br>            *级联更新：on update cascade<br>            *级联删除：on delete cascade<br>        4.唯一约束<br>            *unique，值不能重复，但可以有多个NULL<br>            *删除语法:alter table 表名 drop index 字段名<br>##数据库的设计</p>
-<p>###多表之间的关系<br>    1.分类<br>        1.一对一<br>        2.一对多<br>        3.多对多<br>    2.实现：<br>        1.一对多：在多的一方建立外键关联少的一方的主键<br>        2.多对多：借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键<br>        3.一对一：可以在任意一方添加外键指向另一方的主键。</p>
-<p>###数据库设计的范式：数据库设计的规范<br>    1.各种范式呈递次规范，越高范式，数据冗余度越高。<br>    2.分类:<br>        1.第一范式(1NF)：每一列都是不可分割的原子数据项。<br>        2.第二范式(2NF)：在1NF技术上，非码属性必须完全依赖于码(消除非主属性对主码的部分函数依赖)。<br>            *几个概念<br>                1.函数依赖：通过某个属性A值可以确定唯一的属性B值，则B依赖A<br>                2.完全函数依赖：如果B组属性的确定依赖于A组所有的属性值，称为完全函数依赖<br>                3.部分函数依赖：如果B组属性的确定依赖于A组某一些属性值，称为部分函数依赖<br>                4.传递函数依赖：通过A属性值可以唯一确定B属性值，通过B属性值有可以唯一确定C属性值。<br>                5.码：如果一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性为该表的码<br>        3.第三范式(3NF)：在2NF基础上，任何非主属性不依赖与其他非主属性。<br>##数据库的备份和还原<br>    1.命令行：<br>        备份：mysqldump -u用户名 -p密码 &gt; 保存的路径<br>        还原：<br>            1.登录数据库<br>            2.创建数据库<br>            3.使用数据库<br>            4.执行文件。 source 文件路径</p>
-<p>##多表查询<br>    1.分类：<br>        1.内连接查询:<br>            *显式内连接：select 字段列表 from 表名1 [inner] join 表名2 on 条件<br>            *隐式内连接：使用where清除无用的数据<br>            *注意：<br>                *确定从哪些表中查询数据<br>                *条件是什么<br>                *查询哪些字段<br>        2.外连接查询：<br>            *左外连接<br>                *语法：select 字段列表 from 表1 left [outer] join 表2  on 条件<br>                *查询的是左表所有数据以及其交集部分<br>            *右外连接<br>                *语法：select 字段列表 from 表1 right [outer] join 表2  on 条件<br>                *查询的是右表的所欲数据及其交集部分<br>        3.子查询：<br>            *概念：查询中嵌套查询，称这样的查询为子子查询<br>            *查询结果：<br>                *单行单列：一般使用运算符作为判断<br>                *多行单列：使用运算符in判断<br>                *多行多列：<br>##事务<br>    1.事务的基本介绍<br>        *1.概念：包含多个步骤的业务操作被事务管理，这些操作要么全部完成，要么一个都不执行。<br>        *2.基本操作：开启事务：start transaction<br>                    提交事务：commit<br>                    回    滚：rollback<br>        *3.事务提交的两种方式：<br>            *默认提交：select @@autocommit; 1代表自动提交  0代表手动提交<br>            *手动提交：set @@autocommit = 0<br>    2.事务的四大特征<br>        *1.原子性:要么同时成功，要么同时失败<br>        *2.持久性：事务提交或者回滚以后，数据库会持久化的保存数据<br>        *3.隔离性：多个事务之间相互独立<br>        *4.一致性：事务操作前后，数据总量不变<br>    3.事务的隔离级别<br>        *1.概念：事务之间是隔离的，但是多个事务操作同一批数据，则会引起一些问题，设置不同的隔离级别就可以解决<br>        *2.存在问题：<br>            1.脏读：一个事务，读取到另一个事务中没有提交的数据<br>            2.不可重复读(虚读)：在同一个事务中，两次读取的数据不一样。<br>            3.幻读：一个事务操作数据部表中的所欲数据，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。<br>        *3.隔离级别：<br>            *read uncommitted：读未提交<br>                *存在问题：脏读，不可重复读，幻读<br>            *read committed:读已提交（oracle）<br>                *存在的问题:不可重复读，幻读<br>            *repeatable read：可重复读(MySql)<br>                *参在的问题：幻读<br>            *serializable：串行化<br>                *可以解决所有问题<br>            注意：<br>                隔离级别越高，效率越低<br>                数据库查询隔离级别：  select @@tx_isolation<br>                数据库设置隔离级别：set global transaction isolation level 级别字符串<br>##DCL<br>    1.管理用户：<br>        1.添加用户：create user ‘用户名’ @’主机名’ identify ‘密码’。<br>        2.删除用户：drop user ‘用户名’ @’主机名’<br>        3.修改用户密码：update user set 字段名=新的值 where 条件子句<br>            *忘记root密码：<br>                1.使用管理员权限运行cmd，并停止mysql服务<br>                2.使用无验证方式启动：mysqld –skip-grant-tables<br>                3.打开新的窗口，直接输入mysql命令登录<br>                4.use mysql<br>                5.update user set password=password(“新密码”) where user = ‘root’<br>                6.关闭窗口<br>                7.手动结束mysqld.exe进程<br>                8.启动mysql服务<br>                9.使用新密码登录<br>    2.权限管理：<br>        1.查询权限：<br>            show grants for ‘用户名’ @’主机名’<br>        2.授予权限：<br>            grant 权限列表 on 数据库名.表名 to ‘用户名’ @’主机名’<br>        3.撤销权限：<br>            revoke 权限列表 on 数据库名.表名 from ‘用户名’ @’主机名’</p>
-
+        ...</code></pre><h3 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h3><pre><code>1.语法：order by 子句
+    *order by 排序字段1....
+2.asc是升序，desc是降序</code></pre><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><pre><code>1.count:计算个数
+2.max,min,sum，avg函数
+3.聚合函数会排除NULL
+    *选择不包含空的列计算
+    *使用ifnull()</code></pre><h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><pre><code>1.语法：group by 分组字段
+2.注意：
+    *分组以后查询的字段应该是分组字段或者是聚合函数
+    *where和having的区别
+        *where是分组之前限定，不满足条件则不参与分组；having是在分组之后进行限定，如果不满足，则不会被查询出来
+        *where后不能跟聚合函数，having后可以跟聚合函数</code></pre><h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><pre><code>1.语法：limit 开始的索引，每页查询的条数
+2.公式：开始的索引 = (当前页码-1)*每页显示的条数</code></pre><h2 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h2><pre><code>1.概念：对表中数据进行限定，保证数据的正确的先和完整性。
+2.分类：
+    1.主键约束
+        *primary key
+        *删除语法：alter table 表名 drop primary key
+        *自动增长：auto_increment
+    2.非空约束
+        *NOT NULL(创建表的时候添加，也可以创建完成后添加)
+        *删除语法：alter table 表名 modify 字段名
+    3.外键约束
+        *foreign key
+        *创建语法：
+            creat table 表名(
+                ...
+                外键列
+                constraint 外键名称 foreign key(外键名称) references 主表名称(主表列名称)
+            );
+        *删除外键：alter table 表名 drop foreign 外键字段名
+        *级联更新：on update cascade
+        *级联删除：on delete cascade
+    4.唯一约束
+        *unique，值不能重复，但可以有多个NULL
+        *删除语法:alter table 表名 drop index 字段名</code></pre><h2 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h2><h3 id="多表之间的关系"><a href="#多表之间的关系" class="headerlink" title="多表之间的关系"></a>多表之间的关系</h3><pre><code>1.分类    
+    1.一对一
+    2.一对多 
+    3.多对多
+2.实现：
+    1.一对多：在多的一方建立外键关联少的一方的主键
+    2.多对多：借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键
+    3.一对一：可以在任意一方添加外键指向另一方的主键。</code></pre><h3 id="数据库设计的范式：数据库设计的规范"><a href="#数据库设计的范式：数据库设计的规范" class="headerlink" title="数据库设计的范式：数据库设计的规范"></a>数据库设计的范式：数据库设计的规范</h3><pre><code>1.各种范式呈递次规范，越高范式，数据冗余度越高。
+2.分类:
+    1.第一范式(1NF)：每一列都是不可分割的原子数据项。
+    2.第二范式(2NF)：在1NF技术上，非码属性必须完全依赖于码(消除非主属性对主码的部分函数依赖)。
+        *几个概念
+            1.函数依赖：通过某个属性A值可以确定唯一的属性B值，则B依赖A
+            2.完全函数依赖：如果B组属性的确定依赖于A组所有的属性值，称为完全函数依赖
+            3.部分函数依赖：如果B组属性的确定依赖于A组某一些属性值，称为部分函数依赖
+            4.传递函数依赖：通过A属性值可以唯一确定B属性值，通过B属性值有可以唯一确定C属性值。
+            5.码：如果一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性为该表的码
+    3.第三范式(3NF)：在2NF基础上，任何非主属性不依赖与其他非主属性。</code></pre><h2 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h2><pre><code>1.命令行：
+    备份：mysqldump -u用户名 -p密码 &gt; 保存的路径
+    还原：
+        1.登录数据库
+        2.创建数据库    
+        3.使用数据库
+        4.执行文件。 source 文件路径</code></pre><h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><pre><code>1.分类：
+    1.内连接查询:
+        *显式内连接：select 字段列表 from 表名1 [inner] join 表名2 on 条件
+        *隐式内连接：使用where清除无用的数据
+        *注意：
+            *确定从哪些表中查询数据
+            *条件是什么
+            *查询哪些字段
+    2.外连接查询：
+        *左外连接
+            *语法：select 字段列表 from 表1 left [outer] join 表2  on 条件
+            *查询的是左表所有数据以及其交集部分
+        *右外连接
+            *语法：select 字段列表 from 表1 right [outer] join 表2  on 条件
+            *查询的是右表的所欲数据及其交集部分
+    3.子查询：
+        *概念：查询中嵌套查询，称这样的查询为子子查询
+        *查询结果：
+            *单行单列：一般使用运算符作为判断
+            *多行单列：使用运算符in判断
+            *多行多列：</code></pre><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><pre><code>1.事务的基本介绍
+    *1.概念：包含多个步骤的业务操作被事务管理，这些操作要么全部完成，要么一个都不执行。
+    *2.基本操作：开启事务：start transaction
+                提交事务：commit
+                回    滚：rollback
+    *3.事务提交的两种方式：
+        *默认提交：select @@autocommit; 1代表自动提交  0代表手动提交
+        *手动提交：set @@autocommit = 0
+2.事务的四大特征
+    *1.原子性:要么同时成功，要么同时失败
+    *2.持久性：事务提交或者回滚以后，数据库会持久化的保存数据
+    *3.隔离性：多个事务之间相互独立
+    *4.一致性：事务操作前后，数据总量不变
+3.事务的隔离级别
+    *1.概念：事务之间是隔离的，但是多个事务操作同一批数据，则会引起一些问题，设置不同的隔离级别就可以解决
+    *2.存在问题：
+        1.脏读：一个事务，读取到另一个事务中没有提交的数据
+        2.不可重复读(虚读)：在同一个事务中，两次读取的数据不一样。
+        3.幻读：一个事务操作数据部表中的所欲数据，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。
+    *3.隔离级别：
+        *read uncommitted：读未提交
+            *存在问题：脏读，不可重复读，幻读
+        *read committed:读已提交（oracle）
+            *存在的问题:不可重复读，幻读
+        *repeatable read：可重复读(MySql)
+            *参在的问题：幻读
+        *serializable：串行化
+            *可以解决所有问题
+        注意：
+            隔离级别越高，效率越低
+            数据库查询隔离级别：  select @@tx_isolation
+            数据库设置隔离级别：set global transaction isolation level 级别字符串</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><pre><code>1.管理用户：
+    1.添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。
+    2.删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;
+    3.修改用户密码：update user set 字段名=新的值 where 条件子句
+        *忘记root密码：
+            1.使用管理员权限运行cmd，并停止mysql服务
+            2.使用无验证方式启动：mysqld --skip-grant-tables
+            3.打开新的窗口，直接输入mysql命令登录
+            4.use mysql
+            5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;
+            6.关闭窗口
+            7.手动结束mysqld.exe进程
+            8.启动mysql服务
+            9.使用新密码登录
+2.权限管理：
+    1.查询权限：
+        show grants for &apos;用户名&apos; @&apos;主机名&apos;
+    2.授予权限：
+        grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;
+    3.撤销权限：
+        revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/23/MySql%E7%AC%94%E8%AE%B0/" data-id="ck3b6c5r70001r0vb0i9l56m4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/23/2/" data-id="ck3b6kn5e0001kwvbc5985tq3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,9 +265,9 @@
 
 
   
-    <article id="post-JAVA学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/11/23/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2019/11/23/1/" class="article-date">
   <time datetime="2019-11-23T05:28:37.478Z" itemprop="datePublished">2019-11-23</time>
 </a>
     
@@ -156,7 +279,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/23/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JAVA学习笔记</a>
+      <a class="article-title" href="/2019/11/23/1/">1</a>
     </h1>
   
 
@@ -164,8 +287,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#基础知识<br>##基础易错点<br>    1.由于浮点数存在运算误差，所以比较两个浮点数是否相等常常会出现错误的结果。正确的比较方法是判断两个浮点数之差的绝对值是否小于一个很小的数。</p>
-<pre><code>2.如果参与运算的两个数其中一个是整型，那么整型可以自动提升到浮点型。
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="基础易错点"><a href="#基础易错点" class="headerlink" title="基础易错点"></a>基础易错点</h2><pre><code>1.由于浮点数存在运算误差，所以比较两个浮点数是否相等常常会出现错误的结果。正确的比较方法是判断两个浮点数之差的绝对值是否小于一个很小的数。
+
+2.如果参与运算的两个数其中一个是整型，那么整型可以自动提升到浮点型。
 
 3.大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{...}里，然后，用yield返回一个值作为switch语句的返回值。
 
@@ -261,17 +385,21 @@
 35.引用类型的一般使用步骤：
     a)import导入包：import 包名称.类名称
     b)创建对象 类名称 对象名=new 类名称()
-    c)使用</code></pre><p>##ArrayList<br>    1.Array数组的长度不可以改变，但是ArrayList的长度是可以改变的。泛型表明装在集合中的所有元素全部是统一的什么类型，要注意，泛型只能是引用类型，不能是基本类型。对于ArrayList来说，直接打印显示的是内容而不是地址值。</p>
-<pre><code>2.ArrayList中常用的方法：
+    c)使用</code></pre><h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><pre><code>1.Array数组的长度不可以改变，但是ArrayList的长度是可以改变的。泛型表明装在集合中的所有元素全部是统一的什么类型，要注意，泛型只能是引用类型，不能是基本类型。对于ArrayList来说，直接打印显示的是内容而不是地址值。
+
+2.ArrayList中常用的方法：
     a)Public boolean add(E e):向集合中添加元素，参数的类型和泛型一致。该方法一定成功，但在其他集合中不一定成功。
     b)Public E get(int index):从集合中获取元素，参数是索引编号，返回值是对应位置的元素
     c)Public E remove（int index):从集合中删除元素，参数是索引编号，返回值是删除的元素。
     d)Public int size()：获取集合的尺寸长度，返回值是集合中元素的个数。
 
-3.如果希望往ArrayList中存储基本类型数据，必须使用基本类型对应的包装类。JDK1.5开始，支持自动装箱，自动拆箱。</code></pre><p>##Objects(Object类的工具类)<br>    1.null不能调用方法，会抛出空指针异常NullPointerException。</p>
-<p>##数据结构<br>    1.栈：先进后出<br>    2.队列：先进先出<br>    3.数组：查询快：数组地址是连续的，通过数组首地址可以找到数组，通过索引可以快速                     查找<br>             增删慢：数组长度是固定的，增删的时候必须创建新的数组，把原数组复制过来。<br>    4.链表：查询慢：地址不连续，每次查询必须从头开始。<br>             增删快：增删不影响整体结构。链表每个结点有三部分组成：数据源，两个指针域<br>    5.红黑树：趋近于平衡树，查询速度很快，查询叶子节点最大次数不超过最小次数的2倍。</p>
-<p>##Collection集合(会存储数据，会取数据，掌握特性)</p>
-<pre><code>1.集合当中的方法
+3.如果希望往ArrayList中存储基本类型数据，必须使用基本类型对应的包装类。JDK1.5开始，支持自动装箱，自动拆箱。</code></pre><h2 id="Objects-Object类的工具类"><a href="#Objects-Object类的工具类" class="headerlink" title="Objects(Object类的工具类)"></a>Objects(Object类的工具类)</h2><pre><code>1.null不能调用方法，会抛出空指针异常NullPointerException。</code></pre><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><pre><code>1.栈：先进后出
+2.队列：先进先出
+3.数组：查询快：数组地址是连续的，通过数组首地址可以找到数组，通过索引可以快速                     查找
+         增删慢：数组长度是固定的，增删的时候必须创建新的数组，把原数组复制过来。
+4.链表：查询慢：地址不连续，每次查询必须从头开始。
+         增删快：增删不影响整体结构。链表每个结点有三部分组成：数据源，两个指针域
+5.红黑树：趋近于平衡树，查询速度很快，查询叶子节点最大次数不超过最小次数的2倍。</code></pre><h2 id="Collection集合-会存储数据，会取数据，掌握特性"><a href="#Collection集合-会存储数据，会取数据，掌握特性" class="headerlink" title="Collection集合(会存储数据，会取数据，掌握特性)"></a>Collection集合(会存储数据，会取数据，掌握特性)</h2><pre><code>1.集合当中的方法
     a)boolean add :添加元素
     b)boolean remove:删除元素
     c)void clear:清空集合
@@ -296,20 +424,23 @@
 6.List接口，Set接口，Map接口中增加了一个静态方法，可以一次性添加多个元素，但使用前提是集合中元素个数已经确定，不再改变的时候使用。注意：
     a)不适用与这些接口的实现类。
     b)返回值是一个不可改变的集合，集合不能在使用add，put方法添加元素。
-    c)Set接口和Map接口不允许有重复元素，否则抛出异常</code></pre><p>##List接口<br>    1.存储是有序的(存储和取出是一致的)  ，是有索引的，允许存储重复元素)</p>
-<pre><code>2.使用索引操作数组的时候一定注意不要越界，有add，remove，get,set等常用的方法。
+    c)Set接口和Map接口不允许有重复元素，否则抛出异常</code></pre><h2 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h2><pre><code>1.存储是有序的(存储和取出是一致的)  ，是有索引的，允许存储重复元素)
+
+2.使用索引操作数组的时候一定注意不要越界，有add，remove，get,set等常用的方法。
 
 3.List下的重要的实现类有ArrayList和LinkedList
     a)ArrayList因为地址连续所以查询快，但是由于每次增删都要调用底层复制数组的方法，因此增删慢。因此，应用于查询比较多的场景。
-    b)LinkedList底层是链表结构，所以查询慢，增删快，其中包含大量操作首尾元素的方法，不能使用多态。常用方法有add,addFirst,addLast(等效与add),push(等效于addFirst)，getFirst，getLast，isEmpty，removeFirst,pop(相当于removeFirst)，removeLast，</code></pre><p>##Set接口<br>    1.Set接口不允许存储重复的元素，没有带索引的方法，也不能使用普通的for循环遍历。</p>
-<pre><code>2.HashSet：由HashMap实现，因此查询速度很快，不保证迭代的顺序。
+    b)LinkedList底层是链表结构，所以查询慢，增删快，其中包含大量操作首尾元素的方法，不能使用多态。常用方法有add,addFirst,addLast(等效与add),push(等效于addFirst)，getFirst，getLast，isEmpty，removeFirst,pop(相当于removeFirst)，removeLast，</code></pre><h2 id="Set接口"><a href="#Set接口" class="headerlink" title="Set接口"></a>Set接口</h2><pre><code>1.Set接口不允许存储重复的元素，没有带索引的方法，也不能使用普通的for循环遍历。
+
+2.HashSet：由HashMap实现，因此查询速度很快，不保证迭代的顺序。
     (1).String类重写了hashCode方法
     (2)Jdk1.8以后哈希表=数组+红黑树，以提高速度。哈希冲突(元素不同，哈希值相同)，解决办法是链地址法。
     3)当哈希值相同的元素超过8位，会将链表转换为红黑树。
     (4)当调用add方法的时候，会先调用hashCode方法计算哈希值，如果有相同哈希值的元素就会调用equals方法比较内容是否一致，所以set集合不会有重复的元素。(但是有个前提是必须重写了hashCode方法和equals方法)，所以存储自定义元素必须重写hashCode和equals方法。
 
-3.LinkedHashSet：底层是哈希表(数组+链表/红黑树)，多了一条链表(记录元素的存储顺序)，保证元素有序。</code></pre><p>##Map集合<br>    1.Collection是单列集合，Map集合是双列集合</p>
-<pre><code>2.Map即使是双列集合。一个元素包含两个值(一个key，一个value，数据类型可以相同，也可以不同，Key值唯一)。
+3.LinkedHashSet：底层是哈希表(数组+链表/红黑树)，多了一条链表(记录元素的存储顺序)，保证元素有序。</code></pre><h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h2><pre><code>1.Collection是单列集合，Map集合是双列集合
+
+2.Map即使是双列集合。一个元素包含两个值(一个key，一个value，数据类型可以相同，也可以不同，Key值唯一)。
 
 3.HashMap：底层是哈希表，查询速度快；是一个无序的集合(存取的顺序可能不一致)。线程不安全的集合，速度快。
 
@@ -325,25 +456,30 @@
     (5)遍历Map集合：
         a)keySet()(把集合中所有key值取出来放到set集合中)，之后用迭代器/增强for 来遍历set集合获取key，然后通过key获取value。
         b)entrySet()(把entry对象取出来存到set集合中)，遍历set集合，通过getKey和getValue方法获取键值。
-    (6)Map集合中有一个内部接口Entry(Map.Entry&lt;K,V&gt;)：当Map集合创建的时候，就会同时创建一个Entry对象，用来记录键值的映射关系。</code></pre><p>##Collections工具类<br>    1.向集合中添加多个元素的静态方法：addALL(Collection<T> c,T…elements)。</p>
-<pre><code>2.Shuffle()打乱集合中元素的位置。
+    (6)Map集合中有一个内部接口Entry(Map.Entry&lt;K,V&gt;)：当Map集合创建的时候，就会同时创建一个Entry对象，用来记录键值的映射关系。</code></pre><h2 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h2><pre><code>1.向集合中添加多个元素的静态方法：addALL(Collection&lt;T&gt; c,T...elements)。
+
+2.Shuffle()打乱集合中元素的位置。
 
 3.Sort(),默认升序排序。使用前提是：被排序的元素必须实现Comparable接口，重写其中的compareTo方法，也就是自定义比较规则。其规则是：return this.参数-o.参数是升序排列。
 
-4.comparable是自己(this)和别(参数)比较，而comparator是寻找第三方裁判</code></pre><p>##可变参数<br>    1.可变参数的底层是一个数组，会根据传递的参数个数不同，创建不同长度的数组，来存储这些参数的个数。使用的时候格式如：修饰符 返回值类型方法名(数据类型…变量名){} </p>
-<pre><code>2.一个方法的可变参数列表只能有一个。
+4.comparable是自己(this)和别(参数)比较，而comparator是寻找第三方裁判</code></pre><h2 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h2><pre><code>1.可变参数的底层是一个数组，会根据传递的参数个数不同，创建不同长度的数组，来存储这些参数的个数。使用的时候格式如：修饰符 返回值类型方法名(数据类型...变量名){} 
+
+2.一个方法的可变参数列表只能有一个。
 
 3.如果方法的参数有多个，可变参数必须写在末尾。
 
-4.可变参数的特殊写法(Object...obj)。</code></pre><p>##Date和Calendar<br>    1.使用DateFormat类中的format方法，把日期格式化为文本；使用DateFormat类中的parse方法把日期解析为文本。ToLocalString（）转化为本地格式。</p>
-<pre><code>2.Calendar是一个抽象类，无法直接创建对象使用，使用其中的静态方法getInstance(),来返回子类对象</code></pre><p>##System类常用方法<br>    1.System.currentTimeMillis()<br>    2.System.arraycopy()</p>
-<p>##String类和StringBuilder类<br>    1.字符串是常量，它们的值创建后不能修改，字符串底层是被final修饰的数组，是一个常量，因此进行字符串相加，内存中会有多个字符串，占用空间多，效率低下。</p>
-<pre><code>2.StringBuilder：字符串缓冲区，可以提高字符串的操作效率(可与看成是长度可变的字符串)，底层也是数组，但没有被final修饰。
+4.可变参数的特殊写法(Object...obj)。</code></pre><h2 id="Date和Calendar"><a href="#Date和Calendar" class="headerlink" title="Date和Calendar"></a>Date和Calendar</h2><pre><code>1.使用DateFormat类中的format方法，把日期格式化为文本；使用DateFormat类中的parse方法把日期解析为文本。ToLocalString（）转化为本地格式。
+
+2.Calendar是一个抽象类，无法直接创建对象使用，使用其中的静态方法getInstance(),来返回子类对象</code></pre><h2 id="System类常用方法"><a href="#System类常用方法" class="headerlink" title="System类常用方法"></a>System类常用方法</h2><pre><code>1.System.currentTimeMillis()
+2.System.arraycopy()</code></pre><h2 id="String类和StringBuilder类"><a href="#String类和StringBuilder类" class="headerlink" title="String类和StringBuilder类"></a>String类和StringBuilder类</h2><pre><code>1.字符串是常量，它们的值创建后不能修改，字符串底层是被final修饰的数组，是一个常量，因此进行字符串相加，内存中会有多个字符串，占用空间多，效率低下。
+
+2.StringBuilder：字符串缓冲区，可以提高字符串的操作效率(可与看成是长度可变的字符串)，底层也是数组，但没有被final修饰。
 
 3.StringBuilder常用的方法有两个：
     a)append方法往StringBulider中添加数据，该方法返回调用方法的对象，使用== 比较添加数据前后的对象，结果是true。
-    b)toString()方法将当前的StringBuilder对象转换为String对象。</code></pre><p>##包装类<br>    1.基本数据类型虽然使用起来很方便，但是没有方法操作数据，因此使用包装类可以添加一些方法。</p>
-<pre><code>2.装箱：把基本数据类型包装到包装类中
+    b)toString()方法将当前的StringBuilder对象转换为String对象。</code></pre><h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><pre><code>1.基本数据类型虽然使用起来很方便，但是没有方法操作数据，因此使用包装类可以添加一些方法。
+
+2.装箱：把基本数据类型包装到包装类中
     a)Integer的构造方法  Integer(int),Integer(String),但是String处应传入基本类型，否则会抛出异常
     b)Integer的静态方法 valueOf和intValue()
 
@@ -351,8 +487,12 @@
 
 4.自动装箱与自动拆箱：基本类型的数据和包装类之间的相互转换(JDK1.5后的特性)。
 
-5.字符串转换为基本类型可以使用包装类的静态方法parse；如果基本类型转换为字符串可以直接用基本数据+””的方式，或者使用包装类的静态方法toString()，或者使用String中的静态方法String.valueOf（）。</code></pre><p>##异常<br>    1.Throwable是所有异常和错误的超类。<br>        (1)Exception：编译期异常(处理完可以继续运行)<br>           RuntimeException:运行期异常<br>        (2)Error:必须修改源码，程序才能继续运行。</p>
-<pre><code>2.异常的产生： jvm检测出异常后做出相应的操作
+5.字符串转换为基本类型可以使用包装类的静态方法parse；如果基本类型转换为字符串可以直接用基本数据+””的方式，或者使用包装类的静态方法toString()，或者使用String中的静态方法String.valueOf（）。</code></pre><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><pre><code>1.Throwable是所有异常和错误的超类。
+    (1)Exception：编译期异常(处理完可以继续运行)
+       RuntimeException:运行期异常
+    (2)Error:必须修改源码，程序才能继续运行。
+
+2.异常的产生： jvm检测出异常后做出相应的操作
     a)JVM根据异常的产生原因创建一个异常对象，其中包含异常产生的内容，原因和位置。
     b)如果没有try...catch逻辑。JVM会把异常对象抛出给方法的调用者
 
@@ -381,8 +521,9 @@
     (1)自定义异常类一般以Exception结尾。
     (2)必须继承自Exception或者RuntimeException：如果继承自Exception定义了一个编译器期异常，必须处理这个异常或者抛出
 
-8.finally代码块和try...catch一起使用，一般用于资源释放。Finally代码块无论是否出现异常都会执行。</code></pre><p>##线程<br>    1.JVM执行main方法，找OS开辟一条通向cpu的路径，这个路径叫做main线程，也就是主线程；当使用new Thread和thread.start()方法的时候，又开辟另一条通向cpu的路径。</p>
-<pre><code>2.单线程执行从main方法开始，从上往下依次执行
+8.finally代码块和try...catch一起使用，一般用于资源释放。Finally代码块无论是否出现异常都会执行。</code></pre><h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><pre><code>1.JVM执行main方法，找OS开辟一条通向cpu的路径，这个路径叫做main线程，也就是主线程；当使用new Thread和thread.start()方法的时候，又开辟另一条通向cpu的路径。
+
+2.单线程执行从main方法开始，从上往下依次执行
 
 3.
     (1)获取线程的名称：getName方法，
@@ -421,12 +562,19 @@
         (c)锁机制：Lock接口中有两个方法：lock(),unlock(),类Reentrantlock是Lock接口的实现类，使用：
             i.在成员位置创建一个Reentrantlock对象。
             ii.在可能会出现线程安全问题前调用Lock接口的lock方法。
-            iii.在有安全问题代码后调用unlock方法释放锁。</code></pre><p>##等待唤醒机制(线程之间的通信)<br>    1.wait,notify,notifyAll三个方法<br>        (1)wait和notify必须使用同一个锁对象<br>        (2)wait和notify是属于Object类的方法<br>        (3)wait和notify必须在同步代码块中使用，因为必须通过锁对象调用这两个方法。<br>        (4)wait(long time):等待time以后，如果还没有被notify唤醒，则自动醒来<br>        (5)Notifyall()唤醒所有等待的线程</p>
-<pre><code>2.线程的状态：
+            iii.在有安全问题代码后调用unlock方法释放锁。</code></pre><h2 id="等待唤醒机制-线程之间的通信"><a href="#等待唤醒机制-线程之间的通信" class="headerlink" title="等待唤醒机制(线程之间的通信)"></a>等待唤醒机制(线程之间的通信)</h2><pre><code>1.wait,notify,notifyAll三个方法
+    (1)wait和notify必须使用同一个锁对象
+    (2)wait和notify是属于Object类的方法
+    (3)wait和notify必须在同步代码块中使用，因为必须通过锁对象调用这两个方法。
+    (4)wait(long time):等待time以后，如果还没有被notify唤醒，则自动醒来
+    (5)Notifyall()唤醒所有等待的线程
+
+2.线程的状态：
     (1)blocked状态，锁阻塞状态
     (2)Waiting状态，无限等待状态
-    (3)Runnable状态</code></pre><p>##线程池<br>    1.线程池是可以容纳很多线程的容器。当程序第一次启动的时候创建多个线程，保存到集合中，当需要使用线程的时候，可以从集合中取出线程来使用Thread t=list.remove(0),当使用结束后，归还给线程池list.add(t)。</p>
-<pre><code>2.使用线程池的优点：
+    (3)Runnable状态</code></pre><h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><pre><code>1.线程池是可以容纳很多线程的容器。当程序第一次启动的时候创建多个线程，保存到集合中，当需要使用线程的时候，可以从集合中取出线程来使用Thread t=list.remove(0),当使用结束后，归还给线程池list.add(t)。
+
+2.使用线程池的优点：
     (1)降低资源的消耗
     (2)提高响应的速度
     (3)提高线程的可管理性
@@ -437,13 +585,15 @@
     (1)使用线程池的工厂类executors提供的静态方法生产一个指定线程数量的线程池。
     (2)创建一个类，实现Runnable接口，重写run方法
     (3)调用ExecutorService中的submit方法，传递线程，开始线程。执行run方法
-    (4)调用ExecutorService中的shutdown方法销毁线程(不建议执行)</code></pre><p>##Lambda表达式<br>    1.Lambda：必须具有接口，且接口中有且仅有一个抽象方法才可以使用Lambda表达式，Lambda表达式必须具有上下文推断。</p>
-<pre><code>2.无参数无返回值 
+    (4)调用ExecutorService中的shutdown方法销毁线程(不建议执行)</code></pre><h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><pre><code>1.Lambda：必须具有接口，且接口中有且仅有一个抽象方法才可以使用Lambda表达式，Lambda表达式必须具有上下文推断。
+
+2.无参数无返回值 
 
 3.有参数有返回值
 
-4.Lambda表达式是可推导，可省略的：括号中参数列表的数据类型是可以省略的，如果括号中的参数只有一个，括号和参数都可以省略。如果代码块中只有一行代码，无论是否有返回值，可以省略({},return ,分号)。</code></pre><p>##File类<br>    1.java把电脑中的文件和文件夹封装成File类，可以使用File类方法。</p>
-<pre><code>2.构造方法：
+4.Lambda表达式是可推导，可省略的：括号中参数列表的数据类型是可以省略的，如果括号中的参数只有一个，括号和参数都可以省略。如果代码块中只有一行代码，无论是否有返回值，可以省略({},return ,分号)。</code></pre><h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><pre><code>1.java把电脑中的文件和文件夹封装成File类，可以使用File类方法。
+
+2.构造方法：
     (1)File(String pathname):路径可以以文件结尾也可以文件夹结尾，可以是相对的也可以是绝对的，可以是存在的，也可以是不存在的。重写了toString()方法。
     (2)File(String parent,String child):父路径和子路径，优点在于可以单独书写，均可以变化，使用很灵活。
     (3)File(File parent,String child):父路径是File类，可以使用File类方法堆路径进行操作。
@@ -459,8 +609,16 @@
     (4)boolean delete():删除File表示的文件或者目录。
 6.遍历方法：
     (1)public String[] list():返回一个String数组，表示该File目录中的所有文件或者目录，如果路径不存在或者路径不是一个目录，会抛出空指针异常。
-    (2)public File listFiles():返回一个File数组，表示该File目录中的素有子文件或目录。</code></pre><p>##IO流<br>    一、字节流<br>        1.字节输出流：OutputStream是所有 输出流的超类，是一个抽象类。定义了一些共性方法：close()关闭输出流并释放资源，flush()刷新输出流并强制任何缓冲的输出字节被写出，write(byte[] b)将指定字节写入此输出流，write(byte[] b,int off,int len)将指定字节从偏移量off开始写入输出流，abstract void write(byte[] b)将指定的字节输出流。<br>            (1)构造方法：FileOutputStream(String name)创建一个向指定名称的文件中写入数据的输出流文件；FileOutputStream(File file)创建一个向指定File对象文件中写入数据的文件输出流。<br>            (2)追加写和换行：FileOutputStream(String name，boolean b)当boolean是true的时候就是追加写入，当使用”\r\n”的时候就换行写入<br>        2.字节输入流：InputStream是所有字节输入流的超类，定义了共性方法read()读取一个字节并返回,in read(byte[] b)读取多个字节并返回,close()关闭流释放资源。<br>            (1)构造方法：FileInputStream(String name),读取路径的下的文件，FileInputStream(File file)读取指定文件的内容。<br>            (2)一次读取一个字节和一次读取多个字节：一次读取多个字节的时候创建的数组，也就是in read(byte[] b)中的参数byte[]起到缓冲的作用，存储每次读取到的多个字节，数组的长度一般定义为1024(1kb)或者1024的证整数倍,返回值int表示每次读取的有效字节长度。<br>        3.读取中文的时候可能会出现问题，因为GBK编码下一个中文占两个字节，UTF-8下占三个字节。使用字符流读取可以解决这个问题。</p>
-<pre><code>二、字符流
+    (2)public File listFiles():返回一个File数组，表示该File目录中的素有子文件或目录。</code></pre><h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><pre><code>一、字节流
+    1.字节输出流：OutputStream是所有 输出流的超类，是一个抽象类。定义了一些共性方法：close()关闭输出流并释放资源，flush()刷新输出流并强制任何缓冲的输出字节被写出，write(byte[] b)将指定字节写入此输出流，write(byte[] b,int off,int len)将指定字节从偏移量off开始写入输出流，abstract void write(byte[] b)将指定的字节输出流。
+        (1)构造方法：FileOutputStream(String name)创建一个向指定名称的文件中写入数据的输出流文件；FileOutputStream(File file)创建一个向指定File对象文件中写入数据的文件输出流。
+        (2)追加写和换行：FileOutputStream(String name，boolean b)当boolean是true的时候就是追加写入，当使用”\r\n”的时候就换行写入
+    2.字节输入流：InputStream是所有字节输入流的超类，定义了共性方法read()读取一个字节并返回,in read(byte[] b)读取多个字节并返回,close()关闭流释放资源。
+        (1)构造方法：FileInputStream(String name),读取路径的下的文件，FileInputStream(File file)读取指定文件的内容。
+        (2)一次读取一个字节和一次读取多个字节：一次读取多个字节的时候创建的数组，也就是in read(byte[] b)中的参数byte[]起到缓冲的作用，存储每次读取到的多个字节，数组的长度一般定义为1024(1kb)或者1024的证整数倍,返回值int表示每次读取的有效字节长度。
+    3.读取中文的时候可能会出现问题，因为GBK编码下一个中文占两个字节，UTF-8下占三个字节。使用字符流读取可以解决这个问题。
+
+二、字符流
 
     1.字符输入流：Reader是字符输入流最顶层的父类，共性方法有int read()读取一个字符,int read(char[] cbuf)一次读取多个字符，close()关闭流并且释放所有资源但要先刷新流flush()。
         (1)构造方法: FileReader(String fileName),FileReader(File file),创建一个FileReader对象，会把FileReader对象指向要读取的文件。
@@ -552,14 +710,14 @@
     (2)Consumer&lt;T&gt;:接口中包含抽象方法void accept(T,t),消费一个指定泛型的数据。
     (3)Consumer接口默认方法andThen()把两个Consumer接口组合到一起 。
     (4)Predicate接口：对某种数据类型的数据进行判断, test(T t),and方法，or方法
-    (5)Function接口：数据类型转换 apply(T,R)返回R型数据，andThen方法</code></pre><p>##Stream流<br>    1.Stream是来自数据源的元素队列。filter和forEach。</p>
-<pre><code>2.获取流的方式：通过Stream默认方式获取流；通过静态方法of获取：
+    (5)Function接口：数据类型转换 apply(T,R)返回R型数据，andThen方法</code></pre><h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h2><pre><code>1.Stream是来自数据源的元素队列。filter和forEach。
+
+2.获取流的方式：通过Stream默认方式获取流；通过静态方法of获取：
     (1)Stream&lt;E&gt; stream()
     (2)Static &lt;T&gt; Stream&lt;T&gt; of(T...values)
 
 3.延迟方法和终结方法：
-    (1)Void forEach(Consumer&lt;? super T&gt; action);该方法接受一个Consumer接口函数，会将每一个流元素交给该函数处理。</code></pre><p>##网络编程</p>
-<pre><code>1.有两个类实现TCP通信，java.net.Socket和Java.net.ServerSocket。必须先启动服务器端，然后使客户端请求服务器端，客户端和服务器端就可以建立逻辑链接。链接中包含一个IO对象，客户端和服务端就可以使用这个对象进行通信，该对象使字节流对象。
+    (1)Void forEach(Consumer&lt;? super T&gt; action);该方法接受一个Consumer接口函数，会将每一个流元素交给该函数处理。</code></pre><h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><pre><code>1.有两个类实现TCP通信，java.net.Socket和Java.net.ServerSocket。必须先启动服务器端，然后使客户端请求服务器端，客户端和服务器端就可以建立逻辑链接。链接中包含一个IO对象，客户端和服务端就可以使用这个对象进行通信，该对象使字节流对象。
 
 2.TCP客户端通信：
     (1)构造方法：Socket(String host,int port)
@@ -572,8 +730,7 @@
 4.服务器端和客户端本地硬盘交互需要自己创建字节流对象(本地流)，客户端可服务器进行读写，使用Socket中提供的字节流对象(网络流)
 
 
-5.read方法读取不到结束标记的时候会进入阻塞状态，当文件上传结束写入一个结束标志。socket.shutdownInput();</code></pre><p>##反射</p>
-<pre><code>1.java代码在计算机中的三个阶段：编译，类加载，运行。
+5.read方法读取不到结束标记的时候会进入阻塞状态，当文件上传结束写入一个结束标志。socket.shutdownInput();</code></pre><h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><pre><code>1.java代码在计算机中的三个阶段：编译，类加载，运行。
 
 2.类加载中将成员变量封装成Filed[],构造方法封装成Constructor[],成员方法封装成Methods[]。
 
@@ -594,9 +751,11 @@
     (3)获取成员方法：Method[] getMethod().......
     (4)获取类名：String getName()
 
-7.暴力反射setAccessable(true)</code></pre><p>##注解<br>    1.注解本质上是接口，且须有返回类型(基本数据类型，string，枚举，数组)。</p>
-<pre><code>2.定义了属性后，使用的时候需要赋值</code></pre><p>##数据库<br>    1.SQL：结构化查询语言</p>
-<pre><code>2.SQL分类：DDL(creat,drop.alter)，DML(insert,delete,update),DQL(select,where),DCL(Grant,revoke)
+7.暴力反射setAccessable(true)</code></pre><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><pre><code>1.注解本质上是接口，且须有返回类型(基本数据类型，string，枚举，数组)。
+
+2.定义了属性后，使用的时候需要赋值</code></pre><h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><pre><code>1.SQL：结构化查询语言
+
+2.SQL分类：DDL(creat,drop.alter)，DML(insert,delete,update),DQL(select,where),DCL(Grant,revoke)
 
 3.操作数据库：CRUD(creat,show,alter,drop),使用数据库select database()(查询正在使用的数据库)，use 数据库名称(使用数据库)。
 
@@ -620,43 +779,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/23/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ck3b6c5r10000r0vb9ywabba8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-基础易错点" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/11/23/%E5%9F%BA%E7%A1%80%E6%98%93%E9%94%99%E7%82%B9/" class="article-date">
-  <time datetime="2019-11-23T05:28:37.475Z" itemprop="datePublished">2019-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/23/%E5%9F%BA%E7%A1%80%E6%98%93%E9%94%99%E7%82%B9/">基础易错点</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="JAVALearn"><a href="#JAVALearn" class="headerlink" title="JAVALearn"></a>JAVALearn</h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/11/23/%E5%9F%BA%E7%A1%80%E6%98%93%E9%94%99%E7%82%B9/" data-id="ck3b6c5ra0002r0vb9dwa6xdu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/11/23/1/" data-id="ck3b6kn580000kwvb7m1j8i00" class="article-share-link">Share</a>
       
       
     </footer>
@@ -697,15 +820,11 @@
       <ul>
         
           <li>
-            <a href="/2019/11/23/MySql%E7%AC%94%E8%AE%B0/">MySql笔记</a>
+            <a href="/2019/11/23/2/">2</a>
           </li>
         
           <li>
-            <a href="/2019/11/23/JAVA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JAVA学习笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2019/11/23/%E5%9F%BA%E7%A1%80%E6%98%93%E9%94%99%E7%82%B9/">基础易错点</a>
+            <a href="/2019/11/23/1/">1</a>
           </li>
         
       </ul>
