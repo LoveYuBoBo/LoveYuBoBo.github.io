@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>旅游网项目 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="旅游网项目技术选型web层 servlet：前端控制器 html：视图 filter：过滤器 BeanUtils：数据封装工具 Jackson：json序列化工具  service层 Javamail：发送邮件工具 Redis：内存数据库 Jedis：java的redis客户端  Dao层 Mysql：数据库 Druid：数据库连接池 JdbcTemplate：jdbc的工具  功能 注册 前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="旅游网项目">
+<meta property="og:url" content="http://yoursite.com/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="旅游网项目技术选型web层 servlet：前端控制器 html：视图 filter：过滤器 BeanUtils：数据封装工具 Jackson：json序列化工具  service层 Javamail：发送邮件工具 Redis：内存数据库 Jedis：java的redis客户端  Dao层 Mysql：数据库 Druid：数据库连接池 JdbcTemplate：jdbc的工具  功能 注册 前端">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-29T15:11:04.673Z">
+<meta property="article:modified_time" content="2020-03-30T20:35:37.623Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-旅游网项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2020-03-29T15:11:04.673Z" itemprop="datePublished">2020-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      旅游网项目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="旅游网项目"><a href="#旅游网项目" class="headerlink" title="旅游网项目"></a>旅游网项目</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h5 id="web层"><a href="#web层" class="headerlink" title="web层"></a>web层</h5><ul>
+<li>servlet：前端控制器</li>
+<li>html：视图</li>
+<li>filter：过滤器</li>
+<li>BeanUtils：数据封装工具</li>
+<li>Jackson：json序列化工具</li>
+</ul>
+<h5 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h5><ul>
+<li>Javamail：发送邮件工具</li>
+<li>Redis：内存数据库</li>
+<li>Jedis：java的redis客户端</li>
+</ul>
+<h5 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h5><ul>
+<li>Mysql：数据库</li>
+<li>Druid：数据库连接池</li>
+<li>JdbcTemplate：jdbc的工具</li>
+</ul>
+<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
+<li>注册<ul>
+<li>前端<ul>
+<li>使用js完成表单校验</li>
+<li>使用Ajax完成表单提交<ul>
+<li>前台使用的是html，只能通过ajax获取数据，不能通过servlet的域来获取</li>
+</ul>
+</li>
+<li>注册成功，跳转页面</li>
+</ul>
+</li>
+<li>servlet<ul>
+<li>获取数据</li>
+<li>封装User对象</li>
+<li>调用Service完成注册</li>
+<li>根据service返回，提示信息，将信息封装为json，设置响应头</li>
+</ul>
+</li>
+<li>Service<ul>
+<li>调用dao根据用户名查询用户<ul>
+<li>存在，则返回false</li>
+<li>不存在，调用dao保存用户信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>dao<ul>
+<li>实现查找用户和保存用户信息的逻辑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>登录<ul>
+<li>LoginServlet获取用户信息，调用service查询user，判断用户是否存在，判断用户是否激活</li>
+</ul>
+</li>
+</ul>
+<h4 id="优化servlet"><a href="#优化servlet" class="headerlink" title="优化servlet"></a>优化servlet</h4><ul>
+<li>把一个功能一个servlet优化为一个模块一个servlet</li>
+</ul>
+<h4 id="分类查询"><a href="#分类查询" class="headerlink" title="分类查询"></a>分类查询</h4><h5 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h5><ul>
+<li>header.html加载后发送Ajax请求，访问服务器，加载真正的分类数据</li>
+<li>遍历数组，完成展示</li>
+<li>servlet查询list，序列化为json返回</li>
+</ul>
+<h5 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h5><ul>
+<li>servlet</li>
+<li>service</li>
+<li>dao</li>
+</ul>
+<h4 id="对分类数据缓存优化"><a href="#对分类数据缓存优化" class="headerlink" title="对分类数据缓存优化"></a>对分类数据缓存优化</h4><ul>
+<li>原因    <ul>
+<li>因为分类数据不会经常变化，为了减小服务器负担</li>
+</ul>
+</li>
+<li>措施<ul>
+<li>使用redis缓存</li>
+<li>从redis中查询，如果没有，查询数据库，并且将数据存入redis</li>
+<li>如果存在，直接返回结果</li>
+</ul>
+</li>
+<li>在CategoryServiceImpl中实现 </li>
+</ul>
+<h4 id="线路分页展示"><a href="#线路分页展示" class="headerlink" title="线路分页展示"></a>线路分页展示</h4><ul>
+<li>点击不同的分类。携带不同的分类ID</li>
+<li>类别id的传递<ul>
+<li>redis中查询score，也就是cid，通过zrangeWithScores()</li>
+<li>页面传递cid，通过location.search截取字符串</li>
+</ul>
+</li>
+<li>根据不同的分类返回分页</li>
+</ul>
+<h4 id="旅游线路收藏"><a href="#旅游线路收藏" class="headerlink" title="旅游线路收藏"></a>旅游线路收藏</h4><ul>
+<li>用户登录以后，若收藏过，则收藏按钮不可用，通过ajax获取是否收藏的标记</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" data-id="ck8gijpep0003bgfc1kezhfqz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/03/31/Spring/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/29/redis/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">redis</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/31/Spring/">Spring</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/">旅游网项目</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/29/redis/">redis</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/">MAVEN基础</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/">JavaWeb三大组件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
