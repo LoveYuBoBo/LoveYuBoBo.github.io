@@ -5,17 +5,17 @@
   
 
   
-  <title>会话技术 | Hexo</title>
+  <title>SpringMVC | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="会话技术 一次会话中包含多次请求和响应 功能：在一次会话的范围内共享数据 方式： 客户端使用Cookie 服务器端Session    cookie 客户端会话技术，将数据保存到客户端  使用  创建 cookie绑定数据 new Cookie(String name .String value)  发送cookie对象 response.addCookie(Cookie cookie)  获取c">
+  <meta name="description" content="SpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  value和path属性均可指定请求路径 metho">
 <meta property="og:type" content="article">
-<meta property="og:title" content="会话技术">
-<meta property="og:url" content="http://yoursite.com/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/index.html">
+<meta property="og:title" content="SpringMVC">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/SpringMVC/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="会话技术 一次会话中包含多次请求和响应 功能：在一次会话的范围内共享数据 方式： 客户端使用Cookie 服务器端Session    cookie 客户端会话技术，将数据保存到客户端  使用  创建 cookie绑定数据 new Cookie(String name .String value)  发送cookie对象 response.addCookie(Cookie cookie)  获取c">
+<meta property="og:description" content="SpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  value和path属性均可指定请求路径 metho">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-23T22:56:46.475Z">
-<meta property="article:modified_time" content="2020-03-23T22:56:46.475Z">
+<meta property="article:published_time" content="2020-04-01T02:48:24.652Z">
+<meta property="article:modified_time" content="2020-04-02T15:13:06.542Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -66,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-会话技术" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SpringMVC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" class="article-date">
-  <time datetime="2020-03-23T22:56:46.475Z" itemprop="datePublished">2020-03-23</time>
+    <a href="/2020/04/01/SpringMVC/" class="article-date">
+  <time datetime="2020-04-01T02:48:24.652Z" itemprop="datePublished">2020-04-01</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      会话技术
+      SpringMVC
     </h1>
   
 
@@ -88,29 +88,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ul>
-<li>一次会话中包含多次请求和响应</li>
-<li>功能：在一次会话的范围内共享数据</li>
-<li>方式：<ul>
-<li>客户端使用Cookie</li>
-<li>服务器端Session</li>
+        <h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
+<li>相同点<ul>
+<li>底层都是基于原始Servlet的</li>
+<li>都是基于MVC的</li>
+<li>处理请求的机制都是一个核心控制器</li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>入口不同：SpringMVC入口是Servlet，Structs2入口是Filter</li>
+<li>SpringMvVC基于方法，Structs2基于类</li>
 </ul>
 </li>
 </ul>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
-<li><p>客户端会话技术，将数据保存到客户端</p>
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><ul>
+<li>RequestMapping <ul>
+<li>value和path属性均可指定请求路径</li>
+<li>method方法指定请求方式</li>
+<li>params 指定请求参数的条件</li>
+<li>headers指定限制请求消息头的条件</li>
+</ul>
 </li>
-<li><p>使用</p>
+<li>RequestParam 请求中指定名称的参数给控制器中的形参赋值</li>
+<li>RequestBody：用于获取请求体的内容，get方法不适用</li>
+<li>PathVaribale 用于绑定url中的占位符</li>
+<li>RequestHeader 获取请求头消息</li>
+<li>CookieValue 用于获取指定cookie的值</li>
+<li>ModelArrtibute </li>
+<li>SessionAttribute 作用在类上</li>
+</ul>
+<h4 id="请求参数的绑定"><a href="#请求参数的绑定" class="headerlink" title="请求参数的绑定"></a>请求参数的绑定</h4><ul>
+<li>controller使用和前端传递的参数一致的参数接收</li>
+<li>form表单提交的时候name属性的值应该和JavaBean中属性值一致（使用JavaBean中的set方法封装）</li>
+<li>引用类型的封装：使用表达式</li>
+<li>解决中文乱码的问题，配置过滤器</li>
+</ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>类型转换需要实现Converter接口</li>
+<li>配置自定义类型转换器<ul>
+<li>ConversionServiceFactory</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取原生的servlet-API"><a href="#获取原生的servlet-API" class="headerlink" title="获取原生的servlet API"></a>获取原生的servlet API</h4><ul>
+<li>方法上加参数</li>
+</ul>
+<h4 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h4><ul>
+<li><p>响应是字符串</p>
 <ul>
-<li><p>创建 cookie绑定数据</p>
-<p><code>new Cookie(String name .String value)</code></p>
+<li>手动调用model，将参数封装</li>
+</ul>
 </li>
-<li><p>发送cookie对象</p>
-<p><code>response.addCookie(Cookie cookie)</code></p>
+<li><p>返回值是void</p>
+<ul>
+<li>使用转发，注意：<strong>手动转发的时候不会使用视图解析器</strong></li>
+<li>可是使用重定向的时候</li>
+<li>直接进行相应，使用<code>response.getWrite()</code>;</li>
+</ul>
 </li>
-<li><p>获取cookie</p>
-<p><code>Cookies[] request.getCookies()</code></p>
+<li><p>返回的是ModelAndView</p>
 </li>
+<li><p>返回的是json数据</p>
+<ul>
+<li>过滤静态资源，使静态资源不被拦截(js,css等), mvc:resource 标签中的mapping和location属性</li>
+<li>发送ajax请求：</li>
 </ul>
 </li>
 </ul>
@@ -118,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" data-id="ck8gijper0007bgfcdsmo3pl8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/01/SpringMVC/" data-id="ck8nl8gen000830fcg00z7z59" class="article-share-link">Share</a>
       
       
     </footer>
@@ -127,19 +168,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          JavaWeb三大组件
+          SpringMVC中文件上传
         
       </div>
     </a>
   
   
-    <a href="/2020/03/22/response/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">response</div>
+      <div class="article-nav-title">动态代理</div>
     </a>
   
 </nav>

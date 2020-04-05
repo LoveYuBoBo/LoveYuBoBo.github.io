@@ -5,21 +5,19 @@
   
 
   
-  <title>MAVEN基础 | Hexo</title>
+  <title>SpringMVC中文件上传 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+  <meta name="description" content="SpringMVC中文件上传 传统的文件上传 MVC中文件上传 跨服务器文件上传 搭建图片服务器 应用服务器和图片服务器通信 Client.reaource()    SpringMVC异常处理异常处理流程 编写自定义异常类 编写异常处理器 配置异常处理器  拦截器的使用 拦截器只能在SpringMVC中使用 拦截器只会拦截控制器方法，不会拦截js，css等资源 使用步骤 编写拦截器类 ： 必须实">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAVEN基础">
-<meta property="og:url" content="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="SpringMVC中文件上传">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+<meta property="og:description" content="SpringMVC中文件上传 传统的文件上传 MVC中文件上传 跨服务器文件上传 搭建图片服务器 应用服务器和图片服务器通信 Client.reaource()    SpringMVC异常处理异常处理流程 编写自定义异常类 编写异常处理器 配置异常处理器  拦截器的使用 拦截器只能在SpringMVC中使用 拦截器只会拦截控制器方法，不会拦截js，css等资源 使用步骤 编写拦截器类 ： 必须实">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
-<meta property="article:published_time" content="2020-03-28T22:53:55.880Z">
-<meta property="article:modified_time" content="2020-03-28T22:53:55.881Z">
+<meta property="article:published_time" content="2020-04-02T16:53:42.622Z">
+<meta property="article:modified_time" content="2020-04-02T16:53:42.622Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -68,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-SpringMVC中文件上传" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
+    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time datetime="2020-04-02T16:53:42.622Z" itemprop="datePublished">2020-04-02</time>
 </a>
     
   </div>
@@ -82,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MAVEN基础
+      SpringMVC中文件上传
     </h1>
   
 
@@ -90,17 +88,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>清理生命周期：clean</li>
-<li>默认生命周期：compile,test,package,install,deploy</li>
-<li>站点生命周期</li>
+        <h3 id="SpringMVC中文件上传"><a href="#SpringMVC中文件上传" class="headerlink" title="SpringMVC中文件上传"></a>SpringMVC中文件上传</h3><ul>
+<li>传统的文件上传</li>
+<li>MVC中文件上传</li>
+<li>跨服务器文件上传<ul>
+<li>搭建图片服务器</li>
+<li>应用服务器和图片服务器通信 <code>Client.reaource()</code></li>
 </ul>
-<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
+</li>
+</ul>
+<h3 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h3><h4 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h4><ul>
+<li>编写自定义异常类</li>
+<li>编写异常处理器</li>
+<li>配置异常处理器</li>
+</ul>
+<h4 id="拦截器的使用"><a href="#拦截器的使用" class="headerlink" title="拦截器的使用"></a>拦截器的使用</h4><ul>
+<li>拦截器只能在SpringMVC中使用</li>
+<li>拦截器只会拦截控制器方法，不会拦截js，css等资源</li>
+<li>使用步骤<ul>
+<li>编写拦截器类 ： 必须实现HandlerInterceptor接口，其中有三个默认方法<code>preHandler</code> <code>postHandler</code> <code>afterCompletion</code></li>
+<li>配置拦截器 mvc:interception标签</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="ck8nl8gem000630fchnbc1cyv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,19 +124,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/03/29/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          redis
+          Mybatis框架
         
       </div>
     </a>
   
   
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/01/SpringMVC/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaWeb三大组件</div>
+      <div class="article-nav-title">SpringMVC</div>
     </a>
   
 </nav>

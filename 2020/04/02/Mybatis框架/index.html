@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Mybatis框架 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Mybatis框架持久层技术解决方案 JDBC技术 Connection PreparedStatement ResultSet   Spring中的JdbcTemplate Apache的DBUtils  mabatis概述 使用了ORM的思想实现对结果集的封装 环境搭建 创建maven工程并导入坐标 创建实体类和dao接口 创建Mybatis主配置文件 创建映射配置文件   注意 mabati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis框架">
+<meta property="og:url" content="http://yoursite.com/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mybatis框架持久层技术解决方案 JDBC技术 Connection PreparedStatement ResultSet   Spring中的JdbcTemplate Apache的DBUtils  mabatis概述 使用了ORM的思想实现对结果集的封装 环境搭建 创建maven工程并导入坐标 创建实体类和dao接口 创建Mybatis主配置文件 创建映射配置文件   注意 mabati">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-02T21:24:05.645Z">
+<meta property="article:modified_time" content="2020-04-03T12:24:54.293Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Mybatis框架" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time datetime="2020-04-02T21:24:05.645Z" itemprop="datePublished">2020-04-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mybatis框架
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="持久层技术解决方案"><a href="#持久层技术解决方案" class="headerlink" title="持久层技术解决方案"></a>持久层技术解决方案</h4><ul>
+<li>JDBC技术<ul>
+<li>Connection</li>
+<li>PreparedStatement</li>
+<li>ResultSet</li>
+</ul>
+</li>
+<li>Spring中的JdbcTemplate</li>
+<li>Apache的DBUtils</li>
+</ul>
+<h4 id="mabatis概述"><a href="#mabatis概述" class="headerlink" title="mabatis概述"></a>mabatis概述</h4><ul>
+<li>使用了ORM的思想实现对结果集的封装</li>
+<li>环境搭建<ul>
+<li>创建maven工程并导入坐标</li>
+<li>创建实体类和dao接口</li>
+<li>创建Mybatis主配置文件</li>
+<li>创建映射配置文件</li>
+</ul>
+</li>
+<li>注意<ul>
+<li><strong>mabatis的映射配置文件位置必须和dao接口的包结构相同</strong></li>
+<li>映射配置文件中的namespace属性的取值必须是dao接口的全限定类名</li>
+<li>映射文件的配置。id属性的取值必须是dao接口的方法名</li>
+</ul>
+</li>
+</ul>
+<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><ul>
+<li>配置Mysql环境<ul>
+<li>配置事务 <code>transcationManager</code>标签</li>
+<li>配置连接池<code>dataSource</code></li>
+<li>配置映射文件位置 <code>mappers</code>b标签的<code>resource</code>属性</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
+<li>读取配置文件</li>
+<li>创建SqlSessionFactory</li>
+<li>使用工厂生产SqlSession对象: <code>factory.oepnSession</code></li>
+<li>使用SqlSession创建dao接口的代理对象：<code>session.getMapper()</code></li>
+<li>使用代理对象执行方法</li>
+<li>释放资源</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>读取配置文件的时候(不使用相对路径和绝对路径)<ul>
+<li>使用类加载器，只能加载类路径的配置文件</li>
+<li>使用ServletContext对象的<code>getRealPath()</code></li>
+</ul>
+</li>
+<li>Mybatis创建工厂使用了<strong>构建者模式</strong>，使用<code>SqlSessionFactoryBuilder</code>创建工厂，使用者直接调用方法即可拿到对象</li>
+<li>在生产<code>SqlSession</code>的时候使用了工厂模式，降低了类之间的依赖</li>
+<li>创建dao接口实现类使用了<strong>代理模式</strong>，在不修改源码的基础上实现功能增强</li>
+</ul>
+<h4 id="自定义Mybatis"><a href="#自定义Mybatis" class="headerlink" title="自定义Mybatis"></a>自定义Mybatis</h4><ul>
+<li>执行的流程<ul>
+<li>根据配置文件的信息创建connection对象，注册驱动，获取连接</li>
+<li>获取预处理对象preparedStatement，此处需要SQL语句</li>
+<li>执行查询</li>
+<li>遍历结果用于封装，此处用配置文件中的全限定类名，使用反射创建对象并封装</li>
+</ul>
+</li>
+<li>自定义Mybatis涉及的类<ul>
+<li>class Resources</li>
+<li>class SqlSessionFactoryBuilder</li>
+<li>interface SqlSessionFactory</li>
+</ul>
+</li>
+</ul>
+<h4 id="CRUD操作"><a href="#CRUD操作" class="headerlink" title="CRUD操作"></a>CRUD操作</h4><h4 id="Dao实现类的执行过程"><a href="#Dao实现类的执行过程" class="headerlink" title="Dao实现类的执行过程"></a>Dao实现类的执行过程</h4><ul>
+<li>PreparedStatement对象的方法<ul>
+<li><code>excute</code>只能执行CRUD中任意一种,返回值是布尔值，表示是否有结果集</li>
+<li><code>excuteUpdate</code>只能执行CUD语句。返回值是影响数据库的行数</li>
+<li><code>excuteQuery</code>只能执行Select语句，返回结果集 resultSet</li>
+</ul>
+</li>
+</ul>
+<h4 id="Dao代理的执行过程"><a href="#Dao代理的执行过程" class="headerlink" title="Dao代理的执行过程"></a>Dao代理的执行过程</h4><h5 id="解决实体类和数据库列名不对应的情况"><a href="#解决实体类和数据库列名不对应的情况" class="headerlink" title="解决实体类和数据库列名不对应的情况"></a>解决实体类和数据库列名不对应的情况</h5><ul>
+<li>sql语句中使用别名</li>
+<li>使用<code>resultMap</code>标签</li>
+<li><code>typeAlias</code>指定别名，属性是domain中的实体类</li>
+</ul>
+<h5 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h5><ul>
+<li>使用<code>insert</code>标签注册事件并制定实体类的全限定类名，加sql语句</li>
+<li>使用<code>SqlCommit</code>保存数据操作</li>
+<li>获取插曲用户的id<ul>
+<li>使用<code>keyPropety</code>属性，并且使用sql语句<code>select last_insert_id()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><ul>
+<li>使用<code>update</code>标签配置并制制定类型，加上sql语句</li>
+</ul>
+<h5 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h5><ul>
+<li>使用<code>delete</code>标签配置</li>
+</ul>
+<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><ul>
+<li><p>使用<code>select</code>标签并指定返回的数据类型</p>
+</li>
+<li><p>模糊查询传入<code>%</code>，保证sql语句的正确性</p>
+</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" data-id="ck8nl8geh000430fc91a29vqw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mybatis连接池和事务控制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SpringMVC中文件上传</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/05/Mybatis%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">Mybatis注解开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/">Mybatis中的延迟加载</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

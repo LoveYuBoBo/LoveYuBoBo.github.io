@@ -5,21 +5,19 @@
   
 
   
-  <title>MAVEN基础 | Hexo</title>
+  <title>Mybatis中多表查询 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+  <meta name="description" content="Mybatis中多表查询步骤 建立两张表，使用外键关联起来 建立两个实体类并关联两个表 建立两个配置文件 实现配置  一对一查询一对多查询 主表应该包含从表的实体集合  多对多">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAVEN基础">
-<meta property="og:url" content="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="Mybatis中多表查询">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+<meta property="og:description" content="Mybatis中多表查询步骤 建立两张表，使用外键关联起来 建立两个实体类并关联两个表 建立两个配置文件 实现配置  一对一查询一对多查询 主表应该包含从表的实体集合  多对多">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
-<meta property="article:published_time" content="2020-03-28T22:53:55.880Z">
-<meta property="article:modified_time" content="2020-03-28T22:53:55.881Z">
+<meta property="article:published_time" content="2020-04-04T12:27:00.130Z">
+<meta property="article:modified_time" content="2020-04-04T18:12:36.423Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -68,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Mybatis中多表查询" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
+    <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="article-date">
+  <time datetime="2020-04-04T12:27:00.130Z" itemprop="datePublished">2020-04-04</time>
 </a>
     
   </div>
@@ -82,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MAVEN基础
+      Mybatis中多表查询
     </h1>
   
 
@@ -90,17 +88,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>清理生命周期：clean</li>
-<li>默认生命周期：compile,test,package,install,deploy</li>
-<li>站点生命周期</li>
+        <h3 id="Mybatis中多表查询"><a href="#Mybatis中多表查询" class="headerlink" title="Mybatis中多表查询"></a>Mybatis中多表查询</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
+<li>建立两张表，使用外键关联起来</li>
+<li>建立两个实体类并关联两个表</li>
+<li>建立两个配置文件</li>
+<li>实现配置</li>
 </ul>
-<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
-
+<h4 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h4><h4 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h4><ul>
+<li>主表应该包含从表的实体集合</li>
+</ul>
+<h4 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" data-id="ck8nl8gee000130fcclxwba4l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,19 +110,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/03/29/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          redis
+          Mybatis中的延迟加载
         
       </div>
     </a>
   
   
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaWeb三大组件</div>
+      <div class="article-nav-title">Mybatis框架2</div>
     </a>
   
 </nav>

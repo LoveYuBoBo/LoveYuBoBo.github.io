@@ -5,21 +5,19 @@
   
 
   
-  <title>MAVEN基础 | Hexo</title>
+  <title>Mybatis框架2 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+  <meta name="description" content="Mybatis框架连接池 连接池就是用于存储链接的容器，可以减少获取链接消耗的时间 连接池配置方式 在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式 type属性的取值 POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用 UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAVEN基础">
-<meta property="og:url" content="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="Mybatis框架2">
+<meta property="og:url" content="http://yoursite.com/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="MAVEN基础生命周期 清理生命周期：clean 默认生命周期：compile,test,package,install,deploy 站点生命周期  概念模型图">
+<meta property="og:description" content="Mybatis框架连接池 连接池就是用于存储链接的容器，可以减少获取链接消耗的时间 连接池配置方式 在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式 type属性的取值 POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用 UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
-<meta property="article:published_time" content="2020-03-28T22:53:55.880Z">
-<meta property="article:modified_time" content="2020-03-28T22:53:55.881Z">
+<meta property="article:published_time" content="2020-04-04T09:56:08.265Z">
+<meta property="article:modified_time" content="2020-04-04T09:56:44.455Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -68,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Mybatis框架2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
+    <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" class="article-date">
+  <time datetime="2020-04-04T09:56:08.265Z" itemprop="datePublished">2020-04-04</time>
 </a>
     
   </div>
@@ -82,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      MAVEN基础
+      Mybatis框架2
     </h1>
   
 
@@ -90,17 +88,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>清理生命周期：clean</li>
-<li>默认生命周期：compile,test,package,install,deploy</li>
-<li>站点生命周期</li>
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
+<li>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</li>
+<li>连接池配置方式<ul>
+<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
+<li>type属性的取值<ul>
+<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
+<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
+<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
 </ul>
-<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li>什么是事务</li>
+<li>事务的四大特性（原子性，一致性，隔离性，持久性）</li>
+<li>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</li>
+<li>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</li>
+</ul>
+<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4><ul>
+<li>在<code>openSession()</code>中设置为true</li>
+</ul>
+<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4><h5 id="单一条件查询"><a href="#单一条件查询" class="headerlink" title="单一条件查询"></a>单一条件查询</h5><ul>
+<li>配置中使用if标签，拼接SQL语句</li>
+<li>使用where标签，嵌套if标签</li>
+</ul>
+<h5 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h5><ul>
+<li>使用foreach标签，有<code>collection</code> <code>open</code> <code>close</code> <code>item</code> <code>seperate</code>等属性</li>
+</ul>
+<h5 id="抽取重复的标签"><a href="#抽取重复的标签" class="headerlink" title="抽取重复的标签"></a>抽取重复的标签</h5><ul>
+<li>使用<code>sql</code>标签</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" data-id="ck8nl8gef000230fce1k9cg2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,19 +133,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/03/29/redis/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          redis
+          Mybatis中多表查询
         
       </div>
     </a>
   
   
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaWeb三大组件</div>
+      <div class="article-nav-title">Mybatis连接池和事务控制</div>
     </a>
   
 </nav>
