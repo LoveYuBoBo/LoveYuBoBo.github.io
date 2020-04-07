@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>学习小记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="学习小记">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="学习小记">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学习小记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +36,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">学习小记</a>
       </h1>
       
     </div>
@@ -63,6 +63,73 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-权限控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time datetime="2020-04-07T16:29:30.041Z" itemprop="datePublished">2020-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="权限控制"><a href="#权限控制" class="headerlink" title="权限控制"></a>权限控制</h3><h4 id="服务器端权限控制"><a href="#服务器端权限控制" class="headerlink" title="服务器端权限控制"></a>服务器端权限控制</h4><ul>
+<li>JSR-250注解<ul>
+<li>z在spring-security.xml中启用</li>
+<li>在指定的方法上使用<code>@RolesAllowed</code></li>
+<li>在pom.xml中导入</li>
+</ul>
+</li>
+<li><code>@Secured</code>注解<ul>
+<li>spring-security.xml中开启注解</li>
+<li><strong>使用JSR-250注解的时候可以省略ROLE_前缀，但使用secured注解的时候不能省略</strong></li>
+</ul>
+</li>
+<li>支持表达式的注解<ul>
+<li>spring-security.xml中开启</li>
+<li>使用<code>PreAuthorize</code>注解</li>
+</ul>
+</li>
+</ul>
+<h4 id="页面端权限控制"><a href="#页面端权限控制" class="headerlink" title="页面端权限控制"></a>页面端权限控制</h4><ul>
+<li>pom.xml中导入依赖</li>
+<li>在spring-security.xml中设置<code>use-expression</code>为<code>true</code></li>
+<li>在jsp页面中导入</li>
+<li>在页面上使用<ul>
+<li>authentication可以获取当前正在操作的用户信息</li>
+<li>authorize 用于控制页面某些标签是否可以显示</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取访问的ip"><a href="#获取访问的ip" class="headerlink" title="获取访问的ip"></a>获取访问的ip</h4><ul>
+<li>配置listener</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" data-id="ck8q4datg00001cfcgr498l5d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-SSM整合" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -236,487 +303,11 @@
 
 
   
-    <article id="post-Mybatis框架2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" class="article-date">
-  <time datetime="2020-04-04T09:56:08.265Z" itemprop="datePublished">2020-04-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
-<li>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</li>
-<li>连接池配置方式<ul>
-<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
-<li>type属性的取值<ul>
-<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
-<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
-<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
-<li>什么是事务</li>
-<li>事务的四大特性（原子性，一致性，隔离性，持久性）</li>
-<li>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</li>
-<li>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</li>
-</ul>
-<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4><ul>
-<li>在<code>openSession()</code>中设置为true</li>
-</ul>
-<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4><h5 id="单一条件查询"><a href="#单一条件查询" class="headerlink" title="单一条件查询"></a>单一条件查询</h5><ul>
-<li>配置中使用if标签，拼接SQL语句</li>
-<li>使用where标签，嵌套if标签</li>
-</ul>
-<h5 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h5><ul>
-<li>使用foreach标签，有<code>collection</code> <code>open</code> <code>close</code> <code>item</code> <code>seperate</code>等属性</li>
-</ul>
-<h5 id="抽取重复的标签"><a href="#抽取重复的标签" class="headerlink" title="抽取重复的标签"></a>抽取重复的标签</h5><ul>
-<li>使用<code>sql</code>标签</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" data-id="ck8nl8gef000230fce1k9cg2l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mybatis连接池和事务控制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="article-date">
-  <time datetime="2020-04-03T12:25:00.120Z" itemprop="datePublished">2020-04-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">Mybatis连接池和事务控制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
-<li>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</li>
-<li>连接池配置方式<ul>
-<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
-<li>type属性的取值<ul>
-<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
-<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
-<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
-<li>什么是事务</li>
-<li>事务的四大特性（原子性，一致性，隔离性，持久性）</li>
-<li>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</li>
-<li>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</li>
-</ul>
-<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4><ul>
-<li>在<code>openSession()</code>中设置为true</li>
-</ul>
-<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" data-id="ck8nl8gek000530fca8ffbr64" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mybatis框架" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" class="article-date">
-  <time datetime="2020-04-02T21:24:05.645Z" itemprop="datePublished">2020-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/">Mybatis框架</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="持久层技术解决方案"><a href="#持久层技术解决方案" class="headerlink" title="持久层技术解决方案"></a>持久层技术解决方案</h4><ul>
-<li>JDBC技术<ul>
-<li>Connection</li>
-<li>PreparedStatement</li>
-<li>ResultSet</li>
-</ul>
-</li>
-<li>Spring中的JdbcTemplate</li>
-<li>Apache的DBUtils</li>
-</ul>
-<h4 id="mabatis概述"><a href="#mabatis概述" class="headerlink" title="mabatis概述"></a>mabatis概述</h4><ul>
-<li>使用了ORM的思想实现对结果集的封装</li>
-<li>环境搭建<ul>
-<li>创建maven工程并导入坐标</li>
-<li>创建实体类和dao接口</li>
-<li>创建Mybatis主配置文件</li>
-<li>创建映射配置文件</li>
-</ul>
-</li>
-<li>注意<ul>
-<li><strong>mabatis的映射配置文件位置必须和dao接口的包结构相同</strong></li>
-<li>映射配置文件中的namespace属性的取值必须是dao接口的全限定类名</li>
-<li>映射文件的配置。id属性的取值必须是dao接口的方法名</li>
-</ul>
-</li>
-</ul>
-<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><ul>
-<li>配置Mysql环境<ul>
-<li>配置事务 <code>transcationManager</code>标签</li>
-<li>配置连接池<code>dataSource</code></li>
-<li>配置映射文件位置 <code>mappers</code>b标签的<code>resource</code>属性</li>
-</ul>
-</li>
-</ul>
-<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
-<li>读取配置文件</li>
-<li>创建SqlSessionFactory</li>
-<li>使用工厂生产SqlSession对象: <code>factory.oepnSession</code></li>
-<li>使用SqlSession创建dao接口的代理对象：<code>session.getMapper()</code></li>
-<li>使用代理对象执行方法</li>
-<li>释放资源</li>
-</ul>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
-<li>读取配置文件的时候(不使用相对路径和绝对路径)<ul>
-<li>使用类加载器，只能加载类路径的配置文件</li>
-<li>使用ServletContext对象的<code>getRealPath()</code></li>
-</ul>
-</li>
-<li>Mybatis创建工厂使用了<strong>构建者模式</strong>，使用<code>SqlSessionFactoryBuilder</code>创建工厂，使用者直接调用方法即可拿到对象</li>
-<li>在生产<code>SqlSession</code>的时候使用了工厂模式，降低了类之间的依赖</li>
-<li>创建dao接口实现类使用了<strong>代理模式</strong>，在不修改源码的基础上实现功能增强</li>
-</ul>
-<h4 id="自定义Mybatis"><a href="#自定义Mybatis" class="headerlink" title="自定义Mybatis"></a>自定义Mybatis</h4><ul>
-<li>执行的流程<ul>
-<li>根据配置文件的信息创建connection对象，注册驱动，获取连接</li>
-<li>获取预处理对象preparedStatement，此处需要SQL语句</li>
-<li>执行查询</li>
-<li>遍历结果用于封装，此处用配置文件中的全限定类名，使用反射创建对象并封装</li>
-</ul>
-</li>
-<li>自定义Mybatis涉及的类<ul>
-<li>class Resources</li>
-<li>class SqlSessionFactoryBuilder</li>
-<li>interface SqlSessionFactory</li>
-</ul>
-</li>
-</ul>
-<h4 id="CRUD操作"><a href="#CRUD操作" class="headerlink" title="CRUD操作"></a>CRUD操作</h4><h4 id="Dao实现类的执行过程"><a href="#Dao实现类的执行过程" class="headerlink" title="Dao实现类的执行过程"></a>Dao实现类的执行过程</h4><ul>
-<li>PreparedStatement对象的方法<ul>
-<li><code>excute</code>只能执行CRUD中任意一种,返回值是布尔值，表示是否有结果集</li>
-<li><code>excuteUpdate</code>只能执行CUD语句。返回值是影响数据库的行数</li>
-<li><code>excuteQuery</code>只能执行Select语句，返回结果集 resultSet</li>
-</ul>
-</li>
-</ul>
-<h4 id="Dao代理的执行过程"><a href="#Dao代理的执行过程" class="headerlink" title="Dao代理的执行过程"></a>Dao代理的执行过程</h4><h5 id="解决实体类和数据库列名不对应的情况"><a href="#解决实体类和数据库列名不对应的情况" class="headerlink" title="解决实体类和数据库列名不对应的情况"></a>解决实体类和数据库列名不对应的情况</h5><ul>
-<li>sql语句中使用别名</li>
-<li>使用<code>resultMap</code>标签</li>
-<li><code>typeAlias</code>指定别名，属性是domain中的实体类</li>
-</ul>
-<h5 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h5><ul>
-<li>使用<code>insert</code>标签注册事件并制定实体类的全限定类名，加sql语句</li>
-<li>使用<code>SqlCommit</code>保存数据操作</li>
-<li>获取插曲用户的id<ul>
-<li>使用<code>keyPropety</code>属性，并且使用sql语句<code>select last_insert_id()</code></li>
-</ul>
-</li>
-</ul>
-<h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><ul>
-<li>使用<code>update</code>标签配置并制制定类型，加上sql语句</li>
-</ul>
-<h5 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h5><ul>
-<li>使用<code>delete</code>标签配置</li>
-</ul>
-<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><ul>
-<li><p>使用<code>select</code>标签并指定返回的数据类型</p>
-</li>
-<li><p>模糊查询传入<code>%</code>，保证sql语句的正确性</p>
-</li>
-</ul>
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" data-id="ck8nl8geh000430fc91a29vqw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringMVC中文件上传" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
-  <time datetime="2020-04-02T16:53:42.622Z" itemprop="datePublished">2020-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">SpringMVC中文件上传</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringMVC中文件上传"><a href="#SpringMVC中文件上传" class="headerlink" title="SpringMVC中文件上传"></a>SpringMVC中文件上传</h3><ul>
-<li>传统的文件上传</li>
-<li>MVC中文件上传</li>
-<li>跨服务器文件上传<ul>
-<li>搭建图片服务器</li>
-<li>应用服务器和图片服务器通信 <code>Client.reaource()</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h3><h4 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h4><ul>
-<li>编写自定义异常类</li>
-<li>编写异常处理器</li>
-<li>配置异常处理器</li>
-</ul>
-<h4 id="拦截器的使用"><a href="#拦截器的使用" class="headerlink" title="拦截器的使用"></a>拦截器的使用</h4><ul>
-<li>拦截器只能在SpringMVC中使用</li>
-<li>拦截器只会拦截控制器方法，不会拦截js，css等资源</li>
-<li>使用步骤<ul>
-<li>编写拦截器类 ： 必须实现HandlerInterceptor接口，其中有三个默认方法<code>preHandler</code> <code>postHandler</code> <code>afterCompletion</code></li>
-<li>配置拦截器 mvc:interception标签</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="ck8nl8gem000630fchnbc1cyv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-SpringMVC" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/01/SpringMVC/" class="article-date">
-  <time datetime="2020-04-01T02:48:24.652Z" itemprop="datePublished">2020-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/SpringMVC/">SpringMVC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
-<li>相同点<ul>
-<li>底层都是基于原始Servlet的</li>
-<li>都是基于MVC的</li>
-<li>处理请求的机制都是一个核心控制器</li>
-</ul>
-</li>
-<li>不同点<ul>
-<li>入口不同：SpringMVC入口是Servlet，Structs2入口是Filter</li>
-<li>SpringMvVC基于方法，Structs2基于类</li>
-</ul>
-</li>
-</ul>
-<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><ul>
-<li>RequestMapping <ul>
-<li>value和path属性均可指定请求路径</li>
-<li>method方法指定请求方式</li>
-<li>params 指定请求参数的条件</li>
-<li>headers指定限制请求消息头的条件</li>
-</ul>
-</li>
-<li>RequestParam 请求中指定名称的参数给控制器中的形参赋值</li>
-<li>RequestBody：用于获取请求体的内容，get方法不适用</li>
-<li>PathVaribale 用于绑定url中的占位符</li>
-<li>RequestHeader 获取请求头消息</li>
-<li>CookieValue 用于获取指定cookie的值</li>
-<li>ModelArrtibute </li>
-<li>SessionAttribute 作用在类上</li>
-</ul>
-<h4 id="请求参数的绑定"><a href="#请求参数的绑定" class="headerlink" title="请求参数的绑定"></a>请求参数的绑定</h4><ul>
-<li>controller使用和前端传递的参数一致的参数接收</li>
-<li>form表单提交的时候name属性的值应该和JavaBean中属性值一致（使用JavaBean中的set方法封装）</li>
-<li>引用类型的封装：使用表达式</li>
-<li>解决中文乱码的问题，配置过滤器</li>
-</ul>
-<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
-<li>类型转换需要实现Converter接口</li>
-<li>配置自定义类型转换器<ul>
-<li>ConversionServiceFactory</li>
-</ul>
-</li>
-</ul>
-<h4 id="获取原生的servlet-API"><a href="#获取原生的servlet-API" class="headerlink" title="获取原生的servlet API"></a>获取原生的servlet API</h4><ul>
-<li>方法上加参数</li>
-</ul>
-<h4 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h4><ul>
-<li><p>响应是字符串</p>
-<ul>
-<li>手动调用model，将参数封装</li>
-</ul>
-</li>
-<li><p>返回值是void</p>
-<ul>
-<li>使用转发，注意：<strong>手动转发的时候不会使用视图解析器</strong></li>
-<li>可是使用重定向的时候</li>
-<li>直接进行相应，使用<code>response.getWrite()</code>;</li>
-</ul>
-</li>
-<li><p>返回的是ModelAndView</p>
-</li>
-<li><p>返回的是json数据</p>
-<ul>
-<li>过滤静态资源，使静态资源不被拦截(js,css等), mvc:resource 标签中的mapping和location属性</li>
-<li>发送ajax请求：</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/01/SpringMVC/" data-id="ck8nl8gen000830fcg00z7z59" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-动态代理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="article-date">
-  <time datetime="2020-03-31T23:46:46.057Z" itemprop="datePublished">2020-04-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">动态代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h4 id="基于接口的动态代理"><a href="#基于接口的动态代理" class="headerlink" title="基于接口的动态代理"></a>基于接口的动态代理</h4><ul>
-<li><p>要求<strong>被代理类至少实现一个接口</strong></p>
-</li>
-<li><p>使用JDK提供的Proxy类</p>
-</li>
-<li><p>使用Proxy的newProxyInstance方法创建代理对象</p>
-</li>
-<li><p>创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类</p>
-</li>
-</ul>
-<h4 id="基于子类的动态代理"><a href="#基于子类的动态代理" class="headerlink" title="基于子类的动态代理"></a>基于子类的动态代理</h4><ul>
-<li>要求<strong>被代理类不能是最终类</strong></li>
-<li>由第三方cglib提供的Enhance类</li>
-<li>使用Enhance的create方法</li>
-<li>create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" data-id="ck8nl8get000930fc4yba8fu0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -748,6 +339,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
           </li>
         
@@ -761,10 +356,6 @@
         
           <li>
             <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
           </li>
         
       </ul>

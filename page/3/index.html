@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>学习小记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="学习小记">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="学习小记">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学习小记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +36,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">学习小记</a>
       </h1>
       
     </div>
@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Servlet" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-动态代理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/01/12/Servlet/" class="article-date">
-  <time datetime="2020-01-12T14:04:37.745Z" itemprop="datePublished">2020-01-12</time>
+    <a href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="article-date">
+  <time datetime="2020-03-31T23:46:46.057Z" itemprop="datePublished">2020-04-01</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/Servlet/">Servlet</a>
+      <a class="article-title" href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">动态代理</a>
     </h1>
   
 
@@ -86,74 +86,487 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
-<li><p>概念：运行在服务器端的小程序，是一个接口，它定义了Java类被浏览器访问到的规则</p>
+        <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h4 id="基于接口的动态代理"><a href="#基于接口的动态代理" class="headerlink" title="基于接口的动态代理"></a>基于接口的动态代理</h4><ul>
+<li><p>要求<strong>被代理类至少实现一个接口</strong></p>
 </li>
-<li><p>快速入门</p>
-<ul>
-<li>创建JavaEE项目</li>
-<li>定义一个类，实现Servlet接口</li>
-<li>实现抽象方法</li>
-<li>配置Servlet</li>
-</ul>
+<li><p>使用JDK提供的Proxy类</p>
 </li>
-<li><p>运行原理</p>
-<ul>
-<li>服务器接收到浏览器端的请求后，解析请求的URL路径，获取访问的servlet的资源路径</li>
-<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容</li>
-<li>如果有，查找<servlet-class>全类名</li>
-<li>tomcat会将字节码文件加载进内存，并创建对象</li>
-<li>调用器方法</li>
-</ul>
-<h3 id="servlet中的生命周期"><a href="#servlet中的生命周期" class="headerlink" title="servlet中的生命周期"></a>servlet中的生命周期</h3><ul>
-<li>init方法<ul>
-<li>被创建，执行init方法，只执行一次<ul>
-<li>默认情况下，第一次被访问时被创建</li>
-<li>在web.xml中使用<load-on-startup>标签配置创建时机<ul>
-<li>在第一次启动时创建，配置使用负数</li>
-<li>配置为0或者正数的时候，当服务器启动的时候被创建</li>
-</ul>
+<li><p>使用Proxy的newProxyInstance方法创建代理对象</p>
+</li>
+<li><p>创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类</p>
 </li>
 </ul>
-</li>
-<li>init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet时单例的。<ul>
-<li>所以当多个用户同时访问的时候，可能存在线程安全问题</li>
-<li>解决方法：尽量不要在servlet中定义成员变量。即使定义了成员变量，也不要赋值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>service方法<ul>
-<li>执行service方法，执行多次</li>
-<li>每次访问servlet的时候，service都会被调用一次</li>
-</ul>
-</li>
-<li>destory方法<ul>
-<li>只执行一次</li>
-<li>只有服务器正常关闭的时候，才会执行destory方法。</li>
-<li>在servlet被销毁之前执行。</li>
-</ul>
-</li>
-<li>获取servlet.config对象</li>
-<li>getServletInfo</li>
-</ul>
-</li>
-</ul>
-<h3 id="servlet3-0"><a href="#servlet3-0" class="headerlink" title="servlet3.0"></a>servlet3.0</h3><ul>
-<li>优点：不需要web.xml，使用注解配置</li>
-<li>步骤：<ul>
-<li>创建JAVAEE项目，选择servlet版本3.0以上</li>
-<li>定义一个类，实现servlet接口</li>
-<li>重写方法</li>
-<li>在类上使用@webServlet注解，进行配置</li>
-</ul>
-</li>
+<h4 id="基于子类的动态代理"><a href="#基于子类的动态代理" class="headerlink" title="基于子类的动态代理"></a>基于子类的动态代理</h4><ul>
+<li>要求<strong>被代理类不能是最终类</strong></li>
+<li>由第三方cglib提供的Enhance类</li>
+<li>使用Enhance的create方法</li>
+<li>create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/Servlet/" data-id="ck7ojsuq20001vcfc1s0ifoxf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" data-id="ck8nl8get000930fc4yba8fu0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Spring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/31/Spring/" class="article-date">
+  <time datetime="2020-03-30T22:56:16.331Z" itemprop="datePublished">2020-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/31/Spring/">Spring</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="程序间的依赖"><a href="#程序间的依赖" class="headerlink" title="程序间的依赖"></a>程序间的依赖</h4><ul>
+<li>类之间的依赖</li>
+<li>方法间的依赖</li>
+<li>实际开发中应该做到编译期间不依赖，运行期才依赖</li>
+<li>解决耦合思路：<ul>
+<li>使用反射而不是new创建对象</li>
+<li>通过读取配置文件获取创建对象的全限定类名</li>
+</ul>
+</li>
+</ul>
+<h4 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h4><ul>
+<li><p>获取IOC核心容器</p>
+</li>
+<li><p>ApplicationContext三个常用的实现类</p>
+<ul>
+<li>ClassPathXmlApplicationContext： 加载类路径下的配置文件，必须在类路径下</li>
+<li>FileSystemApplicationContext：加载磁盘任意位置有访问权限的文件</li>
+<li>AnnotationConfigApplicationContext：读取注解创建容器</li>
+</ul>
+</li>
+<li><p>核心容器创建引发的问题：</p>
+<ul>
+<li>使用ApplicationContext，会立即创建，只要读取完配置文件就马上创建，适用于<strong>单例对象</strong></li>
+<li>使用BeanFactory，会延迟加载，什么时候根据id获取对象，什么时候才真正创建，适用于<strong>多例对象</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="spring对bean的管理细节"><a href="#spring对bean的管理细节" class="headerlink" title="spring对bean的管理细节"></a>spring对bean的管理细节</h3><h5 id="创建bean的三种方式"><a href="#创建bean的三种方式" class="headerlink" title="创建bean的三种方式"></a>创建bean的三种方式</h5><ul>
+<li>使用默认构造函数，使用<bean>标签配置id和class且<strong>没有配置其他参数</strong>的时候就是使用默认构造函数</li>
+<li>使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）</li>
+<li>使用工厂中的静态方法创建对象并存入spring容器</li>
+</ul>
+<h5 id="bean对象的作用范围"><a href="#bean对象的作用范围" class="headerlink" title="bean对象的作用范围"></a>bean对象的作用范围</h5><ul>
+<li><bean>标签中的的scope属性，用于指定bean作用范围，取值有singleton（单例），prototype（多例），request（web应用的请求范围），session（web应用的会话范围），global-session（集群环境的会话范围）</li>
+</ul>
+<h5 id="bean对象的生命周期"><a href="#bean对象的生命周期" class="headerlink" title="bean对象的生命周期"></a>bean对象的生命周期</h5><ul>
+<li>单例对象：<ul>
+<li>容器创建时产生</li>
+<li>容器还在，就一直存活</li>
+<li>容器销毁，对象消亡</li>
+</ul>
+</li>
+<li>多例对象<ul>
+<li>使用对象的时候spring为我们创建</li>
+<li>对象只要在使用就一直存在</li>
+<li>对象长时间不用且没有其他对象引用该对象的时候，垃圾回收</li>
+</ul>
+</li>
+</ul>
+<h5 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h5><ul>
+<li><p>依赖注入：Dependecy Injection</p>
+</li>
+<li><p>IOC的作用：降低程序间的耦合</p>
+</li>
+<li><p>依赖关系管理都交给spring维护</p>
+</li>
+<li><p>当前类需要使用其他类的对象的，有spring为我们提供，我们只需要在配置文件中说明依赖关系的维护就成为依赖注入</p>
+</li>
+<li><p>依赖注入的数据类型，<strong>经常变化的数据不适合依赖注入</strong></p>
+<ul>
+<li>基本类型和String</li>
+<li>在配置文件或注解中配置过的bean</li>
+<li>复杂类型/集合类型</li>
+</ul>
+</li>
+<li><p>注入方式</p>
+<ul>
+<li>使用构造函数<ul>
+<li>使用标签<constructor-arg>，在bean标签内部</li>
+<li>标签中的属性：type，index，name，value（提供基本和String类型），ref（用于指定的其他bean对象）</li>
+<li>使用该方法的优劣势：<ul>
+<li><strong>注入数据是必须的，否则对象无法创建</strong></li>
+<li><strong>改变了bean实例化的方式</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用set方法提供<ul>
+<li>使用property标签</li>
+<li>属性：name，value，ref</li>
+<li>优势：创建对象的时候没有明确的限制</li>
+<li>弊端：如果某个成员必须有值，则set方法可能没执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>使用注解提供</p>
+<h5 id="复杂集合的注入"><a href="#复杂集合的注入" class="headerlink" title="复杂集合的注入"></a>复杂集合的注入</h5></li>
+</ul>
+<h4 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h4><h5 id="用于创建对象的注解"><a href="#用于创建对象的注解" class="headerlink" title="用于创建对象的注解"></a>用于创建对象的注解</h5><ul>
+<li>Component:把当前类对象存入spring容器中，value属性用于指定bean的id，不写的时候，默认当类名且首字母小写</li>
+<li>Controller：一般用于表现层</li>
+<li>Service：一般用于业务层</li>
+<li>Repository：一般用于持久层i</li>
+</ul>
+<h5 id="用于注入数据的注解"><a href="#用于注入数据的注解" class="headerlink" title="用于注入数据的注解"></a>用于注入数据的注解</h5><ul>
+<li>Autowired:自动按照类型注入，只要容器中有唯一一个bean对象类型匹配就能匹配成功</li>
+<li>Qualifier:按照类型注入的基础上再按照名称注入，给类成员注入时不能单独使用</li>
+<li>Resource：按照bean的id注入</li>
+<li><strong>以上注入只能应用于其他bean类型的数据，不能注入基本数据和String，集合类型的注入只能使用xml</strong></li>
+<li>Value:用于注入基本类型和String类型，value用于指定数据的值</li>
+</ul>
+<h5 id="用于改变作用范围的注解"><a href="#用于改变作用范围的注解" class="headerlink" title="用于改变作用范围的注解"></a>用于改变作用范围的注解</h5><ul>
+<li>Scope：指定bean的作用范围，value取值有singleton和prototype</li>
+</ul>
+<h5 id="和生命周期相关"><a href="#和生命周期相关" class="headerlink" title="和生命周期相关"></a>和生命周期相关</h5><ul>
+<li><p>PreDestroy</p>
+</li>
+<li><p>PostContruct</p>
+</li>
+</ul>
+<h4 id="spring的新注解"><a href="#spring的新注解" class="headerlink" title="spring的新注解"></a>spring的新注解</h4><ul>
+<li>Configration：指定当前类是一个配置类<ul>
+<li>当配置类作为AnnotationConfigApplicationContext对象创建的参数时，可以不写 </li>
+</ul>
+</li>
+<li>ComponentScan：指定spring在创建容器时要扫描的包<ul>
+<li>其属性value和basePackage一致</li>
+</ul>
+</li>
+<li>Bean：把当前方法的返回值作为bean对象存入spring的IOC容器中，name用于指定bean的id，不写的时候，默认值是当前方法的名称。</li>
+<li><strong>当注解配置方法的时候，如果方法有参数，spring会在容器中查找是否有匹配的参数</strong></li>
+<li>Import：用于导入其他的配置类，value属性用于指定其他配置类的字节码，使用Import注解的时候，有Import注解的类就是父注解类</li>
+<li>PropertySource: 用于指定Properties文件的，value属性指定文件名称和路径，关键字classpath表示类路径下</li>
+<li>Quaiifier匹配参数注入的时候可以单独使用</li>
+</ul>
+<h4 id="整合junit"><a href="#整合junit" class="headerlink" title="整合junit"></a>整合junit</h4><ul>
+<li>导入spring整合junit的jar包</li>
+<li>使用Junit提供的注解@Runwith把原有的main方法替换成spring提供的</li>
+<li>告知运行器，spring和ioc的创建使用注解还是配置文件，且说明位置 @ContextConfiguration，其中location指定xml文件的位置，classes指定注解类的位置</li>
+</ul>
+<h4 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h4><ul>
+<li>xml配置步骤<ul>
+<li>把通知bean交给spring管理</li>
+<li>使用aop:config标签表明开始配置aop</li>
+<li>aop:aspect表明配置切面 id属性给切面提供一个唯一标识，ref指定通知bean的id</li>
+<li>在aop:aspect内部配置对应的通知类型，method属性指定为哪个方法指定通知类型</li>
+<li>pointcut指定切入点的表达式，指的是对业务层中哪些方法增强</li>
+<li>aop:pointcut标签可以写在aop:aspect内部，也可以写在aop:asoect外部，在外部的时候必须配置在切面前面。</li>
+<li>通知类型：前置通知，后置通知，异常通知，最终通知，环绕通知<ul>
+<li>动态代理中环绕通知有明确的切入点方法调用</li>
+<li>spring提供了一个接口ProceedingJoinPoint，该接口有一个方法proceed(),此方法相当于明确调用切入点方法，接口可以作为环绕通知的方法参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注解配置</li>
+</ul>
+<h4 id="JdbcTemplate"><a href="#JdbcTemplate" class="headerlink" title="JdbcTemplate"></a>JdbcTemplate</h4><ul>
+<li>保存，更新，删除：update，唯一的区别是sql语句</li>
+</ul>
+<h4 id="事务控制"><a href="#事务控制" class="headerlink" title="事务控制"></a>事务控制</h4><ul>
+<li>基于xml的事务控制配置<ul>
+<li>配置事务管理器</li>
+<li>配置事务通知<ul>
+<li>需要导入事务的约束，使用tx:advice配置事务</li>
+<li>其中id给事务通知起一个唯一的标识</li>
+<li>transaction-manager：给事务通知提供事务管理器引用</li>
+</ul>
+</li>
+<li>配置AOP中的通用切入点表达式</li>
+<li>建立事务通知和切入点表达式的关系</li>
+<li>配置事务的属性，在tx:advice标签内部配置<ul>
+<li>isolation ：指定事务的隔离级别</li>
+<li>propagation: 用于指定事务的传播行为，默认是REQUIRED，表示一定会有事务，增删改的时候选择</li>
+<li>no-rollback-for：用于指定一个异常，产生该异常时，事务不回滚</li>
+<li>read-only：指定事务是否只读，只在查询的时候在设置为true，默认死false</li>
+<li>rollback-for：用于指定一个异常，产生该异常时，事务回滚</li>
+<li>timeout：用于指定事务超时的时间，默认永不超时，指定了数值，以秒为单位</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于注解的事务控制<ul>
+<li>配置事务管理器</li>
+<li>开始事务管理：EnableTransactionManagement</li>
+<li>开启spring对注解事务的支持，使用tx:annotation-driven</li>
+<li>需要事务支持的地方使用Transactional</li>
+</ul>
+</li>
+</ul>
+<h4 id="spring5新特性"><a href="#spring5新特性" class="headerlink" title="spring5新特性"></a>spring5新特性</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/31/Spring/" data-id="ck8gijpeo0002bgfcejf51otu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-旅游网项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time datetime="2020-03-29T15:11:04.673Z" itemprop="datePublished">2020-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/">旅游网项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="旅游网项目"><a href="#旅游网项目" class="headerlink" title="旅游网项目"></a>旅游网项目</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h5 id="web层"><a href="#web层" class="headerlink" title="web层"></a>web层</h5><ul>
+<li>servlet：前端控制器</li>
+<li>html：视图</li>
+<li>filter：过滤器</li>
+<li>BeanUtils：数据封装工具</li>
+<li>Jackson：json序列化工具</li>
+</ul>
+<h5 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h5><ul>
+<li>Javamail：发送邮件工具</li>
+<li>Redis：内存数据库</li>
+<li>Jedis：java的redis客户端</li>
+</ul>
+<h5 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h5><ul>
+<li>Mysql：数据库</li>
+<li>Druid：数据库连接池</li>
+<li>JdbcTemplate：jdbc的工具</li>
+</ul>
+<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
+<li>注册<ul>
+<li>前端<ul>
+<li>使用js完成表单校验</li>
+<li>使用Ajax完成表单提交<ul>
+<li>前台使用的是html，只能通过ajax获取数据，不能通过servlet的域来获取</li>
+</ul>
+</li>
+<li>注册成功，跳转页面</li>
+</ul>
+</li>
+<li>servlet<ul>
+<li>获取数据</li>
+<li>封装User对象</li>
+<li>调用Service完成注册</li>
+<li>根据service返回，提示信息，将信息封装为json，设置响应头</li>
+</ul>
+</li>
+<li>Service<ul>
+<li>调用dao根据用户名查询用户<ul>
+<li>存在，则返回false</li>
+<li>不存在，调用dao保存用户信息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>dao<ul>
+<li>实现查找用户和保存用户信息的逻辑</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>登录<ul>
+<li>LoginServlet获取用户信息，调用service查询user，判断用户是否存在，判断用户是否激活</li>
+</ul>
+</li>
+</ul>
+<h4 id="优化servlet"><a href="#优化servlet" class="headerlink" title="优化servlet"></a>优化servlet</h4><ul>
+<li>把一个功能一个servlet优化为一个模块一个servlet</li>
+</ul>
+<h4 id="分类查询"><a href="#分类查询" class="headerlink" title="分类查询"></a>分类查询</h4><h5 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h5><ul>
+<li>header.html加载后发送Ajax请求，访问服务器，加载真正的分类数据</li>
+<li>遍历数组，完成展示</li>
+<li>servlet查询list，序列化为json返回</li>
+</ul>
+<h5 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h5><ul>
+<li>servlet</li>
+<li>service</li>
+<li>dao</li>
+</ul>
+<h4 id="对分类数据缓存优化"><a href="#对分类数据缓存优化" class="headerlink" title="对分类数据缓存优化"></a>对分类数据缓存优化</h4><ul>
+<li>原因    <ul>
+<li>因为分类数据不会经常变化，为了减小服务器负担</li>
+</ul>
+</li>
+<li>措施<ul>
+<li>使用redis缓存</li>
+<li>从redis中查询，如果没有，查询数据库，并且将数据存入redis</li>
+<li>如果存在，直接返回结果</li>
+</ul>
+</li>
+<li>在CategoryServiceImpl中实现 </li>
+</ul>
+<h4 id="线路分页展示"><a href="#线路分页展示" class="headerlink" title="线路分页展示"></a>线路分页展示</h4><ul>
+<li>点击不同的分类。携带不同的分类ID</li>
+<li>类别id的传递<ul>
+<li>redis中查询score，也就是cid，通过zrangeWithScores()</li>
+<li>页面传递cid，通过location.search截取字符串</li>
+</ul>
+</li>
+<li>根据不同的分类返回分页</li>
+</ul>
+<h4 id="旅游线路收藏"><a href="#旅游线路收藏" class="headerlink" title="旅游线路收藏"></a>旅游线路收藏</h4><ul>
+<li>用户登录以后，若收藏过，则收藏按钮不可用，通过ajax获取是否收藏的标记</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" data-id="ck8gijpep0003bgfc1kezhfqz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/redis/" class="article-date">
+  <time datetime="2020-03-29T00:50:41.500Z" itemprop="datePublished">2020-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/redis/">redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><ul>
+<li>概念：是非关系型数据库 NOSQL(<span style ='color: red'>redis,mangoDB,hbase…</span>&gt;)</li>
+<li>用途<ul>
+<li>用作缓存</li>
+</ul>
+</li>
+<li>数据结构<ul>
+<li>存储的是键值对，<code>key</code>是字符串,<code>value</code>有五种结构 <code>String</code> <code>map</code>  <code>linkedlist set</code> <code>sorted</code></li>
+<li>增删改查</li>
+</ul>
+</li>
+</ul>
+<img src="F:\blog\blog\imag\QQ图片20200329003445.png" alt="QQ图片20200329003445" style="zoom:67%;" />
+
+<img src="F:\blog\blog\imag\列表操作.png" alt="列表操作" style="zoom:67%;" />
+
+
+
+<img src="F:\blog\blog\imag\集合和有序集合.png" alt="集合和有序集合" style="zoom:67%;" />
+
+<ul>
+<li>持久化<ul>
+<li>RDB<ul>
+<li>默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据</li>
+</ul>
+</li>
+<li>AOF<ul>
+<li>配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java客户端：Jedis</li>
+<li>Jedis连接池：JedisPool </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/redis/" data-id="ck8gijpep0004bgfc7xlocyuj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/">MAVEN基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
+<li>清理生命周期：clean</li>
+<li>默认生命周期：compile,test,package,install,deploy</li>
+<li>站点生命周期</li>
+</ul>
+<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +580,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -199,6 +612,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
           </li>
         
@@ -212,10 +629,6 @@
         
           <li>
             <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
           </li>
         
       </ul>

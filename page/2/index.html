@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>学习小记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="学习小记">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="学习小记">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学习小记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -36,7 +36,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">学习小记</a>
       </h1>
       
     </div>
@@ -64,10 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Spring" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mybatis框架2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/31/Spring/" class="article-date">
-  <time datetime="2020-03-30T22:56:16.331Z" itemprop="datePublished">2020-03-31</time>
+    <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" class="article-date">
+  <time datetime="2020-04-04T09:56:08.265Z" itemprop="datePublished">2020-04-04</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/31/Spring/">Spring</a>
+      <a class="article-title" href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
     </h1>
   
 
@@ -86,194 +86,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="程序间的依赖"><a href="#程序间的依赖" class="headerlink" title="程序间的依赖"></a>程序间的依赖</h4><ul>
-<li>类之间的依赖</li>
-<li>方法间的依赖</li>
-<li>实际开发中应该做到编译期间不依赖，运行期才依赖</li>
-<li>解决耦合思路：<ul>
-<li>使用反射而不是new创建对象</li>
-<li>通过读取配置文件获取创建对象的全限定类名</li>
-</ul>
-</li>
-</ul>
-<h4 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h4><ul>
-<li><p>获取IOC核心容器</p>
-</li>
-<li><p>ApplicationContext三个常用的实现类</p>
-<ul>
-<li>ClassPathXmlApplicationContext： 加载类路径下的配置文件，必须在类路径下</li>
-<li>FileSystemApplicationContext：加载磁盘任意位置有访问权限的文件</li>
-<li>AnnotationConfigApplicationContext：读取注解创建容器</li>
-</ul>
-</li>
-<li><p>核心容器创建引发的问题：</p>
-<ul>
-<li>使用ApplicationContext，会立即创建，只要读取完配置文件就马上创建，适用于<strong>单例对象</strong></li>
-<li>使用BeanFactory，会延迟加载，什么时候根据id获取对象，什么时候才真正创建，适用于<strong>多例对象</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="spring对bean的管理细节"><a href="#spring对bean的管理细节" class="headerlink" title="spring对bean的管理细节"></a>spring对bean的管理细节</h3><h5 id="创建bean的三种方式"><a href="#创建bean的三种方式" class="headerlink" title="创建bean的三种方式"></a>创建bean的三种方式</h5><ul>
-<li>使用默认构造函数，使用<bean>标签配置id和class且<strong>没有配置其他参数</strong>的时候就是使用默认构造函数</li>
-<li>使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）</li>
-<li>使用工厂中的静态方法创建对象并存入spring容器</li>
-</ul>
-<h5 id="bean对象的作用范围"><a href="#bean对象的作用范围" class="headerlink" title="bean对象的作用范围"></a>bean对象的作用范围</h5><ul>
-<li><bean>标签中的的scope属性，用于指定bean作用范围，取值有singleton（单例），prototype（多例），request（web应用的请求范围），session（web应用的会话范围），global-session（集群环境的会话范围）</li>
-</ul>
-<h5 id="bean对象的生命周期"><a href="#bean对象的生命周期" class="headerlink" title="bean对象的生命周期"></a>bean对象的生命周期</h5><ul>
-<li>单例对象：<ul>
-<li>容器创建时产生</li>
-<li>容器还在，就一直存活</li>
-<li>容器销毁，对象消亡</li>
-</ul>
-</li>
-<li>多例对象<ul>
-<li>使用对象的时候spring为我们创建</li>
-<li>对象只要在使用就一直存在</li>
-<li>对象长时间不用且没有其他对象引用该对象的时候，垃圾回收</li>
-</ul>
-</li>
-</ul>
-<h5 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h5><ul>
-<li><p>依赖注入：Dependecy Injection</p>
-</li>
-<li><p>IOC的作用：降低程序间的耦合</p>
-</li>
-<li><p>依赖关系管理都交给spring维护</p>
-</li>
-<li><p>当前类需要使用其他类的对象的，有spring为我们提供，我们只需要在配置文件中说明依赖关系的维护就成为依赖注入</p>
-</li>
-<li><p>依赖注入的数据类型，<strong>经常变化的数据不适合依赖注入</strong></p>
-<ul>
-<li>基本类型和String</li>
-<li>在配置文件或注解中配置过的bean</li>
-<li>复杂类型/集合类型</li>
-</ul>
-</li>
-<li><p>注入方式</p>
-<ul>
-<li>使用构造函数<ul>
-<li>使用标签<constructor-arg>，在bean标签内部</li>
-<li>标签中的属性：type，index，name，value（提供基本和String类型），ref（用于指定的其他bean对象）</li>
-<li>使用该方法的优劣势：<ul>
-<li><strong>注入数据是必须的，否则对象无法创建</strong></li>
-<li><strong>改变了bean实例化的方式</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>使用set方法提供<ul>
-<li>使用property标签</li>
-<li>属性：name，value，ref</li>
-<li>优势：创建对象的时候没有明确的限制</li>
-<li>弊端：如果某个成员必须有值，则set方法可能没执行</li>
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
+<li>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</li>
+<li>连接池配置方式<ul>
+<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
+<li>type属性的取值<ul>
+<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
+<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
+<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<ul>
-<li><p>使用注解提供</p>
-<h5 id="复杂集合的注入"><a href="#复杂集合的注入" class="headerlink" title="复杂集合的注入"></a>复杂集合的注入</h5></li>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li>什么是事务</li>
+<li>事务的四大特性（原子性，一致性，隔离性，持久性）</li>
+<li>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</li>
+<li>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</li>
 </ul>
-<h4 id="Spring注解"><a href="#Spring注解" class="headerlink" title="Spring注解"></a>Spring注解</h4><h5 id="用于创建对象的注解"><a href="#用于创建对象的注解" class="headerlink" title="用于创建对象的注解"></a>用于创建对象的注解</h5><ul>
-<li>Component:把当前类对象存入spring容器中，value属性用于指定bean的id，不写的时候，默认当类名且首字母小写</li>
-<li>Controller：一般用于表现层</li>
-<li>Service：一般用于业务层</li>
-<li>Repository：一般用于持久层i</li>
+<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4><ul>
+<li>在<code>openSession()</code>中设置为true</li>
 </ul>
-<h5 id="用于注入数据的注解"><a href="#用于注入数据的注解" class="headerlink" title="用于注入数据的注解"></a>用于注入数据的注解</h5><ul>
-<li>Autowired:自动按照类型注入，只要容器中有唯一一个bean对象类型匹配就能匹配成功</li>
-<li>Qualifier:按照类型注入的基础上再按照名称注入，给类成员注入时不能单独使用</li>
-<li>Resource：按照bean的id注入</li>
-<li><strong>以上注入只能应用于其他bean类型的数据，不能注入基本数据和String，集合类型的注入只能使用xml</strong></li>
-<li>Value:用于注入基本类型和String类型，value用于指定数据的值</li>
+<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4><h5 id="单一条件查询"><a href="#单一条件查询" class="headerlink" title="单一条件查询"></a>单一条件查询</h5><ul>
+<li>配置中使用if标签，拼接SQL语句</li>
+<li>使用where标签，嵌套if标签</li>
 </ul>
-<h5 id="用于改变作用范围的注解"><a href="#用于改变作用范围的注解" class="headerlink" title="用于改变作用范围的注解"></a>用于改变作用范围的注解</h5><ul>
-<li>Scope：指定bean的作用范围，value取值有singleton和prototype</li>
+<h5 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h5><ul>
+<li>使用foreach标签，有<code>collection</code> <code>open</code> <code>close</code> <code>item</code> <code>seperate</code>等属性</li>
 </ul>
-<h5 id="和生命周期相关"><a href="#和生命周期相关" class="headerlink" title="和生命周期相关"></a>和生命周期相关</h5><ul>
-<li><p>PreDestroy</p>
-</li>
-<li><p>PostContruct</p>
-</li>
+<h5 id="抽取重复的标签"><a href="#抽取重复的标签" class="headerlink" title="抽取重复的标签"></a>抽取重复的标签</h5><ul>
+<li>使用<code>sql</code>标签</li>
 </ul>
-<h4 id="spring的新注解"><a href="#spring的新注解" class="headerlink" title="spring的新注解"></a>spring的新注解</h4><ul>
-<li>Configration：指定当前类是一个配置类<ul>
-<li>当配置类作为AnnotationConfigApplicationContext对象创建的参数时，可以不写 </li>
-</ul>
-</li>
-<li>ComponentScan：指定spring在创建容器时要扫描的包<ul>
-<li>其属性value和basePackage一致</li>
-</ul>
-</li>
-<li>Bean：把当前方法的返回值作为bean对象存入spring的IOC容器中，name用于指定bean的id，不写的时候，默认值是当前方法的名称。</li>
-<li><strong>当注解配置方法的时候，如果方法有参数，spring会在容器中查找是否有匹配的参数</strong></li>
-<li>Import：用于导入其他的配置类，value属性用于指定其他配置类的字节码，使用Import注解的时候，有Import注解的类就是父注解类</li>
-<li>PropertySource: 用于指定Properties文件的，value属性指定文件名称和路径，关键字classpath表示类路径下</li>
-<li>Quaiifier匹配参数注入的时候可以单独使用</li>
-</ul>
-<h4 id="整合junit"><a href="#整合junit" class="headerlink" title="整合junit"></a>整合junit</h4><ul>
-<li>导入spring整合junit的jar包</li>
-<li>使用Junit提供的注解@Runwith把原有的main方法替换成spring提供的</li>
-<li>告知运行器，spring和ioc的创建使用注解还是配置文件，且说明位置 @ContextConfiguration，其中location指定xml文件的位置，classes指定注解类的位置</li>
-</ul>
-<h4 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h4><ul>
-<li>xml配置步骤<ul>
-<li>把通知bean交给spring管理</li>
-<li>使用aop:config标签表明开始配置aop</li>
-<li>aop:aspect表明配置切面 id属性给切面提供一个唯一标识，ref指定通知bean的id</li>
-<li>在aop:aspect内部配置对应的通知类型，method属性指定为哪个方法指定通知类型</li>
-<li>pointcut指定切入点的表达式，指的是对业务层中哪些方法增强</li>
-<li>aop:pointcut标签可以写在aop:aspect内部，也可以写在aop:asoect外部，在外部的时候必须配置在切面前面。</li>
-<li>通知类型：前置通知，后置通知，异常通知，最终通知，环绕通知<ul>
-<li>动态代理中环绕通知有明确的切入点方法调用</li>
-<li>spring提供了一个接口ProceedingJoinPoint，该接口有一个方法proceed(),此方法相当于明确调用切入点方法，接口可以作为环绕通知的方法参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>注解配置</li>
-</ul>
-<h4 id="JdbcTemplate"><a href="#JdbcTemplate" class="headerlink" title="JdbcTemplate"></a>JdbcTemplate</h4><ul>
-<li>保存，更新，删除：update，唯一的区别是sql语句</li>
-</ul>
-<h4 id="事务控制"><a href="#事务控制" class="headerlink" title="事务控制"></a>事务控制</h4><ul>
-<li>基于xml的事务控制配置<ul>
-<li>配置事务管理器</li>
-<li>配置事务通知<ul>
-<li>需要导入事务的约束，使用tx:advice配置事务</li>
-<li>其中id给事务通知起一个唯一的标识</li>
-<li>transaction-manager：给事务通知提供事务管理器引用</li>
-</ul>
-</li>
-<li>配置AOP中的通用切入点表达式</li>
-<li>建立事务通知和切入点表达式的关系</li>
-<li>配置事务的属性，在tx:advice标签内部配置<ul>
-<li>isolation ：指定事务的隔离级别</li>
-<li>propagation: 用于指定事务的传播行为，默认是REQUIRED，表示一定会有事务，增删改的时候选择</li>
-<li>no-rollback-for：用于指定一个异常，产生该异常时，事务不回滚</li>
-<li>read-only：指定事务是否只读，只在查询的时候在设置为true，默认死false</li>
-<li>rollback-for：用于指定一个异常，产生该异常时，事务回滚</li>
-<li>timeout：用于指定事务超时的时间，默认永不超时，指定了数值，以秒为单位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>基于注解的事务控制<ul>
-<li>配置事务管理器</li>
-<li>开始事务管理：EnableTransactionManagement</li>
-<li>开启spring对注解事务的支持，使用tx:annotation-driven</li>
-<li>需要事务支持的地方使用Transactional</li>
-</ul>
-</li>
-</ul>
-<h4 id="spring5新特性"><a href="#spring5新特性" class="headerlink" title="spring5新特性"></a>spring5新特性</h4>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/31/Spring/" data-id="ck8gijpeo0002bgfcejf51otu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/" data-id="ck8nl8gef000230fce1k9cg2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,10 +132,10 @@
 
 
   
-    <article id="post-旅游网项目" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mybatis连接池和事务控制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" class="article-date">
-  <time datetime="2020-03-29T15:11:04.673Z" itemprop="datePublished">2020-03-29</time>
+    <a href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" class="article-date">
+  <time datetime="2020-04-03T12:25:00.120Z" itemprop="datePublished">2020-04-03</time>
 </a>
     
   </div>
@@ -297,7 +146,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/">旅游网项目</a>
+      <a class="article-title" href="/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/">Mybatis连接池和事务控制</a>
     </h1>
   
 
@@ -305,103 +154,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="旅游网项目"><a href="#旅游网项目" class="headerlink" title="旅游网项目"></a>旅游网项目</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h5 id="web层"><a href="#web层" class="headerlink" title="web层"></a>web层</h5><ul>
-<li>servlet：前端控制器</li>
-<li>html：视图</li>
-<li>filter：过滤器</li>
-<li>BeanUtils：数据封装工具</li>
-<li>Jackson：json序列化工具</li>
-</ul>
-<h5 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h5><ul>
-<li>Javamail：发送邮件工具</li>
-<li>Redis：内存数据库</li>
-<li>Jedis：java的redis客户端</li>
-</ul>
-<h5 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h5><ul>
-<li>Mysql：数据库</li>
-<li>Druid：数据库连接池</li>
-<li>JdbcTemplate：jdbc的工具</li>
-</ul>
-<h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ul>
-<li>注册<ul>
-<li>前端<ul>
-<li>使用js完成表单校验</li>
-<li>使用Ajax完成表单提交<ul>
-<li>前台使用的是html，只能通过ajax获取数据，不能通过servlet的域来获取</li>
-</ul>
-</li>
-<li>注册成功，跳转页面</li>
-</ul>
-</li>
-<li>servlet<ul>
-<li>获取数据</li>
-<li>封装User对象</li>
-<li>调用Service完成注册</li>
-<li>根据service返回，提示信息，将信息封装为json，设置响应头</li>
-</ul>
-</li>
-<li>Service<ul>
-<li>调用dao根据用户名查询用户<ul>
-<li>存在，则返回false</li>
-<li>不存在，调用dao保存用户信息</li>
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
+<li>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</li>
+<li>连接池配置方式<ul>
+<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
+<li>type属性的取值<ul>
+<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
+<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
+<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>dao<ul>
-<li>实现查找用户和保存用户信息的逻辑</li>
 </ul>
-</li>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li>什么是事务</li>
+<li>事务的四大特性（原子性，一致性，隔离性，持久性）</li>
+<li>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</li>
+<li>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</li>
 </ul>
-</li>
-<li>登录<ul>
-<li>LoginServlet获取用户信息，调用service查询user，判断用户是否存在，判断用户是否激活</li>
+<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4><ul>
+<li>在<code>openSession()</code>中设置为true</li>
 </ul>
-</li>
-</ul>
-<h4 id="优化servlet"><a href="#优化servlet" class="headerlink" title="优化servlet"></a>优化servlet</h4><ul>
-<li>把一个功能一个servlet优化为一个模块一个servlet</li>
-</ul>
-<h4 id="分类查询"><a href="#分类查询" class="headerlink" title="分类查询"></a>分类查询</h4><h5 id="前台"><a href="#前台" class="headerlink" title="前台"></a>前台</h5><ul>
-<li>header.html加载后发送Ajax请求，访问服务器，加载真正的分类数据</li>
-<li>遍历数组，完成展示</li>
-<li>servlet查询list，序列化为json返回</li>
-</ul>
-<h5 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h5><ul>
-<li>servlet</li>
-<li>service</li>
-<li>dao</li>
-</ul>
-<h4 id="对分类数据缓存优化"><a href="#对分类数据缓存优化" class="headerlink" title="对分类数据缓存优化"></a>对分类数据缓存优化</h4><ul>
-<li>原因    <ul>
-<li>因为分类数据不会经常变化，为了减小服务器负担</li>
-</ul>
-</li>
-<li>措施<ul>
-<li>使用redis缓存</li>
-<li>从redis中查询，如果没有，查询数据库，并且将数据存入redis</li>
-<li>如果存在，直接返回结果</li>
-</ul>
-</li>
-<li>在CategoryServiceImpl中实现 </li>
-</ul>
-<h4 id="线路分页展示"><a href="#线路分页展示" class="headerlink" title="线路分页展示"></a>线路分页展示</h4><ul>
-<li>点击不同的分类。携带不同的分类ID</li>
-<li>类别id的传递<ul>
-<li>redis中查询score，也就是cid，通过zrangeWithScores()</li>
-<li>页面传递cid，通过location.search截取字符串</li>
-</ul>
-</li>
-<li>根据不同的分类返回分页</li>
-</ul>
-<h4 id="旅游线路收藏"><a href="#旅游线路收藏" class="headerlink" title="旅游线路收藏"></a>旅游线路收藏</h4><ul>
-<li>用户登录以后，若收藏过，则收藏按钮不可用，通过ajax获取是否收藏的标记</li>
-</ul>
-
+<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" data-id="ck8gijpep0003bgfc1kezhfqz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/03/Mybatis%E8%BF%9E%E6%8E%A5%E6%B1%A0%E5%92%8C%E4%BA%8B%E5%8A%A1%E6%8E%A7%E5%88%B6/" data-id="ck8nl8gek000530fca8ffbr64" class="article-share-link">Share</a>
       
       
     </footer>
@@ -411,10 +190,10 @@
 
 
   
-    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Mybatis框架" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/29/redis/" class="article-date">
-  <time datetime="2020-03-29T00:50:41.500Z" itemprop="datePublished">2020-03-29</time>
+    <a href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" class="article-date">
+  <time datetime="2020-04-02T21:24:05.645Z" itemprop="datePublished">2020-04-02</time>
 </a>
     
   </div>
@@ -425,7 +204,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/29/redis/">redis</a>
+      <a class="article-title" href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/">Mybatis框架</a>
     </h1>
   
 
@@ -433,46 +212,111 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><ul>
-<li>概念：是非关系型数据库 NOSQL(<span style ='color: red'>redis,mangoDB,hbase…</span>&gt;)</li>
-<li>用途<ul>
-<li>用作缓存</li>
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="持久层技术解决方案"><a href="#持久层技术解决方案" class="headerlink" title="持久层技术解决方案"></a>持久层技术解决方案</h4><ul>
+<li>JDBC技术<ul>
+<li>Connection</li>
+<li>PreparedStatement</li>
+<li>ResultSet</li>
 </ul>
 </li>
-<li>数据结构<ul>
-<li>存储的是键值对，<code>key</code>是字符串,<code>value</code>有五种结构 <code>String</code> <code>map</code>  <code>linkedlist set</code> <code>sorted</code></li>
-<li>增删改查</li>
+<li>Spring中的JdbcTemplate</li>
+<li>Apache的DBUtils</li>
+</ul>
+<h4 id="mabatis概述"><a href="#mabatis概述" class="headerlink" title="mabatis概述"></a>mabatis概述</h4><ul>
+<li>使用了ORM的思想实现对结果集的封装</li>
+<li>环境搭建<ul>
+<li>创建maven工程并导入坐标</li>
+<li>创建实体类和dao接口</li>
+<li>创建Mybatis主配置文件</li>
+<li>创建映射配置文件</li>
 </ul>
 </li>
-</ul>
-<img src="F:\blog\blog\imag\QQ图片20200329003445.png" alt="QQ图片20200329003445" style="zoom:67%;" />
-
-<img src="F:\blog\blog\imag\列表操作.png" alt="列表操作" style="zoom:67%;" />
-
-
-
-<img src="F:\blog\blog\imag\集合和有序集合.png" alt="集合和有序集合" style="zoom:67%;" />
-
-<ul>
-<li>持久化<ul>
-<li>RDB<ul>
-<li>默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据</li>
-</ul>
-</li>
-<li>AOF<ul>
-<li>配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes</li>
+<li>注意<ul>
+<li><strong>mabatis的映射配置文件位置必须和dao接口的包结构相同</strong></li>
+<li>映射配置文件中的namespace属性的取值必须是dao接口的全限定类名</li>
+<li>映射文件的配置。id属性的取值必须是dao接口的方法名</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>Java客户端：Jedis</li>
-<li>Jedis连接池：JedisPool </li>
+<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><ul>
+<li>配置Mysql环境<ul>
+<li>配置事务 <code>transcationManager</code>标签</li>
+<li>配置连接池<code>dataSource</code></li>
+<li>配置映射文件位置 <code>mappers</code>b标签的<code>resource</code>属性</li>
 </ul>
-
+</li>
+</ul>
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
+<li>读取配置文件</li>
+<li>创建SqlSessionFactory</li>
+<li>使用工厂生产SqlSession对象: <code>factory.oepnSession</code></li>
+<li>使用SqlSession创建dao接口的代理对象：<code>session.getMapper()</code></li>
+<li>使用代理对象执行方法</li>
+<li>释放资源</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>读取配置文件的时候(不使用相对路径和绝对路径)<ul>
+<li>使用类加载器，只能加载类路径的配置文件</li>
+<li>使用ServletContext对象的<code>getRealPath()</code></li>
+</ul>
+</li>
+<li>Mybatis创建工厂使用了<strong>构建者模式</strong>，使用<code>SqlSessionFactoryBuilder</code>创建工厂，使用者直接调用方法即可拿到对象</li>
+<li>在生产<code>SqlSession</code>的时候使用了工厂模式，降低了类之间的依赖</li>
+<li>创建dao接口实现类使用了<strong>代理模式</strong>，在不修改源码的基础上实现功能增强</li>
+</ul>
+<h4 id="自定义Mybatis"><a href="#自定义Mybatis" class="headerlink" title="自定义Mybatis"></a>自定义Mybatis</h4><ul>
+<li>执行的流程<ul>
+<li>根据配置文件的信息创建connection对象，注册驱动，获取连接</li>
+<li>获取预处理对象preparedStatement，此处需要SQL语句</li>
+<li>执行查询</li>
+<li>遍历结果用于封装，此处用配置文件中的全限定类名，使用反射创建对象并封装</li>
+</ul>
+</li>
+<li>自定义Mybatis涉及的类<ul>
+<li>class Resources</li>
+<li>class SqlSessionFactoryBuilder</li>
+<li>interface SqlSessionFactory</li>
+</ul>
+</li>
+</ul>
+<h4 id="CRUD操作"><a href="#CRUD操作" class="headerlink" title="CRUD操作"></a>CRUD操作</h4><h4 id="Dao实现类的执行过程"><a href="#Dao实现类的执行过程" class="headerlink" title="Dao实现类的执行过程"></a>Dao实现类的执行过程</h4><ul>
+<li>PreparedStatement对象的方法<ul>
+<li><code>excute</code>只能执行CRUD中任意一种,返回值是布尔值，表示是否有结果集</li>
+<li><code>excuteUpdate</code>只能执行CUD语句。返回值是影响数据库的行数</li>
+<li><code>excuteQuery</code>只能执行Select语句，返回结果集 resultSet</li>
+</ul>
+</li>
+</ul>
+<h4 id="Dao代理的执行过程"><a href="#Dao代理的执行过程" class="headerlink" title="Dao代理的执行过程"></a>Dao代理的执行过程</h4><h5 id="解决实体类和数据库列名不对应的情况"><a href="#解决实体类和数据库列名不对应的情况" class="headerlink" title="解决实体类和数据库列名不对应的情况"></a>解决实体类和数据库列名不对应的情况</h5><ul>
+<li>sql语句中使用别名</li>
+<li>使用<code>resultMap</code>标签</li>
+<li><code>typeAlias</code>指定别名，属性是domain中的实体类</li>
+</ul>
+<h5 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h5><ul>
+<li>使用<code>insert</code>标签注册事件并制定实体类的全限定类名，加sql语句</li>
+<li>使用<code>SqlCommit</code>保存数据操作</li>
+<li>获取插曲用户的id<ul>
+<li>使用<code>keyPropety</code>属性，并且使用sql语句<code>select last_insert_id()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><ul>
+<li>使用<code>update</code>标签配置并制制定类型，加上sql语句</li>
+</ul>
+<h5 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h5><ul>
+<li>使用<code>delete</code>标签配置</li>
+</ul>
+<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><ul>
+<li><p>使用<code>select</code>标签并指定返回的数据类型</p>
+</li>
+<li><p>模糊查询传入<code>%</code>，保证sql语句的正确性</p>
+</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/29/redis/" data-id="ck8gijpep0004bgfc7xlocyuj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" data-id="ck8nl8geh000430fc91a29vqw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -482,10 +326,10 @@
 
 
   
-    <article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SpringMVC中文件上传" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
+    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time datetime="2020-04-02T16:53:42.622Z" itemprop="datePublished">2020-04-02</time>
 </a>
     
   </div>
@@ -496,7 +340,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/">MAVEN基础</a>
+      <a class="article-title" href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">SpringMVC中文件上传</a>
     </h1>
   
 
@@ -504,17 +348,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>清理生命周期：clean</li>
-<li>默认生命周期：compile,test,package,install,deploy</li>
-<li>站点生命周期</li>
+        <h3 id="SpringMVC中文件上传"><a href="#SpringMVC中文件上传" class="headerlink" title="SpringMVC中文件上传"></a>SpringMVC中文件上传</h3><ul>
+<li>传统的文件上传</li>
+<li>MVC中文件上传</li>
+<li>跨服务器文件上传<ul>
+<li>搭建图片服务器</li>
+<li>应用服务器和图片服务器通信 <code>Client.reaource()</code></li>
 </ul>
-<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
+</li>
+</ul>
+<h3 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h3><h4 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h4><ul>
+<li>编写自定义异常类</li>
+<li>编写异常处理器</li>
+<li>配置异常处理器</li>
+</ul>
+<h4 id="拦截器的使用"><a href="#拦截器的使用" class="headerlink" title="拦截器的使用"></a>拦截器的使用</h4><ul>
+<li>拦截器只能在SpringMVC中使用</li>
+<li>拦截器只会拦截控制器方法，不会拦截js，css等资源</li>
+<li>使用步骤<ul>
+<li>编写拦截器类 ： 必须实现HandlerInterceptor接口，其中有三个默认方法<code>preHandler</code> <code>postHandler</code> <code>afterCompletion</code></li>
+<li>配置拦截器 mvc:interception标签</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="ck8nl8gem000630fchnbc1cyv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -524,10 +385,10 @@
 
 
   
-    <article id="post-JavaWeb三大组件" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SpringMVC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" class="article-date">
-  <time datetime="2020-03-27T17:57:06.544Z" itemprop="datePublished">2020-03-27</time>
+    <a href="/2020/04/01/SpringMVC/" class="article-date">
+  <time datetime="2020-04-01T02:48:24.652Z" itemprop="datePublished">2020-04-01</time>
 </a>
     
   </div>
@@ -538,7 +399,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/">JavaWeb三大组件</a>
+      <a class="article-title" href="/2020/04/01/SpringMVC/">SpringMVC</a>
     </h1>
   
 
@@ -546,128 +407,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JavaWeb三大组件"><a href="#JavaWeb三大组件" class="headerlink" title="JavaWeb三大组件"></a>JavaWeb三大组件</h2><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
-<li><p>概念：运行在服务器端的小程序，是一个接口，它定义了Java类被浏览器访问到的规则</p>
+        <h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
+<li>相同点<ul>
+<li>底层都是基于原始Servlet的</li>
+<li>都是基于MVC的</li>
+<li>处理请求的机制都是一个核心控制器</li>
+</ul>
 </li>
-<li><p>快速入门</p>
+<li>不同点<ul>
+<li>入口不同：SpringMVC入口是Servlet，Structs2入口是Filter</li>
+<li>SpringMvVC基于方法，Structs2基于类</li>
+</ul>
+</li>
+</ul>
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><ul>
+<li>RequestMapping <ul>
+<li>value和path属性均可指定请求路径</li>
+<li>method方法指定请求方式</li>
+<li>params 指定请求参数的条件</li>
+<li>headers指定限制请求消息头的条件</li>
+</ul>
+</li>
+<li>RequestParam 请求中指定名称的参数给控制器中的形参赋值</li>
+<li>RequestBody：用于获取请求体的内容，get方法不适用</li>
+<li>PathVaribale 用于绑定url中的占位符</li>
+<li>RequestHeader 获取请求头消息</li>
+<li>CookieValue 用于获取指定cookie的值</li>
+<li>ModelArrtibute </li>
+<li>SessionAttribute 作用在类上</li>
+</ul>
+<h4 id="请求参数的绑定"><a href="#请求参数的绑定" class="headerlink" title="请求参数的绑定"></a>请求参数的绑定</h4><ul>
+<li>controller使用和前端传递的参数一致的参数接收</li>
+<li>form表单提交的时候name属性的值应该和JavaBean中属性值一致（使用JavaBean中的set方法封装）</li>
+<li>引用类型的封装：使用表达式</li>
+<li>解决中文乱码的问题，配置过滤器</li>
+</ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ul>
+<li>类型转换需要实现Converter接口</li>
+<li>配置自定义类型转换器<ul>
+<li>ConversionServiceFactory</li>
+</ul>
+</li>
+</ul>
+<h4 id="获取原生的servlet-API"><a href="#获取原生的servlet-API" class="headerlink" title="获取原生的servlet API"></a>获取原生的servlet API</h4><ul>
+<li>方法上加参数</li>
+</ul>
+<h4 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h4><ul>
+<li><p>响应是字符串</p>
 <ul>
-<li>创建JavaEE项目</li>
-<li>定义一个类，实现Servlet接口</li>
-<li>实现抽象方法</li>
-<li>配置Servlet</li>
+<li>手动调用model，将参数封装</li>
 </ul>
 </li>
-<li><p>运行原理</p>
+<li><p>返回值是void</p>
 <ul>
-<li>服务器接收到浏览器端的请求后，解析请求的URL路径，获取访问的servlet的资源路径</li>
-<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容</li>
-<li>如果有，查找<servlet-class>全类名</li>
-<li>tomcat会将字节码文件加载进内存，并创建对象</li>
-<li>调用器方法</li>
-</ul>
-<h4 id="servlet中的生命周期"><a href="#servlet中的生命周期" class="headerlink" title="servlet中的生命周期"></a>servlet中的生命周期</h4><ul>
-<li>init方法<ul>
-<li>被创建，执行init方法，只执行一次<ul>
-<li>默认情况下，第一次被访问时被创建</li>
-<li>在web.xml中使用<load-on-startup>标签配置创建时机<ul>
-<li>在第一次启动时创建，配置使用负数</li>
-<li>配置为0或者正数的时候，当服务器启动的时候被创建</li>
+<li>使用转发，注意：<strong>手动转发的时候不会使用视图解析器</strong></li>
+<li>可是使用重定向的时候</li>
+<li>直接进行相应，使用<code>response.getWrite()</code>;</li>
 </ul>
 </li>
-</ul>
+<li><p>返回的是ModelAndView</p>
 </li>
-<li>init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet时单例的。<ul>
-<li>所以当多个用户同时访问的时候，可能存在线程安全问题</li>
-<li>解决方法：尽量不要在servlet中定义成员变量。即使定义了成员变量，也不要赋值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>service方法<ul>
-<li>执行service方法，执行多次</li>
-<li>每次访问servlet的时候，service都会被调用一次</li>
-</ul>
-</li>
-<li>destory方法<ul>
-<li>只执行一次</li>
-<li>只有服务器正常关闭的时候，才会执行destory方法。</li>
-<li>在servlet被销毁之前执行。</li>
-</ul>
-</li>
-<li>获取servlet.config对象</li>
-<li>getServletInfo</li>
-</ul>
-<h4 id="servlet3-0"><a href="#servlet3-0" class="headerlink" title="servlet3.0"></a>servlet3.0</h4><ul>
-<li>优点：不需要web.xml，使用注解配置</li>
-<li>步骤：<ul>
-<li>创建JAVAEE项目，选择servlet版本3.0以上</li>
-<li>定义一个类，实现servlet接口</li>
-<li>重写方法</li>
-<li>在类上使用@webServlet注解，进行配置</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h3><h4 id="过滤器细节"><a href="#过滤器细节" class="headerlink" title="过滤器细节"></a>过滤器细节</h4><ul>
-<li>通过web.xml或者注解配置</li>
-<li>执行流程<ul>
-<li>执行过滤器</li>
-<li>执行放行后的资源</li>
-<li>执行过滤器放行代码下的代码 </li>
-</ul>
-</li>
-<li>生命周期<ul>
-<li>init() 服务器启动后，创建filter对象，调用init方法，只执行一次</li>
-<li>doFilter，每次请求被拦截都会执行</li>
-<li>destory 服务器关闭，filter对象被销毁，只执行一次</li>
-</ul>
-</li>
-<li>配置详解<ul>
-<li>拦截路径配置<ul>
-<li>具体的资源路径</li>
-<li>目录拦截 ：</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><ul>
-<li>事件监听机制</li>
-<li>servletContextListener<ul>
-<li>contextDestory()</li>
-<li>contextInitialized()</li>
-</ul>
-</li>
-<li>实现监听器的步骤<ul>
-<li>定义一个类，实现ServletContextListener接口</li>
-<li>复写方法</li>
-<li>配置</li>
-</ul>
-</li>
-</ul>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
-<li>为了实现功能增强</li>
-<li>基本概念<ul>
-<li>真实对象</li>
-<li>代理对象</li>
-<li>代理模式</li>
-</ul>
-</li>
-<li>实现方式<ul>
-<li>静态代理：一个类文件描述代理模式</li>
-<li>动态代 理：在内存中形成代理类<ul>
-<li>代理对象和真实对象实现相同的接口</li>
-<li>代理对象= Proxy.newProxyInstance();</li>
-<li>使用代理对象调用方法</li>
-<li>增强方法 <ul>
-<li>增强参数列表</li>
-<li>增强返回值</li>
-<li>增强方法体执行逻辑</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>返回的是json数据</p>
+<ul>
+<li>过滤静态资源，使静态资源不被拦截(js,css等), mvc:resource 标签中的mapping和location属性</li>
+<li>发送ajax请求：</li>
 </ul>
 </li>
 </ul>
@@ -675,887 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" data-id="ck8gijpe30000bgfc9kv4cmyw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-会话技术" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" class="article-date">
-  <time datetime="2020-03-23T22:56:46.475Z" itemprop="datePublished">2020-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/">会话技术</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ul>
-<li>一次会话中包含多次请求和响应</li>
-<li>功能：在一次会话的范围内共享数据</li>
-<li>方式：<ul>
-<li>客户端使用Cookie</li>
-<li>服务器端Session</li>
-</ul>
-</li>
-</ul>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
-<li><p>客户端会话技术，将数据保存到客户端</p>
-</li>
-<li><p>使用</p>
-<ul>
-<li><p>创建 cookie绑定数据</p>
-<p><code>new Cookie(String name .String value)</code></p>
-</li>
-<li><p>发送cookie对象</p>
-<p><code>response.addCookie(Cookie cookie)</code></p>
-</li>
-<li><p>获取cookie</p>
-<p><code>Cookies[] request.getCookies()</code></p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" data-id="ck8gijper0007bgfcdsmo3pl8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-response" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/22/response/" class="article-date">
-  <time datetime="2020-03-21T23:17:02.302Z" itemprop="datePublished">2020-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/22/response/">response</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="响应消息格式"><a href="#响应消息格式" class="headerlink" title="响应消息格式"></a>响应消息格式</h2><h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><ul>
-<li>响应行<ul>
-<li>组成 :协议，响应状态码，状态码描述</li>
-<li>响应状态码：服务器告诉浏览器本次请求和响应的一个状态<ul>
-<li>状态码分为5类，分别以1-5开头</li>
-<li>1xx : 服务器接收客户端消息但是没有接收完成，发送1xx码</li>
-<li>2xx：成功</li>
-<li>3xx: 重定向,302(重定向),304(访问缓存)</li>
-<li>4xx：客户端错误，404(请求路径没有 相应的资源)</li>
-<li>5xx:服务器端错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应头</li>
-<li>响应空行</li>
-<li>响应体</li>
-</ul>
-<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><ul>
-<li><p>功能：设置响应消息</p>
-<ul>
-<li>设置响应行：包括格式个状态码</li>
-<li>设置响应头：setHeader(String name, String value)</li>
-<li>设置响应体：<ul>
-<li>获取输出流</li>
-<li>使用输出流</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>重定向的特点：</p>
-<ul>
-<li><p>地址栏发生变化</p>
-</li>
-<li><p>重定向可以访问其他服务器的资源</p>
-</li>
-<li><p>重定向是两次请求，不能使用request对象共享数据</p>
-</li>
-</ul>
-</li>
-<li><p>服务器输出数据到浏览器</p>
-<ul>
-<li>获取字符输出流：<code>response.getWriter()</code></li>
-<li>输出数据</li>
-<li>乱码问题：使用<code>response.setContentType()</code></li>
-</ul>
-</li>
-<li><p>服务器输出字节数据到浏览器</p>
-<ul>
-<li><p>获取字节输出流</p>
-<p><code>response.getOutputStream()</code></p>
-</li>
-<li><p>输出数据</p>
-<p><code>write(&quot;String&quot;.getBytes())</code></p>
-</li>
-</ul>
-</li>
-<li><p><strong>验证码</strong></p>
-</li>
-</ul>
-<h2 id="ServletContext-对象"><a href="#ServletContext-对象" class="headerlink" title="ServletContext 对象"></a>ServletContext 对象</h2><ul>
-<li>概念：代表整个web应用和服务器来通信</li>
-<li>获取<ul>
-<li>通过request获取： <code>requset.getServletContext()</code></li>
-<li>通过HttpServlet获取：<code>this.getServletContext()</code></li>
-<li></li>
-</ul>
-</li>
-<li>功能<ul>
-<li>获取MIME类型<ul>
-<li><code>String getMimeType(filename)</code>可以获取</li>
-</ul>
-</li>
-<li>共享数据<ul>
-<li><code>setArrtibute(String name ,Object value)</code></li>
-<li><code>getAttribute(String name )</code></li>
-<li><code>removeAttribute(String name )</code></li>
-</ul>
-</li>
-<li>获取文件的服务器路径<ul>
-<li><code>getRealPath(String path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/22/response/" data-id="ck8gijper0006bgfcgx03099g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Servlet&amp;HTTP&amp;Request笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-03-21T20:17:29.881Z" itemprop="datePublished">2020-03-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/">Servlet&amp;HTTP&amp;Request笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="今日内容："><a href="#今日内容：" class="headerlink" title="今日内容："></a>今日内容：</h1><pre><code>1. Servlet
-2. HTTP协议
-3. Request</code></pre><h2 id="Servlet："><a href="#Servlet：" class="headerlink" title="Servlet："></a>Servlet：</h2><pre><code>1. 概念
-2. 步骤
-3. 执行原理
-4. 生命周期
-5. Servlet3.0 注解配置
-6. Servlet的体系结构    
-    Servlet -- 接口
-        |
-    GenericServlet -- 抽象类
-        |
-    HttpServlet  -- 抽象类
-
-    * GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象
-        * 将来定义Servlet类时，可以继承GenericServlet，实现service()方法即可
-
-    * HttpServlet：对http协议的一种封装，简化操作
-        1. 定义类继承HttpServlet
-        2. 复写doGet/doPost方法
-
-7. Servlet相关配置
-    1. urlpartten:Servlet访问路径
-        1. 一个Servlet可以定义多个访问路径 ： @WebServlet({&quot;/d4&quot;,&quot;/dd4&quot;,&quot;/ddd4&quot;})
-        2. 路径定义规则：
-            1. /xxx：路径匹配
-            2. /xxx/xxx:多层路径，目录结构
-            3. *.do：扩展名匹配</code></pre><h2 id="HTTP："><a href="#HTTP：" class="headerlink" title="HTTP："></a>HTTP：</h2><pre><code>* 概念：Hyper Text Transfer Protocol 超文本传输协议
-    * 传输协议：定义了，客户端和服务器端通信时，发送数据的格式
-    * 特点：
-        1. 基于TCP/IP的高级协议
-        2. 默认端口号:80
-        3. 基于请求/响应模型的:一次请求对应一次响应
-        4. 无状态的：每次请求之间相互独立，不能交互数据
-
-    * 历史版本：
-        * 1.0：每一次请求响应都会建立新的连接
-        * 1.1：复用连接
-
-* 请求消息数据格式
-    1. 请求行
-        请求方式 请求url 请求协议/版本
-        GET /login.html    HTTP/1.1
-
-        * 请求方式：
-            * HTTP协议有7中请求方式，常用的有2种
-                * GET：
-                    1. 请求参数在请求行中，在url后。
-                    2. 请求的url长度有限制的
-                    3. 不太安全
-                * POST：
-                    1. 请求参数在请求体中
-                    2. 请求的url长度没有限制的
-                    3. 相对安全
-    2. 请求头：客户端浏览器告诉服务器一些信息
-        请求头名称: 请求头值
-        * 常见的请求头：
-            1. User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息
-                * 可以在服务器端获取该头的信息，解决浏览器的兼容性问题
-
-            2. Referer：http://localhost/login.html
-                * 告诉服务器，我(当前请求)从哪里来？
-                    * 作用：
-                        1. 防盗链：
-                        2. 统计工作：
-    3. 请求空行
-        空行，就是用于分割POST请求的请求头，和请求体的。
-    4. 请求体(正文)：
-        * 封装POST请求消息的请求参数的
-
-    * 字符串格式：
-        POST /login.html    HTTP/1.1
-        Host: localhost
-        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0
-        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-        Accept-Encoding: gzip, deflate
-        Referer: http://localhost/login.html
-        Connection: keep-alive
-        Upgrade-Insecure-Requests: 1
-
-        username=zhangsan    
-
-
-* 响应消息数据格式</code></pre><h2 id="Request："><a href="#Request：" class="headerlink" title="Request："></a>Request：</h2><pre><code>1. request对象和response对象的原理
-    1. request和response对象是由服务器创建的。我们来使用它们
-    2. request对象是来获取请求消息，response对象是来设置响应消息
-
-2. request对象继承体系结构：    
-    ServletRequest        --    接口
-        |    继承
-    HttpServletRequest    -- 接口
-        |    实现
-    org.apache.catalina.connector.RequestFacade 类(tomcat)
-
-3. request功能：
-    1. 获取请求消息数据
-        1. 获取请求行数据
-            * GET /day14/demo1?name=zhangsan HTTP/1.1
-            * 方法：
-                1. 获取请求方式 ：GET
-                    * String getMethod()  
-                2. (*)获取虚拟目录：/day14
-                    * String getContextPath()
-                3. 获取Servlet路径: /demo1
-                    * String getServletPath()
-                4. 获取get方式请求参数：name=zhangsan
-                    * String getQueryString()
-                5. (*)获取请求URI：/day14/demo1
-                    * String getRequestURI():        /day14/demo1
-                    * StringBuffer getRequestURL()  :http://localhost/day14/demo1
-
-                    * URL:统一资源定位符 ： http://localhost/day14/demo1    中华人民共和国
-                    * URI：统一资源标识符 : /day14/demo1                    共和国
-
-                6. 获取协议及版本：HTTP/1.1
-                    * String getProtocol()
-
-                7. 获取客户机的IP地址：
-                    * String getRemoteAddr()
-
-        2. 获取请求头数据
-            * 方法：
-                * (*)String getHeader(String name):通过请求头的名称获取请求头的值
-                * Enumeration&lt;String&gt; getHeaderNames():获取所有的请求头名称
-
-        3. 获取请求体数据:
-            * 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
-            * 步骤：
-                1. 获取流对象
-                    *  BufferedReader getReader()：获取字符输入流，只能操作字符数据
-                    *  ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型数据
-                        * 在文件上传知识点后讲解
-
-                2. 再从流对象中拿数据
-
-
-    2. 其他功能：
-        1. 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数
-            1. String getParameter(String name):根据参数名称获取参数值    username=zs&amp;password=123
-            2. String[] getParameterValues(String name):根据参数名称获取参数值的数组  hobby=xx&amp;hobby=game
-            3. Enumeration&lt;String&gt; getParameterNames():获取所有请求的参数名称
-            4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合
-
-            * 中文乱码问题：
-                * get方式：tomcat 8 已经将get方式乱码问题解决了
-                * post方式：会乱码
-                    * 解决：在获取参数前，设置request的编码request.setCharacterEncoding(&quot;utf-8&quot;);
-
-
-        2. 请求转发：一种在服务器内部的资源跳转方式
-            1. 步骤：
-                1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)
-                2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response) 
-
-            2. 特点：
-                1. 浏览器地址栏路径不发生变化
-                2. 只能转发到当前服务器内部资源中。
-                3. 转发是一次请求
-
-
-        3. 共享数据：
-            * 域对象：一个有作用范围的对象，可以在范围内共享数据
-            * request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
-            * 方法：
-                1. void setAttribute(String name,Object obj):存储数据
-                2. Object getAttitude(String name):通过键获取值
-                3. void removeAttribute(String name):通过键移除键值对
-
-        4. 获取ServletContext：
-            * ServletContext getServletContext()</code></pre><h2 id="案例：用户登录"><a href="#案例：用户登录" class="headerlink" title="案例：用户登录"></a>案例：用户登录</h2><pre><code>* 用户登录案例需求：
-    1.编写login.html登录页面
-        username &amp; password 两个输入框
-    2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
-    3.使用JdbcTemplate技术封装JDBC
-    4.登录成功跳转到SuccessServlet展示：登录成功！用户名,欢迎您
-    5.登录失败跳转到FailServlet展示：登录失败，用户名或密码错误
-
-
-* 分析
-
-* 开发步骤
-    1. 创建项目，导入html页面，配置文件，jar包
-    2. 创建数据库环境
-        CREATE DATABASE day14;
-        USE day14;
-        CREATE TABLE USER(
-
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            username VARCHAR(32) UNIQUE NOT NULL,
-            PASSWORD VARCHAR(32) NOT NULL
-        );
-
-    3. 创建包cn.itcast.domain,创建类User
-        package cn.itcast.domain;
-        /**
-         * 用户的实体类
-         */
-        public class User {
-
-            private int id;
-            private String username;
-            private String password;
-
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getUsername() {
-                return username;
-            }
-
-            public void setUsername(String username) {
-                this.username = username;
-            }
-
-            public String getPassword() {
-                return password;
-            }
-
-            public void setPassword(String password) {
-                this.password = password;
-            }
-
-            @Override
-            public String toString() {
-                return &quot;User{&quot; +
-                        &quot;id=&quot; + id +
-                        &quot;, username=&apos;&quot; + username + &apos;\&apos;&apos; +
-                        &quot;, password=&apos;&quot; + password + &apos;\&apos;&apos; +
-                        &apos;}&apos;;
-            }
-        }
-    4. 创建包cn.itcast.util,编写工具类JDBCUtils
-        package cn.itcast.util;
-
-        import com.alibaba.druid.pool.DruidDataSourceFactory;
-
-        import javax.sql.DataSource;
-        import javax.xml.crypto.Data;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.sql.Connection;
-        import java.sql.SQLException;
-        import java.util.Properties;
-
-        /**
-         * JDBC工具类 使用Durid连接池
-         */
-        public class JDBCUtils {
-
-            private static DataSource ds ;
-
-            static {
-
-                try {
-                    //1.加载配置文件
-                    Properties pro = new Properties();
-                    //使用ClassLoader加载配置文件，获取字节输入流
-                    InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;);
-                    pro.load(is);
-
-                    //2.初始化连接池对象
-                    ds = DruidDataSourceFactory.createDataSource(pro);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            /**
-             * 获取连接池对象
-             */
-            public static DataSource getDataSource(){
-                return ds;
-            }
-
-
-            /**
-             * 获取连接Connection对象
-             */
-            public static Connection getConnection() throws SQLException {
-                return  ds.getConnection();
-            }
-        }
-    5. 创建包cn.itcast.dao,创建类UserDao,提供login方法
-
-        package cn.itcast.dao;
-
-        import cn.itcast.domain.User;
-        import cn.itcast.util.JDBCUtils;
-        import org.springframework.dao.DataAccessException;
-        import org.springframework.jdbc.core.BeanPropertyRowMapper;
-        import org.springframework.jdbc.core.JdbcTemplate;
-
-        /**
-         * 操作数据库中User表的类
-         */
-        public class UserDao {
-
-            //声明JDBCTemplate对象共用
-            private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
-
-            /**
-             * 登录方法
-             * @param loginUser 只有用户名和密码
-             * @return user包含用户全部数据,没有查询到，返回null
-             */
-            public User login(User loginUser){
-                try {
-                    //1.编写sql
-                    String sql = &quot;select * from user where username = ? and password = ?&quot;;
-                    //2.调用query方法
-                    User user = template.queryForObject(sql,
-                            new BeanPropertyRowMapper&lt;User&gt;(User.class),
-                            loginUser.getUsername(), loginUser.getPassword());
-
-
-                    return user;
-                } catch (DataAccessException e) {
-                    e.printStackTrace();//记录日志
-                    return null;
-                }
-            }
-        }
-
-    6. 编写cn.itcast.web.servlet.LoginServlet类
-        package cn.itcast.web.servlet;
-
-        import cn.itcast.dao.UserDao;
-        import cn.itcast.domain.User;
-
-        import javax.servlet.ServletException;
-        import javax.servlet.annotation.WebServlet;
-        import javax.servlet.http.HttpServlet;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
-
-
-        @WebServlet(&quot;/loginServlet&quot;)
-        public class LoginServlet extends HttpServlet {
-
-
-            @Override
-            protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                //1.设置编码
-                req.setCharacterEncoding(&quot;utf-8&quot;);
-                //2.获取请求参数
-                String username = req.getParameter(&quot;username&quot;);
-                String password = req.getParameter(&quot;password&quot;);
-                //3.封装user对象
-                User loginUser = new User();
-                loginUser.setUsername(username);
-                loginUser.setPassword(password);
-
-                //4.调用UserDao的login方法
-                UserDao dao = new UserDao();
-                User user = dao.login(loginUser);
-
-                //5.判断user
-                if(user == null){
-                    //登录失败
-                    req.getRequestDispatcher(&quot;/failServlet&quot;).forward(req,resp);
-                }else{
-                    //登录成功
-                    //存储数据
-                    req.setAttribute(&quot;user&quot;,user);
-                    //转发
-                    req.getRequestDispatcher(&quot;/successServlet&quot;).forward(req,resp);
-                }
-
-            }
-
-            @Override
-            protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                this.doGet(req,resp);
-            }
-        }
-
-    7. 编写FailServlet和SuccessServlet类
-        @WebServlet(&quot;/successServlet&quot;)
-        public class SuccessServlet extends HttpServlet {
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                //获取request域中共享的user对象
-                User user = (User) request.getAttribute(&quot;user&quot;);
-
-                if(user != null){
-                    //给页面写一句话
-
-                    //设置编码
-                    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-                    //输出
-                    response.getWriter().write(&quot;登录成功！&quot;+user.getUsername()+&quot;,欢迎您&quot;);
-                }
-
-
-            }        
-
-
-        @WebServlet(&quot;/failServlet&quot;)
-        public class FailServlet extends HttpServlet {
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                //给页面写一句话
-
-                //设置编码
-                response.setContentType(&quot;text/html;charset=utf-8&quot;);
-                //输出
-                response.getWriter().write(&quot;登录失败，用户名或密码错误&quot;);
-
-            }
-
-            protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                this.doPost(request,response);
-            }
-        }
-
-
-
-    8. login.html中form表单的action路径的写法
-        * 虚拟目录+Servlet的资源路径
-
-    9. BeanUtils工具类，简化数据封装
-        * 用于封装JavaBean的
-        1. JavaBean：标准的Java类
-            1. 要求：
-                1. 类必须被public修饰
-                2. 必须提供空参的构造器
-                3. 成员变量必须使用private修饰
-                4. 提供公共setter和getter方法
-            2. 功能：封装数据
-
-
-        2. 概念：
-            成员变量：
-            属性：setter和getter方法截取后的产物
-                例如：getUsername() --&gt; Username--&gt; username
-
-
-        3. 方法：
-            1. setProperty()
-            2. getProperty()
-            3. populate(Object obj , Map map):将map集合的键值对信息，封装到对应的JavaBean对象中</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" data-id="ck8gijpeq0005bgfc0lo7fusi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-详细servlet解析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/" class="article-date">
-  <time datetime="2020-02-21T22:40:13.108Z" itemprop="datePublished">2020-02-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/">详细servlet解析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><ul>
-<li>GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法</li>
-<li>HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。</li>
-</ul>
-<h3 id="servlet相关配置"><a href="#servlet相关配置" class="headerlink" title="servlet相关配置"></a>servlet相关配置</h3><ul>
-<li>urlpartten:Servlet访问路径<ul>
-<li>一个Servlet可以定义多个访问路径：@webServlet({“/d1”,”dd1”,”ddd1”})</li>
-<li>路径定义规则 ：<ul>
-<li>/xxx</li>
-<li>/xxx/xxx/x :多层路径</li>
-<li>*.do</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
-<li>定义了客户端和服务器端通信的时候，发送数据的格式</li>
-<li>特点：<ul>
-<li>基于TCP/IP 的高级协议</li>
-<li>默认端口：80</li>
-<li>基于请求/相应模型的，也就是说一起请求对应一次响应</li>
-<li>是无状态的：每次请求之间是相互独立的</li>
-<li>1.1版本可以复用链接</li>
-</ul>
-</li>
-<li>请求消息数据格式<ul>
-<li>请求行<ul>
-<li>请求方式 请求url 请求协议/版本<ul>
-<li>get方式：请求参数在请求行中，url后面；url长度有限制；不安全</li>
-<li>post方式：请求参数在请求体中；url长度没有限制；安全</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>请求头<ul>
-<li>键值的方式</li>
-<li>常见的请求头<ul>
-<li>User-Agent:浏览器版本信息</li>
-<li>Referer:告诉服务器，当前请求从哪来，可以防止盗链</li>
-<li>Connection:</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>请求空行<ul>
-<li>空行</li>
-</ul>
-</li>
-<li>请求体<ul>
-<li>请求参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应消息数据格式</li>
-</ul>
-<h2 id="Request原理"><a href="#Request原理" class="headerlink" title="Request原理"></a>Request原理</h2><ul>
-<li>tomcat服务器会根据请求url中的资源路径，创建对应的ServletDemo1的对象</li>
-<li>tomcat服务器会创建request和response对象， request对象中封装请求消息数据</li>
-<li>tomcat将request和response两个对象 传递给service方法，并调用该方法</li>
-</ul>
-<h3 id="request对象继承体系结构"><a href="#request对象继承体系结构" class="headerlink" title="request对象继承体系结构"></a>request对象继承体系结构</h3><ul>
-<li>ServletRequest(接口)</li>
-<li>HttpServletRequest（接口，继承自ServletRequest）</li>
-<li>RequestrFacade（由tomcat实现接口HttpServletRequest）</li>
-</ul>
-<h3 id="Request的功能"><a href="#Request的功能" class="headerlink" title="Request的功能"></a>Request的功能</h3><ul>
-<li>获取请求消息数据<ul>
-<li>获取请求行数据<ul>
-<li>获取请求方式 String getMethod()</li>
-<li>获取虚拟目录 Srting getContextPath()</li>
-<li>获取Servlet路径 String getSercletPath()</li>
-<li>获取get方式请求参数 String getQueryString()</li>
-<li>获取请求url StringBuffer getRequestURL()</li>
-<li>获取协议及版本 String getProcol()</li>
-<li>获取客户机的IP地址 String getRemoteAddr()</li>
-</ul>
-</li>
-<li>获取请求头数据<ul>
-<li>String getHeader(String name) 根据请求头</li>
-</ul>
-</li>
-<li>获取请求体数据<ul>
-<li>只有post请求方式才有请求体</li>
-<li>步骤<ul>
-<li>获取流对象 BufferedReader getReader(): 获取字符输入流，只能获取字符； </li>
-<li>从流对象中拿出数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>其他功能<ul>
-<li>获取请求参数的通用方式<ul>
-<li>String getParameter(String name): 根据参数名称获取参数值</li>
-<li>String[] getParameterValues(String name): 根据参数名称获取参数值数组</li>
-<li>Enumeration getParameterName() : 获取请求参数名称</li>
-<li>Map&lt;String, String[]&gt; getParameterMap() : 获取所有参数的map集合</li>
-</ul>
-</li>
-<li>请求转发:在服务器内部的资源跳转方式<ul>
-<li>步骤<ul>
-<li>通过request对象获取请求转发器对象： RequestDispatcher getRequestDispatcher(String path)</li>
-<li>使用RequestDispatcher对象进行转发： forward()</li>
-</ul>
-</li>
-<li>特点<ul>
-<li>浏览器地址不变化</li>
-<li>只能转发到当前服务器的内部资源</li>
-<li>转发是一次请求</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>共享数据<ul>
-<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
-<li>request域 ：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</li>
-<li>方法：<ul>
-<li>void setAttribute(String name,.Object obj) :存储数据</li>
-<li>Object getAttribute(String name): 通过键获取值</li>
-<li>void removeAttribute(String name): 通过键移除值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>获取ServletContext<ul>
-<li>ServletContext getServletContext()</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/" data-id="ck7ojsupu0000vcfc6hgueibo" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-tomcat" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/01/12/tomcat/" class="article-date">
-  <time datetime="2020-01-12T14:07:57.421Z" itemprop="datePublished">2020-01-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/12/tomcat/">tomcat</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h1><h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><h2 id="–项目根目录"><a href="#–项目根目录" class="headerlink" title="–项目根目录"></a>–项目根目录</h2><h2 id="—WEB-INF目录"><a href="#—WEB-INF目录" class="headerlink" title="—WEB-INF目录"></a>—WEB-INF目录</h2><ul>
-<li>web.xml</li>
-<li>classes目录</li>
-<li>lib目录</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/01/12/tomcat/" data-id="ck7ojsuq40002vcfc9869bw99" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/01/SpringMVC/" data-id="ck8nl8gen000830fcg00z7z59" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1569,7 +492,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -1601,6 +524,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
           </li>
         
@@ -1614,10 +541,6 @@
         
           <li>
             <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/Mybatis%E6%A1%86%E6%9E%B62/">Mybatis框架2</a>
           </li>
         
       </ul>
