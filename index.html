@@ -64,6 +64,198 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-readme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/07/readme/" class="article-date">
+  <time datetime="2020-04-07T17:11:14.431Z" itemprop="datePublished">2020-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/07/readme/">readme</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="权限管理系统的设计"><a href="#权限管理系统的设计" class="headerlink" title="权限管理系统的设计"></a>权限管理系统的设计</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><ul>
+<li><code>AdminLTE</code>作为<code>view</code></li>
+<li>采用<code>ssm+spring-security</code>的方式，数据库采用<code>Mysql</code></li>
+<li>使用<code>PageHelper</code>作为分页工具</li>
+</ul>
+<h4 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h4><ul>
+<li>使用<code>spring-security</code>作为<strong>登录认证</strong>以及<strong>页面权限控制</strong>以及<strong>服务器</strong>权限控制</li>
+<li>日志记录系统</li>
+</ul>
+<h4 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h4><ul>
+<li><p>数据库和数据表的设计</p>
+</li>
+<li><p>建立<code>maven</code>工程，配置<code>pom.xml</code>文件，导入依赖的坐标</p>
+</li>
+<li><p>建立<code>applicationConfig.xml</code>文件，作为<code>spring</code>的配置文件，整合s<code>pring</code>和<code>mybatis</code></p>
+<ul>
+<li>配置文件中使用<code>&lt;component-scan&gt;</code>标签配置注解扫描，扫描<code>service</code> 和<code>dao</code>包</li>
+<li>使用<code>v2.c3p0</code>配置连接池，此处需要一个数据库的配置文件<code>jdbcConfig.properties</code></li>
+<li>整合<code>mybatis</code>,配置<code>sqlSessionFactoryBean</code></li>
+<li>配置<code>PageHelper</code>插件</li>
+<li>配置声明式事务</li>
+<li>使用<code>MapperScannerConfigurer</code>配置扫描<code>dao</code>接口</li>
+</ul>
+</li>
+<li><p>编写<code>springmvc.xml</code></p>
+<ul>
+<li>配置扫描包的规则，只扫描<code>controller</code>包</li>
+<li>配置视图解析器，指定<code>jsp</code>文件的位置和后缀名</li>
+<li>配置静态资源不过滤</li>
+<li>使用<code>mvc:annotation-driven</code>配置注解支持</li>
+<li>使用<code>aop:aspect-autoproxy</code>配置<code>AOP</code>注解支持</li>
+</ul>
+</li>
+<li><p>编写<code>springsecurity.xml</code>文件</p>
+<ul>
+<li>配置具体的拦截规则，拦截路径，访问系统需要具备的权限</li>
+<li>定义具体的跳转页面</li>
+<li>配置注销用户的跳转</li>
+<li>配置加密方式</li>
+</ul>
+</li>
+<li><p>编写具体的<code>service</code> <code>dao</code> <code>controller</code>和<code>domain</code></p>
+<ul>
+<li><p>在需要使用分页的地方配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Orders&gt; ordersList &#x3D; ordersService.findAll(page, size);</span><br><span class="line">PageInfo pageInfo &#x3D; new PageInfo(ordersList);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在页面权限控制的地方使用注解</p>
+<p><code>&lt;security:authorize access=&quot;hasRole(&#39;ADMIN&#39;)&quot;&gt;</code></p>
+<p>表示该内容对拥有<code>ADMIN</code>权限的用户可见</p>
+</li>
+<li><p>在服务器上使用注解限制用户对方法的访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Secured(&quot;ROLE_ADMIN&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>表示拥有<code>ADMIN</code>权限的用户才可以访问该方法</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据库的多表查询以及定义返回结果</strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/07/readme/" data-id="ck8q64vrv000080fca9464s4s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-权限管理系统的设计" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2020-04-07T17:00:54.919Z" itemprop="datePublished">2020-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">权限管理系统的设计</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="权限管理系统的设计"><a href="#权限管理系统的设计" class="headerlink" title="权限管理系统的设计"></a>权限管理系统的设计</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><ul>
+<li><code>AdminLTE</code>作为<code>view</code></li>
+<li>采用<code>ssm+spring-security</code>的方式，数据库采用<code>Mysql</code></li>
+<li>使用<code>PageHelper</code>作为分页工具</li>
+</ul>
+<h4 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h4><ul>
+<li>使用<code>spring-security</code>作为<strong>登录认证</strong>以及<strong>页面权限控制</strong>以及<strong>服务器</strong>权限控制</li>
+<li>日志记录系统</li>
+</ul>
+<h4 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h4><ul>
+<li><p>数据库和数据表的设计</p>
+</li>
+<li><p>建立<code>maven</code>工程，配置<code>pom.xml</code>文件，导入依赖的坐标</p>
+</li>
+<li><p>建立<code>applicationConfig.xml</code>文件，作为<code>spring</code>的配置文件，整合s<code>pring</code>和<code>mybatis</code></p>
+<ul>
+<li>配置文件中使用<code>&lt;component-scan&gt;</code>标签配置注解扫描，扫描<code>service</code> 和<code>dao</code>包</li>
+<li>使用<code>v2.c3p0</code>配置连接池，此处需要一个数据库的配置文件<code>jdbcConfig.properties</code></li>
+<li>整合<code>mybatis</code>,配置<code>sqlSessionFactoryBean</code></li>
+<li>配置<code>PageHelper</code>插件</li>
+<li>配置声明式事务</li>
+<li>使用<code>MapperScannerConfigurer</code>配置扫描<code>dao</code>接口</li>
+</ul>
+</li>
+<li><p>编写<code>springmvc.xml</code></p>
+<ul>
+<li>配置扫描包的规则，只扫描<code>controller</code>包</li>
+<li>配置视图解析器，指定<code>jsp</code>文件的位置和后缀名</li>
+<li>配置静态资源不过滤</li>
+<li>使用<code>mvc:annotation-driven</code>配置注解支持</li>
+<li>使用<code>aop:aspect-autoproxy</code>配置<code>AOP</code>注解支持</li>
+</ul>
+</li>
+<li><p>编写<code>springsecurity.xml</code>文件</p>
+<ul>
+<li>配置具体的拦截规则，拦截路径，访问系统需要具备的权限</li>
+<li>定义具体的跳转页面</li>
+<li>配置注销用户的跳转</li>
+<li>配置加密方式</li>
+</ul>
+</li>
+<li><p>编写具体的<code>service</code> <code>dao</code> <code>controller</code>和<code>domain</code></p>
+<ul>
+<li><p>在需要使用分页的地方配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Orders&gt; ordersList &#x3D; ordersService.findAll(page, size);</span><br><span class="line">PageInfo pageInfo &#x3D; new PageInfo(ordersList);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在页面权限控制的地方使用注解</p>
+<p><code>&lt;security:authorize access=&quot;hasRole(&#39;ADMIN&#39;)&quot;&gt;</code></p>
+<p>表示该内容对拥有<code>ADMIN</code>权限的用户可见</p>
+</li>
+<li><p>在服务器上使用注解限制用户对方法的访问</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Secured(&quot;ROLE_ADMIN&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>表示拥有<code>ADMIN</code>权限的用户才可以访问该方法</p>
+</li>
+</ul>
+</li>
+<li><p><strong>数据库的多表查询以及定义返回结果</strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" data-id="ck8q64vs0000180fcg1qv1syy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-权限控制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/" class="article-date">
@@ -218,91 +410,6 @@
 
 
   
-    <article id="post-Mybatis中的延迟加载" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/" class="article-date">
-  <time datetime="2020-04-04T21:32:11.115Z" itemprop="datePublished">2020-04-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/">Mybatis中的延迟加载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Mybatis中的延迟加载"><a href="#Mybatis中的延迟加载" class="headerlink" title="Mybatis中的延迟加载"></a>Mybatis中的延迟加载</h4><ul>
-<li>使用数据的时候才发起查询，叫延迟加载，一对多和多对多一般使用延迟加载</li>
-<li>只要一调用方法，马上发起查询，叫立即加载</li>
-</ul>
-<h4 id="Mabits中的缓存"><a href="#Mabits中的缓存" class="headerlink" title="Mabits中的缓存"></a>Mabits中的缓存</h4><h4 id="Mybatis中的注解开发"><a href="#Mybatis中的注解开发" class="headerlink" title="Mybatis中的注解开发"></a>Mybatis中的注解开发</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/" data-id="ck8nl8ge4000030fc5cciab2x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Mybatis中多表查询" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" class="article-date">
-  <time datetime="2020-04-04T12:27:00.130Z" itemprop="datePublished">2020-04-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mybatis中多表查询"><a href="#Mybatis中多表查询" class="headerlink" title="Mybatis中多表查询"></a>Mybatis中多表查询</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
-<li>建立两张表，使用外键关联起来</li>
-<li>建立两个实体类并关联两个表</li>
-<li>建立两个配置文件</li>
-<li>实现配置</li>
-</ul>
-<h4 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h4><h4 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h4><ul>
-<li>主表应该包含从表的实体集合</li>
-</ul>
-<h4 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h4>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/" data-id="ck8nl8gee000130fcclxwba4l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -339,6 +446,14 @@
       <ul>
         
           <li>
+            <a href="/2020/04/07/readme/">readme</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">权限管理系统的设计</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
           </li>
         
@@ -348,14 +463,6 @@
         
           <li>
             <a href="/2020/04/05/Mybatis%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">Mybatis注解开发</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/">Mybatis中的延迟加载</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/04/Mybatis%E4%B8%AD%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2/">Mybatis中多表查询</a>
           </li>
         
       </ul>
