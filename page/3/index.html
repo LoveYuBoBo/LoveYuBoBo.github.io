@@ -64,65 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SpringMVC中文件上传" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
-  <time datetime="2020-04-02T16:53:42.622Z" itemprop="datePublished">2020-04-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">SpringMVC中文件上传</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="SpringMVC中文件上传"><a href="#SpringMVC中文件上传" class="headerlink" title="SpringMVC中文件上传"></a>SpringMVC中文件上传</h3><ul>
-<li>传统的文件上传</li>
-<li>MVC中文件上传</li>
-<li>跨服务器文件上传<ul>
-<li>搭建图片服务器</li>
-<li>应用服务器和图片服务器通信 <code>Client.reaource()</code></li>
-</ul>
-</li>
-</ul>
-<h3 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h3><h4 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h4><ul>
-<li>编写自定义异常类</li>
-<li>编写异常处理器</li>
-<li>配置异常处理器</li>
-</ul>
-<h4 id="拦截器的使用"><a href="#拦截器的使用" class="headerlink" title="拦截器的使用"></a>拦截器的使用</h4><ul>
-<li>拦截器只能在SpringMVC中使用</li>
-<li>拦截器只会拦截控制器方法，不会拦截js，css等资源</li>
-<li>使用步骤<ul>
-<li>编写拦截器类 ： 必须实现HandlerInterceptor接口，其中有三个默认方法<code>preHandler</code> <code>postHandler</code> <code>afterCompletion</code></li>
-<li>配置拦截器 mvc:interception标签</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" data-id="ck8nl8gem000630fchnbc1cyv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-SpringMVC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/01/SpringMVC/" class="article-date">
@@ -625,6 +566,77 @@
 
 
   
+    <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/29/redis/" class="article-date">
+  <time datetime="2020-03-29T00:50:41.500Z" itemprop="datePublished">2020-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/29/redis/">redis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><ul>
+<li>概念：是非关系型数据库 NOSQL(<span style ='color: red'>redis,mangoDB,hbase…</span>&gt;)</li>
+<li>用途<ul>
+<li>用作缓存</li>
+</ul>
+</li>
+<li>数据结构<ul>
+<li>存储的是键值对，<code>key</code>是字符串,<code>value</code>有五种结构 <code>String</code> <code>map</code>  <code>linkedlist set</code> <code>sorted</code></li>
+<li>增删改查</li>
+</ul>
+</li>
+</ul>
+<img src="F:\blog\blog\imag\QQ图片20200329003445.png" alt="QQ图片20200329003445" style="zoom:67%;" />
+
+<img src="F:\blog\blog\imag\列表操作.png" alt="列表操作" style="zoom:67%;" />
+
+
+
+<img src="F:\blog\blog\imag\集合和有序集合.png" alt="集合和有序集合" style="zoom:67%;" />
+
+<ul>
+<li>持久化<ul>
+<li>RDB<ul>
+<li>默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据</li>
+</ul>
+</li>
+<li>AOF<ul>
+<li>配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java客户端：Jedis</li>
+<li>Jedis连接池：JedisPool </li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/03/29/redis/" data-id="ck8gijpep0004bgfc7xlocyuj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
 
 
   <nav id="page-nav">
@@ -661,10 +673,6 @@
       <ul>
         
           <li>
-            <a href="/2020/04/07/readme/">readme</a>
-          </li>
-        
-          <li>
             <a href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">权限管理系统的设计</a>
           </li>
         
@@ -678,6 +686,10 @@
         
           <li>
             <a href="/2020/04/05/Mybatis%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">Mybatis注解开发</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/">Mybatis中的延迟加载</a>
           </li>
         
       </ul>
