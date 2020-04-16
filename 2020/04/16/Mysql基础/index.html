@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="1.语法     select    字段列表    from    表名列表    where    条件列表    group by    分组字段    having    分组之后的条件    order by    排序    limit    分页限定    2.基础查询    2.多字段查询    select 字段名1，…，from 表名    *注意：    如果查询所有">
+<meta name="description" content="数据库基础DCL 添加用户：create user &amp;apos;用户名&amp;apos; @&amp;apos;主机名&amp;apos; identify &amp;apos;密码&amp;apos;。     删除用户：drop user &amp;apos;用户名&amp;apos; @&amp;apos;主机名&amp;apos;     修改用户密码：update user set 字段名&#x3D;新的值 where 条件子句    *忘记root密码：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql基础">
 <meta property="og:url" content="https://ijavaweb.github.io/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="1.语法     select    字段列表    from    表名列表    where    条件列表    group by    分组字段    having    分组之后的条件    order by    排序    limit    分页限定    2.基础查询    2.多字段查询    select 字段名1，…，from 表名    *注意：    如果查询所有">
+<meta property="og:description" content="数据库基础DCL 添加用户：create user &amp;apos;用户名&amp;apos; @&amp;apos;主机名&amp;apos; identify &amp;apos;密码&amp;apos;。     删除用户：drop user &amp;apos;用户名&amp;apos; @&amp;apos;主机名&amp;apos;     修改用户密码：update user set 字段名&#x3D;新的值 where 条件子句    *忘记root密码：">
 <meta property="article:published_time" content="2020-04-16T15:28:40.000Z">
-<meta property="article:modified_time" content="2020-04-16T15:29:49.849Z">
+<meta property="article:modified_time" content="2020-04-16T16:42:24.417Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  2k
+                  1.8k
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  6
                 </span>
               
             </div>
@@ -393,682 +393,170 @@
       
 
       
-        <table>
-<thead>
-<tr>
-<th></th>
-<th>1.语法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td>select</td>
-</tr>
-<tr>
-<td></td>
-<td>字段列表</td>
-</tr>
-<tr>
-<td></td>
-<td>from</td>
-</tr>
-<tr>
-<td></td>
-<td>表名列表</td>
-</tr>
-<tr>
-<td></td>
-<td>where</td>
-</tr>
-<tr>
-<td></td>
-<td>条件列表</td>
-</tr>
-<tr>
-<td></td>
-<td>group by</td>
-</tr>
-<tr>
-<td></td>
-<td>分组字段</td>
-</tr>
-<tr>
-<td></td>
-<td>having</td>
-</tr>
-<tr>
-<td></td>
-<td>分组之后的条件</td>
-</tr>
-<tr>
-<td></td>
-<td>order by</td>
-</tr>
-<tr>
-<td></td>
-<td>排序</td>
-</tr>
-<tr>
-<td></td>
-<td>limit</td>
-</tr>
-<tr>
-<td></td>
-<td>分页限定</td>
-</tr>
-<tr>
-<td></td>
-<td>2.基础查询</td>
-</tr>
-<tr>
-<td></td>
-<td>2.多字段查询</td>
-</tr>
-<tr>
-<td></td>
-<td>select 字段名1，…，from 表名</td>
-</tr>
-<tr>
-<td></td>
-<td>*注意：</td>
-</tr>
-<tr>
-<td></td>
-<td><em>如果查询所有字段，可以使用</em>代替字段列表</td>
-</tr>
-<tr>
-<td></td>
-<td>3.去除重复的结果集</td>
-</tr>
-<tr>
-<td></td>
-<td>*使用distinct</td>
-</tr>
-<tr>
-<td></td>
-<td>4.起别名</td>
-</tr>
-<tr>
-<td></td>
-<td>*使用as</td>
-</tr>
-<tr>
-<td></td>
-<td>5.计算列</td>
-</tr>
-<tr>
-<td></td>
-<td>*一般使用四则运算计算列的值</td>
-</tr>
-<tr>
-<td></td>
-<td>*如果有null参与运算，计算结果都是null</td>
-</tr>
-<tr>
-<td></td>
-<td>*可以使用ifnull()表达式</td>
-</tr>
-<tr>
-<td></td>
-<td>3.条件查询</td>
-</tr>
-<tr>
-<td></td>
-<td>1.where子句</td>
-</tr>
-<tr>
-<td></td>
-<td>2.运算符</td>
-</tr>
-<tr>
-<td></td>
-<td>*&gt; &lt; &gt;= &lt;=…</td>
-</tr>
-<tr>
-<td></td>
-<td>*like(模糊查询)</td>
-</tr>
-<tr>
-<td></td>
-<td>*占位符</td>
-</tr>
-<tr>
-<td></td>
-<td>*_:单个任意字符</td>
-</tr>
-<tr>
-<td></td>
-<td>*%：多个任意字符</td>
-</tr>
-<tr>
-<td></td>
-<td>*is null(因为null值不能用=号判断)</td>
-</tr>
-<tr>
-<td></td>
-<td>*between(效果等效and)</td>
-</tr>
-<tr>
-<td></td>
-<td>*in(效果等效于or)</td>
-</tr>
-<tr>
-<td></td>
-<td>…</code></pre><h3 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h3><pre><code>1.语法：order by 子句</td>
-</tr>
-<tr>
-<td></td>
-<td>*order by 排序字段1....</td>
-</tr>
-<tr>
-<td></td>
-<td>2.asc是升序，desc是降序</code></pre><h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><pre><code>1.count:计算个数</td>
-</tr>
-<tr>
-<td></td>
-<td>2.max,min,sum，avg函数</td>
-</tr>
-<tr>
-<td></td>
-<td>3.聚合函数会排除NULL</td>
-</tr>
-<tr>
-<td></td>
-<td>*选择不包含空的列计算</td>
-</tr>
-<tr>
-<td></td>
-<td>*使用ifnull()</code></pre><h3 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h3><pre><code>1.语法：group by 分组字段</td>
-</tr>
-<tr>
-<td></td>
-<td>2.注意：</td>
-</tr>
-<tr>
-<td></td>
-<td>*分组以后查询的字段应该是分组字段或者是聚合函数</td>
-</tr>
-<tr>
-<td></td>
-<td>*where和having的区别</td>
-</tr>
-<tr>
-<td></td>
-<td>*where是分组之前限定，不满足条件则不参与分组；having是在分组之后进行限定，如果不满足，则不会被查询出来</td>
-</tr>
-<tr>
-<td></td>
-<td>*where后不能跟聚合函数，having后可以跟聚合函数</code></pre><h3 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h3><pre><code>1.语法：limit 开始的索引，每页查询的条数</td>
-</tr>
-<tr>
-<td></td>
-<td>2.公式：开始的索引 = (当前页码-1)*每页显示的条数</code></pre><h2 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h2><pre><code>1.概念：对表中数据进行限定，保证数据的正确的先和完整性。</td>
-</tr>
-<tr>
-<td></td>
-<td>2.分类：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.主键约束</td>
-</tr>
-<tr>
-<td></td>
-<td>*primary key</td>
-</tr>
-<tr>
-<td></td>
-<td>*删除语法：alter table 表名 drop primary key</td>
-</tr>
-<tr>
-<td></td>
-<td>*自动增长：auto_increment</td>
-</tr>
-<tr>
-<td></td>
-<td>2.非空约束</td>
-</tr>
-<tr>
-<td></td>
-<td>*NOT NULL(创建表的时候添加，也可以创建完成后添加)</td>
-</tr>
-<tr>
-<td></td>
-<td>*删除语法：alter table 表名 modify 字段名</td>
-</tr>
-<tr>
-<td></td>
-<td>3.外键约束</td>
-</tr>
-<tr>
-<td></td>
-<td>*foreign key</td>
-</tr>
-<tr>
-<td></td>
-<td>*创建语法：</td>
-</tr>
-<tr>
-<td></td>
-<td>creat table 表名(</td>
-</tr>
-<tr>
-<td></td>
-<td>...</td>
-</tr>
-<tr>
-<td></td>
-<td>外键列</td>
-</tr>
-<tr>
-<td></td>
-<td>constraint 外键名称 foreign key(外键名称) references 主表名称(主表列名称)</td>
-</tr>
-<tr>
-<td></td>
-<td>);</td>
-</tr>
-<tr>
-<td></td>
-<td>*删除外键：alter table 表名 drop foreign 外键字段名</td>
-</tr>
-<tr>
-<td></td>
-<td>*级联更新：on update cascade</td>
-</tr>
-<tr>
-<td></td>
-<td>*级联删除：on delete cascade</td>
-</tr>
-<tr>
-<td></td>
-<td>4.唯一约束</td>
-</tr>
-<tr>
-<td></td>
-<td>*unique，值不能重复，但可以有多个NULL</td>
-</tr>
-<tr>
-<td></td>
-<td>*删除语法:alter table 表名 drop index 字段名</code></pre><h2 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h2><h3 id="多表之间的关系"><a href="#多表之间的关系" class="headerlink" title="多表之间的关系"></a>多表之间的关系</h3><pre><code>1.分类</td>
-</tr>
-<tr>
-<td></td>
-<td>1.一对一</td>
-</tr>
-<tr>
-<td></td>
-<td>2.一对多</td>
-</tr>
-<tr>
-<td></td>
-<td>3.多对多</td>
-</tr>
-<tr>
-<td></td>
-<td>2.实现：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.一对多：在多的一方建立外键关联少的一方的主键</td>
-</tr>
-<tr>
-<td></td>
-<td>2.多对多：借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键</td>
-</tr>
-<tr>
-<td></td>
-<td>3.一对一：可以在任意一方添加外键指向另一方的主键。</code></pre><h3 id="数据库设计的范式：数据库设计的规范"><a href="#数据库设计的范式：数据库设计的规范" class="headerlink" title="数据库设计的范式：数据库设计的规范"></a>数据库设计的范式：数据库设计的规范</h3><pre><code>1.各种范式呈递次规范，越高范式，数据冗余度越高。</td>
-</tr>
-<tr>
-<td></td>
-<td>2.分类:</td>
-</tr>
-<tr>
-<td></td>
-<td>1.第一范式(1NF)：每一列都是不可分割的原子数据项。</td>
-</tr>
-<tr>
-<td></td>
-<td>2.第二范式(2NF)：在1NF技术上，非码属性必须完全依赖于码(消除非主属性对主码的部分函数依赖)。</td>
-</tr>
-<tr>
-<td></td>
-<td>*几个概念</td>
-</tr>
-<tr>
-<td></td>
-<td>1.函数依赖：通过某个属性A值可以确定唯一的属性B值，则B依赖A</td>
-</tr>
-<tr>
-<td></td>
-<td>2.完全函数依赖：如果B组属性的确定依赖于A组所有的属性值，称为完全函数依赖</td>
-</tr>
-<tr>
-<td></td>
-<td>3.部分函数依赖：如果B组属性的确定依赖于A组某一些属性值，称为部分函数依赖</td>
-</tr>
-<tr>
-<td></td>
-<td>4.传递函数依赖：通过A属性值可以唯一确定B属性值，通过B属性值有可以唯一确定C属性值。</td>
-</tr>
-<tr>
-<td></td>
-<td>5.码：如果一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性为该表的码</td>
-</tr>
-<tr>
-<td></td>
-<td>3.第三范式(3NF)：在2NF基础上，任何非主属性不依赖与其他非主属性。</code></pre><h2 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h2><pre><code>1.命令行：</td>
-</tr>
-<tr>
-<td></td>
-<td>备份：mysqldump -u用户名 -p密码 &gt; 保存的路径</td>
-</tr>
-<tr>
-<td></td>
-<td>还原：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.登录数据库</td>
-</tr>
-<tr>
-<td></td>
-<td>2.创建数据库</td>
-</tr>
-<tr>
-<td></td>
-<td>3.使用数据库</td>
-</tr>
-<tr>
-<td></td>
-<td>4.执行文件。 source 文件路径</code></pre><h2 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h2><pre><code>1.分类：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.内连接查询:</td>
-</tr>
-<tr>
-<td></td>
-<td>*显式内连接：select 字段列表 from 表名1 [inner] join 表名2 on 条件</td>
-</tr>
-<tr>
-<td></td>
-<td>*隐式内连接：使用where清除无用的数据</td>
-</tr>
-<tr>
-<td></td>
-<td>*注意：</td>
-</tr>
-<tr>
-<td></td>
-<td>*确定从哪些表中查询数据</td>
-</tr>
-<tr>
-<td></td>
-<td>*条件是什么</td>
-</tr>
-<tr>
-<td></td>
-<td>*查询哪些字段</td>
-</tr>
-<tr>
-<td></td>
-<td>2.外连接查询：</td>
-</tr>
-<tr>
-<td></td>
-<td>*左外连接</td>
-</tr>
-<tr>
-<td></td>
-<td>*语法：select 字段列表 from 表1 left [outer] join 表2  on 条件</td>
-</tr>
-<tr>
-<td></td>
-<td>*查询的是左表所有数据以及其交集部分</td>
-</tr>
-<tr>
-<td></td>
-<td>*右外连接</td>
-</tr>
-<tr>
-<td></td>
-<td>*语法：select 字段列表 from 表1 right [outer] join 表2  on 条件</td>
-</tr>
-<tr>
-<td></td>
-<td>*查询的是右表的所欲数据及其交集部分</td>
-</tr>
-<tr>
-<td></td>
-<td>3.子查询：</td>
-</tr>
-<tr>
-<td></td>
-<td>*概念：查询中嵌套查询，称这样的查询为子子查询</td>
-</tr>
-<tr>
-<td></td>
-<td>*查询结果：</td>
-</tr>
-<tr>
-<td></td>
-<td>*单行单列：一般使用运算符作为判断</td>
-</tr>
-<tr>
-<td></td>
-<td>*多行单列：使用运算符in判断</td>
-</tr>
-<tr>
-<td></td>
-<td>*多行多列：</code></pre><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><pre><code>1.事务的基本介绍</td>
-</tr>
-<tr>
-<td></td>
-<td>*1.概念：包含多个步骤的业务操作被事务管理，这些操作要么全部完成，要么一个都不执行。</td>
-</tr>
-<tr>
-<td></td>
-<td>*2.基本操作：开启事务：start transaction</td>
-</tr>
-<tr>
-<td></td>
-<td>提交事务：commit</td>
-</tr>
-<tr>
-<td></td>
-<td>回    滚：rollback</td>
-</tr>
-<tr>
-<td></td>
-<td>*3.事务提交的两种方式：</td>
-</tr>
-<tr>
-<td></td>
-<td>*默认提交：select @@autocommit; 1代表自动提交  0代表手动提交</td>
-</tr>
-<tr>
-<td></td>
-<td>*手动提交：set @@autocommit = 0</td>
-</tr>
-<tr>
-<td></td>
-<td>2.事务的四大特征</td>
-</tr>
-<tr>
-<td></td>
-<td>*1.原子性:要么同时成功，要么同时失败</td>
-</tr>
-<tr>
-<td></td>
-<td>*2.持久性：事务提交或者回滚以后，数据库会持久化的保存数据</td>
-</tr>
-<tr>
-<td></td>
-<td>*3.隔离性：多个事务之间相互独立</td>
-</tr>
-<tr>
-<td></td>
-<td>*4.一致性：事务操作前后，数据总量不变</td>
-</tr>
-<tr>
-<td></td>
-<td>3.事务的隔离级别</td>
-</tr>
-<tr>
-<td></td>
-<td>*1.概念：事务之间是隔离的，但是多个事务操作同一批数据，则会引起一些问题，设置不同的隔离级别就可以解决</td>
-</tr>
-<tr>
-<td></td>
-<td>*2.存在问题：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.脏读：一个事务，读取到另一个事务中没有提交的数据</td>
-</tr>
-<tr>
-<td></td>
-<td>2.不可重复读(虚读)：在同一个事务中，两次读取的数据不一样。</td>
-</tr>
-<tr>
-<td></td>
-<td>3.幻读：一个事务操作数据部表中的所欲数据，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。</td>
-</tr>
-<tr>
-<td></td>
-<td>*3.隔离级别：</td>
-</tr>
-<tr>
-<td></td>
-<td>*read uncommitted：读未提交</td>
-</tr>
-<tr>
-<td></td>
-<td>*存在问题：脏读，不可重复读，幻读</td>
-</tr>
-<tr>
-<td></td>
-<td>*read committed:读已提交（oracle）</td>
-</tr>
-<tr>
-<td></td>
-<td>*存在的问题:不可重复读，幻读</td>
-</tr>
-<tr>
-<td></td>
-<td>*repeatable read：可重复读(MySql)</td>
-</tr>
-<tr>
-<td></td>
-<td>*参在的问题：幻读</td>
-</tr>
-<tr>
-<td></td>
-<td>*serializable：串行化</td>
-</tr>
-<tr>
-<td></td>
-<td>*可以解决所有问题</td>
-</tr>
-<tr>
-<td></td>
-<td>注意：</td>
-</tr>
-<tr>
-<td></td>
-<td>隔离级别越高，效率越低</td>
-</tr>
-<tr>
-<td></td>
-<td>数据库查询隔离级别：  select @@tx_isolation</td>
-</tr>
-<tr>
-<td></td>
-<td>数据库设置隔离级别：set global transaction isolation level 级别字符串</code></pre><h2 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h2><pre><code>1.管理用户：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。</td>
-</tr>
-<tr>
-<td></td>
-<td>2.删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;</td>
-</tr>
-<tr>
-<td></td>
-<td>3.修改用户密码：update user set 字段名=新的值 where 条件子句</td>
-</tr>
-<tr>
-<td></td>
-<td>*忘记root密码：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.使用管理员权限运行cmd，并停止mysql服务</td>
-</tr>
-<tr>
-<td></td>
-<td>2.使用无验证方式启动：mysqld --skip-grant-tables</td>
-</tr>
-<tr>
-<td></td>
-<td>3.打开新的窗口，直接输入mysql命令登录</td>
-</tr>
-<tr>
-<td></td>
-<td>4.use mysql</td>
-</tr>
-<tr>
-<td></td>
-<td>5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;</td>
-</tr>
-<tr>
-<td></td>
-<td>6.关闭窗口</td>
-</tr>
-<tr>
-<td></td>
-<td>7.手动结束mysqld.exe进程</td>
-</tr>
-<tr>
-<td></td>
-<td>8.启动mysql服务</td>
-</tr>
-<tr>
-<td></td>
-<td>9.使用新密码登录</td>
-</tr>
-<tr>
-<td></td>
-<td>2.权限管理：</td>
-</tr>
-<tr>
-<td></td>
-<td>1.查询权限：</td>
-</tr>
-<tr>
-<td></td>
-<td>show grants for &apos;用户名&apos; @&apos;主机名&apos;</td>
-</tr>
-<tr>
-<td></td>
-<td>2.授予权限：</td>
-</tr>
-<tr>
-<td></td>
-<td>grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;</td>
-</tr>
-<tr>
-<td></td>
-<td>3.撤销权限：</td>
-</tr>
-<tr>
-<td></td>
-<td>revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</td>
-</tr>
-</tbody></table>
+        <h3 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h3><h4 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h4><ul>
+<li>添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。    </li>
+<li>删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>修改用户密码：update user set 字段名=新的值 where 条件子句    *忘记root密码：    <ul>
+<li>使用管理员权限运行cmd，并停止mysql服务    </li>
+<li>使用无验证方式启动：mysqld –skip-grant-tables    </li>
+<li>打开新的窗口，直接输入mysql命令登录    </li>
+</ul>
+</li>
+<li>use mysql    5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;    </li>
+<li>关闭窗口    </li>
+<li>手动结束mysqld.exe进程    </li>
+<li>启动mysql服务    </li>
+<li>使用新密码登录    </li>
+<li>权限管理：    <ul>
+<li>查询权限：    show grants for &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>授予权限：    grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>撤销权限：    revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</li>
+</ul>
+</li>
+<li>语法 select字段列表from表名列表where条件列表group by分组字段having分组之后的条件order by排序limit分页限定</li>
+<li>基础查询<ul>
+<li>多字段查询select 字段名1，…，from 表名<em>注意：<em>如果查询所有字段，可以使用</em>代替字段列表</em></li>
+<li>去除重复的结果集使用distinct</li>
+<li>起别名<em>使用as</em></li>
+<li>计算列<em>一般使用四则运算计算列的值</em>如果有null参与运算，计算结果都是null可以使用ifnull()表达式</li>
+</ul>
+</li>
+<li>条件查询1.where子句<ul>
+<li>运算符<em>&gt; &lt; &gt;= &lt;=…<em>like(模糊查询)</em>占位符</em>_:单个任意字符<em>%：多个任意字符</em>is null(因为null值不能用=号判断)between(效果等效and)in(效果等效于or)</li>
+</ul>
+</li>
+</ul>
+<h4 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h4><ul>
+<li>order by 子句    *order by 排序字段1….    </li>
+<li>asc是升序，desc是降序</li>
+</ul>
+<h4 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h4><ul>
+<li>count:计算个数    </li>
+<li>max,min,sum，avg函数    </li>
+<li>聚合函数会排除NULL    选择不包含空的列计算    使用ifnull()</li>
+</ul>
+<h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><ul>
+<li>group by 分组字段    </li>
+<li>注意    分组以后查询的字段应该是分组字段或者是聚合函数    </li>
+<li>where和having的区别    where是分组之前限定，不满足条件则不参与分组；having是在分组之后进行限定，如果不满足，则不会被查询出来    where后不能跟聚合函数，having后可以跟聚合函数</li>
+</ul>
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><ul>
+<li>语法：limit 开始的索引，每页查询的条数</li>
+<li>开始的索引 = (当前页码-1)*每页显示的条数</li>
+</ul>
+<h4 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h4><ul>
+<li>内连接查询:    显式内连接：select 字段列表 from 表名1 [inner] join 表名2 on 条件    *隐式内连接：使用where清除无用的数据    <ul>
+<li>注意：    定从哪些表中查询数据    条件是什么    查询哪些字段    </li>
+</ul>
+</li>
+<li>外连接查询：    <ul>
+<li>左外连接    语法：select 字段列表 from 表1 left [outer] join 表2  on 条件    查询的是左表所有数据以及其交集部分    </li>
+<li>右外连接    *语法：select 字段列表 from 表1 right [outer] join 表2  on 条件    查询的是右表的所欲数据及其交集部分    </li>
+<li>子查询：    概念：查询中嵌套查询，称这样的查询为子子查询    查询结果：    </li>
+<li>单行单列：一般使用运算符作为判断    多行单列：使用运算符in判断    多行多列：</li>
+</ul>
+</li>
+</ul>
+<h4 id="表的约束"><a href="#表的约束" class="headerlink" title="表的约束"></a>表的约束</h4><ul>
+<li>对表中数据进行限定，保证数据的正确的先和完整性。</li>
+<li>分类：    <ul>
+<li>主键约束    primary key    删除语法：alter table 表名 drop primary key    <ul>
+<li>自动增长：auto_increment    </li>
+</ul>
+</li>
+<li>非空约束    NOT NULL(创建表的时候添加，也可以创建完成后添加)    <ul>
+<li>删除语法：alter table 表名 modify 字段名    </li>
+</ul>
+</li>
+<li>外键约束    foreign key    <ul>
+<li>创建语法：    creat table 表名(    …    外键列    constraint 外键名称 foreign key(外键名称) references 主表名称(主表列名称)    );    </li>
+<li>删除外键：alter table 表名 drop foreign 外键字段名    </li>
+<li>级联更新：on update cascade    </li>
+<li>级联删除：on delete cascade    </li>
+</ul>
+</li>
+<li>唯一约束    unique，值不能重复，但可以有多个NULL    <ul>
+<li>删除语法:alter table 表名 drop index 字段名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据库的设计"><a href="#数据库的设计" class="headerlink" title="数据库的设计"></a>数据库的设计</h4><ul>
+<li>类型<ul>
+<li>一对一    </li>
+<li>一对多    </li>
+<li>多对多    </li>
+</ul>
+</li>
+<li>实现：    <ul>
+<li>一对多：在多的一方建立外键关联少的一方的主键    </li>
+<li>多对多：借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键    </li>
+<li>一对一：可以在任意一方添加外键指向另一方的主键。</li>
+</ul>
+</li>
+</ul>
+<h4 id="数据库的设计范式"><a href="#数据库的设计范式" class="headerlink" title="数据库的设计范式"></a>数据库的设计范式</h4><ul>
+<li>各种范式呈递次规范，越高范式，数据冗余度越高。</li>
+<li>分类<ul>
+<li>第一范式(1NF)：每一列都是不可分割的原子数据项。    </li>
+<li>第二范式(2NF)：在1NF技术上，非码属性必须完全依赖于码(消除非主属性对主码的部分函数依赖)。    <ul>
+<li>几个概念   <ul>
+<li>函数依赖：通过某个属性A值可以确定唯一的属性B值，则B依赖A    </li>
+<li>完全函数依赖：如果B组属性的确定依赖于A组所有的属性值，称为完全函数依赖    </li>
+<li>部分函数依赖：如果B组属性的确定依赖于A组某一些属性值，称为部分函数依赖    </li>
+<li>传递函数依赖：通过A属性值可以唯一确定B属性值，通过B属性值有可以唯一确定C属性值。    </li>
+<li>如果一张表中，一个属性或属性组，被其他所有属性完全依赖，则称这个属性为该表的码    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三范式(3NF)：在2NF基础上，任何非主属性不依赖与其他非主属性。</li>
+</ul>
+</li>
+</ul>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li><p>包含多个步骤的业务操作被事务管理，这些操作要么全部完成，要么一个都不执行。    </p>
+</li>
+<li><p>基本操作：</p>
+<ul>
+<li>开启事务：start transaction   </li>
+<li>提交事务：commit   </li>
+<li>回    滚：rollback    </li>
+<li>事务提交的两种方式：    <ul>
+<li>默认提交：select @@autocommit; 1代表自动提交  0代表手动提交    </li>
+<li>手动提交：set @@autocommit = 0    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事务的四大特征    </p>
+<ul>
+<li>原子性:要么同时成功，要么同时失败    </li>
+<li>.持久性：事务提交或者回滚以后，数据库会持久化的保存数据    </li>
+<li>隔离性：多个事务之间相互独立    </li>
+<li>一致性：事务操作前后，数据总量不变</li>
+</ul>
+</li>
+<li><p>事务的隔离级别  事务之间是隔离的，但是多个事务操作同一批数据，则会引起一些问题，设置不同的隔离级别就可以解决    </p>
+</li>
+<li><p>存在问题：    </p>
+<ul>
+<li>脏读：一个事务，读取到另一个事务中没有提交的数据    </li>
+<li>不可重复读(虚读)：在同一个事务中，两次读取的数据不一样。    </li>
+<li>幻读：一个事务操作数据部表中的所欲数据，另一个事务添加了一条数据，则第一个事务查询不到自己的修改。    </li>
+</ul>
+</li>
+<li><p>隔离级别：    </p>
+<ul>
+<li>read uncommitted：读未提交    存在问题：脏读，不可重复读，幻读    </li>
+<li>read committed:读已提交（oracle）    存在的问题:不可重复读，幻读    </li>
+<li>repeatable read：可重复读(MySql)    参在的问题：幻读    </li>
+<li>serializable：串行化    可以解决所有问题    </li>
+<li>注意：    隔离级别越高，效率越低    数据库查询隔离级别：  select @@tx_isolation    数据库设置隔离级别set global transaction isolation level 级别字符串</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -1099,8 +587,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/16/Java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="next" title="Java基础知识">
-                <i class="fa fa-chevron-left"></i> Java基础知识
+              <a href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" rel="next" title="商城业务分析">
+                <i class="fa fa-chevron-left"></i> 商城业务分析
               </a>
             
           </div>
@@ -1108,6 +596,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="prev" title="java基础知识">
+                java基础知识 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1199,7 +691,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1210,7 +702,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1259,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DQL中的排序查询"><span class="nav-number">1.</span> <span class="nav-text">DQL中的排序查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-number">2.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组查询"><span class="nav-number">3.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分页查询"><span class="nav-number">4.</span> <span class="nav-text">分页查询</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表的约束"><span class="nav-number"></span> <span class="nav-text">表的约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的设计"><span class="nav-number"></span> <span class="nav-text">数据库的设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多表之间的关系"><span class="nav-number">1.</span> <span class="nav-text">多表之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库设计的范式：数据库设计的规范"><span class="nav-number">2.</span> <span class="nav-text">数据库设计的范式：数据库设计的规范</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的备份和还原"><span class="nav-number"></span> <span class="nav-text">数据库的备份和还原</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表查询"><span class="nav-number"></span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务"><span class="nav-number"></span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DCL"><span class="nav-number"></span> <span class="nav-text">DCL</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库基础"><span class="nav-number">1.</span> <span class="nav-text">数据库基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DCL"><span class="nav-number">1.1.</span> <span class="nav-text">DCL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DQL中的排序查询"><span class="nav-number">1.2.</span> <span class="nav-text">DQL中的排序查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合函数"><span class="nav-number">1.3.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组查询"><span class="nav-number">1.4.</span> <span class="nav-text">分组查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询"><span class="nav-number">1.5.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多表查询"><span class="nav-number">1.6.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表的约束"><span class="nav-number">1.7.</span> <span class="nav-text">表的约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库的设计"><span class="nav-number">1.8.</span> <span class="nav-text">数据库的设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库的设计范式"><span class="nav-number">1.9.</span> <span class="nav-text">数据库的设计范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">1.10.</span> <span class="nav-text">事务</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1293,7 +785,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">26.6k</span>
+    <span title="Site words total count">25.6k</span>
   
 </div>
 
