@@ -1,1040 +1,1493 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+
+
 
   
-  <title>学习小记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="学习小记">
 <meta property="og:url" content="http://yoursite.com/page/4/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="ijavaweb">
 <meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/4/"/>
+
+
+
+
+
+  <title>学习小记</title>
   
-    <link rel="alternate" href="/atom.xml" title="学习小记" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
+
 
 <meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">学习小记</a>
-      </h1>
-      
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-MAVEN基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time datetime="2020-03-28T22:53:55.880Z" itemprop="datePublished">2020-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/">MAVEN基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="MAVEN基础"><a href="#MAVEN基础" class="headerlink" title="MAVEN基础"></a>MAVEN基础</h3><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
-<li>清理生命周期：clean</li>
-<li>默认生命周期：compile,test,package,install,deploy</li>
-<li>站点生命周期</li>
-</ul>
-<h4 id="概念模型图"><a href="#概念模型图" class="headerlink" title="概念模型图"></a>概念模型图</h4><p><img src="C:%5CUsers%5CAdministrator%5CDesktop%5CQQ%E5%9B%BE%E7%89%8720200328160357.png" alt="img"></p>
-
+        <p class="site-subtitle"></p>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" data-id="ck8gijpem0001bgfc6p6y2k5x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaWeb三大组件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" class="article-date">
-  <time datetime="2020-03-27T17:57:06.544Z" itemprop="datePublished">2020-03-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/">JavaWeb三大组件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="JavaWeb三大组件"><a href="#JavaWeb三大组件" class="headerlink" title="JavaWeb三大组件"></a>JavaWeb三大组件</h2><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
-<li><p>概念：运行在服务器端的小程序，是一个接口，它定义了Java类被浏览器访问到的规则</p>
-</li>
-<li><p>快速入门</p>
-<ul>
-<li>创建JavaEE项目</li>
-<li>定义一个类，实现Servlet接口</li>
-<li>实现抽象方法</li>
-<li>配置Servlet</li>
-</ul>
-</li>
-<li><p>运行原理</p>
-<ul>
-<li>服务器接收到浏览器端的请求后，解析请求的URL路径，获取访问的servlet的资源路径</li>
-<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容</li>
-<li>如果有，查找<servlet-class>全类名</li>
-<li>tomcat会将字节码文件加载进内存，并创建对象</li>
-<li>调用器方法</li>
-</ul>
-<h4 id="servlet中的生命周期"><a href="#servlet中的生命周期" class="headerlink" title="servlet中的生命周期"></a>servlet中的生命周期</h4><ul>
-<li>init方法<ul>
-<li>被创建，执行init方法，只执行一次<ul>
-<li>默认情况下，第一次被访问时被创建</li>
-<li>在web.xml中使用<load-on-startup>标签配置创建时机<ul>
-<li>在第一次启动时创建，配置使用负数</li>
-<li>配置为0或者正数的时候，当服务器启动的时候被创建</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet时单例的。<ul>
-<li>所以当多个用户同时访问的时候，可能存在线程安全问题</li>
-<li>解决方法：尽量不要在servlet中定义成员变量。即使定义了成员变量，也不要赋值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>service方法<ul>
-<li>执行service方法，执行多次</li>
-<li>每次访问servlet的时候，service都会被调用一次</li>
-</ul>
-</li>
-<li>destory方法<ul>
-<li>只执行一次</li>
-<li>只有服务器正常关闭的时候，才会执行destory方法。</li>
-<li>在servlet被销毁之前执行。</li>
-</ul>
-</li>
-<li>获取servlet.config对象</li>
-<li>getServletInfo</li>
-</ul>
-<h4 id="servlet3-0"><a href="#servlet3-0" class="headerlink" title="servlet3.0"></a>servlet3.0</h4><ul>
-<li>优点：不需要web.xml，使用注解配置</li>
-<li>步骤：<ul>
-<li>创建JAVAEE项目，选择servlet版本3.0以上</li>
-<li>定义一个类，实现servlet接口</li>
-<li>重写方法</li>
-<li>在类上使用@webServlet注解，进行配置</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h3><h4 id="过滤器细节"><a href="#过滤器细节" class="headerlink" title="过滤器细节"></a>过滤器细节</h4><ul>
-<li>通过web.xml或者注解配置</li>
-<li>执行流程<ul>
-<li>执行过滤器</li>
-<li>执行放行后的资源</li>
-<li>执行过滤器放行代码下的代码 </li>
-</ul>
-</li>
-<li>生命周期<ul>
-<li>init() 服务器启动后，创建filter对象，调用init方法，只执行一次</li>
-<li>doFilter，每次请求被拦截都会执行</li>
-<li>destory 服务器关闭，filter对象被销毁，只执行一次</li>
-</ul>
-</li>
-<li>配置详解<ul>
-<li>拦截路径配置<ul>
-<li>具体的资源路径</li>
-<li>目录拦截 ：</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><ul>
-<li>事件监听机制</li>
-<li>servletContextListener<ul>
-<li>contextDestory()</li>
-<li>contextInitialized()</li>
-</ul>
-</li>
-<li>实现监听器的步骤<ul>
-<li>定义一个类，实现ServletContextListener接口</li>
-<li>复写方法</li>
-<li>配置</li>
-</ul>
-</li>
-</ul>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><ul>
-<li>为了实现功能增强</li>
-<li>基本概念<ul>
-<li>真实对象</li>
-<li>代理对象</li>
-<li>代理模式</li>
-</ul>
-</li>
-<li>实现方式<ul>
-<li>静态代理：一个类文件描述代理模式</li>
-<li>动态代 理：在内存中形成代理类<ul>
-<li>代理对象和真实对象实现相同的接口</li>
-<li>代理对象= Proxy.newProxyInstance();</li>
-<li>使用代理对象调用方法</li>
-<li>增强方法 <ul>
-<li>增强参数列表</li>
-<li>增强返回值</li>
-<li>增强方法体执行逻辑</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" data-id="ck8gijpe30000bgfc9kv4cmyw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-会话技术" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" class="article-date">
-  <time datetime="2020-03-23T22:56:46.475Z" itemprop="datePublished">2020-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/">会话技术</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ul>
-<li>一次会话中包含多次请求和响应</li>
-<li>功能：在一次会话的范围内共享数据</li>
-<li>方式：<ul>
-<li>客户端使用Cookie</li>
-<li>服务器端Session</li>
-</ul>
-</li>
-</ul>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
-<li><p>客户端会话技术，将数据保存到客户端</p>
-</li>
-<li><p>使用</p>
-<ul>
-<li><p>创建 cookie绑定数据</p>
-<p><code>new Cookie(String name .String value)</code></p>
-</li>
-<li><p>发送cookie对象</p>
-<p><code>response.addCookie(Cookie cookie)</code></p>
-</li>
-<li><p>获取cookie</p>
-<p><code>Cookies[] request.getCookies()</code></p>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/23/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF/" data-id="ck8gijper0007bgfcdsmo3pl8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-response" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/22/response/" class="article-date">
-  <time datetime="2020-03-21T23:17:02.302Z" itemprop="datePublished">2020-03-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/22/response/">response</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="响应消息格式"><a href="#响应消息格式" class="headerlink" title="响应消息格式"></a>响应消息格式</h2><h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><ul>
-<li>响应行<ul>
-<li>组成 :协议，响应状态码，状态码描述</li>
-<li>响应状态码：服务器告诉浏览器本次请求和响应的一个状态<ul>
-<li>状态码分为5类，分别以1-5开头</li>
-<li>1xx : 服务器接收客户端消息但是没有接收完成，发送1xx码</li>
-<li>2xx：成功</li>
-<li>3xx: 重定向,302(重定向),304(访问缓存)</li>
-<li>4xx：客户端错误，404(请求路径没有 相应的资源)</li>
-<li>5xx:服务器端错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应头</li>
-<li>响应空行</li>
-<li>响应体</li>
-</ul>
-<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><ul>
-<li><p>功能：设置响应消息</p>
-<ul>
-<li>设置响应行：包括格式个状态码</li>
-<li>设置响应头：setHeader(String name, String value)</li>
-<li>设置响应体：<ul>
-<li>获取输出流</li>
-<li>使用输出流</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>重定向的特点：</p>
-<ul>
-<li><p>地址栏发生变化</p>
-</li>
-<li><p>重定向可以访问其他服务器的资源</p>
-</li>
-<li><p>重定向是两次请求，不能使用request对象共享数据</p>
-</li>
-</ul>
-</li>
-<li><p>服务器输出数据到浏览器</p>
-<ul>
-<li>获取字符输出流：<code>response.getWriter()</code></li>
-<li>输出数据</li>
-<li>乱码问题：使用<code>response.setContentType()</code></li>
-</ul>
-</li>
-<li><p>服务器输出字节数据到浏览器</p>
-<ul>
-<li><p>获取字节输出流</p>
-<p><code>response.getOutputStream()</code></p>
-</li>
-<li><p>输出数据</p>
-<p><code>write(&quot;String&quot;.getBytes())</code></p>
-</li>
-</ul>
-</li>
-<li><p><strong>验证码</strong></p>
-</li>
-</ul>
-<h2 id="ServletContext-对象"><a href="#ServletContext-对象" class="headerlink" title="ServletContext 对象"></a>ServletContext 对象</h2><ul>
-<li>概念：代表整个web应用和服务器来通信</li>
-<li>获取<ul>
-<li>通过request获取： <code>requset.getServletContext()</code></li>
-<li>通过HttpServlet获取：<code>this.getServletContext()</code></li>
-<li></li>
-</ul>
-</li>
-<li>功能<ul>
-<li>获取MIME类型<ul>
-<li><code>String getMimeType(filename)</code>可以获取</li>
-</ul>
-</li>
-<li>共享数据<ul>
-<li><code>setArrtibute(String name ,Object value)</code></li>
-<li><code>getAttribute(String name )</code></li>
-<li><code>removeAttribute(String name )</code></li>
-</ul>
-</li>
-<li>获取文件的服务器路径<ul>
-<li><code>getRealPath(String path)</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/22/response/" data-id="ck8gijper0006bgfcgx03099g" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Servlet&amp;HTTP&amp;Request笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time datetime="2020-03-21T20:17:29.881Z" itemprop="datePublished">2020-03-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/">Servlet&amp;HTTP&amp;Request笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="今日内容："><a href="#今日内容：" class="headerlink" title="今日内容："></a>今日内容：</h1><pre><code>1. Servlet
-2. HTTP协议
-3. Request</code></pre><h2 id="Servlet："><a href="#Servlet：" class="headerlink" title="Servlet："></a>Servlet：</h2><pre><code>1. 概念
-2. 步骤
-3. 执行原理
-4. 生命周期
-5. Servlet3.0 注解配置
-6. Servlet的体系结构    
-    Servlet -- 接口
-        |
-    GenericServlet -- 抽象类
-        |
-    HttpServlet  -- 抽象类
-
-    * GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象
-        * 将来定义Servlet类时，可以继承GenericServlet，实现service()方法即可
-
-    * HttpServlet：对http协议的一种封装，简化操作
-        1. 定义类继承HttpServlet
-        2. 复写doGet/doPost方法
-
-7. Servlet相关配置
-    1. urlpartten:Servlet访问路径
-        1. 一个Servlet可以定义多个访问路径 ： @WebServlet({&quot;/d4&quot;,&quot;/dd4&quot;,&quot;/ddd4&quot;})
-        2. 路径定义规则：
-            1. /xxx：路径匹配
-            2. /xxx/xxx:多层路径，目录结构
-            3. *.do：扩展名匹配</code></pre><h2 id="HTTP："><a href="#HTTP：" class="headerlink" title="HTTP："></a>HTTP：</h2><pre><code>* 概念：Hyper Text Transfer Protocol 超文本传输协议
-    * 传输协议：定义了，客户端和服务器端通信时，发送数据的格式
-    * 特点：
-        1. 基于TCP/IP的高级协议
-        2. 默认端口号:80
-        3. 基于请求/响应模型的:一次请求对应一次响应
-        4. 无状态的：每次请求之间相互独立，不能交互数据
-
-    * 历史版本：
-        * 1.0：每一次请求响应都会建立新的连接
-        * 1.1：复用连接
-
-* 请求消息数据格式
-    1. 请求行
-        请求方式 请求url 请求协议/版本
-        GET /login.html    HTTP/1.1
-
-        * 请求方式：
-            * HTTP协议有7中请求方式，常用的有2种
-                * GET：
-                    1. 请求参数在请求行中，在url后。
-                    2. 请求的url长度有限制的
-                    3. 不太安全
-                * POST：
-                    1. 请求参数在请求体中
-                    2. 请求的url长度没有限制的
-                    3. 相对安全
-    2. 请求头：客户端浏览器告诉服务器一些信息
-        请求头名称: 请求头值
-        * 常见的请求头：
-            1. User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息
-                * 可以在服务器端获取该头的信息，解决浏览器的兼容性问题
-
-            2. Referer：http://localhost/login.html
-                * 告诉服务器，我(当前请求)从哪里来？
-                    * 作用：
-                        1. 防盗链：
-                        2. 统计工作：
-    3. 请求空行
-        空行，就是用于分割POST请求的请求头，和请求体的。
-    4. 请求体(正文)：
-        * 封装POST请求消息的请求参数的
-
-    * 字符串格式：
-        POST /login.html    HTTP/1.1
-        Host: localhost
-        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0
-        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
-        Accept-Encoding: gzip, deflate
-        Referer: http://localhost/login.html
-        Connection: keep-alive
-        Upgrade-Insecure-Requests: 1
-
-        username=zhangsan    
-
-
-* 响应消息数据格式</code></pre><h2 id="Request："><a href="#Request：" class="headerlink" title="Request："></a>Request：</h2><pre><code>1. request对象和response对象的原理
-    1. request和response对象是由服务器创建的。我们来使用它们
-    2. request对象是来获取请求消息，response对象是来设置响应消息
-
-2. request对象继承体系结构：    
-    ServletRequest        --    接口
-        |    继承
-    HttpServletRequest    -- 接口
-        |    实现
-    org.apache.catalina.connector.RequestFacade 类(tomcat)
-
-3. request功能：
-    1. 获取请求消息数据
-        1. 获取请求行数据
-            * GET /day14/demo1?name=zhangsan HTTP/1.1
-            * 方法：
-                1. 获取请求方式 ：GET
-                    * String getMethod()  
-                2. (*)获取虚拟目录：/day14
-                    * String getContextPath()
-                3. 获取Servlet路径: /demo1
-                    * String getServletPath()
-                4. 获取get方式请求参数：name=zhangsan
-                    * String getQueryString()
-                5. (*)获取请求URI：/day14/demo1
-                    * String getRequestURI():        /day14/demo1
-                    * StringBuffer getRequestURL()  :http://localhost/day14/demo1
-
-                    * URL:统一资源定位符 ： http://localhost/day14/demo1    中华人民共和国
-                    * URI：统一资源标识符 : /day14/demo1                    共和国
-
-                6. 获取协议及版本：HTTP/1.1
-                    * String getProtocol()
-
-                7. 获取客户机的IP地址：
-                    * String getRemoteAddr()
-
-        2. 获取请求头数据
-            * 方法：
-                * (*)String getHeader(String name):通过请求头的名称获取请求头的值
-                * Enumeration&lt;String&gt; getHeaderNames():获取所有的请求头名称
-
-        3. 获取请求体数据:
-            * 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
-            * 步骤：
-                1. 获取流对象
-                    *  BufferedReader getReader()：获取字符输入流，只能操作字符数据
-                    *  ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型数据
-                        * 在文件上传知识点后讲解
-
-                2. 再从流对象中拿数据
-
-
-    2. 其他功能：
-        1. 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数
-            1. String getParameter(String name):根据参数名称获取参数值    username=zs&amp;password=123
-            2. String[] getParameterValues(String name):根据参数名称获取参数值的数组  hobby=xx&amp;hobby=game
-            3. Enumeration&lt;String&gt; getParameterNames():获取所有请求的参数名称
-            4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合
-
-            * 中文乱码问题：
-                * get方式：tomcat 8 已经将get方式乱码问题解决了
-                * post方式：会乱码
-                    * 解决：在获取参数前，设置request的编码request.setCharacterEncoding(&quot;utf-8&quot;);
-
-
-        2. 请求转发：一种在服务器内部的资源跳转方式
-            1. 步骤：
-                1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)
-                2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response) 
-
-            2. 特点：
-                1. 浏览器地址栏路径不发生变化
-                2. 只能转发到当前服务器内部资源中。
-                3. 转发是一次请求
-
-
-        3. 共享数据：
-            * 域对象：一个有作用范围的对象，可以在范围内共享数据
-            * request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
-            * 方法：
-                1. void setAttribute(String name,Object obj):存储数据
-                2. Object getAttitude(String name):通过键获取值
-                3. void removeAttribute(String name):通过键移除键值对
-
-        4. 获取ServletContext：
-            * ServletContext getServletContext()</code></pre><h2 id="案例：用户登录"><a href="#案例：用户登录" class="headerlink" title="案例：用户登录"></a>案例：用户登录</h2><pre><code>* 用户登录案例需求：
-    1.编写login.html登录页面
-        username &amp; password 两个输入框
-    2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
-    3.使用JdbcTemplate技术封装JDBC
-    4.登录成功跳转到SuccessServlet展示：登录成功！用户名,欢迎您
-    5.登录失败跳转到FailServlet展示：登录失败，用户名或密码错误
-
-
-* 分析
-
-* 开发步骤
-    1. 创建项目，导入html页面，配置文件，jar包
-    2. 创建数据库环境
-        CREATE DATABASE day14;
-        USE day14;
-        CREATE TABLE USER(
-
-            id INT PRIMARY KEY AUTO_INCREMENT,
-            username VARCHAR(32) UNIQUE NOT NULL,
-            PASSWORD VARCHAR(32) NOT NULL
-        );
-
-    3. 创建包cn.itcast.domain,创建类User
-        package cn.itcast.domain;
-        /**
-         * 用户的实体类
-         */
-        public class User {
-
-            private int id;
-            private String username;
-            private String password;
-
-
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
-            public String getUsername() {
-                return username;
-            }
-
-            public void setUsername(String username) {
-                this.username = username;
-            }
-
-            public String getPassword() {
-                return password;
-            }
-
-            public void setPassword(String password) {
-                this.password = password;
-            }
-
-            @Override
-            public String toString() {
-                return &quot;User{&quot; +
-                        &quot;id=&quot; + id +
-                        &quot;, username=&apos;&quot; + username + &apos;\&apos;&apos; +
-                        &quot;, password=&apos;&quot; + password + &apos;\&apos;&apos; +
-                        &apos;}&apos;;
-            }
-        }
-    4. 创建包cn.itcast.util,编写工具类JDBCUtils
-        package cn.itcast.util;
-
-        import com.alibaba.druid.pool.DruidDataSourceFactory;
-
-        import javax.sql.DataSource;
-        import javax.xml.crypto.Data;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.sql.Connection;
-        import java.sql.SQLException;
-        import java.util.Properties;
-
-        /**
-         * JDBC工具类 使用Durid连接池
-         */
-        public class JDBCUtils {
-
-            private static DataSource ds ;
-
-            static {
-
-                try {
-                    //1.加载配置文件
-                    Properties pro = new Properties();
-                    //使用ClassLoader加载配置文件，获取字节输入流
-                    InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;);
-                    pro.load(is);
-
-                    //2.初始化连接池对象
-                    ds = DruidDataSourceFactory.createDataSource(pro);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-
-            /**
-             * 获取连接池对象
-             */
-            public static DataSource getDataSource(){
-                return ds;
-            }
-
-
-            /**
-             * 获取连接Connection对象
-             */
-            public static Connection getConnection() throws SQLException {
-                return  ds.getConnection();
-            }
-        }
-    5. 创建包cn.itcast.dao,创建类UserDao,提供login方法
-
-        package cn.itcast.dao;
-
-        import cn.itcast.domain.User;
-        import cn.itcast.util.JDBCUtils;
-        import org.springframework.dao.DataAccessException;
-        import org.springframework.jdbc.core.BeanPropertyRowMapper;
-        import org.springframework.jdbc.core.JdbcTemplate;
-
-        /**
-         * 操作数据库中User表的类
-         */
-        public class UserDao {
-
-            //声明JDBCTemplate对象共用
-            private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
-
-            /**
-             * 登录方法
-             * @param loginUser 只有用户名和密码
-             * @return user包含用户全部数据,没有查询到，返回null
-             */
-            public User login(User loginUser){
-                try {
-                    //1.编写sql
-                    String sql = &quot;select * from user where username = ? and password = ?&quot;;
-                    //2.调用query方法
-                    User user = template.queryForObject(sql,
-                            new BeanPropertyRowMapper&lt;User&gt;(User.class),
-                            loginUser.getUsername(), loginUser.getPassword());
-
-
-                    return user;
-                } catch (DataAccessException e) {
-                    e.printStackTrace();//记录日志
-                    return null;
-                }
-            }
-        }
-
-    6. 编写cn.itcast.web.servlet.LoginServlet类
-        package cn.itcast.web.servlet;
-
-        import cn.itcast.dao.UserDao;
-        import cn.itcast.domain.User;
-
-        import javax.servlet.ServletException;
-        import javax.servlet.annotation.WebServlet;
-        import javax.servlet.http.HttpServlet;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpServletResponse;
-        import java.io.IOException;
-
-
-        @WebServlet(&quot;/loginServlet&quot;)
-        public class LoginServlet extends HttpServlet {
-
-
-            @Override
-            protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                //1.设置编码
-                req.setCharacterEncoding(&quot;utf-8&quot;);
-                //2.获取请求参数
-                String username = req.getParameter(&quot;username&quot;);
-                String password = req.getParameter(&quot;password&quot;);
-                //3.封装user对象
-                User loginUser = new User();
-                loginUser.setUsername(username);
-                loginUser.setPassword(password);
-
-                //4.调用UserDao的login方法
-                UserDao dao = new UserDao();
-                User user = dao.login(loginUser);
-
-                //5.判断user
-                if(user == null){
-                    //登录失败
-                    req.getRequestDispatcher(&quot;/failServlet&quot;).forward(req,resp);
-                }else{
-                    //登录成功
-                    //存储数据
-                    req.setAttribute(&quot;user&quot;,user);
-                    //转发
-                    req.getRequestDispatcher(&quot;/successServlet&quot;).forward(req,resp);
-                }
-
-            }
-
-            @Override
-            protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-                this.doGet(req,resp);
-            }
-        }
-
-    7. 编写FailServlet和SuccessServlet类
-        @WebServlet(&quot;/successServlet&quot;)
-        public class SuccessServlet extends HttpServlet {
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                //获取request域中共享的user对象
-                User user = (User) request.getAttribute(&quot;user&quot;);
-
-                if(user != null){
-                    //给页面写一句话
-
-                    //设置编码
-                    response.setContentType(&quot;text/html;charset=utf-8&quot;);
-                    //输出
-                    response.getWriter().write(&quot;登录成功！&quot;+user.getUsername()+&quot;,欢迎您&quot;);
-                }
-
-
-            }        
-
-
-        @WebServlet(&quot;/failServlet&quot;)
-        public class FailServlet extends HttpServlet {
-            protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                //给页面写一句话
-
-                //设置编码
-                response.setContentType(&quot;text/html;charset=utf-8&quot;);
-                //输出
-                response.getWriter().write(&quot;登录失败，用户名或密码错误&quot;);
-
-            }
-
-            protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                this.doPost(request,response);
-            }
-        }
-
-
-
-    8. login.html中form表单的action路径的写法
-        * 虚拟目录+Servlet的资源路径
-
-    9. BeanUtils工具类，简化数据封装
-        * 用于封装JavaBean的
-        1. JavaBean：标准的Java类
-            1. 要求：
-                1. 类必须被public修饰
-                2. 必须提供空参的构造器
-                3. 成员变量必须使用private修饰
-                4. 提供公共setter和getter方法
-            2. 功能：封装数据
-
-
-        2. 概念：
-            成员变量：
-            属性：setter和getter方法截取后的产物
-                例如：getUsername() --&gt; Username--&gt; username
-
-
-        3. 方法：
-            1. setProperty()
-            2. getProperty()
-            3. populate(Object obj , Map map):将map集合的键值对信息，封装到对应的JavaBean对象中</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" data-id="ck8gijpeq0005bgfc0lo7fusi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-  </nav>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
-    </div>
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
 
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+    <ul id="menu" class="menu">
+      
         
-          <li>
-            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">权限管理系统的设计</a>
-          </li>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
         
-          <li>
-            <a href="/2020/04/07/%E6%9D%83%E9%99%90%E6%8E%A7%E5%88%B6/">权限控制</a>
-          </li>
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
         
-          <li>
-            <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/">SSM整合</a>
-          </li>
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
         
-          <li>
-            <a href="/2020/04/05/Mybatis%E6%B3%A8%E8%A7%A3%E5%BC%80%E5%8F%91/">Mybatis注解开发</a>
-          </li>
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
         
-          <li>
-            <a href="/2020/04/04/Mybatis%E4%B8%AD%E7%9A%84%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD/">Mybatis中的延迟加载</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
 
+      
+    </ul>
   
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
   
 </nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" itemprop="url">动态代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-01T01:46:46+02:00">
+                2020-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  179
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
+      
+      
+
+      
+        
+          
+          动态代理基于接口的动态代理
+要求被代理类至少实现一个接口
+
+使用JDK提供的Proxy类
+
+使用Proxy的newProxyInstance方法创建代理对象
+
+创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类
+
+
+基于子类的动态代理
+要求被代理类不能是最终类
+由第三方cglib提供的Enhance类
+使用Enhance的create方法
+create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。
+
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
 
   
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
   
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/31/Spring/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/31/Spring/" itemprop="url">Spring</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-31T00:56:16+02:00">
+                2020-03-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Spring程序间的依赖
+类之间的依赖
+方法间的依赖
+实际开发中应该做到编译期间不依赖，运行期才依赖
+解决耦合思路：
+使用反射而不是new创建对象
+通过读取配置文件获取创建对象的全限定类名
+
+
+
+IOC
+获取IOC核心容器
+
+ApplicationContext三个常用的实现类
+
+ClassPathXmlApplicationContext： 加载类路径下的配置文件，必须在类路径下
+FileSystemApplicationContext：加载磁盘任意位置有访问权限的文件
+AnnotationConfigApplicationContext：读取注解创建容器
+
+
+核心容器创建引发的问题：
+
+使用ApplicationContext，会立即创建，只要读取完配置文件就马上创建，适用于单例对象
+使用BeanFactory，会延迟加载，什么时候根据id获取对象，什么时候才真正创建，适用于多例对象
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/31/Spring/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" itemprop="url">旅游网项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T17:11:04+02:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  498
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          旅游网项目技术选型web层
+servlet：前端控制器
+html：视图
+filter：过滤器
+BeanUtils：数据封装工具
+Jackson：json序列化工具
+
+service层
+Javamail：发送邮件工具
+Redis：内存数据库
+Jedis：java的redis客户端
+
+Dao层
+Mysql：数据库
+Druid：数据库连接池
+JdbcTemplate：jdbc的工具
+
+功能
+注册
+前端
+使用js完成表单校验
+使用Ajax完成表单提交
+前台使用的是html，只能通过ajax获取数据，不能通过servlet的域来获取
+
+
+注册成功，跳转页面
+
+
+servlet
+获取数据
+封装User对象
+调用Service完成注册
+根据service返回，提示信息，将信息封装为json，设置响应头
+
+
+Service
+调用dao根据用户名查询用户
+存在，则返回false
+不存在，调用dao保存用户信
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/redis/" itemprop="url">redis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-29T01:50:41+01:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  120
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          redis
+概念：是非关系型数据库 NOSQL(redis,mangoDB,hbase…&gt;)
+用途
+用作缓存
+
+
+数据结构
+存储的是键值对，key是字符串,value有五种结构 String map  linkedlist set sorted
+增删改查
 
 
 
 
-<script src="/js/script.js"></script>
 
 
 
+
+
+
+
+
+持久化
+RDB
+默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据
+
+
+AOF
+配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes
+
+
+
+
+Java客户端：Jedis
+Jedis连接池：JedisPool 
+
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/29/redis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/" itemprop="url">MAVEN基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-28T23:53:55+01:00">
+                2020-03-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  36
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          MAVEN基础生命周期
+清理生命周期：clean
+默认生命周期：compile,test,package,install,deploy
+站点生命周期
+
+概念模型图
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/28/MAVEN%E5%9F%BA%E7%A1%80/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
 
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>

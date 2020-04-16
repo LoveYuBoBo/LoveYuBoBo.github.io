@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="电商B2C模式网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件RabbitMQ 搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电商B2C模式网站开发">
+<meta property="og:url" content="http://yoursite.com/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="电商B2C模式网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件RabbitMQ 搜索">
+<meta property="article:published_time" content="2020-04-08T22:42:56.238Z">
+<meta property="article:modified_time" content="2020-04-14T00:18:27.258Z">
+<meta property="article:author" content="ijavaweb">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/09/电商B2C模式网站开发/"/>
+
+
+
+
+
+  <title>电商B2C模式网站开发 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">电商B2C模式网站开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T00:42:56+02:00">
+                2020-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  3.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="电商B2C模式网站开发"><a href="#电商B2C模式网站开发" class="headerlink" title="电商B2C模式网站开发"></a>电商<code>B2C</code>模式网站开发</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><ul>
+<li>前台<ul>
+<li>主站频道，用户中心，秒杀，优惠券等</li>
+</ul>
+</li>
+<li>后台<ul>
+<li>商品，订单，库存，用户，运营，统计，财务，设置等</li>
+</ul>
+</li>
+</ul>
+<h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h5><ul>
+<li>商品库</li>
+<li>订单库</li>
+<li>基础设置库</li>
+<li>运营库</li>
+<li>用户库</li>
+<li>系统库</li>
+<li>支付库</li>
+<li>短信库</li>
+</ul>
+<h5 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h5><ul>
+<li><code>SSM(通用mapper) +Dubbo</code></li>
+<li>前端技术，<code>vue.js+ElementUI</code>,前台使用<code>vue.js+thymeleaf</code></li>
+<li>消息中间件<code>RabbitMQ</code></li>
+<li>搜索中间件<code>elasticsearch</code></li>
+<li>缓存中间件技术<code>Redis</code></li>
+<li>报表 插件<code>echas</code></li>
+<li>安全框架<code>SpringSecurity</code></li>
+<li>单点登录中间件<code>CAS</code></li>
+</ul>
+<h4 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h4><h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><ul>
+<li>配置<code>maven</code>本地仓库</li>
+<li>创建数据库</li>
+<li>注册中心<code>zookeeper</code></li>
+</ul>
+<h4 id="管理后端"><a href="#管理后端" class="headerlink" title="管理后端"></a>管理后端</h4><ul>
+<li>表结构：<code>id</code> <code>name</code> <code>image</code> <code>letter</code> <code>seq</code></li>
+<li>查看品牌列表 <code>findAll</code></li>
+</ul>
+<h5 id="公共异常处理"><a href="#公共异常处理" class="headerlink" title="公共异常处理"></a>公共异常处理</h5><ul>
+<li>使用<code>@ControllerAdvice</code>定义一个控制器的通知类，用来通知异常</li>
+</ul>
+<h4 id="图片上传后端处理"><a href="#图片上传后端处理" class="headerlink" title="图片上传后端处理"></a>图片上传后端处理</h4><ul>
+<li>使用<code>MultipartResolver</code>的实现类<ul>
+<li><code>CommonsMultipartResolver</code></li>
+<li><code>StandarServletMultipartResolver</code></li>
+</ul>
+</li>
+<li>使用阿里云<code>oos</code>上传至云服务器</li>
+<li><code>ElementUI</code>的使用</li>
+</ul>
+<h4 id="商品后端管理逻辑"><a href="#商品后端管理逻辑" class="headerlink" title="商品后端管理逻辑"></a>商品后端管理逻辑</h4><h5 id="分布式id生成方案"><a href="#分布式id生成方案" class="headerlink" title="分布式id生成方案"></a>分布式<code>id</code>生成方案</h5><ul>
+<li>数据库分片，使用数据库中间件连接 ，现在使用较多的中间件是<code>Mycat</code></li>
+<li>常见的分布式<code>id</code>生成方案<ul>
+<li><code>UUID</code><ul>
+<li>简单，使用方便，性能好</li>
+<li>缺点：没有排序，无法保证趋势，查询效率低，存储空间比较大，不可读</li>
+</ul>
+</li>
+<li><code>Redis</code>生成<code>ID</code><ul>
+<li>主要依赖于<code>Redis</code>是单线程的，能保证生成<code>id</code>全局唯一</li>
+<li>有点：不依赖于数据库，数字天然排序</li>
+<li>缺点：需要引入新组件；编码和配置工作量大；网络传输性能下降</li>
+</ul>
+</li>
+<li>开源算法<code>snowflake</code></li>
+</ul>
+</li>
+<li>定时器<ul>
+<li>引入<code>task</code></li>
+</ul>
+</li>
+<li>自定义<code>通用mapper</code></li>
+<li>多表查询，视图创建，报表创建</li>
+</ul>
+<h5 id="认证登录"><a href="#认证登录" class="headerlink" title="认证登录"></a>认证登录</h5><ul>
+<li>密码加密<code>Bcrypt</code></li>
+<li><code>spring-security</code>框架认证登录</li>
+</ul>
+<h5 id="同源策略设置"><a href="#同源策略设置" class="headerlink" title="同源策略设置"></a>同源策略设置</h5><ul>
+<li><code>spring security</code>下<code>x-Frame-Option</code>默认为<code>DENY</code>，该处取值可以有<code>DENY</code>、<code>SAMEORIGIN</code>、<code>ALLOW-FROM</code></li>
+</ul>
+<h5 id="登录日志"><a href="#登录日志" class="headerlink" title="登录日志"></a>登录日志</h5><ul>
+<li>使用<code>spring security</code>的登录日志处理器</li>
+</ul>
+<h4 id="前端页面"><a href="#前端页面" class="headerlink" title="前端页面"></a>前端页面</h4><h5 id="thymeleaf模板引擎"><a href="#thymeleaf模板引擎" class="headerlink" title="thymeleaf模板引擎"></a><code>thymeleaf</code>模板引擎</h5><h4 id="缓存解决方案"><a href="#缓存解决方案" class="headerlink" title="缓存解决方案"></a><font color=red>缓存解决方案</font></h4><h5 id="缓存穿透，缓存击穿，缓存雪崩"><a href="#缓存穿透，缓存击穿，缓存雪崩" class="headerlink" title="缓存穿透，缓存击穿，缓存雪崩"></a>缓存穿透，缓存击穿，缓存雪崩</h5><ul>
+<li>重复查找缓存和数据库中都没有的数据会产生缓存穿透<ul>
+<li>接口层增加校验</li>
+<li>数据库中也没有取到的数据，可以在缓存中将值设为0或者null</li>
+<li>使用缓存预热，提前将数据加载到缓存中</li>
+</ul>
+</li>
+<li>同时读取缓存中没有但是数据库中存在的数据，使数据库压力过大发生缓存击穿<ul>
+<li>设置热点数据不过期</li>
+<li>缓存预热</li>
+</ul>
+</li>
+<li>缓存雪崩：缓存数据大批量到期，查询数据量巨大，缓存雪崩是查询不同的数据<ul>
+<li>随机设置缓存数据过期时间</li>
+<li>热点数据不过期</li>
+<li>缓存预热</li>
+</ul>
+</li>
+</ul>
+<h5 id="整合springDataRedis"><a href="#整合springDataRedis" class="headerlink" title="整合springDataRedis"></a>整合<code>springDataRedis</code></h5><ul>
+<li><code>pom.xml</code>中引入依赖</li>
+<li><code>resources</code>文件夹中配置<code>redis</code>配置文件</li>
+<li>整合与<code>spring</code></li>
+<li>使用枚举类集中管理缓存的<code>key</code></li>
+</ul>
+<h5 id="实现商品分类导航缓存"><a href="#实现商品分类导航缓存" class="headerlink" title="实现商品分类导航缓存"></a>实现商品分类导航缓存</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveCatrgoryTreeToRedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.查询商品分类的导航</span></span><br><span class="line">    <span class="comment">//2.存入redis</span></span><br><span class="line">    Example example = <span class="keyword">new</span> Example(Category<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    Example.Criteria criteria = example.createCriteria();</span><br><span class="line">    criteria.andEqualTo(<span class="string">"isSHow"</span>,<span class="string">"1"</span>);</span><br><span class="line">    example.setOrderByClause(<span class="string">"seq"</span>);</span><br><span class="line">    List&lt;Category&gt; categories = categoryMapper.selectByExample(example);</span><br><span class="line">    List&lt;Map&gt; categoryTree = findByParentId(categories, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入redis</span></span><br><span class="line">    redisTemplate.boundValueOps(CacheKey.CATEGORY_TREE).set(categoryTree);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="轮播图缓存"><a href="#轮播图缓存" class="headerlink" title="轮播图缓存"></a>轮播图缓存</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveAdToRedisByPosition</span><span class="params">(String position)</span> </span>&#123;</span><br><span class="line">        Example example = <span class="keyword">new</span> Example(Ad<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Example.Criteria criteria = example.createCriteria();</span><br><span class="line">        criteria.andEqualTo(<span class="string">"position"</span>,position);</span><br><span class="line">        <span class="comment">//开始时间小于当前时间</span></span><br><span class="line">        criteria.andLessThanOrEqualTo(<span class="string">"startTime"</span>,<span class="keyword">new</span> Date());</span><br><span class="line">        criteria.andGreaterThanOrEqualTo(<span class="string">"endTime"</span>,<span class="keyword">new</span> Date());</span><br><span class="line">        criteria.andEqualTo(<span class="string">"status"</span>,<span class="string">"1"</span>);</span><br><span class="line">         List&lt;Ad&gt; adList = adMapper.selectByExample(example);</span><br><span class="line"></span><br><span class="line">         <span class="comment">//装入缓存</span></span><br><span class="line">        redisTemplate.boundHashOps(CacheKey.AD).put(position,adList);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*返回所有的广告位置*/</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  List&lt;String&gt; <span class="title">getPositionList</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; positionList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        positionList.add(<span class="string">"index_lb"</span>);</span><br><span class="line">        <span class="keyword">return</span> positionList;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveAllAdToRedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="comment">/*循环所有的广告位置并加入缓存*/</span></span><br><span class="line">        <span class="keyword">for</span> (String position:getPositionList())&#123;</span><br><span class="line">            saveAdToRedisByPosition(position);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="价格缓存"><a href="#价格缓存" class="headerlink" title="价格缓存"></a>价格缓存</h5><ul>
+<li>价格加入缓存</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">saveAllPriceToRedis</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//查询所有商品的价格</span></span><br><span class="line">    <span class="comment">//缓存中没有采取数据库查询</span></span><br><span class="line">    <span class="keyword">if</span>(!redisTemplate.hasKey(CacheKey.SKU_PRICE))&#123;</span><br><span class="line">        List&lt;Sku&gt; skus = skuMapper.selectAll();</span><br><span class="line">        <span class="keyword">for</span>(Sku sku : skus)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(sku.getStatus()))&#123;</span><br><span class="line">                redisTemplate.boundHashOps(CacheKey.SKU_PRICE).put(sku.getId(),sku.getPrice());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>价格缓存更新</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//删除缓存中的价格</span></span><br><span class="line">    Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    map.put(<span class="string">"spuId"</span>,id);</span><br><span class="line">    List&lt;Sku&gt; skulist = skuService.findList(map);</span><br><span class="line">    <span class="keyword">for</span> (Sku sku : skulist)&#123;</span><br><span class="line">        skuService.deletePriceFromRedis(sku.getId());</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    spuMapper.deleteByPrimaryKey(id);</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="前端动态获取商品id"><a href="#前端动态获取商品id" class="headerlink" title="前端动态获取商品id"></a>前端动态获取商品id</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el:<span class="string">'#app'</span>,</span><br><span class="line">	data()&#123;</span><br><span class="line">		<span class="keyword">return</span>&#123;</span><br><span class="line">			skuId:<span class="comment">/*[[$&#123;sku.id&#125;]]*/</span>,</span><br><span class="line">			price:<span class="number">0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="搜索解决方案"><a href="#搜索解决方案" class="headerlink" title="搜索解决方案"></a><font color=red>搜索解决方案</font></h4><h5 id="索引结构"><a href="#索引结构" class="headerlink" title="索引结构"></a>索引结构</h5><ul>
+<li>物理结构</li>
+<li>逻辑结构（倒排索引表）<ul>
+<li>所有不重复的分词组成分词表</li>
+<li>将搜索的文档最终以<code>document</code>的形式存储起来</li>
+<li>每个词都和文档关联</li>
+</ul>
+</li>
+</ul>
+<h5 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a><code>ElasticSearch</code></h5><ul>
+<li><p>基于<code>lucence</code>的搜索服务器，基于<code>RestFul</code>接口</p>
+</li>
+<li><p>优点</p>
+<ul>
+<li>作为分布式集群技术</li>
+<li>合并了全文检索，数据分析及分布式技术</li>
+<li>部署简单</li>
+<li>全文检索，同义词 处理，相关度排名</li>
+</ul>
+</li>
+<li><p><font color=red><code>ik</code>分词器</font></p>
+<ul>
+<li>自定义词库<ul>
+<li>必须使用<code>UTF-8</code>，建立词库</li>
+<li>配置<code>xml</code>文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>Kibana</code></p>
+<ul>
+<li>配合<code>elasticSearch</code>使用，实现可视化分析</li>
+<li>建立索引，查询，更改</li>
+<li>词条匹配，多词条匹配</li>
+<li><font color=red><code>过滤查询比条件查询快</code></font></li>
+</ul>
+</li>
+<li><p>使用<code>elasticSearch</code>高级客户端<code>javarest</code></p>
+<ul>
+<li><p>连接<code>rest</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HttpHost http = <span class="keyword">new</span> HttpHost(<span class="string">"127.0.0.1"</span>,<span class="number">9200</span>,<span class="string">"http"</span>);</span><br><span class="line">RestClientBuilder restClientBuilder= RestClientBuilder(http);</span><br><span class="line">RestHighLevelClient restHighLevelClient = <span class="keyword">new</span> RestHighLevelClient(restClientBuilder);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>封装请求对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IndexRequest indexRequest = <span class="keyword">new</span> IndexRequest(<span class="string">"sku"</span>,<span class="string">"doc"</span>,<span class="string">"3"</span>);</span><br><span class="line">Map skuMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">skuMap.put(<span class="string">"name"</span>,<span class="string">"手机"</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>获取执行结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IndexRsponse indexResponse = restHighLevelClient.index(indexRequest);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>释放连接</p>
+</li>
+<li><p><font color=red>批量处理</font>&gt;</p>
+<ul>
+<li><code>bulkRequest</code></li>
+</ul>
+</li>
+<li><p>匹配查询</p>
+<ul>
+<li><code>MatchQueryRequest</code></li>
+</ul>
+</li>
+<li><p><font color=red>关键字搜索</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SkuSearchServiceImpl</span> <span class="keyword">implements</span> <span class="title">SkuSearchService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RestHighLevelClient restHighLevelClient;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map <span class="title">search</span><span class="params">(Map&lt;String,String&gt; searchMap)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//封装查询请求</span></span><br><span class="line">        SearchRequest searchRequest = <span class="keyword">new</span> SearchRequest(<span class="string">"sku"</span>);</span><br><span class="line">        searchRequest.types(<span class="string">"doc"</span>);</span><br><span class="line">        SearchSourceBuilder searchSourceBuilder = <span class="keyword">new</span> SearchSourceBuilder();</span><br><span class="line">        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();</span><br><span class="line">        <span class="comment">//关键字搜索</span></span><br><span class="line">        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery(<span class="string">"name"</span>,searchMap.get(<span class="string">"keywords"</span>));</span><br><span class="line">        boolQueryBuilder.must(matchQueryBuilder);</span><br><span class="line">        searchSourceBuilder.query(boolQueryBuilder);</span><br><span class="line">        searchRequest.source(searchSourceBuilder);</span><br><span class="line">        <span class="comment">//封装查询结果</span></span><br><span class="line">        Map resultMap = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);</span><br><span class="line">            SearchHits searchHits = searchResponse.getHits();</span><br><span class="line">            <span class="keyword">long</span> totalHits = searchHits.getTotalHits();</span><br><span class="line">            SearchHit[] hits = searchHits.getHits();</span><br><span class="line">            <span class="comment">//封装商品列表</span></span><br><span class="line">            List&lt;Map&lt;String,Object&gt;&gt; resultList = <span class="keyword">new</span> ArrayList&lt;Map&lt;String,Object&gt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(SearchHit hit:hits)&#123;</span><br><span class="line">                <span class="comment">//String sourceAsString = hit.getSourceAsString();//获取JSON字符</span></span><br><span class="line">                Map&lt;String, Object&gt; skuMap = hit.getSourceAsMap();</span><br><span class="line">                resultList.add(skuMap);</span><br><span class="line">            &#125;</span><br><span class="line">            resultMap.put(<span class="string">"rows"</span>,resultList);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resultMap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><font color=red>过滤查询实现品牌，规格查询，聚合查询实现分类列表展示</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Aggregations aggregations = searchResponse.getAggregations();</span><br><span class="line"> Map&lt;String, Aggregation&gt; aggregationMap = aggregations.getAsMap();</span><br><span class="line">Terms terms = (Terms) aggregationMap.get(<span class="string">"sku_category"</span>);</span><br><span class="line">List&lt;? extends Terms.Bucket&gt; buckets = terms.getBuckets();</span><br><span class="line">List&lt;String&gt; categoryList = <span class="keyword">new</span> ArrayList();</span><br><span class="line"><span class="keyword">for</span>(Terms.Bucket bucket:buckets)&#123;</span><br><span class="line">	categoryList.add(bucket.getKeyAsString());</span><br><span class="line">&#125;</span><br><span class="line">resultMap.put(<span class="string">"categoryList"</span>,categoryList);</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+<h4 id="分页查询，高亮显示"><a href="#分页查询，高亮显示" class="headerlink" title="分页查询，高亮显示"></a>分页查询，高亮显示</h4><h5 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Integer pageNo = Integer.parseInt(searchMap.get(<span class="string">"pageNo"</span>));</span><br><span class="line"> Integer pageSize = <span class="number">30</span>;</span><br><span class="line"> <span class="keyword">int</span> fromIndex= (pageNo-<span class="number">1</span>)*pageSize;</span><br><span class="line"> searchSourceBuilder.from(fromIndex);</span><br><span class="line"> searchSourceBuilder.size(pageSize);</span><br><span class="line"></span><br><span class="line"> searchRequest.source(searchSourceBuilder);</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="动态页码渲染"><a href="#动态页码渲染" class="headerlink" title="动态页码渲染"></a>动态页码渲染</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long totalCount &#x3D; searchHits.getTotalHits();</span><br><span class="line">long pageCount &#x3D; (totalCount%pageSize&#x3D;&#x3D;0)?totalCount&#x2F;pageSize:(totalCount&#x2F;pageSize+1);</span><br><span class="line">resultMap.put(&quot;totalPages&quot;,pageCount);</span><br></pre></td></tr></table></figure>
+
+<h5 id="高亮查询"><a href="#高亮查询" class="headerlink" title="高亮查询"></a><font color=red>高亮查询</font></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">       HighlightBuilder highlightBuilder = <span class="keyword">new</span> HighlightBuilder();</span><br><span class="line">        highlightBuilder.field(<span class="string">"name"</span>).preTags(<span class="string">"&lt;font style='color:red'&gt;"</span>).postTags(<span class="string">"&lt;/font&gt;"</span>);</span><br><span class="line">        searchSourceBuilder.highlighter(highlightBuilder);</span><br><span class="line"><span class="comment">//循环得到hits，并对每个hit取得高亮的name</span></span><br><span class="line"></span><br><span class="line">                Map&lt;String,HighlightField&gt; highlightFields = hit.getHighlightFields();</span><br><span class="line">                HighlightField name = highlightFields.get(<span class="string">"name"</span>);</span><br><span class="line">                Text[] fragments = name.fragments();</span><br><span class="line">                skuMap.put(<span class="string">"name"</span>,fragments[<span class="number">0</span>].toString());<span class="comment">//用高亮的内容替换原有的内容</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="消息中间件"><a href="#消息中间件" class="headerlink" title="消息中间件"></a><font color=red>消息中间件</font></h4><ul>
+<li>作用<ul>
+<li>解决用用耦合，异步消息，流量削锋的问题</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>异步处理，应用解耦，流量削锋，消息通讯</li>
+</ul>
+</li>
+<li>常用的消息中间件<ul>
+<li><code>ActivaMQ</code> <code>RabbitMQ</code> <code>zeroMQ</code> <code>Kafka</code> <code>MeteMQ</code> <code>RocketMQ</code></li>
+<li><code>Kafka</code>主要应用于大数据，数据可能会丢失，稳定性不够</li>
+</ul>
+</li>
+</ul>
+<h5 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a><code>RabbitMQ</code></h5><ul>
+<li>优点：可靠，路由灵活，消息集群，高可用，多语言客户端，插件机制</li>
+<li>直接模式</li>
+<li>分列模式</li>
+</ul>
+<h5 id="用戶註冊"><a href="#用戶註冊" class="headerlink" title="用戶註冊"></a>用戶註冊</h5><ul>
+<li><p>用户服务产生短信验证码，发送给<code>rabbitMQ</code>和<code>redis</code>,后续由短信服务从<code>rabbitMQ</code>中取出验证码发送给用户，<code>redis</code>中的值用于后续校验验证码</p>
+</li>
+<li><p><font color=red>短信服务接受消息,添加用户的逻辑</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(User user, String smscode)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.校验数据</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.1提取验证码</span></span><br><span class="line">        String sysCode = (String) redisTemplate.boundValueOps(<span class="string">"code_"</span> + user.getPhone()).get();</span><br><span class="line">        <span class="keyword">if</span>(sysCode == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"验证码未发送或已过期"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!sysCode.equals(smscode))&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"验证码不正确"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.2把手机号作为用户名</span></span><br><span class="line">        <span class="keyword">if</span> (user.getUsername() == <span class="keyword">null</span>)&#123;</span><br><span class="line">            user.setUsername(user.getPhone());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.3 校验用户名是否注册</span></span><br><span class="line">        User searchUser = <span class="keyword">new</span> User();</span><br><span class="line">        searchUser.setUsername(user.getUsername());</span><br><span class="line">        <span class="keyword">if</span>(userMapper.selectCount(searchUser) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span>  <span class="keyword">new</span> RuntimeException(<span class="string">"手机号已注册"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2.数据添加</span></span><br><span class="line">        <span class="comment">//2.1 设置不为空的用户数据</span></span><br><span class="line">        user.setCreated(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        user.setUpdated(<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        user.setPoints(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        user.setStatus(<span class="string">"1"</span>);</span><br><span class="line"></span><br><span class="line">        user.setIsEmailCheck(<span class="string">"0"</span>);</span><br><span class="line"></span><br><span class="line">        user.setIsMobileCheck(<span class="string">"1"</span>);</span><br><span class="line"></span><br><span class="line">        userMapper.insert(user);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="单点登录sso"><a href="#单点登录sso" class="headerlink" title="单点登录sso"></a><font color=red>单点登录<code>sso</code></font></h4><ul>
+<li>解决不同子系统中用户信息同步的问题，使系统中用户可以一次登录，多处生效</li>
+<li>实现单点登录的方案<ul>
+<li>使用<code>redis</code>实现<code>session</code>共享</li>
+<li>使用开源的单点登录系统，如<code>CAS</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a><code>CAS</code></h5><ul>
+<li></li>
+</ul>
+<h4 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a><font color=red>购物车</font></h4><h5 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h5><ul>
+<li>使用<code>redis</code>实现购物车存储，使用<code>hash</code>类型数据</li>
+<li>每个用户的购物车是一个<code>List</code>,其中是<code>map</code>数据，包含<code>item</code>和商品明细</li>
+</ul>
+<h5 id="添加到购物车"><a href="#添加到购物车" class="headerlink" title="添加到购物车"></a>添加到购物车</h5><ul>
+<li>遍历购物车，如果存在商品，则累加数量，如果不存在，则添加</li>
+<li>获取购物车</li>
+</ul>
+<h5 id="保存勾选项"><a href="#保存勾选项" class="headerlink" title="保存勾选项"></a>保存勾选项</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">updateCheched</span><span class="params">(String username, String skuId, <span class="keyword">boolean</span> checked)</span> </span>&#123;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; cartList = findCartList(username);</span><br><span class="line"></span><br><span class="line">       <span class="keyword">boolean</span> isOk = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Map map :cartList)&#123;</span><br><span class="line">            OrderItem orderItem = (OrderItem) map.get(<span class="string">"item"</span>);</span><br><span class="line">            <span class="keyword">if</span>(orderItem.getSkuId().equals(skuId))&#123;</span><br><span class="line">                map.put(<span class="string">"checked"</span>,checked);</span><br><span class="line">                isOk=<span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(isOk)&#123;</span><br><span class="line">            redisTemplate.boundHashOps(CacheKey.CART_LIST).put(username,cartList);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除勾选项"><a href="#删除勾选项" class="headerlink" title="删除勾选项"></a>删除勾选项</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteCheckedCart</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; cartList = findCartList(username).stream().filter(cart -&gt; (<span class="keyword">boolean</span>) cart.get(<span class="string">"checked"</span>) == <span class="keyword">false</span>).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    redisTemplate.boundHashOps(CacheKey.CART_LIST).put(username,cartList);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="满减优惠计算"><a href="#满减优惠计算" class="headerlink" title="满减优惠计算"></a>满减优惠计算</h4><ul>
+<li>根据商品分类和消费额计算优惠额</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPreMoneyByCategoryId</span><span class="params">(Integer categoryId,Integer money)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//指定查询条件</span></span><br><span class="line">        Example example = <span class="keyword">new</span> Example(Preferential<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        Example.Criteria criteria = example.createCriteria();</span><br><span class="line">        criteria.andEqualTo(<span class="string">"state"</span>,<span class="string">"1"</span>);</span><br><span class="line">        criteria.andEqualTo(<span class="string">"categoryId"</span>,categoryId);</span><br><span class="line">        criteria.andLessThanOrEqualTo(<span class="string">"buyMoney"</span>,money);</span><br><span class="line">        criteria.andGreaterThanOrEqualTo(<span class="string">"endTime"</span>,<span class="keyword">new</span> Date());</span><br><span class="line">        criteria.andLessThanOrEqualTo(<span class="string">"startTime"</span>,<span class="keyword">new</span> Date());</span><br><span class="line">        example.setOrderByClause(<span class="string">"buy_money desc"</span>);<span class="comment">//按购买金额降序排序</span></span><br><span class="line"></span><br><span class="line">        List&lt;Preferential&gt; preferentials = preferentialMapper.selectByExample(example);</span><br><span class="line">        <span class="keyword">if</span>(preferentials.size() &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">//证明有优惠</span></span><br><span class="line">            Preferential preferential = preferentials.get(<span class="number">0</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">"1"</span>.equals(preferential.getType()))&#123;</span><br><span class="line">                <span class="comment">//不翻倍的情况</span></span><br><span class="line">                <span class="keyword">return</span> preferential.getPreMoney();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//翻倍的情况</span></span><br><span class="line">                <span class="keyword">int</span> i = money / preferential.getBuyMoney();</span><br><span class="line">                <span class="keyword">return</span> preferential.getPreMoney() * i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//没有优惠</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>计算所有分类的满减优惠额</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">preferential</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1.获取选中的购物车</span></span><br><span class="line"></span><br><span class="line">    List&lt;OrderItem&gt; orderItemList = findCartList(username).stream().filter(cart -&gt; (<span class="keyword">boolean</span>) cart.get(<span class="string">"checked"</span>) == <span class="keyword">true</span>)</span><br><span class="line">            .map(cart -&gt; (OrderItem) cart.get(<span class="string">"item"</span>))</span><br><span class="line">            .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2.按分类集合统计每个分类的金额</span></span><br><span class="line">    Map&lt;Integer, IntSummaryStatistics&gt; cartMap = orderItemList.stream().collect(Collectors.groupingBy(OrderItem::getCategoryId3, Collectors.summarizingInt(OrderItem::getMoney)));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 循环结果，统计每个分类的优惠并累加</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> allPreMoney =<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(Integer categoryId : cartMap.keySet())&#123;</span><br><span class="line">        <span class="keyword">int</span> money = (<span class="keyword">int</span>) cartMap.get(categoryId).getSum();</span><br><span class="line">        <span class="comment">//获取分类的优惠金额</span></span><br><span class="line">        <span class="keyword">int</span> preMoney = preferentialService.findPreMoneyByCategoryId(categoryId, money);</span><br><span class="line">        allPreMoney +=preMoney;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> allPreMoney;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="分布式事务解决方案"><a href="#分布式事务解决方案" class="headerlink" title="分布式事务解决方案"></a><font color=red>分布式事务解决方案</font></h4><h5 id="购物车更新"><a href="#购物车更新" class="headerlink" title="购物车更新"></a>购物车更新</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Map&lt;String, Object&gt;&gt; findNewOrderItemList(String username) &#123;</span><br><span class="line">      <span class="comment">//1.获取购物车</span></span><br><span class="line"></span><br><span class="line">       List&lt;Map&lt;String, Object&gt;&gt; cartList = findCartList(username);</span><br><span class="line">       <span class="comment">//2.循环购物车，刷新价格</span></span><br><span class="line">       <span class="keyword">for</span> (Map&lt;String,Object&gt; cart:cartList)&#123;</span><br><span class="line">           OrderItem orderItem = (OrderItem) cart.get(<span class="string">"item"</span>);</span><br><span class="line">           Sku sku = skuService.findById(orderItem.getSkuId());</span><br><span class="line">           orderItem.setPrice(sku.getPrice()); <span class="comment">//更新价格</span></span><br><span class="line">           orderItem.setMoney(sku.getPrice() * orderItem.getNum());<span class="comment">//更新金额</span></span><br><span class="line">           </span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">//3.保存最新的购物车</span></span><br><span class="line"></span><br><span class="line">       redisTemplate.boundHashOps(CacheKey.CART_LIST).put(username,cartList);</span><br><span class="line">       <span class="keyword">return</span> cartList;</span><br></pre></td></tr></table></figure>
+
+<h5 id="收货地址"><a href="#收货地址" class="headerlink" title="收货地址"></a>收货地址</h5><ul>
+<li><p>后端根据用户名从数据库中查询用户的收货地址</p>
+</li>
+<li><p>将数据传回前端</p>
+<p><code>service</code>中的代码</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Address&gt; <span class="title">findByUsername</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    Example example = <span class="keyword">new</span> Example(Address<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    Example.Criteria criteria = example.createCriteria();</span><br><span class="line">    criteria.andEqualTo(<span class="string">"username"</span>,name);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> addressMapper.selectByExample(example);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>controller</code>中的代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;&#x2F;findAddressList&quot;)</span><br><span class="line">public List&lt;Address&gt; findAddressList()&#123;</span><br><span class="line">    String name &#x3D; SecurityContextHolder.getContext().getAuthentication().getName();</span><br><span class="line">    return addressService.findByUsername(name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="提交订单"><a href="#提交订单" class="headerlink" title="提交订单"></a>提交订单</h5><ul>
+<li>属性并获取购物车</li>
+<li>检查库存和扣减库存</li>
+<li>保存订单主表和明细表</li>
+<li>清除选中的购物车数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">add</span><span class="params">(Order order)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1. 获取选中的购物车</span></span><br><span class="line"></span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; cartList = cartService.findNewOrderItemList(order.getUsername());</span><br><span class="line">        List&lt;OrderItem&gt; orderItemList = cartList.stream().filter(cart -&gt; (<span class="keyword">boolean</span>) cart.get(<span class="string">"checked"</span>))</span><br><span class="line">                .map(cart -&gt; (OrderItem) cart.get(<span class="string">"item"</span>))</span><br><span class="line">                .collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.扣减库存</span></span><br><span class="line">        <span class="keyword">if</span>(!skuService.deductionStock(orderItemList))&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"库存不足"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.保存订单主表,保存的id使用分布式id生成器</span></span><br><span class="line">        order.setId(idWorker.nextId()+<span class="string">""</span>);</span><br><span class="line">        <span class="keyword">int</span> totalNum = orderItemList.stream().mapToInt(OrderItem::getNum).sum();</span><br><span class="line">        <span class="keyword">int</span> totalMoney = orderItemList.stream().mapToInt(OrderItem::getMoney).sum();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> preferential = cartService.preferential(order.getUsername());</span><br><span class="line"></span><br><span class="line">        order.setPreMoney(preferential);</span><br><span class="line">        order.setTotalMoney(totalMoney);</span><br><span class="line">        order.setTotalNum(totalNum);</span><br><span class="line">        order.setPayMoney(totalMoney-preferential);</span><br><span class="line">        order.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">        order.setOrderStatus(<span class="string">"0"</span>);</span><br><span class="line">        order.setPayStatus(<span class="string">"0"</span>);</span><br><span class="line">        order.setConsignStatus(<span class="string">"0"</span>);</span><br><span class="line"></span><br><span class="line">        orderMapper.insert(order);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.保存订单明细表</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">double</span> proportion = (<span class="keyword">double</span>)order.getPayMoney() / totalMoney;</span><br><span class="line">        <span class="keyword">for</span> (OrderItem orderItem:orderItemList)&#123;</span><br><span class="line">            orderItem.setId(idWorker.nextId()+<span class="string">""</span>);</span><br><span class="line">            orderItem.setOrderId(order.getId());</span><br><span class="line">            orderItem.setPayMoney((<span class="keyword">int</span>)(orderItem.getMoney()*proportion));</span><br><span class="line">            orderItemMapper.insert(orderItem);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//5.清除购物车</span></span><br><span class="line"></span><br><span class="line">        cartService.deleteCheckedCart(order.getUsername());</span><br><span class="line"></span><br><span class="line">        Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        map.put(<span class="string">"ordersn"</span>,order.getId());</span><br><span class="line">        map.put(<span class="string">"money"</span>,order.getPayMoney());</span><br><span class="line">        <span class="keyword">return</span>  map;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="分布式事务理论知识"><a href="#分布式事务理论知识" class="headerlink" title="分布式事务理论知识"></a><font color=red>分布式事务理论知识</font></h5><ul>
+<li><code>CAP</code>理论</li>
+<li><code>BASE</code>理论</li>
+</ul>
+<h5 id="分布式事务解决方案-1"><a href="#分布式事务解决方案-1" class="headerlink" title="分布式事务解决方案"></a><font color=red>分布式事务解决方案</font></h5><ul>
+<li>基于<code>XA</code>协议的两阶段提交<ul>
+<li>两段提交</li>
+<li>保证了事务的强一致性，牺牲了可用性，不适合用于高并发的场景</li>
+</ul>
+</li>
+<li><code>TCC</code>补偿机制<ul>
+<li>三段提交</li>
+</ul>
+</li>
+<li><font color=red>消息最终一致性</font></li>
+</ul>
+<h5 id="库存扣减操作"><a href="#库存扣减操作" class="headerlink" title="库存扣减操作"></a>库存扣减操作</h5><ul>
+<li><p>保存订单出错的时候发送回滚消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//发送回滚消息</span></span><br><span class="line">rabbitTemplate.convertAndSend(<span class="string">""</span>,<span class="string">"queue.skuback"</span>,JSON.toJSONString(orderItemList));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>添加状态为0的记录以及回滚</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addList</span><span class="params">(List&lt;OrderItem&gt; orderItemList)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">for</span>(OrderItem orderItem:orderItemList)&#123;</span><br><span class="line">         StockBack stockBack = <span class="keyword">new</span> StockBack();</span><br><span class="line">         stockBack.setOrderId(orderItem.getId());</span><br><span class="line">         stockBack.setSkuId(orderItem.getSkuId());</span><br><span class="line">         stockBack.setStatus(<span class="string">"0"</span>);</span><br><span class="line">         stockBack.setNum(orderItem.getNum());</span><br><span class="line">         stockBack.setCreateTime(<span class="keyword">new</span> Date());</span><br><span class="line">         stockBackMapper.insert(stockBack);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doBack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="comment">//定时查询库存回滚表中状态为0的记录</span></span><br><span class="line">     StockBack stockBack0 = <span class="keyword">new</span> StockBack();</span><br><span class="line">     stockBack0.setStatus(<span class="string">"0"</span>);</span><br><span class="line">     List&lt;StockBack&gt; stockBackList = stockBackMapper.select(stockBack0);</span><br><span class="line">     <span class="keyword">for</span> (StockBack stockBack:stockBackList)&#123;</span><br><span class="line">         skuMapper.deductionStock(stockBack.getSkuId(),-stockBack.getNum());</span><br><span class="line">         skuMapper.addSaleNum(stockBack.getSkuId(),-stockBack.getNum());</span><br><span class="line">         stockBack.setStatus(<span class="string">"1"</span>);</span><br><span class="line">         stockBackMapper.updateByPrimaryKey(stockBack);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="服务器推送方案"><a href="#服务器推送方案" class="headerlink" title="服务器推送方案"></a>服务器推送方案</h4><ul>
+<li><code>Ajax</code>短轮询</li>
+<li>长轮询</li>
+<li><code>websocket</code>双向通信<ul>
+<li>使用<code>RabbitMQ Web STOMP</code>插件</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/08/%E9%80%9A%E7%94%A8mapper/" rel="next" title="通用mapper">
+                <i class="fa fa-chevron-left"></i> 通用mapper
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" rel="prev" title="商城业务分析">
+                商城业务分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#电商B2C模式网站开发"><span class="nav-number">1.</span> <span class="nav-text">电商B2C模式网站开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求分析"><span class="nav-number">1.1.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统设计"><span class="nav-number">1.2.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库设计"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#技术选型"><span class="nav-number">1.2.2.</span> <span class="nav-text">技术选型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工程搭建"><span class="nav-number">1.3.</span> <span class="nav-text">工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.1.</span> <span class="nav-text">准备工作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理后端"><span class="nav-number">1.4.</span> <span class="nav-text">管理后端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#公共异常处理"><span class="nav-number">1.4.1.</span> <span class="nav-text">公共异常处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片上传后端处理"><span class="nav-number">1.5.</span> <span class="nav-text">图片上传后端处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#商品后端管理逻辑"><span class="nav-number">1.6.</span> <span class="nav-text">商品后端管理逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式id生成方案"><span class="nav-number">1.6.1.</span> <span class="nav-text">分布式id生成方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#认证登录"><span class="nav-number">1.6.2.</span> <span class="nav-text">认证登录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同源策略设置"><span class="nav-number">1.6.3.</span> <span class="nav-text">同源策略设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#登录日志"><span class="nav-number">1.6.4.</span> <span class="nav-text">登录日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端页面"><span class="nav-number">1.7.</span> <span class="nav-text">前端页面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#thymeleaf模板引擎"><span class="nav-number">1.7.1.</span> <span class="nav-text">thymeleaf模板引擎</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存解决方案"><span class="nav-number">1.8.</span> <span class="nav-text">缓存解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存穿透，缓存击穿，缓存雪崩"><span class="nav-number">1.8.1.</span> <span class="nav-text">缓存穿透，缓存击穿，缓存雪崩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#整合springDataRedis"><span class="nav-number">1.8.2.</span> <span class="nav-text">整合springDataRedis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现商品分类导航缓存"><span class="nav-number">1.8.3.</span> <span class="nav-text">实现商品分类导航缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#轮播图缓存"><span class="nav-number">1.8.4.</span> <span class="nav-text">轮播图缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#价格缓存"><span class="nav-number">1.8.5.</span> <span class="nav-text">价格缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前端动态获取商品id"><span class="nav-number">1.8.6.</span> <span class="nav-text">前端动态获取商品id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索解决方案"><span class="nav-number">1.9.</span> <span class="nav-text">搜索解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#索引结构"><span class="nav-number">1.9.1.</span> <span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ElasticSearch"><span class="nav-number">1.9.2.</span> <span class="nav-text">ElasticSearch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询，高亮显示"><span class="nav-number">1.10.</span> <span class="nav-text">分页查询，高亮显示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分页查询"><span class="nav-number">1.10.1.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态页码渲染"><span class="nav-number">1.10.2.</span> <span class="nav-text">动态页码渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高亮查询"><span class="nav-number">1.10.3.</span> <span class="nav-text">高亮查询</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息中间件"><span class="nav-number">1.11.</span> <span class="nav-text">消息中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.11.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用戶註冊"><span class="nav-number">1.11.2.</span> <span class="nav-text">用戶註冊</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单点登录sso"><span class="nav-number">1.12.</span> <span class="nav-text">单点登录sso</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CAS"><span class="nav-number">1.12.1.</span> <span class="nav-text">CAS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#购物车"><span class="nav-number">1.13.</span> <span class="nav-text">购物车</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现思路"><span class="nav-number">1.13.1.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加到购物车"><span class="nav-number">1.13.2.</span> <span class="nav-text">添加到购物车</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保存勾选项"><span class="nav-number">1.13.3.</span> <span class="nav-text">保存勾选项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除勾选项"><span class="nav-number">1.14.</span> <span class="nav-text">删除勾选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#满减优惠计算"><span class="nav-number">1.15.</span> <span class="nav-text">满减优惠计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式事务解决方案"><span class="nav-number">1.16.</span> <span class="nav-text">分布式事务解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#购物车更新"><span class="nav-number">1.16.1.</span> <span class="nav-text">购物车更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#收货地址"><span class="nav-number">1.16.2.</span> <span class="nav-text">收货地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提交订单"><span class="nav-number">1.16.3.</span> <span class="nav-text">提交订单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务理论知识"><span class="nav-number">1.16.4.</span> <span class="nav-text">分布式事务理论知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务解决方案-1"><span class="nav-number">1.16.5.</span> <span class="nav-text">分布式事务解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#库存扣减操作"><span class="nav-number">1.16.6.</span> <span class="nav-text">库存扣减操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器推送方案"><span class="nav-number">1.17.</span> <span class="nav-text">服务器推送方案</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">14.6k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
