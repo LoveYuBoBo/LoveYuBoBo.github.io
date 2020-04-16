@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。    如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。  基本数据类型：byte ,sho">
+<meta name="description" content="Java基础知识 大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。   如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。 基本数据类型：byt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java基础知识">
+<meta property="og:title" content="Java基础知识">
 <meta property="og:url" content="https://ijavaweb.github.io/2020/04/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。    如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。  基本数据类型：byte ,sho">
-<meta property="article:published_time" content="2020-04-16T16:25:06.308Z">
-<meta property="article:modified_time" content="2020-04-16T16:25:06.308Z">
+<meta property="og:description" content="Java基础知识 大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。   如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。 基本数据类型：byt">
+<meta property="article:published_time" content="2020-04-16T15:28:40.000Z">
+<meta property="article:modified_time" content="2020-04-16T16:46:52.963Z">
 <meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
@@ -129,7 +130,7 @@
 
 
 
-  <title>java基础知识 | 学习小记</title>
+  <title>Java基础知识 | 学习小记</title>
   
 
 
@@ -284,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java基础知识</h1>
+          <h1 class="post-title" itemprop="name headline">Java基础知识</h1>
         
 
         <div class="post-meta">
@@ -296,7 +297,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T18:25:06+02:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T17:28:40+02:00">
                 2020-04-16
               </time>
             
@@ -306,6 +307,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -370,21 +393,14 @@
       
 
       
-        <ul>
-<li><p>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </p>
-</li>
-<li><p>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</p>
-</li>
-<li><p>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </p>
-</li>
-<li><p>引用数据类型：字符串，数组，类，接口，Lambda  </p>
-</li>
-<li><p>浮点型可能是一个近似值</p>
-</li>
-<li><p>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</p>
-</li>
-<li><p>Java内存划分为5个部分：</p>
-<ul>
+        <h4 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h4><ul>
+<li>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </li>
+<li>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</li>
+<li>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </li>
+<li>引用数据类型：字符串，数组，类，接口，Lambda  </li>
+<li>浮点型可能是一个近似值</li>
+<li>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</li>
+<li>Java内存划分为5个部分：<ul>
 <li>栈(stack)：存放的是方法中的局部变量，一旦超过作用域，立即消失</li>
 <li>堆(Heap):凡是new出来的，都在堆中，堆内存中的东西都有一个16进制的地址值，里面存放的数据都有默认值  </li>
 <li>方法区(Method Area):存储.class相关的信息，包含方法的信息</li>
@@ -392,16 +408,11 @@
 <li>寄存器(pc Register)：与cpu有关</li>
 </ul>
 </li>
-<li><p>空指针异常 NullPointException,通过添加new解决。</p>
-</li>
-<li><p>数组一旦创建，程序运行期间，长度不可变。</p>
-</li>
-<li><p>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</p>
-</li>
-<li><p>当对象作为参数的时候，传入的是参数的地址值</p>
-</li>
-<li><p>局部变量和成员变量：</p>
-<ul>
+<li>空指针异常 NullPointException,通过添加new解决。</li>
+<li>数组一旦创建，程序运行期间，长度不可变。</li>
+<li>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</li>
+<li>当对象作为参数的时候，传入的是参数的地址值</li>
+<li>局部变量和成员变量：<ul>
 <li>定义的位置不一样，局部变量在方法内部，成员变量直接写在类中</li>
 <li>作用的范围不一样，局部变量只在方法中起作用，成员变量在整个类中都有用</li>
 <li>默认值不一样，局部变量没有默认值，必须手动赋值，成员变量有默认值，规则和数组一样。</li>
@@ -409,10 +420,8 @@
 <li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
 </ul>
 </li>
-<li><p>当方法的局部变量和类的成员变量重名的时候，根据“就近原则”优先使用局部变量，如果要访问本类中的成员变量，应使用this.成员变量名的方式。通过谁调用该方法，谁就是this。</p>
-</li>
-<li><p>构造方法是专门用来创建对象的方法，当使用new创建对象的时候，就是在调用构造方法</p>
-<ul>
+<li>当方法的局部变量和类的成员变量重名的时候，根据“就近原则”优先使用局部变量，如果要访问本类中的成员变量，应使用this.成员变量名的方式。通过谁调用该方法，谁就是this。</li>
+<li>构造方法是专门用来创建对象的方法，当使用new创建对象的时候，就是在调用构造方法<ul>
 <li>构造方法名称必须和所在类的名称完全一样</li>
 <li>构造方法不写返回值类型，连void也不写</li>
 <li>构造方法不能return一个具体的返回值</li>
@@ -420,16 +429,14 @@
 <li>一旦编写至少一个构造方法，编译器不再产生默认的构造方法</li>
 </ul>
 </li>
-<li><p>一个标准类通常有四部分组成(称为Java Bean)</p>
-<ul>
+<li>一个标准类通常有四部分组成(称为Java Bean)<ul>
 <li>所有成员变量使用privat修饰</li>
 <li>编写getter/setter方法</li>
 <li>编写全参构造方法</li>
 <li>编写无参构造函数</li>
 </ul>
 </li>
-<li><p>final修饰一个类的时候表示当前类不能有任何子类，格式如：public final class 类名</p>
-<ul>
+<li>final修饰一个类的时候表示当前类不能有任何子类，格式如：public final class 类名<ul>
 <li>final修饰方法的时候，表示最终方法，不能覆盖重写。</li>
 <li>对于类和方法来说，不能同时使用abstract和final关键字</li>
 <li>一旦用final修饰局部变量，这个变量不能更改，只要保证有唯一一次赋值就行。</li>
@@ -437,43 +444,27 @@
 <li>成员变量有默认值，使用final之后必须手动赋值。赋值方式要么直接赋值，要么通过构造函数赋值；同时应保证类中所有重载的构造方法，都能对final的成员变量赋值(此时set方法不可行)。</li>
 </ul>
 </li>
-<li><p>加上关键字abstract关键字，去掉大括号，直接分号结束，实现抽象方法。抽象方法所在的类必须是抽象类</p>
-</li>
-<li><p>不能直接用new创建抽象类对象，必须用一个子类继承抽象父类，子类必须覆盖重写父类中所有的抽象方法，创建子类对象使用。</p>
-</li>
-<li><p>方法的重载(overload)是方法的名称一样，但参数列表不一样；重写(override)是名称一样，参数列表也一样。重写的时候子类方法的返回值必须小于等于父类方法返回值的范围。子类方法的权限必须大于等于父类的权限修饰符(public&gt;protected&gt;default&gt;private)</p>
-</li>
-<li><p>super关键字访问父类内容，this关键字用来访问本类内容(包括本类的成员变量，成员方法和本类的另一个构造方法)，this调用必须是构造方法的第一个语句。</p>
-</li>
-<li><p>Java的接口中可以包含常量，抽象方法，默认方法，静态方法，以及私有方法(java9).接口中的抽象方法，修饰符必须是两个固定的关键字public和abstract。接口不能直接使用，必须有一个类实现该接口。并且实现类的时候必须实现所有的抽象方法。如果没有全部实现抽象方法，该类必须是抽象类。</p>
-</li>
-<li><p>接口中的默认方法可以解决接口升级的问题。不能通过接口实现类的对象调用接口当中的静态方法，应该通过接口名称直接调用接口中的静态方法。</p>
-</li>
-<li><p>接口中也可以定义成员变量，但必须使用public static final三个关键字修饰。接口中的变量必须赋值。变量名称使用全部大写和下划线连接的方式。</p>
-</li>
-<li><p>接口没有静态代码块或者构造方法的；一个类的直接父类是唯一的，但是一个类可以同时实现多个接口；如果实现类所实现的多个接口中，存在重复的抽象方法，那么只需要覆写一次；如果实现类没有全部覆写接口中的抽象方法，该实现类必须是抽象类；如果实现类中存在重复的默认方法，实现类必须重写冲突的方法；如果一个类的直接父类中的方法和接口的默认方法冲突，优先使用直接父类的方法。</p>
-</li>
-<li><p>编译看左边，运行看右边(成员变量除外，成员变量编译和运行都看左边)。</p>
-</li>
-<li><p>对象的向上转型表明创建一个子类，可以把它当作父类使用，向上转型是安全的，但无法调用子类特有的方法。</p>
-</li>
-<li><p>如何知道父类引用的对象，原来是什么子类？使用（instanceof 类名)的方式，得到一个boolean值。 特别是向下转型的时候应该使用该关键字判断。</p>
-</li>
-<li><p>外部类使用内部类，需要内部类对象；如果出现重名的情况，访问格式如(外部类名称.this外部类成员变量名).</p>
-</li>
-<li><p>局部内部类的定义，只有所属的方法可以使用，出了方法后不能使用。</p>
-</li>
-<li><p>修饰符的优先级public&gt;protected&gt;default&gt;private。定义一个类的时候。权限修饰符的规则如下：</p>
-<ul>
+<li>加上关键字abstract关键字，去掉大括号，直接分号结束，实现抽象方法。抽象方法所在的类必须是抽象类</li>
+<li>不能直接用new创建抽象类对象，必须用一个子类继承抽象父类，子类必须覆盖重写父类中所有的抽象方法，创建子类对象使用。</li>
+<li>方法的重载(overload)是方法的名称一样，但参数列表不一样；重写(override)是名称一样，参数列表也一样。重写的时候子类方法的返回值必须小于等于父类方法返回值的范围。子类方法的权限必须大于等于父类的权限修饰符(public&gt;protected&gt;default&gt;private)</li>
+<li>super关键字访问父类内容，this关键字用来访问本类内容(包括本类的成员变量，成员方法和本类的另一个构造方法)，this调用必须是构造方法的第一个语句。</li>
+<li>Java的接口中可以包含常量，抽象方法，默认方法，静态方法，以及私有方法(java9).接口中的抽象方法，修饰符必须是两个固定的关键字public和abstract。接口不能直接使用，必须有一个类实现该接口。并且实现类的时候必须实现所有的抽象方法。如果没有全部实现抽象方法，该类必须是抽象类。</li>
+<li>接口中的默认方法可以解决接口升级的问题。不能通过接口实现类的对象调用接口当中的静态方法，应该通过接口名称直接调用接口中的静态方法。</li>
+<li>接口中也可以定义成员变量，但必须使用public static final三个关键字修饰。接口中的变量必须赋值。变量名称使用全部大写和下划线连接的方式。</li>
+<li>接口没有静态代码块或者构造方法的；一个类的直接父类是唯一的，但是一个类可以同时实现多个接口；如果实现类所实现的多个接口中，存在重复的抽象方法，那么只需要覆写一次；如果实现类没有全部覆写接口中的抽象方法，该实现类必须是抽象类；如果实现类中存在重复的默认方法，实现类必须重写冲突的方法；如果一个类的直接父类中的方法和接口的默认方法冲突，优先使用直接父类的方法。</li>
+<li>编译看左边，运行看右边(成员变量除外，成员变量编译和运行都看左边)。</li>
+<li>对象的向上转型表明创建一个子类，可以把它当作父类使用，向上转型是安全的，但无法调用子类特有的方法。</li>
+<li>如何知道父类引用的对象，原来是什么子类？使用（instanceof 类名)的方式，得到一个boolean值。 特别是向下转型的时候应该使用该关键字判断。</li>
+<li>外部类使用内部类，需要内部类对象；如果出现重名的情况，访问格式如(外部类名称.this外部类成员变量名).</li>
+<li>局部内部类的定义，只有所属的方法可以使用，出了方法后不能使用。</li>
+<li>修饰符的优先级public&gt;protected&gt;default&gt;private。定义一个类的时候。权限修饰符的规则如下：<ul>
 <li>外部类：public(default)</li>
 <li>成员内部类：所有修饰符都可以</li>
 <li>局部内部类：什么都不能写</li>
 </ul>
 </li>
-<li><p>局部内部类，如果希望访问所在方法的局部变量，那么这个局部变量必须是有效final的，因为局部变量随着方法的出栈而消失，但是new出来的对象会存在堆内存中，直到垃圾回收消失。</p>
-</li>
-<li><p>匿名内部类：如果接口的实现类(或者父类的子类)只需要使用唯一的一次，这种情况下可以省略该类的定义，改为使用匿名内部类。其格式为 (接口名称 对象名 = new 接口名称(){重写所有抽象方法})。</p>
-</li>
+<li>局部内部类，如果希望访问所在方法的局部变量，那么这个局部变量必须是有效final的，因为局部变量随着方法的出栈而消失，但是new出来的对象会存在堆内存中，直到垃圾回收消失。</li>
+<li>匿名内部类：如果接口的实现类(或者父类的子类)只需要使用唯一的一次，这种情况下可以省略该类的定义，改为使用匿名内部类。其格式为 (接口名称 对象名 = new 接口名称(){重写所有抽象方法})。</li>
 </ul>
 <h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><ul>
 <li>Array数组的长度不可以改变，但是ArrayList的长度是可以改变的。泛型表明装在集合中的所有元素全部是统一的什么类型，要注意，泛型只能是引用类型，不能是基本类型。对于ArrayList来说，直接打印显示的是内容而不是地址值。</li>
@@ -916,6 +907,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
       
@@ -925,8 +922,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" rel="next" title="Mysql基础">
-                <i class="fa fa-chevron-left"></i> Mysql基础
+              <a href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" rel="next" title="商城业务分析">
+                <i class="fa fa-chevron-left"></i> 商城业务分析
               </a>
             
           </div>
@@ -934,6 +931,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" rel="prev" title="Mysql基础">
+                Mysql基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -1025,7 +1026,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1036,7 +1037,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1085,7 +1086,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object工具类"><span class="nav-number">2.</span> <span class="nav-text">Object工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">3.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection集合"><span class="nav-number">4.</span> <span class="nav-text">Collection集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口"><span class="nav-number">5.</span> <span class="nav-text">List接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set接口"><span class="nav-number">6.</span> <span class="nav-text">set接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map集合"><span class="nav-number">7.</span> <span class="nav-text">map集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections工具类"><span class="nav-number">8.</span> <span class="nav-text">Collections工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变参数"><span class="nav-number">9.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Date和Calendar"><span class="nav-number">10.</span> <span class="nav-text">Date和Calendar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#System类常用方法"><span class="nav-number">11.</span> <span class="nav-text">System类常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String类和StringBuilder类"><span class="nav-number">12.</span> <span class="nav-text">String类和StringBuilder类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类"><span class="nav-number">13.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-number">14.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程"><span class="nav-number">15.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待唤醒机制-线程之间的通信"><span class="nav-number">16.</span> <span class="nav-text">等待唤醒机制(线程之间的通信)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-number">17.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">18.</span> <span class="nav-text">Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file类"><span class="nav-number">19.</span> <span class="nav-text">file类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO流"><span class="nav-number">20.</span> <span class="nav-text">IO流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归"><span class="nav-number">21.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stream流"><span class="nav-number">22.</span> <span class="nav-text">Stream流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络编程"><span class="nav-number">23.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射"><span class="nav-number">24.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解"><span class="nav-number">25.</span> <span class="nav-text">注解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java基础知识"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object工具类"><span class="nav-number">3.</span> <span class="nav-text">Object工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection集合"><span class="nav-number">5.</span> <span class="nav-text">Collection集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口"><span class="nav-number">6.</span> <span class="nav-text">List接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set接口"><span class="nav-number">7.</span> <span class="nav-text">set接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map集合"><span class="nav-number">8.</span> <span class="nav-text">map集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections工具类"><span class="nav-number">9.</span> <span class="nav-text">Collections工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变参数"><span class="nav-number">10.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Date和Calendar"><span class="nav-number">11.</span> <span class="nav-text">Date和Calendar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#System类常用方法"><span class="nav-number">12.</span> <span class="nav-text">System类常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String类和StringBuilder类"><span class="nav-number">13.</span> <span class="nav-text">String类和StringBuilder类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类"><span class="nav-number">14.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-number">15.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程"><span class="nav-number">16.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待唤醒机制-线程之间的通信"><span class="nav-number">17.</span> <span class="nav-text">等待唤醒机制(线程之间的通信)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-number">18.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">19.</span> <span class="nav-text">Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file类"><span class="nav-number">20.</span> <span class="nav-text">file类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO流"><span class="nav-number">21.</span> <span class="nav-text">IO流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归"><span class="nav-number">22.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stream流"><span class="nav-number">23.</span> <span class="nav-text">Stream流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络编程"><span class="nav-number">24.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射"><span class="nav-number">25.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解"><span class="nav-number">26.</span> <span class="nav-text">注解</span></a></li></ol></div>
             
 
           </div>
