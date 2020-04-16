@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="SpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  value和path属性均可指定请求路径 metho">
+<meta name="description" content="categories： SpringMVCSpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  valu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringMVC">
-<meta property="og:url" content="http://yoursite.com/2020/04/01/SpringMVC/index.html">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/01/SpringMVC/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="SpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  value和path属性均可指定请求路径 metho">
+<meta property="og:description" content="categories： SpringMVCSpringMVC三层架构和Structs2的异同点 相同点 底层都是基于原始Servlet的 都是基于MVC的 处理请求的机制都是一个核心控制器   不同点 入口不同：SpringMVC入口是Servlet，Structs2入口是Filter SpringMvVC基于方法，Structs2基于类    常用注解 RequestMapping  valu">
 <meta property="article:published_time" content="2020-04-01T02:48:24.652Z">
-<meta property="article:modified_time" content="2020-04-02T15:13:06.542Z">
+<meta property="article:modified_time" content="2020-04-16T14:47:51.572Z">
 <meta property="article:author" content="ijavaweb">
 <meta name="twitter:card" content="summary">
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/01/SpringMVC/"/>
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/01/SpringMVC/"/>
 
 
 
@@ -139,6 +139,7 @@
 
 
 
+  
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/SpringMVC/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/01/SpringMVC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -332,7 +333,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  422
+                  580
                 </span>
               
 
@@ -348,7 +349,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -369,7 +370,8 @@
       
 
       
-        <h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
+        <hr>
+<h2 id="categories：-SpringMVC"><a href="#categories：-SpringMVC" class="headerlink" title="categories： SpringMVC"></a>categories： SpringMVC</h2><h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
 <li>相同点<ul>
 <li>底层都是基于原始Servlet的</li>
 <li>都是基于MVC的</li>
@@ -436,6 +438,35 @@
 </ul>
 </li>
 </ul>
+<h3 id="SpringMVC中文件上传"><a href="#SpringMVC中文件上传" class="headerlink" title="SpringMVC中文件上传"></a>SpringMVC中文件上传</h3><ul>
+<li>传统的文件上传<ul>
+<li>MVC中文件上传</li>
+</ul>
+</li>
+<li>跨服务器文件上传</li>
+<li>搭建图片服务器<ul>
+<li>应用服务器和图片服务器通信 <code>Client.reaource()</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="SpringMVC异常处理"><a href="#SpringMVC异常处理" class="headerlink" title="SpringMVC异常处理"></a>SpringMVC异常处理</h3><h4 id="异常处理流程"><a href="#异常处理流程" class="headerlink" title="异常处理流程"></a>异常处理流程</h4><ul>
+<li><p>编写自定义异常类</p>
+</li>
+<li><p>编写异常处理器</p>
+</li>
+<li><p>配置异常处理器</p>
+<h4 id="拦截器的使用"><a href="#拦截器的使用" class="headerlink" title="拦截器的使用"></a>拦截器的使用</h4></li>
+<li><p>拦截器只能在SpringMVC中使用</p>
+</li>
+<li><p>拦截器只会拦截控制器方法，不会拦截js，css等资源</p>
+</li>
+<li><p>使用步骤</p>
+<ul>
+<li>编写拦截器类 ： 必须实现HandlerInterceptor接口，其中有三个默认方法<code>preHandler</code> <code>postHandler</code> <code>afterCompletion</code></li>
+<li>配置拦截器 mvc:interception标签</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -470,8 +501,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/02/SpringMVC%E4%B8%AD%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" rel="prev" title="SpringMVC中文件上传">
-                SpringMVC中文件上传 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/" rel="prev" title="Mybatis框架">
+                Mybatis框架 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -551,14 +582,23 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -606,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.</span> <span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三层架构"><span class="nav-number">1.1.</span> <span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和Structs2的异同点"><span class="nav-number">1.2.</span> <span class="nav-text">和Structs2的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">1.3.</span> <span class="nav-text">常用注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求参数的绑定"><span class="nav-number">1.4.</span> <span class="nav-text">请求参数的绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">1.5.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取原生的servlet-API"><span class="nav-number">1.6.</span> <span class="nav-text">获取原生的servlet API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应"><span class="nav-number">1.7.</span> <span class="nav-text">响应</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories：-SpringMVC"><span class="nav-number">1.</span> <span class="nav-text">categories： SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC"><span class="nav-number">1.1.</span> <span class="nav-text">SpringMVC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#三层架构"><span class="nav-number">1.1.1.</span> <span class="nav-text">三层架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和Structs2的异同点"><span class="nav-number">1.1.2.</span> <span class="nav-text">和Structs2的异同点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">1.1.3.</span> <span class="nav-text">常用注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请求参数的绑定"><span class="nav-number">1.1.4.</span> <span class="nav-text">请求参数的绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类型转换"><span class="nav-number">1.1.5.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取原生的servlet-API"><span class="nav-number">1.1.6.</span> <span class="nav-text">获取原生的servlet API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应"><span class="nav-number">1.1.7.</span> <span class="nav-text">响应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC中文件上传"><span class="nav-number">1.2.</span> <span class="nav-text">SpringMVC中文件上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpringMVC异常处理"><span class="nav-number">1.3.</span> <span class="nav-text">SpringMVC异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理流程"><span class="nav-number">1.3.1.</span> <span class="nav-text">异常处理流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拦截器的使用"><span class="nav-number">1.3.2.</span> <span class="nav-text">拦截器的使用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -640,7 +680,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.6k</span>
+    <span title="Site words total count">14.3k</span>
   
 </div>
 

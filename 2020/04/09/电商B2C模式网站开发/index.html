@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="电商B2C模式网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件RabbitMQ 搜索">
+<meta name="description" content="商B2C模式网站开发电商网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件Rabbit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="电商B2C模式网站开发">
-<meta property="og:url" content="http://yoursite.com/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="电商B2C模式网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件RabbitMQ 搜索">
+<meta property="og:description" content="商B2C模式网站开发电商网站开发需求分析 前台 主站频道，用户中心，秒杀，优惠券等   后台 商品，订单，库存，用户，运营，统计，财务，设置等    系统设计数据库设计 商品库 订单库 基础设置库 运营库 用户库 系统库 支付库 短信库  技术选型 SSM(通用mapper) +Dubbo 前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf 消息中间件Rabbit">
 <meta property="article:published_time" content="2020-04-08T22:42:56.238Z">
-<meta property="article:modified_time" content="2020-04-14T00:18:27.258Z">
+<meta property="article:modified_time" content="2020-04-16T14:51:17.616Z">
 <meta property="article:author" content="ijavaweb">
 <meta name="twitter:card" content="summary">
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/09/电商B2C模式网站开发/"/>
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/09/电商B2C模式网站开发/"/>
 
 
 
@@ -139,6 +139,7 @@
 
 
 
+  
 <meta name="generator" content="Hexo 4.2.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -266,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -306,6 +307,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">网站开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -332,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  3.3k
+                  3.4k
                 </span>
               
 
@@ -369,7 +392,7 @@
       
 
       
-        <h3 id="电商B2C模式网站开发"><a href="#电商B2C模式网站开发" class="headerlink" title="电商B2C模式网站开发"></a>电商<code>B2C</code>模式网站开发</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><ul>
+        <h3 id="商B2C模式网站开发"><a href="#商B2C模式网站开发" class="headerlink" title="商B2C模式网站开发"></a>商<code>B2C</code>模式网站开发</h3><h3 id="电商网站开发"><a href="#电商网站开发" class="headerlink" title="电商网站开发"></a>电商网站开发</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><ul>
 <li>前台<ul>
 <li>主站频道，用户中心，秒杀，优惠券等</li>
 </ul>
@@ -745,8 +768,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/08/%E9%80%9A%E7%94%A8mapper/" rel="next" title="通用mapper">
-                <i class="fa fa-chevron-left"></i> 通用mapper
+              <a href="/2020/04/08/JPA%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" rel="next" title="JPA框架使用">
+                <i class="fa fa-chevron-left"></i> JPA框架使用
               </a>
             
           </div>
@@ -836,14 +859,23 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -891,7 +923,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#电商B2C模式网站开发"><span class="nav-number">1.</span> <span class="nav-text">电商B2C模式网站开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求分析"><span class="nav-number">1.1.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统设计"><span class="nav-number">1.2.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库设计"><span class="nav-number">1.2.1.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#技术选型"><span class="nav-number">1.2.2.</span> <span class="nav-text">技术选型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工程搭建"><span class="nav-number">1.3.</span> <span class="nav-text">工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.1.</span> <span class="nav-text">准备工作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理后端"><span class="nav-number">1.4.</span> <span class="nav-text">管理后端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#公共异常处理"><span class="nav-number">1.4.1.</span> <span class="nav-text">公共异常处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片上传后端处理"><span class="nav-number">1.5.</span> <span class="nav-text">图片上传后端处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#商品后端管理逻辑"><span class="nav-number">1.6.</span> <span class="nav-text">商品后端管理逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式id生成方案"><span class="nav-number">1.6.1.</span> <span class="nav-text">分布式id生成方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#认证登录"><span class="nav-number">1.6.2.</span> <span class="nav-text">认证登录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同源策略设置"><span class="nav-number">1.6.3.</span> <span class="nav-text">同源策略设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#登录日志"><span class="nav-number">1.6.4.</span> <span class="nav-text">登录日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端页面"><span class="nav-number">1.7.</span> <span class="nav-text">前端页面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#thymeleaf模板引擎"><span class="nav-number">1.7.1.</span> <span class="nav-text">thymeleaf模板引擎</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存解决方案"><span class="nav-number">1.8.</span> <span class="nav-text">缓存解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存穿透，缓存击穿，缓存雪崩"><span class="nav-number">1.8.1.</span> <span class="nav-text">缓存穿透，缓存击穿，缓存雪崩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#整合springDataRedis"><span class="nav-number">1.8.2.</span> <span class="nav-text">整合springDataRedis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现商品分类导航缓存"><span class="nav-number">1.8.3.</span> <span class="nav-text">实现商品分类导航缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#轮播图缓存"><span class="nav-number">1.8.4.</span> <span class="nav-text">轮播图缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#价格缓存"><span class="nav-number">1.8.5.</span> <span class="nav-text">价格缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前端动态获取商品id"><span class="nav-number">1.8.6.</span> <span class="nav-text">前端动态获取商品id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索解决方案"><span class="nav-number">1.9.</span> <span class="nav-text">搜索解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#索引结构"><span class="nav-number">1.9.1.</span> <span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ElasticSearch"><span class="nav-number">1.9.2.</span> <span class="nav-text">ElasticSearch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询，高亮显示"><span class="nav-number">1.10.</span> <span class="nav-text">分页查询，高亮显示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分页查询"><span class="nav-number">1.10.1.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态页码渲染"><span class="nav-number">1.10.2.</span> <span class="nav-text">动态页码渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高亮查询"><span class="nav-number">1.10.3.</span> <span class="nav-text">高亮查询</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息中间件"><span class="nav-number">1.11.</span> <span class="nav-text">消息中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">1.11.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用戶註冊"><span class="nav-number">1.11.2.</span> <span class="nav-text">用戶註冊</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单点登录sso"><span class="nav-number">1.12.</span> <span class="nav-text">单点登录sso</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CAS"><span class="nav-number">1.12.1.</span> <span class="nav-text">CAS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#购物车"><span class="nav-number">1.13.</span> <span class="nav-text">购物车</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现思路"><span class="nav-number">1.13.1.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加到购物车"><span class="nav-number">1.13.2.</span> <span class="nav-text">添加到购物车</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保存勾选项"><span class="nav-number">1.13.3.</span> <span class="nav-text">保存勾选项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除勾选项"><span class="nav-number">1.14.</span> <span class="nav-text">删除勾选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#满减优惠计算"><span class="nav-number">1.15.</span> <span class="nav-text">满减优惠计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式事务解决方案"><span class="nav-number">1.16.</span> <span class="nav-text">分布式事务解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#购物车更新"><span class="nav-number">1.16.1.</span> <span class="nav-text">购物车更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#收货地址"><span class="nav-number">1.16.2.</span> <span class="nav-text">收货地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提交订单"><span class="nav-number">1.16.3.</span> <span class="nav-text">提交订单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务理论知识"><span class="nav-number">1.16.4.</span> <span class="nav-text">分布式事务理论知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务解决方案-1"><span class="nav-number">1.16.5.</span> <span class="nav-text">分布式事务解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#库存扣减操作"><span class="nav-number">1.16.6.</span> <span class="nav-text">库存扣减操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器推送方案"><span class="nav-number">1.17.</span> <span class="nav-text">服务器推送方案</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#商B2C模式网站开发"><span class="nav-number">1.</span> <span class="nav-text">商B2C模式网站开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#电商网站开发"><span class="nav-number">2.</span> <span class="nav-text">电商网站开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需求分析"><span class="nav-number">2.1.</span> <span class="nav-text">需求分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#系统设计"><span class="nav-number">2.2.</span> <span class="nav-text">系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据库设计"><span class="nav-number">2.2.1.</span> <span class="nav-text">数据库设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#技术选型"><span class="nav-number">2.2.2.</span> <span class="nav-text">技术选型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#工程搭建"><span class="nav-number">2.3.</span> <span class="nav-text">工程搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#准备工作"><span class="nav-number">2.3.1.</span> <span class="nav-text">准备工作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#管理后端"><span class="nav-number">2.4.</span> <span class="nav-text">管理后端</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#公共异常处理"><span class="nav-number">2.4.1.</span> <span class="nav-text">公共异常处理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片上传后端处理"><span class="nav-number">2.5.</span> <span class="nav-text">图片上传后端处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#商品后端管理逻辑"><span class="nav-number">2.6.</span> <span class="nav-text">商品后端管理逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式id生成方案"><span class="nav-number">2.6.1.</span> <span class="nav-text">分布式id生成方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#认证登录"><span class="nav-number">2.6.2.</span> <span class="nav-text">认证登录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同源策略设置"><span class="nav-number">2.6.3.</span> <span class="nav-text">同源策略设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#登录日志"><span class="nav-number">2.6.4.</span> <span class="nav-text">登录日志</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#前端页面"><span class="nav-number">2.7.</span> <span class="nav-text">前端页面</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#thymeleaf模板引擎"><span class="nav-number">2.7.1.</span> <span class="nav-text">thymeleaf模板引擎</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存解决方案"><span class="nav-number">2.8.</span> <span class="nav-text">缓存解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存穿透，缓存击穿，缓存雪崩"><span class="nav-number">2.8.1.</span> <span class="nav-text">缓存穿透，缓存击穿，缓存雪崩</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#整合springDataRedis"><span class="nav-number">2.8.2.</span> <span class="nav-text">整合springDataRedis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现商品分类导航缓存"><span class="nav-number">2.8.3.</span> <span class="nav-text">实现商品分类导航缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#轮播图缓存"><span class="nav-number">2.8.4.</span> <span class="nav-text">轮播图缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#价格缓存"><span class="nav-number">2.8.5.</span> <span class="nav-text">价格缓存</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前端动态获取商品id"><span class="nav-number">2.8.6.</span> <span class="nav-text">前端动态获取商品id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索解决方案"><span class="nav-number">2.9.</span> <span class="nav-text">搜索解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#索引结构"><span class="nav-number">2.9.1.</span> <span class="nav-text">索引结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ElasticSearch"><span class="nav-number">2.9.2.</span> <span class="nav-text">ElasticSearch</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询，高亮显示"><span class="nav-number">2.10.</span> <span class="nav-text">分页查询，高亮显示</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分页查询"><span class="nav-number">2.10.1.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态页码渲染"><span class="nav-number">2.10.2.</span> <span class="nav-text">动态页码渲染</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高亮查询"><span class="nav-number">2.10.3.</span> <span class="nav-text">高亮查询</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息中间件"><span class="nav-number">2.11.</span> <span class="nav-text">消息中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#RabbitMQ"><span class="nav-number">2.11.1.</span> <span class="nav-text">RabbitMQ</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用戶註冊"><span class="nav-number">2.11.2.</span> <span class="nav-text">用戶註冊</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单点登录sso"><span class="nav-number">2.12.</span> <span class="nav-text">单点登录sso</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CAS"><span class="nav-number">2.12.1.</span> <span class="nav-text">CAS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#购物车"><span class="nav-number">2.13.</span> <span class="nav-text">购物车</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实现思路"><span class="nav-number">2.13.1.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加到购物车"><span class="nav-number">2.13.2.</span> <span class="nav-text">添加到购物车</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保存勾选项"><span class="nav-number">2.13.3.</span> <span class="nav-text">保存勾选项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除勾选项"><span class="nav-number">2.14.</span> <span class="nav-text">删除勾选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#满减优惠计算"><span class="nav-number">2.15.</span> <span class="nav-text">满减优惠计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式事务解决方案"><span class="nav-number">2.16.</span> <span class="nav-text">分布式事务解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#购物车更新"><span class="nav-number">2.16.1.</span> <span class="nav-text">购物车更新</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#收货地址"><span class="nav-number">2.16.2.</span> <span class="nav-text">收货地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提交订单"><span class="nav-number">2.16.3.</span> <span class="nav-text">提交订单</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务理论知识"><span class="nav-number">2.16.4.</span> <span class="nav-text">分布式事务理论知识</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式事务解决方案-1"><span class="nav-number">2.16.5.</span> <span class="nav-text">分布式事务解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#库存扣减操作"><span class="nav-number">2.16.6.</span> <span class="nav-text">库存扣减操作</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器推送方案"><span class="nav-number">2.17.</span> <span class="nav-text">服务器推送方案</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -925,7 +957,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">14.6k</span>
+    <span title="Site words total count">14.3k</span>
   
 </div>
 
