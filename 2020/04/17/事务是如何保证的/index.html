@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="Mysql," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="309. Best Time to Buy and Sell Stock with Cooldown description Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. Y">
+<meta name="description" content="事务是如何保证的-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="309. Best Time to Buy and Sell Stock with Cooldown">
-<meta property="og:url" content="https://ijavaweb.github.io/2020/04/17/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown/index.html">
+<meta property="og:title" content="事务是如何保证的">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/17/%E4%BA%8B%E5%8A%A1%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%9A%84/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="309. Best Time to Buy and Sell Stock with Cooldown description Say you have an array for which the ith element is the price of a given stock on day i. Design an algorithm to find the maximum profit. Y">
-<meta property="article:published_time" content="2020-04-16T23:45:39.444Z">
-<meta property="article:modified_time" content="2020-04-16T23:10:29.610Z">
+<meta property="og:description" content="事务是如何保证的-">
+<meta property="article:published_time" content="2020-04-17T20:55:01.999Z">
+<meta property="article:modified_time" content="2020-04-17T20:55:01.999Z">
 <meta property="article:author" content="ijavaweb">
-<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/17/309. Best Time to Buy and Sell Stock with Cooldown/"/>
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/17/事务是如何保证的/"/>
 
 
 
 
 
-  <title>309. Best Time to Buy and Sell Stock with Cooldown | 学习小记</title>
+  <title>事务是如何保证的 | 学习小记</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/%E4%BA%8B%E5%8A%A1%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">309. Best Time to Buy and Sell Stock with Cooldown</h1>
+          <h1 class="post-title" itemprop="name headline">事务是如何保证的</h1>
         
 
         <div class="post-meta">
@@ -301,7 +301,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T01:45:39+02:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T22:55:01+02:00">
                 2020-04-17
               </time>
             
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
                   </a>
                 </span>
 
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  255
+                  8
                 </span>
               
 
@@ -397,22 +397,7 @@
       
 
       
-        <h3 id="309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="309. Best Time to Buy and Sell Stock with Cooldown"></a>309. Best Time to Buy and Sell Stock with Cooldown</h3><ul>
-<li><p><strong>description</strong></p>
-<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
-<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:</p>
-<ul>
-<li>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</li>
-<li>After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</li>
-</ul>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> prices[<span class="number">1</span>] &gt; prices[<span class="number">0</span>] ? prices[<span class="number">1</span>]-prices[<span class="number">0</span>] : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][<span class="number">4</span>];<span class="comment">//0 is rest without stock,1 is rest with stock ,2 is buy , 3 is sell</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = Integer.MIN_VALUE;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">3</span>] = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length ; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">3</span>]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">            dp[i][<span class="number">2</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i];</span><br><span class="line">            dp[i][<span class="number">3</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">2</span>]) + prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[n-<span class="number">1</span>][<span class="number">0</span>],dp[n-<span class="number">1</span>][<span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
+        <h3 id="事务是如何保证的"><a href="#事务是如何保证的" class="headerlink" title="事务是如何保证的"></a>事务是如何保证的</h3><p>- </p>
 
       
     </div>
@@ -430,7 +415,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            <a href="/tags/Mysql/" rel="tag"># Mysql</a>
           
         </div>
       
@@ -443,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/17/188.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV/" rel="next" title="188. Best Time to Buy and Sell Stock IV">
-                <i class="fa fa-chevron-left"></i> 188. Best Time to Buy and Sell Stock IV
+              <a href="/2020/04/17/104.%20Maximum%20Depth%20of%20Binary%20Tree/" rel="next" title="104. Maximum Depth of Binary Tree">
+                <i class="fa fa-chevron-left"></i> 104. Maximum Depth of Binary Tree
               </a>
             
           </div>
@@ -453,8 +438,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/17/322%20Coin%20Change/" rel="prev" title="322 Coin Change">
-                322 Coin Change <i class="fa fa-chevron-right"></i>
+              <a href="/2020/04/22/%E8%8D%A3%E5%A4%A7%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" rel="prev" title="荣大科技面试">
+                荣大科技面试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -607,7 +592,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><span class="nav-number">1.</span> <span class="nav-text">309. Best Time to Buy and Sell Stock with Cooldown</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事务是如何保证的"><span class="nav-number">1.</span> <span class="nav-text">事务是如何保证的</span></a></li></ol></div>
             
 
           </div>
