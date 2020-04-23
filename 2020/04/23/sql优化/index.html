@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="sql优化," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,16 +84,15 @@
 
 
 
-<meta name="description" content="优化准则基数某一列唯一键的数量叫基数 查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描  在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用 select列，count(*) from表group by列order by 2 desc来查看列的数据分布  优化单表查询的时候，可能走索引查询，也可能是全表扫描。这个需要查看数据分布   选择性选择性&#x3D;基数&#x2F;某一列总数x100%">
+<meta name="description" content="title: sql优化date: 2020-04-23 00:46:00tags: sql优化categories: sql优化 优化准则基数某一列唯一键的数量叫基数 查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描  在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用 select列，count(*) from表group by列order by 2 desc来查看列的数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sql优化">
 <meta property="og:url" content="https://ijavaweb.github.io/2020/04/23/sql%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="优化准则基数某一列唯一键的数量叫基数 查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描  在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用 select列，count(*) from表group by列order by 2 desc来查看列的数据分布  优化单表查询的时候，可能走索引查询，也可能是全表扫描。这个需要查看数据分布   选择性选择性&#x3D;基数&#x2F;某一列总数x100%">
-<meta property="article:published_time" content="2020-04-22T22:46:00.000Z">
-<meta property="article:modified_time" content="2020-04-22T22:58:19.012Z">
+<meta property="og:description" content="title: sql优化date: 2020-04-23 00:46:00tags: sql优化categories: sql优化 优化准则基数某一列唯一键的数量叫基数 查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描  在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用 select列，count(*) from表group by列order by 2 desc来查看列的数">
+<meta property="article:published_time" content="2020-04-22T22:46:00.839Z">
+<meta property="article:modified_time" content="2020-04-23T13:21:18.597Z">
 <meta property="article:author" content="ijavaweb">
-<meta property="article:tag" content="sql优化">
 <meta name="twitter:card" content="summary">
 
 
@@ -312,28 +311,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql%E4%BC%98%E5%8C%96/" itemprop="url" rel="index">
-                    <span itemprop="name">sql优化</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -360,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  191
+                  667
                 </span>
               
 
@@ -376,7 +353,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -397,7 +374,8 @@
       
 
       
-        <h4 id="优化准则"><a href="#优化准则" class="headerlink" title="优化准则"></a>优化准则</h4><h5 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h5><h6 id="某一列唯一键的数量叫基数"><a href="#某一列唯一键的数量叫基数" class="headerlink" title="某一列唯一键的数量叫基数"></a>某一列唯一键的数量叫基数</h6><ul>
+        <p>title: sql优化<br>date: 2020-04-23 00:46:00<br>tags: sql优化<br>categories: sql优化</p>
+<h4 id="优化准则"><a href="#优化准则" class="headerlink" title="优化准则"></a>优化准则</h4><h5 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h5><h6 id="某一列唯一键的数量叫基数"><a href="#某一列唯一键的数量叫基数" class="headerlink" title="某一列唯一键的数量叫基数"></a>某一列唯一键的数量叫基数</h6><ul>
 <li><p>查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描</p>
 </li>
 <li><p>在做<code>SQL</code>优化的时候，如果怀疑列数据分布不均衡，我们可以使用</p>
@@ -408,6 +386,47 @@
 </ul>
 <h5 id="选择性"><a href="#选择性" class="headerlink" title="选择性"></a>选择性</h5><h6 id="选择性-基数-某一列总数x100"><a href="#选择性-基数-某一列总数x100" class="headerlink" title="选择性=基数/某一列总数x100%"></a><code>选择性=基数/某一列总数x100%</code></h6><ul>
 <li>当选择性在20%左右的时候，数据分布是比较均衡的。所以当列出现在where条件中的时候且该列的选择性大于20%的时候就应该创建索引。</li>
+</ul>
+<h5 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h5><ul>
+<li>最左匹配原则<ul>
+<li>因为<code>mysql</code>会一直向右匹配直到遇到范围查询，所以应该把”=”放在前边</li>
+</ul>
+</li>
+<li>根据数据分布设定索引</li>
+<li>使用like的时候，使用向右模糊匹配<ul>
+<li>使用前模糊匹配不会走索引，但是可以通过翻转函数实现走索引</li>
+<li>使用模糊匹配，不能使用索引，也不能使用翻转函数优化</li>
+<li>使用右模糊匹配可以使用索引</li>
+</ul>
+</li>
+<li>使用<code>union all</code>代替<code>union</code><ul>
+<li>使用<code>union all</code>不会去重，也不会排序，所以效率高。所以，如果确认没有重复数据，使用<code>union all</code>效率高</li>
+<li>有多个索引列的时候，使用or会造成全表扫描，最好使用<code>union all</code>,如果没有索引，就使用<code>or</code></li>
+</ul>
+</li>
+<li>字段使用函数或者运算符的时候不会走索引，所以尽量在数值上使用函数和运算符而不是字段上</li>
+<li>使用数字作为符号的时候，数字需要加引号，否则<code>mysql</code>会自动进行数据类型转换，导致不走索引</li>
+<li>使用组合索引的时候，必须包含<strong>第一列</strong>才使用后</li>
+<li><code>is not null</code>和<code>not null</code>以及<code>！=</code>不会走索引</li>
+<li>使用<code>order by</code>子句的时候,以下情况才会走索引<ul>
+<li>所有列都必须包含在索引中且保持在索引中的顺序</li>
+<li>不能既有<code>ASC</code>，又有<code>DESC</code></li>
+</ul>
+</li>
+<li>索引不是越多越好，数据库需要额外的资源维护索引</li>
+<li>尽量避免使用<code>select *</code><ul>
+<li>因为会进行全表扫描而不会走索引</li>
+</ul>
+</li>
+<li>尽量使用表连接join代替<code>(not)in</code>和<code>(not)exists</code><ul>
+<li>性能 ：表连接 &gt;<code>(not)exists</code>&gt;<code>(not)in</code></li>
+</ul>
+</li>
+<li>清除不必要的排序</li>
+<li>避免使用<code>having</code>子句，而使用<code>where</code>子句</li>
+</ul>
+<h5 id="sql性能查询"><a href="#sql性能查询" class="headerlink" title="sql性能查询"></a><code>sql</code>性能查询</h5><ul>
+<li>使用<code>explain</code></li>
 </ul>
 
       
@@ -423,12 +442,6 @@
     
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/sql%E4%BC%98%E5%8C%96/" rel="tag"># sql优化</a>
-          
-        </div>
       
 
       
@@ -532,7 +545,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-count">58</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -603,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化准则"><span class="nav-number">1.</span> <span class="nav-text">优化准则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基数"><span class="nav-number">1.1.</span> <span class="nav-text">基数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#某一列唯一键的数量叫基数"><span class="nav-number">1.1.1.</span> <span class="nav-text">某一列唯一键的数量叫基数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择性"><span class="nav-number">1.2.</span> <span class="nav-text">选择性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择性-基数-某一列总数x100"><span class="nav-number">1.2.1.</span> <span class="nav-text">选择性&#x3D;基数&#x2F;某一列总数x100%</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化准则"><span class="nav-number">1.</span> <span class="nav-text">优化准则</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基数"><span class="nav-number">1.1.</span> <span class="nav-text">基数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#某一列唯一键的数量叫基数"><span class="nav-number">1.1.1.</span> <span class="nav-text">某一列唯一键的数量叫基数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#选择性"><span class="nav-number">1.2.</span> <span class="nav-text">选择性</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#选择性-基数-某一列总数x100"><span class="nav-number">1.2.1.</span> <span class="nav-text">选择性&#x3D;基数&#x2F;某一列总数x100%</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#优化方法"><span class="nav-number">1.3.</span> <span class="nav-text">优化方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sql性能查询"><span class="nav-number">1.4.</span> <span class="nav-text">sql性能查询</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -637,7 +650,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">33k</span>
+    <span title="Site words total count">34.5k</span>
   
 </div>
 
