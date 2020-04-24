@@ -742,6 +742,28 @@ Performance opt
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -763,7 +785,7 @@ Performance opt
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  667
+                  651
                 </span>
               
 
@@ -802,8 +824,7 @@ Performance opt
       
         
           
-          title: sql优化date: 2020-04-23 00:46:00tags: sql优化categories: sql优化
-优化准则基数某一列唯一键的数量叫基数
+          优化准则基数某一列唯一键的数量叫基数
 查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描
 
 在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用
@@ -821,7 +842,9 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
 
 
 根据数据分布设定索引
-使用lik
+使用like的时候，使用向右模糊匹配
+使用前模糊匹配不会走索引，但是可以通过翻转函数实现走索引
+使用模糊匹配，不能使用索引，也不能使用翻转函数
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1336,7 +1359,7 @@ mq的消息重复消费问题
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1347,7 +1370,7 @@ mq的消息重复消费问题
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
