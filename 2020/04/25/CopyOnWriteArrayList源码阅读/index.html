@@ -73,7 +73,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="源码阅读," />
 
 
 
@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="servlet体系结构 GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法 HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。  servlet相关配置 urlpartten:Servlet访问路径 一个Servlet可以定义">
+<meta name="description" content="CopyOnWriteArrayList源码阅读 继承结构如图    toArray()返回的是复制的一份 123public Object[] toArray() &amp;#123;        return getArray().clone();    &amp;#125;  所有的增删改方法都使用synchronized,且每次都会复制一份再修改，如set方法 123456789101112131415">
 <meta property="og:type" content="article">
-<meta property="og:title" content="详细servlet解析">
-<meta property="og:url" content="https://ijavaweb.github.io/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:title" content="CopyOnWriteArrayList源码阅读">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="servlet体系结构 GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法 HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。  servlet相关配置 urlpartten:Servlet访问路径 一个Servlet可以定义">
-<meta property="article:published_time" content="2020-02-21T22:40:13.108Z">
-<meta property="article:modified_time" content="2020-04-16T14:48:11.200Z">
+<meta property="og:description" content="CopyOnWriteArrayList源码阅读 继承结构如图    toArray()返回的是复制的一份 123public Object[] toArray() &amp;#123;        return getArray().clone();    &amp;#125;  所有的增删改方法都使用synchronized,且每次都会复制一份再修改，如set方法 123456789101112131415">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425171630266.png">
+<meta property="article:published_time" content="2020-04-25T15:13:49.000Z">
+<meta property="article:modified_time" content="2020-04-25T15:33:23.103Z">
 <meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="源码阅读">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425171630266.png">
 
 
 
@@ -123,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="https://ijavaweb.github.io/2020/02/21/详细servlet解析/"/>
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/25/CopyOnWriteArrayList源码阅读/"/>
 
 
 
 
 
-  <title>详细servlet解析 | 学习小记</title>
+  <title>CopyOnWriteArrayList源码阅读 | 学习小记</title>
   
 
 
@@ -271,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -288,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">详细servlet解析</h1>
+          <h1 class="post-title" itemprop="name headline">CopyOnWriteArrayList源码阅读</h1>
         
 
         <div class="post-meta">
@@ -300,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-21T23:40:13+01:00">
-                2020-02-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T17:13:49+02:00">
+                2020-04-25
               </time>
             
 
@@ -323,8 +326,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Servlet/" itemprop="url" rel="index">
-                    <span itemprop="name">Servlet</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -359,7 +362,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  826
+                  184
                 </span>
               
 
@@ -375,7 +378,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  1
                 </span>
               
             </div>
@@ -396,138 +399,20 @@
       
 
       
-        <h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><ul>
-<li>GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法</li>
-<li>HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。</li>
+        <h4 id="CopyOnWriteArrayList源码阅读"><a href="#CopyOnWriteArrayList源码阅读" class="headerlink" title="CopyOnWriteArrayList源码阅读"></a><code>CopyOnWriteArrayList</code>源码阅读</h4><ul>
+<li>继承结构如图</li>
 </ul>
-<h3 id="servlet相关配置"><a href="#servlet相关配置" class="headerlink" title="servlet相关配置"></a>servlet相关配置</h3><ul>
-<li>urlpartten:Servlet访问路径<ul>
-<li>一个Servlet可以定义多个访问路径：@webServlet({“/d1”,”dd1”,”ddd1”})</li>
-<li>路径定义规则 ：<ul>
-<li>/xxx</li>
-<li>/xxx/xxx/x :多层路径</li>
-<li>*.do</li>
-</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425171630266.png" alt="image-20200425171630266"></p>
+<ul>
+<li><p><code>toArray()</code>返回的是复制的一份</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Object[] toArray() &#123;</span><br><span class="line">        <span class="keyword">return</span> getArray().clone();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
+<li><p>所有的增删改方法都使用<code>synchronized</code>,且每次都会复制一份再修改，如<code>set</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//写操作的时候加锁</span></span><br><span class="line">    <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">        Object[] es = getArray();</span><br><span class="line">        <span class="comment">//找到index处的元素</span></span><br><span class="line">        <span class="comment">//如果不相等，则需要修改</span></span><br><span class="line">        E oldValue = elementAt(es, index);</span><br><span class="line">        <span class="keyword">if</span> (oldValue != element) &#123;</span><br><span class="line">            <span class="comment">//修改的时候先把原来的数组clone一份</span></span><br><span class="line">            es = es.clone();</span><br><span class="line">            es[index] = element;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保证volatile的语义</span></span><br><span class="line">        setArray(es);</span><br><span class="line">        <span class="keyword">return</span> oldValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
-<li>定义了客户端和服务器端通信的时候，发送数据的格式</li>
-<li>特点：<ul>
-<li>基于TCP/IP 的高级协议</li>
-<li>默认端口：80</li>
-<li>基于请求/相应模型的，也就是说一起请求对应一次响应</li>
-<li>是无状态的：每次请求之间是相互独立的</li>
-<li>1.1版本可以复用链接</li>
-</ul>
-</li>
-<li>请求消息数据格式<ul>
-<li>请求行<ul>
-<li>请求方式 请求url 请求协议/版本<ul>
-<li>get方式：请求参数在请求行中，url后面；url长度有限制；不安全</li>
-<li>post方式：请求参数在请求体中；url长度没有限制；安全</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>请求头<ul>
-<li>键值的方式</li>
-<li>常见的请求头<ul>
-<li>User-Agent:浏览器版本信息</li>
-<li>Referer:告诉服务器，当前请求从哪来，可以防止盗链</li>
-<li>Connection:</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>请求空行<ul>
-<li>空行</li>
-</ul>
-</li>
-<li>请求体<ul>
-<li>请求参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>响应消息数据格式</li>
-</ul>
-<h2 id="Request原理"><a href="#Request原理" class="headerlink" title="Request原理"></a>Request原理</h2><ul>
-<li>tomcat服务器会根据请求url中的资源路径，创建对应的ServletDemo1的对象</li>
-<li>tomcat服务器会创建request和response对象， request对象中封装请求消息数据</li>
-<li>tomcat将request和response两个对象 传递给service方法，并调用该方法</li>
-</ul>
-<h3 id="request对象继承体系结构"><a href="#request对象继承体系结构" class="headerlink" title="request对象继承体系结构"></a>request对象继承体系结构</h3><ul>
-<li>ServletRequest(接口)</li>
-<li>HttpServletRequest（接口，继承自ServletRequest）</li>
-<li>RequestrFacade（由tomcat实现接口HttpServletRequest）</li>
-</ul>
-<h3 id="Request的功能"><a href="#Request的功能" class="headerlink" title="Request的功能"></a>Request的功能</h3><ul>
-<li>获取请求消息数据<ul>
-<li>获取请求行数据<ul>
-<li>获取请求方式 String getMethod()</li>
-<li>获取虚拟目录 Srting getContextPath()</li>
-<li>获取Servlet路径 String getSercletPath()</li>
-<li>获取get方式请求参数 String getQueryString()</li>
-<li>获取请求url StringBuffer getRequestURL()</li>
-<li>获取协议及版本 String getProcol()</li>
-<li>获取客户机的IP地址 String getRemoteAddr()</li>
-</ul>
-</li>
-<li>获取请求头数据<ul>
-<li>String getHeader(String name) 根据请求头</li>
-</ul>
-</li>
-<li>获取请求体数据<ul>
-<li>只有post请求方式才有请求体</li>
-<li>步骤<ul>
-<li>获取流对象 BufferedReader getReader(): 获取字符输入流，只能获取字符； </li>
-<li>从流对象中拿出数据</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>其他功能<ul>
-<li>获取请求参数的通用方式<ul>
-<li>String getParameter(String name): 根据参数名称获取参数值</li>
-<li>String[] getParameterValues(String name): 根据参数名称获取参数值数组</li>
-<li>Enumeration getParameterName() : 获取请求参数名称</li>
-<li>Map&lt;String, String[]&gt; getParameterMap() : 获取所有参数的map集合</li>
-</ul>
-</li>
-<li>请求转发:在服务器内部的资源跳转方式<ul>
-<li>步骤<ul>
-<li>通过request对象获取请求转发器对象： RequestDispatcher getRequestDispatcher(String path)</li>
-<li>使用RequestDispatcher对象进行转发： forward()</li>
-</ul>
-</li>
-<li>特点<ul>
-<li>浏览器地址不变化</li>
-<li>只能转发到当前服务器的内部资源</li>
-<li>转发是一次请求</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>共享数据<ul>
-<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
-<li>request域 ：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</li>
-<li>方法：<ul>
-<li>void setAttribute(String name,.Object obj) :存储数据</li>
-<li>Object getAttribute(String name): 通过键获取值</li>
-<li>void removeAttribute(String name): 通过键移除值</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>获取ServletContext<ul>
-<li>ServletContext getServletContext()</li>
-</ul>
-</li>
-</ul>
+<li><p><code>add()方法</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//加锁</span></span><br><span class="line">    <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">        Object[] es = getArray();</span><br><span class="line">        <span class="keyword">int</span> len = es.length;</span><br><span class="line">        <span class="comment">//复制一份</span></span><br><span class="line">        es = Arrays.copyOf(es, len + <span class="number">1</span>);</span><br><span class="line">        es[len] = e;</span><br><span class="line">        <span class="comment">//setArray是final修饰的</span></span><br><span class="line">        setArray(es);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
 
@@ -545,6 +430,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="tag"># 源码阅读</a>
+          
+        </div>
+      
 
       
       
@@ -554,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/12/Servlet/" rel="next" title="Servlet">
-                <i class="fa fa-chevron-left"></i> Servlet
+              <a href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" rel="next" title="ThreadPoolExcutor源码阅读">
+                <i class="fa fa-chevron-left"></i> ThreadPoolExcutor源码阅读
               </a>
             
           </div>
@@ -563,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" rel="prev" title="Servlet&HTTP&Request笔记">
-                Servlet&HTTP&Request笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -718,7 +605,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#servlet"><span class="nav-number">1.</span> <span class="nav-text">servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#体系结构"><span class="nav-number">1.1.</span> <span class="nav-text">体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#servlet相关配置"><span class="nav-number">1.2.</span> <span class="nav-text">servlet相关配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP"><span class="nav-number">2.</span> <span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request原理"><span class="nav-number">3.</span> <span class="nav-text">Request原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#request对象继承体系结构"><span class="nav-number">3.1.</span> <span class="nav-text">request对象继承体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Request的功能"><span class="nav-number">3.2.</span> <span class="nav-text">Request的功能</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#CopyOnWriteArrayList源码阅读"><span class="nav-number">1.</span> <span class="nav-text">CopyOnWriteArrayList源码阅读</span></a></li></ol></div>
             
 
           </div>
