@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/23/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/23/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" itemprop="url">git基本操作</a></h1>
+                <a class="post-title-link" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">ThreadPoolExcutor源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-23T15:42:43+02:00">
-                2020-04-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T16:05:49+02:00">
+                2020-04-25
               </time>
             
 
@@ -324,438 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index">
-                    <span itemprop="name">git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          git基本操作本文来源git基本操作
-
-git的通用操作流程如下
-
-
-
-主要涉及四个部分，工作区，暂存区，本地仓库。远程仓库
-
-查看配置命令
-
-git config --list
-
-
-工作区命令
-
-新建：git init或者`git clone
-提交: git add .
-撤销：git rm
-
-
-暂存区命令
-
-提交到版本库：git commit -m
-查看信息： git diff --cached
-分支管理
-创建分支：git branch，如git branch testing；
-从当前所处的分支切换到其他分支：git checkout，如git checkout testing；
-新建并切换到新建分支上：git checkout -b;
-删除分支：git branch -d；
-将当前分支与指定分支进行合并：git merge;
-显示本地仓库的所有分支：git branch;
-查看各个分支
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/23/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/23/%E4%BA%BA%E4%BA%BA%E8%BD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/23/%E4%BA%BA%E4%BA%BA%E8%BD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">人人车面试题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-23T11:12:55+02:00">
-                2020-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  308
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-单点登录的实现
-
-java基础中重要的几块
-
-ArrayList什么时候扩容，怎么扩容
-
-http和websocket的区别
-
-http是短链接，socket是长连接
-socket主要是对tcp的封装
-
-
-
-一次页面请求发生了什么
-
-DNS解析出IP地址
-根据IP建立TCP连接
-发送HTTP请求
-服务端返回页面
-
-
-重定向和转发的区别，是服务端的还是客户端行为？
-
-IOC的作用
-
-资源集中管理
-降低耦合
-
-
-503，302，403错误码
-
-AOP的使用场景
-
-Authentication 权限
-Caching 缓存
-Context passing 内容传递
-Error handling 错误处理
-Lazy loading 懒加载
-Debugging 调试
-logging，tracing，profiling and monitoring 记录跟踪 优化 校准
-Performance opt
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/23/%E4%BA%BA%E4%BA%BA%E8%BD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/23/sql%E4%BC%98%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/23/sql%E4%BC%98%E5%8C%96/" itemprop="url">sql优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-23T00:46:00+02:00">
-                2020-04-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/" itemprop="url" rel="index">
-                    <span itemprop="name">sql</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -824,31 +394,19 @@ Performance opt
       
         
           
-          优化准则基数某一列唯一键的数量叫基数
-查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描
-
-在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用
-select列，count(*) from表group by列order by 2 desc来查看列的数据分布
-
-优化单表查询的时候，可能走索引查询，也可能是全表扫描。这个需要查看数据分布
+          ThreadPoolExcutor源码阅读
+继承结构如下
 
 
-选择性选择性=基数/某一列总数x100%
-当选择性在20%左右的时候，数据分布是比较均衡的。所以当列出现在where条件中的时候且该列的选择性大于20%的时候就应该创建索引。
 
-优化方法
-最左匹配原则
-因为mysql会一直向右匹配直到遇到范围查询，所以应该把”=”放在前边
+Executor接口只有一个方法execute()
 
-
-根据数据分布设定索引
-使用like的时候，使用向右模糊匹配
-使用前模糊匹配不会走索引，但是可以通过翻转函数实现走索引
-使用模糊匹配，不能使用索引，也不能使用翻转函数
+构造方法如下
+123456789public ThreadPoolExecutor(int corePoolSize,//核心线程数                          int maximumPoolSize,//最大线程数                          long keepAliveTime,//线程超过核心线程数时，空闲线程最大等等待时间                          TimeUnit unit,                          //工作队列                          BlockingQueue&lt;Runnable&gt; workQueue) &#123;    this
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/23/sql%E4%BC%98%E5%8C%96/#more" rel="contents">
+            <a class="btn" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -899,7 +457,7 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/22/elasticSearch%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -918,7 +476,7 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/22/elasticSearch%E5%AD%A6%E4%B9%A0/" itemprop="url">elasticSearch学习</a></h1>
+                <a class="post-title-link" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">Thread源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -930,8 +488,8 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-22T21:27:16+02:00">
-                2020-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T15:16:35+02:00">
+                2020-04-25
               </time>
             
 
@@ -953,8 +511,8 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/elasticSearch/" itemprop="url" rel="index">
-                    <span itemprop="name">elasticSearch</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -984,7 +542,7 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  540
+                  268
                 </span>
               
 
@@ -1023,32 +581,23 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
       
         
           
-          elasticSearch学习索引不变性
-索引写到磁盘中是不会变的，这使多线程的时候不需要添加锁
+          Thread源码阅读
+Thread实现了Runnable接口，该接口中只有一个抽象方法run()
 
-但是存在一个缺陷，就是想让修改过后的文档被搜索到，必须重构整个索引
-
-
-动态更新索引
-由于索引不变性的缺陷，能否动态更新索引呢？当然是可以的，可以使用不止一个索引，通过新添加的索引来表示重写的倒排索引方案，
-
-新文档建立的时候，先在内存中建立buffer，然后再写入磁盘中
-
-当新的请求到来，就会遍历所有写入磁盘中的文档
+提供了私有构造方法
+123private Thread(ThreadGroup g, Runnable target, String name,                  long stackSize, AccessControlContext acc,                  boolean inheritThreadLocals)
 
 
-删除和更新索引
-删除和更新文档都是逻辑删除和更新，也就是说在更新或者删除的时候，知识对删除或者更新的文档做一个标记，并且删除的文档也会本检索到，只是在返回的时候将已经删除的元素从返回的集合中剔除。
 
 
-上述策略能使文档在分钟级别内被检索到，但是还是很慢
 
-实时索引
-为了解决索引查询慢的问题，首先解决的是将文档写入磁盘的过程，因为这个过程本身很耗时。而在buffer和磁盘之
+
+start()使用synchronized修饰
+123456789101112131415161718192021public synchronized void start() &#123;    //0表示线程是新建的，所以Thread建立的线程不允许重复start       if (threadStatus != 0)  
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/22/elasticSearch%E5%AD%A6%E4%B9%A0/#more" rel="contents">
+            <a class="btn" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1099,7 +648,7 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/22/%E8%8D%A3%E5%A4%A7%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/concurrenthashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1118,7 +667,7 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/22/%E8%8D%A3%E5%A4%A7%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/" itemprop="url">荣大科技面试</a></h1>
+                <a class="post-title-link" href="/2020/04/25/concurrenthashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">concurrenthashMap源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -1130,8 +679,8 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-22T10:33:55+02:00">
-                2020-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T15:03:17+02:00">
+                2020-04-25
               </time>
             
 
@@ -1153,8 +702,8 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -1184,7 +733,400 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  176
+                  393
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          ConcurrentHashMap源码阅读
+继承关系如下图
+
+  
+
+没有实现cloneable
+
+大部分变量使用volatile修饰，比如
+12private transient volatile Node&lt;K,V&gt;[] nextTable;private transient volatile long baseCount;
+
+主要阅读其put方法
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576//put方法调用putValpublic V put(K key, V value) &#123;        return putVal(ke
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/concurrenthashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">HashMap源码阅读</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T11:40:47+02:00">
+                2020-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          HashMap源码阅读
+HashMap的继承结构如下:
+
+
+
+HashMap中的变量有如下这些
+
+
+其中默认容量是16
+最大容量是2^30，原因是最高位是符号位，同时要保证容量是2的次方数，所以是2^30
+list转化为tree的阈值是8，也就是链表长度超过8以后就转化为树(红黑树)
+tree转化为list的阈值是6，也就是tree中元素小于6就会转化为list
+MIN_TREEIFY_CAPACITY是64，也就是hashTable中元素超过64个才会转换成tree
+
+
+hashMap中的方法
+
+首先关注``hashcode和hash`方法
+
+
+可以看到调用的是object的``hashCode方法，该方法是native方法，将key和value的hashCode`异或
+
+hash函数
+
+这个函数就是大名鼎鼎的扰动函数，通过将hashCode右移16位以后异或，同时保留了高位的特性，降低
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url">线程池</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T16:35:23+02:00">
+                2020-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">线程池</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  123
                 </span>
               
 
@@ -1223,40 +1165,35 @@ select列，count(*) from表group by列order by 2 desc来查看列的数据分�
       
         
           
-          多线程
-callable和runnablle的区别，启动线程的方式
-synchronized和lock的区别
-集合类的实现和区别，hashmap当红黑树中元素减少会变为链表么？
-各种线程池
+          线程池基础常用的线程池
+Executors
+newFixedThreadPool:无界队列
+newCachedThreaPool：线程无上限
+newSingleThredPool:无界队列
+newScheduledThreadPool：线程无上限
 
-JVM
-垃圾回收机制
 
-事务
-什么是事务，事务的特性
+ThreadPoolExecutor
 
-Mysql
-怎么优化查询速率
-模糊查询的%位置的区别
-limit分页查询和效率，以及怎么提高效率
+线程池重要参数
+corePoolSize:核心线程数
+maxinumPoolSize：最大线程数
+keepAliveTime:线程最大空闲时间
+workQueue：任务队列
+threadFactory：线程工厂
+handler：拒绝策略
 
-Spring
-AOP的作用
-自己抽象一个方法实现日志记录和AOP有什么区别
-
-ES
-修改索引的时候是直接修改某个字段么。删除呢
-
-MQ
-mq的消息丢失问题
-mq的消息重复消费问题
-幂等性是什么
+拒绝策略
+AbortPolicy:丢弃任务并抛出异常
+DiscardPolicy:丢弃任务不抛异常
+DiscardOldestPolicy:丢弃队列最前面的任务
+CallerRunsPolicy:由调用线程处理该任务
 
 
           
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/22/%E8%8D%A3%E5%A4%A7%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/#more" rel="contents">
+            <a class="btn" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1298,7 +1235,7 @@ mq的消息重复消费问题
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -1348,7 +1285,7 @@ mq的消息重复消费问题
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1359,7 +1296,7 @@ mq的消息重复消费问题
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1370,7 +1307,7 @@ mq的消息重复消费问题
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1437,7 +1374,7 @@ mq的消息重复消费问题
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">34.5k</span>
+    <span title="Site words total count">37.6k</span>
   
 </div>
 
