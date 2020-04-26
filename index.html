@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/26/1143.%20%20Longest%20Common%20Subsequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">CopyOnWriteArrayList源码阅读</a></h1>
+                <a class="post-title-link" href="/2020/04/26/1143.%20%20Longest%20Common%20Subsequence/" itemprop="url">1143.  Longest Common Subsequence</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T17:13:49+02:00">
-                2020-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:30:26+02:00">
+                2020-04-26
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">源码阅读</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  184
+                  188
                 </span>
               
 
@@ -394,20 +394,18 @@
       
         
           
-          CopyOnWriteArrayList源码阅读
-继承结构如图
+          1143.  Longest Common Subsequence
+题目描述
+12345给定两个字符串，求出最长公共字串的长度例子Input: text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; Output: 3  Explanation: The longest common subsequence is &quot;ace&quot; and its length is 3.
 
+解答
+12使用动态规划，如果text1[i] &#x3D;&#x3D; text2[j],则dp[i][j] &#x3D; dp[i-1][j-1]+1否则dp[i][j] &#x3D; Math.max(dp[i-1][j],dp[i][j-1])
 
-
-toArray()返回的是复制的一份
-123public Object[] toArray() &#123;        return getArray().clone();    &#125;
-
-所有的增删改方法都使用synchronized,且每次都会复制一份再修改，如set方法
-1234567891011121314151617public E set(int index, E element) &#123;    //写操作的时候加锁    synchronized (lock) &#123;        Object[] es = getArray();        //找到index处的元素        //如果不相等，则需要修改        E oldValue = elementAt(es, i
+123456789101112131415161718class Solution &#
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+            <a class="btn" href="/2020/04/26/1143.%20%20Longest%20Common%20Subsequence/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -458,7 +456,7 @@ toArray()返回的是复制的一份
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/26/55.%20jump%20game/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -477,7 +475,7 @@ toArray()返回的是复制的一份
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">ThreadPoolExcutor源码阅读</a></h1>
+                <a class="post-title-link" href="/2020/04/26/55.%20jump%20game/" itemprop="url">55. jump game</a></h1>
         
 
         <div class="post-meta">
@@ -489,8 +487,8 @@ toArray()返回的是复制的一份
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T16:05:49+02:00">
-                2020-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:26:40+02:00">
+                2020-04-26
               </time>
             
 
@@ -512,8 +510,8 @@ toArray()返回的是复制的一份
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">源码阅读</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -543,194 +541,7 @@ toArray()返回的是复制的一份
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  702
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          ThreadPoolExcutor源码阅读
-继承结构如下
-
-
-
-Executor接口只有一个方法execute()
-
-构造方法如下
-123456789public ThreadPoolExecutor(int corePoolSize,//核心线程数                          int maximumPoolSize,//最大线程数                          long keepAliveTime,//线程超过核心线程数时，空闲线程最大等等待时间                          TimeUnit unit,                          //工作队列                          BlockingQueue&lt;Runnable&gt; workQueue) &#123;    this
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">Thread源码阅读</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T15:16:35+02:00">
-                2020-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">源码阅读</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  268
+                  276
                 </span>
               
 
@@ -769,23 +580,18 @@ Executor接口只有一个方法execute()
       
         
           
-          Thread源码阅读
-Thread实现了Runnable接口，该接口中只有一个抽象方法run()
+          55. jump game
+题目描述
+12345给定一个非负的整数数组，每个元素表示可以向前走多少步，判断是否可以走到最后的位置例子：Input: [2,3,1,1,4]Output: trueExplanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
 
-提供了私有构造方法
-123private Thread(ThreadGroup g, Runnable target, String name,                  long stackSize, AccessControlContext acc,                  boolean inheritThreadLocals)
+解答
+1可以使用动态规划，每个dp[i]表示是否可以到达该位置
 
-
-
-
-
-
-start()使用synchronized修饰
-123456789101112131415161718192021public synchronized void start() &#123;    //0表示线程是新建的，所以Thread建立的线程不允许重复start       if (threadStatus != 0)  
+1234567891011121314151617181920212223class Solution &#123;    public boolean canJump(int[] nums) &#123;        int n = nums.length;        boolean[] dp = new boolean[n];        if(n == 1)&#123;
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+            <a class="btn" href="/2020/04/26/55.%20jump%20game/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -836,7 +642,7 @@ start()使用synchronized修饰
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/26/146.%20LRU%20Cache/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -855,7 +661,7 @@ start()使用synchronized修饰
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">HashMap源码阅读</a></h1>
+                <a class="post-title-link" href="/2020/04/26/146.%20LRU%20Cache/" itemprop="url">146. LRU Cache</a></h1>
         
 
         <div class="post-meta">
@@ -867,8 +673,8 @@ start()使用synchronized修饰
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T11:40:47+02:00">
-                2020-04-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:21:20+02:00">
+                2020-04-26
               </time>
             
 
@@ -890,8 +696,8 @@ start()使用synchronized修饰
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
-                    <span itemprop="name">源码阅读</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -921,210 +727,7 @@ start()使用synchronized修饰
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  8
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          HashMap源码阅读
-HashMap的继承结构如下:
-
-
-
-HashMap中的变量有如下这些
-
-
-其中默认容量是16
-最大容量是2^30，原因是最高位是符号位，同时要保证容量是2的次方数，所以是2^30
-list转化为tree的阈值是8，也就是链表长度超过8以后就转化为树(红黑树)
-tree转化为list的阈值是6，也就是tree中元素小于6就会转化为list
-MIN_TREEIFY_CAPACITY是64，也就是hashTable中元素超过64个才会转换成tree
-
-
-hashMap中的方法
-
-首先关注``hashcode和hash`方法
-
-
-可以看到调用的是object的``hashCode方法，该方法是native方法，将key和value的hashCode`异或
-
-hash函数
-
-这个函数就是大名鼎鼎的扰动函数，通过将hashCode右移16位以后异或，同时保留了高位的特性，降低
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url">线程池</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T16:35:23+02:00">
-                2020-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">线程池</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  123
+                  364
                 </span>
               
 
@@ -1163,35 +766,392 @@ hash函数
       
         
           
-          线程池基础常用的线程池
-Executors
-newFixedThreadPool:无界队列
-newCachedThreaPool：线程无上限
-newSingleThredPool:无界队列
-newScheduledThreadPool：线程无上限
+          146. LRU Cache
+题目描述
+1实现一个LUR缓存，实现get和put方法
 
+解答
+121. 使用双向链表2. 使用LinkedHashMap
 
-ThreadPoolExecutor
-
-线程池重要参数
-corePoolSize:核心线程数
-maxinumPoolSize：最大线程数
-keepAliveTime:线程最大空闲时间
-workQueue：任务队列
-threadFactory：线程工厂
-handler：拒绝策略
-
-拒绝策略
-AbortPolicy:丢弃任务并抛出异常
-DiscardPolicy:丢弃任务不抛异常
-DiscardOldestPolicy:丢弃队列最前面的任务
-CallerRunsPolicy:由调用线程处理该任务
-
-
-          
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990class LRUCache&#123;    private int capacity;    class Node&#123;        int key;        int value;        Node next;        Node before;            &#
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more" rel="contents">
+            <a class="btn" href="/2020/04/26/146.%20LRU%20Cache/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/26/201.%20Bitwise%20AND%20of%20Numbers%20Range/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/26/201.%20Bitwise%20AND%20of%20Numbers%20Range/" itemprop="url">201. Bitwise AND of Numbers Range</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:15:12+02:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  220
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          201. Bitwise AND of Numbers Range
+题目描述
+1234给定两个整数，求出这两个整数之间所有数的按位与结果例子：Input: [5,7]Output: 4
+
+解答：
+12按位与的结果要么是最小的数字，要么是比最小数字还小的数 按位与只有对应位置为1，结果的相应位置才为1，所以将两个数移位操作，当两个数相等时就是结果
+
+123456789public int rangeBitwiseAnd(int m, int n) &#123;        int count = 0;		while(m != n)&#123;			m &gt;&gt;= 1;			n &gt;&gt;= 1;			count++;		&#125;		return m&lt;&lt;count;    &#125;
+
+1另外一种解法，则依赖位运算，使用n&amp;(n-1)逐步将大的数减小，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/26/201.%20Bitwise%20AND%20of%20Numbers%20Range/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/26/202.%20happy%20number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/26/202.%20happy%20number/" itemprop="url">202. happy number</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T19:07:37+02:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  201
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          202. happy number
+题目描述
+123456789给定一个整数，如果把整数拆分，每个数字取平方后相加的结果是1，则是开心数，如果陷入无限循环则不是开心数。例子：Input: 19Output: trueExplanation: 12 + 92 &#x3D; 8282 + 22 &#x3D; 6862 + 82 &#x3D; 10012 + 02 + 02 &#x3D; 1
+
+解答
+1使用set存储每次的结果值，如果某一次的结果值已经在set集合中出现了，则说明已经无限循环了
+
+123456789101112131415161718192021222324class Solution &#123;    public boolean isHappy(int n) &#123;        HashSet&lt;Integer&gt; set = new HashSet&lt;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/26/202.%20happy%20number/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1233,7 +1193,7 @@ CallerRunsPolicy:由调用线程处理该任务
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -1283,7 +1243,7 @@ CallerRunsPolicy:由调用线程处理该任务
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1372,7 +1332,7 @@ CallerRunsPolicy:由调用线程处理该任务
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.2k</span>
+    <span title="Site words total count">39.6k</span>
   
 </div>
 
