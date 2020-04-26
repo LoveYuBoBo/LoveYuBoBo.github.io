@@ -394,27 +394,20 @@
       
         
           
-          SSM整合spring整合springmvc
-启动tomcat的时候加载spring配置文件
-SercletContext域对象：开启服务器的时候创建，关闭服务器销毁
-监听器监听servletContext域对象的创建和销毁
-监听器加载spring.xml文件
-监听器由spring-web提供
-
-spring和Mybatis整合
-代理对象存入ioc容器中
-在spring的配置文件中配置整合Mybatis
-spring配置声明式事务管理
-
+            <h3 id="SSM整合"><a href="#SSM整合" class="headerlink" title="SSM整合"></a>SSM整合</h3><h4 id="spring整合springmvc"><a href="#spring整合springmvc" class="headerlink" title="spring整合springmvc"></a>spring整合springmvc</h4><ul>
+<li>启动tomcat的时候加载spring配置文件</li>
+<li>SercletContext域对象：开启服务器的时候创建，关闭服务器销毁</li>
+<li>监听器监听servletContext域对象的创建和销毁</li>
+<li>监听器加载spring.xml文件</li>
+<li>监听器由spring-web提供</li>
+</ul>
+<h4 id="spring和Mybatis整合"><a href="#spring和Mybatis整合" class="headerlink" title="spring和Mybatis整合"></a>spring和Mybatis整合</h4><ul>
+<li>代理对象存入ioc容器中</li>
+<li>在spring的配置文件中配置整合Mybatis</li>
+<li>spring配置声明式事务管理</li>
+</ul>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/05/SSM%E6%95%B4%E5%90%88/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -584,45 +577,32 @@ spring配置声明式事务管理
 
       
         
-          
-          Mybatis框架持久层技术解决方案
-JDBC技术
-Connection
-PreparedStatement
-ResultSet
-
-
-Spring中的JdbcTemplate
-Apache的DBUtils
-
-mabatis概述
-使用了ORM的思想实现对结果集的封装
-环境搭建
-创建maven工程并导入坐标
-创建实体类和dao接口
-创建Mybatis主配置文件
-创建映射配置文件
-
-
-注意
-mabatis的映射配置文件位置必须和dao接口的包结构相同
-映射配置文件中的namespace属性的取值必须是dao接口的全限定类名
-映射文件的配置。id属性的取值必须是dao接口的方法名
-
-
-
-配置步骤
-配置Mysql环境
-配置事务 transcationManager标签
-配置连接池dataSource
-配置映射文件位置 mappersb标签的resource属性
-
-
-
-使用步骤
-读取配置文件
-创建Sq
-          ...
+          <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="持久层技术解决方案"><a href="#持久层技术解决方案" class="headerlink" title="持久层技术解决方案"></a>持久层技术解决方案</h4><ul>
+<li>JDBC技术<ul>
+<li>Connection</li>
+<li>PreparedStatement</li>
+<li>ResultSet</li>
+</ul>
+</li>
+<li>Spring中的JdbcTemplate</li>
+<li>Apache的DBUtils</li>
+</ul>
+<h4 id="mabatis概述"><a href="#mabatis概述" class="headerlink" title="mabatis概述"></a>mabatis概述</h4><ul>
+<li>使用了ORM的思想实现对结果集的封装</li>
+<li>环境搭建<ul>
+<li>创建maven工程并导入坐标</li>
+<li>创建实体类和dao接口</li>
+<li>创建Mybatis主配置文件</li>
+<li>创建映射配置文件</li>
+</ul>
+</li>
+<li>注意<ul>
+<li><strong>mabatis的映射配置文件位置必须和dao接口的包结构相同</strong></li>
+<li>映射配置文件中的namespace属性的取值必须是dao接口的全限定类名</li>
+<li>映射文件的配置。id属性的取值必须是dao接口的方法名</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/02/Mybatis%E6%A1%86%E6%9E%B6/#more" rel="contents">
@@ -799,35 +779,35 @@ mabatis的映射配置文件位置必须和dao接口的包结构相同
 
       
         
-          
-          SpringMVC三层架构和Structs2的异同点
-相同点
-底层都是基于原始Servlet的
-都是基于MVC的
-处理请求的机制都是一个核心控制器
-
-
-不同点
-入口不同：SpringMVC入口是Servlet，Structs2入口是Filter
-SpringMvVC基于方法，Structs2基于类
-
-
-
-常用注解
-RequestMapping 
-value和path属性均可指定请求路径
-method方法指定请求方式
-params 指定请求参数的条件
-headers指定限制请求消息头的条件
-
-
-RequestParam 请求中指定名称的参数给控制器中的形参赋值
-RequestBody：用于获取请求体的内容，get方法不适用
-PathVaribale 用于绑定url中的占位符
-RequestHeader 获取请求头消息
-CookieValue 用于获取指定cookie的值
-ModelArrti
-          ...
+          <h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><h4 id="三层架构"><a href="#三层架构" class="headerlink" title="三层架构"></a>三层架构</h4><h4 id="和Structs2的异同点"><a href="#和Structs2的异同点" class="headerlink" title="和Structs2的异同点"></a>和Structs2的异同点</h4><ul>
+<li>相同点<ul>
+<li>底层都是基于原始Servlet的</li>
+<li>都是基于MVC的</li>
+<li>处理请求的机制都是一个核心控制器</li>
+</ul>
+</li>
+<li>不同点<ul>
+<li>入口不同：SpringMVC入口是Servlet，Structs2入口是Filter</li>
+<li>SpringMvVC基于方法，Structs2基于类</li>
+</ul>
+</li>
+</ul>
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h4><ul>
+<li>RequestMapping <ul>
+<li>value和path属性均可指定请求路径</li>
+<li>method方法指定请求方式</li>
+<li>params 指定请求参数的条件</li>
+<li>headers指定限制请求消息头的条件</li>
+</ul>
+</li>
+<li>RequestParam 请求中指定名称的参数给控制器中的形参赋值</li>
+<li>RequestBody：用于获取请求体的内容，get方法不适用</li>
+<li>PathVaribale 用于绑定url中的占位符</li>
+<li>RequestHeader 获取请求头消息</li>
+<li>CookieValue 用于获取指定cookie的值</li>
+<li>ModelArrtibute </li>
+<li>SessionAttribute 作用在类上</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/01/SpringMVC/#more" rel="contents">
@@ -1004,39 +984,32 @@ ModelArrti
 
       
         
-          
-          动态代理基于接口的动态代理
-要求被代理类至少实现一个接口
-
-使用JDK提供的Proxy类
-
-使用Proxy的newProxyInstance方法创建代理对象
-
-创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类
-
-
-基于子类的动态代理
-要求被代理类不能是最终类
-由第三方cglib提供的Enhance类
-使用Enhance的create方法
-create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。
-
-会话技术
-一次会话中包含多次请求和响应
-功能：在一次会话的范围内共享数据
-方式：
-客户端使用Cookie
-服务器端Session
-
-
-
-cookie
-客户端会话技术，将数据保存到客户端
-
-使用
-
-创
-          ...
+          <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><h4 id="基于接口的动态代理"><a href="#基于接口的动态代理" class="headerlink" title="基于接口的动态代理"></a>基于接口的动态代理</h4><ul>
+<li><p>要求<strong>被代理类至少实现一个接口</strong></p>
+</li>
+<li><p>使用JDK提供的Proxy类</p>
+</li>
+<li><p>使用Proxy的newProxyInstance方法创建代理对象</p>
+</li>
+<li><p>创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类</p>
+</li>
+</ul>
+<h4 id="基于子类的动态代理"><a href="#基于子类的动态代理" class="headerlink" title="基于子类的动态代理"></a>基于子类的动态代理</h4><ul>
+<li>要求<strong>被代理类不能是最终类</strong></li>
+<li>由第三方cglib提供的Enhance类</li>
+<li>使用Enhance的create方法</li>
+<li>create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。</li>
+</ul>
+<h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ul>
+<li><p>一次会话中包含多次请求和响应</p>
+</li>
+<li><p>功能：在一次会话的范围内共享数据</p>
+</li>
+<li><p>方式：</p>
+<ul>
+<li>客户端使用Cookie</li>
+<li>服务器端Session</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/01/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#more" rel="contents">
@@ -1213,33 +1186,33 @@ cookie
 
       
         
-          
-          Spring程序间的依赖
-类之间的依赖
-方法间的依赖
-实际开发中应该做到编译期间不依赖，运行期才依赖
-解决耦合思路：
-使用反射而不是new创建对象
-通过读取配置文件获取创建对象的全限定类名
-
-
-
-IOC
-获取IOC核心容器
-
-ApplicationContext三个常用的实现类
-
-ClassPathXmlApplicationContext： 加载类路径下的配置文件，必须在类路径下
-FileSystemApplicationContext：加载磁盘任意位置有访问权限的文件
-AnnotationConfigApplicationContext：读取注解创建容器
-
-
-核心容器创建引发的问题：
-
-使用ApplicationContext，会立即创建，只要读取完配置文件就马上创建，适用于单例对象
-使用BeanFactory，会延迟加载，什么时候根据id获取对象，什么时候才真正创建，适用于多例对象
-
-          ...
+          <h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><h4 id="程序间的依赖"><a href="#程序间的依赖" class="headerlink" title="程序间的依赖"></a>程序间的依赖</h4><ul>
+<li>类之间的依赖</li>
+<li>方法间的依赖</li>
+<li>实际开发中应该做到编译期间不依赖，运行期才依赖</li>
+<li>解决耦合思路：<ul>
+<li>使用反射而不是new创建对象</li>
+<li>通过读取配置文件获取创建对象的全限定类名</li>
+</ul>
+</li>
+</ul>
+<h4 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h4><ul>
+<li><p>获取IOC核心容器</p>
+</li>
+<li><p>ApplicationContext三个常用的实现类</p>
+<ul>
+<li>ClassPathXmlApplicationContext： 加载类路径下的配置文件，必须在类路径下</li>
+<li>FileSystemApplicationContext：加载磁盘任意位置有访问权限的文件</li>
+<li>AnnotationConfigApplicationContext：读取注解创建容器</li>
+</ul>
+</li>
+<li><p>核心容器创建引发的问题：</p>
+<ul>
+<li>使用ApplicationContext，会立即创建，只要读取完配置文件就马上创建，适用于<strong>单例对象</strong></li>
+<li>使用BeanFactory，会延迟加载，什么时候根据id获取对象，什么时候才真正创建，适用于<strong>多例对象</strong></li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/31/Spring/#more" rel="contents">

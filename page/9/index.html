@@ -394,23 +394,20 @@
       
         
           
-          141. Linked List Cycle
-description
-Given a linked list, determine if it has a cycle in it.
-To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+            <h2 id="141-Linked-List-Cycle"><a href="#141-Linked-List-Cycle" class="headerlink" title="141. Linked List Cycle"></a>141. Linked List Cycle</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a linked list, determine if it has a cycle in it.</p>
+<p>To represent a cycle in the given linked list, we use an integer <code>pos</code> which represents the position (0-indexed) in the linked list where tail connects to. If <code>pos</code> is <code>-1</code>, then there is no cycle in the linked list.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line">        ListNode  slow = head;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(slow != <span class="keyword">null</span> &amp;&amp; fast!=<span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>)&#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 
-
-solution
-123456789101112131415public class Solution &#123;    public boolean hasCycle(ListNode 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/141.%20Linked%20List%20Cycle/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -581,21 +578,18 @@ solution
       
         
           
-          24. Swap Nodes in Pairs
-description
-Given a linked list, swap every two adjacent nodes and return its head.
-You may not modify the values in the list’s nodes, only nodes itself may be changed.
+            <h2 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="24. Swap Nodes in Pairs"></a>24. Swap Nodes in Pairs</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a linked list, swap every two adjacent nodes and return its head.</p>
+<p>You may <strong>not</strong> modify the values in the list’s nodes, only nodes itself may be changed.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="keyword">null</span> )&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(head.next == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        ListNode temp = head.next.next;</span><br><span class="line">        ListNode re = head.next;</span><br><span class="line">        </span><br><span class="line">        head.next.next = head;</span><br><span class="line">        head.next = swapPairs(temp);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> re;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-solution
-12345678910111213141516171819class Solution &#123;    public ListNode swapPairs(ListNode head) &#123;        if(head == null )&#123;            return null;        &#125;                if(head.nex
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/24.%20Swap%20Nodes%20in%20Pairs/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -766,22 +760,19 @@ solution
       
         
           
-          206. Reverse Linked List
-description
-Reverse a singly linked list.
-Example:
-12Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULLOutput: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
+            <h2 id="206-Reverse-Linked-List"><a href="#206-Reverse-Linked-List" class="headerlink" title="206. Reverse Linked List"></a>206. Reverse Linked List</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Reverse a singly linked list.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL</span><br><span class="line">Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode  prev = <span class="keyword">null</span>;</span><br><span class="line">        ListNode cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode node = <span class="keyword">new</span> ListNode(cur.val);</span><br><span class="line">            node.next = prev;</span><br><span class="line">            prev = node;;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-solution
-1234567891011121314class Solution &#123;    public ListNode reverseList(ListNode head) &#123;        ListNode  prev = null;        ListNode cur = head;        while(cur != null)&#123;            ListNode node = new ListNode(cur.
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/206.%20Reverse%20Linked%20List/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -952,22 +943,27 @@ solution
       
         
           
-          322 Coin Change
-description
+            <h3 id="322-Coin-Change"><a href="#322-Coin-Change" class="headerlink" title="322 Coin Change"></a>322 Coin Change</h3><ul>
+<li><strong>description</strong></li>
+</ul>
+<p>You are given coins of different denominations and a total amount of money <em>amount</em>. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return <code>-1</code>.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: coins &#x3D; [1, 2, 5], amount &#x3D; 11</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: 11 &#x3D; 5 + 5 + 1</span><br></pre></td></tr></table></figure>
 
-You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
-Example 1:
-123Input: coins &#x3D; [1, 2, 5], amount &#x3D; 11Output: 3 Explanation: 11 &#x3D; 5 + 5 + 1
+<p><strong>Example 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: coins &#x3D; [2], amount &#x3D; 3</span><br><span class="line">Output: -1</span><br></pre></td></tr></table></figure>
 
-Exam
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/322%20Coin%20Change/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p><strong>Note</strong>:<br>You may assume that you have an infinite number of each kind of coin.</p>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">coinChange</span><span class="params">(<span class="keyword">int</span>[] coins, <span class="keyword">int</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[amount+<span class="number">1</span>];</span><br><span class="line">        Arrays.fill(dp,amount+<span class="number">1</span>); <span class="comment">//填充数字以便组以后判断是否正好凑出amount</span></span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; amount+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; coins.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(coins[j] &lt;= i)&#123;</span><br><span class="line">                    dp[i] = Math.min(dp[i-coins[j]]+<span class="number">1</span>,dp[i]);<span class="comment">//得到某个amount是从某一个硬币得到的</span></span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[amount] &gt; amount ? -<span class="number">1</span>: dp[amount];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -1138,20 +1134,24 @@ Exam
       
         
           
-          309. Best Time to Buy and Sell Stock with Cooldown
-description
-Say you have an array for which the ith element is the price of a given stock on day i.
-Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
+            <h3 id="309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#309-Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="309. Best Time to Buy and Sell Stock with Cooldown"></a>309. Best Time to Buy and Sell Stock with Cooldown</h3><ul>
+<li><p><strong>description</strong></p>
+<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:</p>
+<ul>
+<li>You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</li>
+<li>After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)</li>
+</ul>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> prices[<span class="number">1</span>] &gt; prices[<span class="number">0</span>] ? prices[<span class="number">1</span>]-prices[<span class="number">0</span>] : <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">       <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][<span class="number">4</span>];<span class="comment">//0 is rest without stock,1 is rest with stock ,2 is buy , 3 is sell</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = Integer.MIN_VALUE;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">3</span>] = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length ; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">3</span>]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">2</span>]);</span><br><span class="line">            dp[i][<span class="number">2</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i];</span><br><span class="line">            dp[i][<span class="number">3</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">2</span>]) + prices[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[n-<span class="number">1</span>][<span class="number">0</span>],dp[n-<span class="number">1</span>][<span class="number">3</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-You may not engage in multiple transactions at the same 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/309.%20Best%20Time%20to%20Buy%20and%20Sell%20Stock%20with%20Cooldown/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+
+</li>
+</ul>
+
+          
         
       
     </div>

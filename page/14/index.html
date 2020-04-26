@@ -393,47 +393,23 @@
 
       
         
-          
-          旅游网项目技术选型web层
-servlet：前端控制器
-html：视图
-filter：过滤器
-BeanUtils：数据封装工具
-Jackson：json序列化工具
-
-service层
-Javamail：发送邮件工具
-Redis：内存数据库
-Jedis：java的redis客户端
-
-Dao层
-Mysql：数据库
-Druid：数据库连接池
-JdbcTemplate：jdbc的工具
-
-功能
-注册
-前端
-使用js完成表单校验
-使用Ajax完成表单提交
-前台使用的是html，只能通过ajax获取数据，不能通过servlet的域来获取
-
-
-注册成功，跳转页面
-
-
-servlet
-获取数据
-封装User对象
-调用Service完成注册
-根据service返回，提示信息，将信息封装为json，设置响应头
-
-
-Service
-调用dao根据用户名查询用户
-存在，则返回false
-不存在，调用dao保存用户信
-          ...
+          <h3 id="旅游网项目"><a href="#旅游网项目" class="headerlink" title="旅游网项目"></a>旅游网项目</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><h5 id="web层"><a href="#web层" class="headerlink" title="web层"></a>web层</h5><ul>
+<li>servlet：前端控制器</li>
+<li>html：视图</li>
+<li>filter：过滤器</li>
+<li>BeanUtils：数据封装工具</li>
+<li>Jackson：json序列化工具</li>
+</ul>
+<h5 id="service层"><a href="#service层" class="headerlink" title="service层"></a>service层</h5><ul>
+<li>Javamail：发送邮件工具</li>
+<li>Redis：内存数据库</li>
+<li>Jedis：java的redis客户端</li>
+</ul>
+<h5 id="Dao层"><a href="#Dao层" class="headerlink" title="Dao层"></a>Dao层</h5><ul>
+<li>Mysql：数据库</li>
+<li>Druid：数据库连接池</li>
+<li>JdbcTemplate：jdbc的工具</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/#more" rel="contents">
@@ -611,50 +587,43 @@ Service
       
         
           
-          redis
-概念：是非关系型数据库 NOSQL(redis,mangoDB,hbase…&gt;)
-
-用途
-
-用作缓存
-
-
-数据结构
-
-存储的是键值对，key是字符串,value有五种结构 String map  linkedlist set sorted
-
-增删改查
-
-
-
-
-
-
-
-
-持久化
-RDB
-默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据
-
-
-AOF
-配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes
-
-
-
-
-Java客户端：Jedis
-Jedis连接池：JedisPool 
-
+            <h3 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h3><ul>
+<li><p>概念：是非关系型数据库 NOSQL(<span style ='color: red'>redis,mangoDB,hbase…</span>&gt;)</p>
+</li>
+<li><p>用途</p>
+<ul>
+<li>用作缓存</li>
+</ul>
+</li>
+<li><p>数据结构</p>
+<ul>
+<li><p>存储的是键值对，<code>key</code>是字符串,<code>value</code>有五种结构 <code>String</code> <code>map</code>  <code>linkedlist set</code> <code>sorted</code></p>
+</li>
+<li><p>增删改查</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/3.png" alt="3"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/5.png" alt="5"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/4.png" alt="4"></p>
+<ul>
+<li>持久化<ul>
+<li>RDB<ul>
+<li>默认的方式，不需要配置，在一定时间内检测key的变化，然后持久化数据</li>
+</ul>
+</li>
+<li>AOF<ul>
+<li>配置redis.windows.conf，可以每次操作以后进行持久化,appendonly 设置为yes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java客户端：Jedis</li>
+<li>Jedis连接池：JedisPool </li>
+</ul>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/03/29/redis/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -824,39 +793,25 @@ Jedis连接池：JedisPool
 
       
         
-          
-          JavaWeb三大组件Servlet
-概念：运行在服务器端的小程序，是一个接口，它定义了Java类被浏览器访问到的规则
-
-快速入门
-
-创建JavaEE项目
-定义一个类，实现Servlet接口
-实现抽象方法
-配置Servlet
-
-
-运行原理
-
-服务器接收到浏览器端的请求后，解析请求的URL路径，获取访问的servlet的资源路径
-查找web.xml文件，是否有对应的标签体内容
-如果有，查找全类名
-tomcat会将字节码文件加载进内存，并创建对象
-调用器方法
-
-servlet中的生命周期
-init方法
-被创建，执行init方法，只执行一次
-默认情况下，第一次被访问时被创建
-在web.xml中使用标签配置创建时机
-在第一次启动时创建，配置使用负数
-配置为0或者正数的时候，当服务器启动的时候被创建
-
-
-
-
-init方法只执行一次，说明一个servlet在内存中只存在一个对象，servlet时单例的
-          ...
+          <h2 id="JavaWeb三大组件"><a href="#JavaWeb三大组件" class="headerlink" title="JavaWeb三大组件"></a>JavaWeb三大组件</h2><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
+<li><p>概念：运行在服务器端的小程序，是一个接口，它定义了Java类被浏览器访问到的规则</p>
+</li>
+<li><p>快速入门</p>
+<ul>
+<li>创建JavaEE项目</li>
+<li>定义一个类，实现Servlet接口</li>
+<li>实现抽象方法</li>
+<li>配置Servlet</li>
+</ul>
+</li>
+<li><p>运行原理</p>
+<ul>
+<li>服务器接收到浏览器端的请求后，解析请求的URL路径，获取访问的servlet的资源路径</li>
+<li>查找web.xml文件，是否有对应的<url-pattern>标签体内容</li>
+<li>如果有，查找<servlet-class>全类名</li>
+<li>tomcat会将字节码文件加载进内存，并创建对象</li>
+<li>调用器方法</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/27/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/#more" rel="contents">
@@ -1033,10 +988,9 @@ init方法只执行一次，说明一个servlet在内存中只存在一个对象
 
       
         
-          
-          今日内容：1. Servlet
+          <h1 id="今日内容："><a href="#今日内容：" class="headerlink" title="今日内容："></a>今日内容：</h1><pre><code>1. Servlet
 2. HTTP协议
-3. RequestServlet：1. 概念
+3. Request</code></pre><h2 id="Servlet："><a href="#Servlet：" class="headerlink" title="Servlet："></a>Servlet：</h2><pre><code>1. 概念
 2. 步骤
 3. 执行原理
 4. 生命周期
@@ -1053,8 +1007,15 @@ init方法只执行一次，说明一个servlet在内存中只存在一个对象
 
     * HttpServlet：对http协议的一种封装，简化操作
         1. 定义类继承HttpServlet
-        2. 复写
-          ...
+        2. 复写doGet/doPost方法
+
+7. Servlet相关配置
+    1. urlpartten:Servlet访问路径
+        1. 一个Servlet可以定义多个访问路径 ： @WebServlet({&quot;/d4&quot;,&quot;/dd4&quot;,&quot;/ddd4&quot;})
+        2. 路径定义规则：
+            1. /xxx：路径匹配
+            2. /xxx/xxx:多层路径，目录结构
+            3. *.do：扩展名匹配</code></pre>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/21/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/#more" rel="contents">
@@ -1231,35 +1192,22 @@ init方法只执行一次，说明一个servlet在内存中只存在一个对象
 
       
         
-          
-          servlet体系结构
-GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法
-HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。
-
-servlet相关配置
-urlpartten:Servlet访问路径
-一个Servlet可以定义多个访问路径：@webServlet({“/d1”,”dd1”,”ddd1”})
-路径定义规则 ：
-/xxx
-/xxx/xxx/x :多层路径
-*.do
-
-
-
-
-
-HTTP
-定义了客户端和服务器端通信的时候，发送数据的格式
-特点：
-基于TCP/IP 的高级协议
-默认端口：80
-基于请求/相应模型的，也就是说一起请求对应一次响应
-是无状态的：每次请求之间是相互独立的
-1.1版本可以复用链接
-
-
-请求
-          ...
+          <h2 id="servlet"><a href="#servlet" class="headerlink" title="servlet"></a>servlet</h2><h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><ul>
+<li>GenericServlet:实现了其他的方法（包括空实现），只将service() 方法仍作为抽象方法，继承的时候需要实现该方法</li>
+<li>HttpServlet: 继承自GenericServlet，可以方便的判断请求方式(即post和get方式)，对Http协议的封装，简化操作。</li>
+</ul>
+<h3 id="servlet相关配置"><a href="#servlet相关配置" class="headerlink" title="servlet相关配置"></a>servlet相关配置</h3><ul>
+<li>urlpartten:Servlet访问路径<ul>
+<li>一个Servlet可以定义多个访问路径：@webServlet({“/d1”,”dd1”,”ddd1”})</li>
+<li>路径定义规则 ：<ul>
+<li>/xxx</li>
+<li>/xxx/xxx/x :多层路径</li>
+<li>*.do</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/02/21/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/#more" rel="contents">

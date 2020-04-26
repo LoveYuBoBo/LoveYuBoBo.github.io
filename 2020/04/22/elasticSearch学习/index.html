@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="学习小记">
 <meta property="og:description" content="elasticSearch学习索引不变性 索引写到磁盘中是不会变的，这使多线程的时候不需要添加锁  但是存在一个缺陷，就是想让修改过后的文档被搜索到，必须重构整个索引   动态更新索引 由于索引不变性的缺陷，能否动态更新索引呢？当然是可以的，可以使用不止一个索引，通过新添加的索引来表示重写的倒排索引方案，  新文档建立的时候，先在内存中建立buffer，然后再写入磁盘中  当新的请求到来，就会遍历">
 <meta property="article:published_time" content="2020-04-22T19:27:16.000Z">
-<meta property="article:modified_time" content="2020-04-22T21:39:03.738Z">
+<meta property="article:modified_time" content="2020-04-26T18:10:00.101Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="elasticSearch">
 <meta name="twitter:card" content="summary">
@@ -417,6 +417,8 @@
 <ul>
 <li><font color=red>上述策略能使文档在分钟级别内被检索到，但是还是很慢</font></li>
 </ul>
+<a id="more"></a>
+
 <h6 id="实时索引"><a href="#实时索引" class="headerlink" title="实时索引"></a><font color=red>实时索引</font></h6><ul>
 <li>为了解决索引查询慢的问题，首先解决的是将文档写入磁盘的过程，因为这个过程本身很耗时。而在buffer和磁盘之间的高效文件缓存是<code>filesystem cache</code>，可以将buffer中的文档写入文件缓存中，这个时候文档可以被检索到，之后再写入磁盘中。这个阶段延时大约只有<code>1s</code>，极大提高了效率。</li>
 </ul>

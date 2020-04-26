@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="学习小记">
 <meta property="og:description" content="动态代理基于接口的动态代理 要求被代理类至少实现一个接口  使用JDK提供的Proxy类  使用Proxy的newProxyInstance方法创建代理对象  创建代理对象的方法有三个参数，CLassLoader用于指定代理对象的字节码，CLass[] 用于让代理对象和被代理对象有相同的方法，InvocationHandler用于提供增强的代码，一般是该接口的实现类   基于子类的动态代理 要求被">
 <meta property="article:published_time" content="2020-03-31T23:46:46.057Z">
-<meta property="article:modified_time" content="2020-04-23T10:02:41.324Z">
+<meta property="article:modified_time" content="2020-04-26T18:09:22.187Z">
 <meta property="article:author" content="ijavaweb">
 <meta name="twitter:card" content="summary">
 
@@ -413,12 +413,17 @@
 <li>create方法有两个参数，Class指定被代理对象的字节码，callback用于提供增强的代码。</li>
 </ul>
 <h2 id="会话技术"><a href="#会话技术" class="headerlink" title="会话技术"></a>会话技术</h2><ul>
-<li>一次会话中包含多次请求和响应</li>
-<li>功能：在一次会话的范围内共享数据</li>
-<li>方式：<ul>
+<li><p>一次会话中包含多次请求和响应</p>
+</li>
+<li><p>功能：在一次会话的范围内共享数据</p>
+</li>
+<li><p>方式：</p>
+<ul>
 <li>客户端使用Cookie</li>
 <li>服务器端Session</li>
 </ul>
+<a id="more"></a>
+
 </li>
 </ul>
 <h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>

@@ -394,28 +394,32 @@
       
         
           
-          1108. Defanging an IP Address
-description
-Given a valid (IPv4) IP address, return a defanged version of that IP address.
-A defanged IP address replaces every period &quot;.&quot; with &quot;[.]&quot;.
+            <h2 id="1108-Defanging-an-IP-Address"><a href="#1108-Defanging-an-IP-Address" class="headerlink" title="1108. Defanging an IP Address"></a>1108. Defanging an IP Address</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a valid (IPv4) IP <code>address</code>, return a defanged version of that IP address.</p>
+<p>A <em>defanged IP address</em> replaces every period <code>&quot;.&quot;</code> with <code>&quot;[.]&quot;</code>.</p>
+</li>
+</ul>
+<p>  <strong>Example 1:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: address &#x3D; &quot;1.1.1.1&quot;</span><br><span class="line">Output: &quot;1[.]1[.]1[.]1&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Example 2:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: address &#x3D; &quot;255.100.50.0&quot;</span><br><span class="line">Output: &quot;255[.]100[.]50[.]0&quot;</span><br></pre></td></tr></table></figure>
 
 
-  Example 1:
-  12Input: address &#x3D; &quot;1.1.1.1&quot;Output: &quot;1[.]1[.]1[.]1&quot;
 
-  Example 2:
-  12Input: address &#x3D; &quot;255.100.50.0&quot;Output: &quot;255[.]100[.]50[.]0&quot;
+<p>  <strong>Constraints:</strong></p>
+<ul>
+<li>The given <code>address</code> is a valid IPv4 address.</li>
+</ul>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">defangIPaddr</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = address.toCharArray();</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : s1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'.'</span>)&#123;</span><br><span class="line">                sb.append(<span class="string">'['</span>);</span><br><span class="line">                sb.append(<span class="string">'.'</span>);</span><br><span class="line">                sb.append(<span class="string">']'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/1108.%20Defanging%20an%20IP%20Address/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -586,21 +590,18 @@ A defanged IP address replaces every period &quot;.&quot; with &quot;[.]&quot;.
       
         
           
-          687. Longest  Univalue  Path
-description
-Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.
-The length of path between two nodes is represented by the number of edges between them.
+            <h2 id="687-Longest-Univalue-Path"><a href="#687-Longest-Univalue-Path" class="headerlink" title="687. Longest  Univalue  Path"></a>687. Longest  Univalue  Path</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.</p>
+<p>The length of path between two nodes is represented by the number of edges between them.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ans;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestUnivaluePath</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        BFS(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.ans;         </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">BFS</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> l = BFS(root.left);</span><br><span class="line">        <span class="keyword">int</span> r = BFS(root.right);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> leftPath = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> rightPath =<span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.left !=<span class="keyword">null</span> &amp;&amp; root.left.val == root.val)&#123;</span><br><span class="line">            leftPath = l +<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.right != <span class="keyword">null</span> &amp;&amp; root.right.val == root.val)&#123;</span><br><span class="line">            rightPath= r+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ans = Math.max(ans,leftPath+rightPath);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> Math.max(leftPath,rightPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-solution
-123456789101112131415161718192021222324252627282930313233class Solution &#123;    private int ans;    publi
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/687.%20Longest%20%20Univalue%20%20Path/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -771,26 +772,33 @@ solution
       
         
           
-          225. Implement Stack using Queues
-description
-Share
-Implement the following operations of a stack using queues.
+            <h3 id="225-Implement-Stack-using-Queues"><a href="#225-Implement-Stack-using-Queues" class="headerlink" title="225. Implement Stack using Queues"></a>225. Implement Stack using Queues</h3><ul>
+<li><p><strong>description</strong></p>
+<p>Share</p>
+<p>Implement the following operations of a stack using queues.</p>
+<ul>
+<li>push(x) – Push element x onto stack.</li>
+<li>pop() – Removes the element on top of the stack.</li>
+<li>top() – Get the top element.</li>
+<li>empty() – Return whether the stack is empty.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyStack stack &#x3D; new MyStack();</span><br><span class="line"></span><br><span class="line">stack.push(1);</span><br><span class="line">stack.push(2);  </span><br><span class="line">stack.top();   &#x2F;&#x2F; returns 2</span><br><span class="line">stack.pop();   &#x2F;&#x2F; returns 2</span><br><span class="line">stack.empty(); &#x2F;&#x2F; returns false</span><br></pre></td></tr></table></figure>
 
-push(x) – Push element x onto stack.
-pop() – Removes the element on top of the stack.
-top() – Get the top element.
-empty() – Return whether the stack is empty.
+<p><strong>Notes:</strong></p>
+<ul>
+<li>You must use <em>only</em> standard operations of a queue – which means only <code>push to back</code>, <code>peek/pop from front</code>, <code>size</code>, and <code>is empty</code> operations are valid.</li>
+<li>Depending on your language, queue may not be supported natively. You may simulate a queue by using a list or deque (double-ended queue), as long as you use only standard operations of a queue.</li>
+<li>You may assume that all operations are valid (for example, no pop or top operations will be called on an empty stack).</li>
+</ul>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line">    Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    Queue&lt;Integer&gt; q2 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x onto stack. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q1.isEmpty())&#123;</span><br><span class="line">            q1.add(x);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(!q1.isEmpty())&#123;</span><br><span class="line">                q2.add(q1.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            q1.add(x);</span><br><span class="line">            <span class="keyword">while</span>(!q2.isEmpty())&#123;</span><br><span class="line">                q1.add(q2.poll());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element on top of the stack and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.poll();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the top element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the stack is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-Example:
-1234567MyStack stack &#x3D; new MyStack();stack.push(1);stack.push(2);  stack.top();   &#x2F;&#x2F; returns 2stack.po
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/225.%20Implement%20Stack%20using%20Queues/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -961,25 +969,23 @@ Example:
       
         
           
-          20. Valid Parentheses
-description
-Given a string containing just the characters &#39;(&#39;, &#39;)&#39;, &#39;{&#39;, &#39;}&#39;, &#39;[&#39; and &#39;]&#39;, determine if the input string is valid.
-An input string is valid if:
+            <h3 id="20-Valid-Parentheses"><a href="#20-Valid-Parentheses" class="headerlink" title="20. Valid Parentheses"></a>20. Valid Parentheses</h3><ul>
+<li><p><strong>description</strong></p>
+<p>Given a string containing just the characters <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, <code>&#39;{&#39;</code>, <code>&#39;}&#39;</code>, <code>&#39;[&#39;</code> and <code>&#39;]&#39;</code>, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<ol>
+<li>Open brackets must be closed by the same type of brackets.</li>
+<li>Open brackets must be closed in the correct order.</li>
+</ol>
+<p>Note that an empty string is also considered valid.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = s.toCharArray();</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> Stack&lt;Character&gt;();</span><br><span class="line">        Map&lt;Character,Character&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">')'</span>,<span class="string">'('</span>);</span><br><span class="line">        map.put(<span class="string">'&#125;'</span>,<span class="string">'&#123;'</span>);</span><br><span class="line">        map.put(<span class="string">']'</span>,<span class="string">'['</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!map.containsKey(s1[i]))&#123;</span><br><span class="line">                stack.push(s1[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>((!stack.isEmpty()) &amp;&amp; (map.get(s1[i])==(stack.peek())))&#123;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-Open brackets must be closed by the same type of brackets.
-Open brackets must be closed in the correct order.
+</li>
+</ul>
 
-Note that an empty string is also considered valid.
-
-solut
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/20.%20Valid%20Parentheses/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1150,25 +1156,34 @@ solut
       
         
           
-          232. Implement Queue using Stacks
-description
-Implement the following operations of a queue using stacks.
+            <h3 id="232-Implement-Queue-using-Stacks"><a href="#232-Implement-Queue-using-Stacks" class="headerlink" title="232. Implement Queue using Stacks"></a>232. Implement Queue using Stacks</h3><ul>
+<li><p><strong>description</strong></p>
+<p>Implement the following operations of a queue using stacks.</p>
+<ul>
+<li>push(x) – Push element x to the back of queue.</li>
+<li>pop() – Removes the element from in front of queue.</li>
+<li>peek() – Get the front element.</li>
+<li>empty() – Return whether the queue is empty.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyQueue queue &#x3D; new MyQueue();</span><br><span class="line"></span><br><span class="line">queue.push(1);</span><br><span class="line">queue.push(2);  </span><br><span class="line">queue.peek();  &#x2F;&#x2F; returns 1</span><br><span class="line">queue.pop();   &#x2F;&#x2F; returns 1</span><br><span class="line">queue.empty(); &#x2F;&#x2F; returns false</span><br></pre></td></tr></table></figure>
 
-push(x) – Push element x to the back of queue.
-pop() – Removes the element from in front of queue.
-peek() – Get the front element.
-empty() – Return whether the queue is empty.
+<p><strong>Notes:</strong></p>
+<ul>
+<li>You must use <em>only</em> standard operations of a stack – which means only <code>push to top</code>, <code>peek/pop from top</code>, <code>size</code>, and <code>is empty</code> operations are valid.</li>
+<li>Depending on your language, stack may not be supported natively. You may simulate a stack by using a list or deque (double-ended queue), as long as you use only standard operations of a stack.</li>
+<li>You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).</li>
+</ul>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">	Stack&lt;Integer&gt; s1;</span><br><span class="line">	Stack&lt;Integer&gt; s2;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		s1 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		s2 = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(s1.isEmpty())&#123;</span><br><span class="line">			s1.push(x);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">while</span>(!s1.isEmpty())&#123;</span><br><span class="line">				s2.push(s1.pop());</span><br><span class="line">			&#125;</span><br><span class="line">			s1.push(x);</span><br><span class="line">			<span class="keyword">while</span>(!s2.isEmpty())&#123;</span><br><span class="line">				s1.push(s2.pop());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;   </span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> s1.pop();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** Get the front element. */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> s1.peek();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> s1.isEmpty();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-Example:
-1234567MyQueue queue &#x3D; new MyQueue();queue.push(1);queue.push(2);  queue.peek();  &#x2F;&#x2F; returns
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/232.%20Implement%20Queue%20using%20Stacks/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+
+</li>
+</ul>
+
+          
         
       
     </div>

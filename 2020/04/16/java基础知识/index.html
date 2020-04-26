@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="学习小记">
 <meta property="og:description" content="Java基础知识 大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。   如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。 基本数据类型：byt">
 <meta property="article:published_time" content="2020-04-16T16:55:01.000Z">
-<meta property="article:modified_time" content="2020-04-16T16:56:31.962Z">
+<meta property="article:modified_time" content="2020-04-26T18:10:29.744Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
@@ -424,6 +424,10 @@
 <li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
 </ul>
 </li>
+</ul>
+<a id="more"></a>
+
+<ul>
 <li>当方法的局部变量和类的成员变量重名的时候，根据“就近原则”优先使用局部变量，如果要访问本类中的成员变量，应使用this.成员变量名的方式。通过谁调用该方法，谁就是this。</li>
 <li>构造方法是专门用来创建对象的方法，当使用new创建对象的时候，就是在调用构造方法<ul>
 <li>构造方法名称必须和所在类的名称完全一样</li>

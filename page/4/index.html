@@ -393,30 +393,26 @@
 
       
         
-          
-          elasticSearch学习索引不变性
-索引写到磁盘中是不会变的，这使多线程的时候不需要添加锁
-
-但是存在一个缺陷，就是想让修改过后的文档被搜索到，必须重构整个索引
-
-
-动态更新索引
-由于索引不变性的缺陷，能否动态更新索引呢？当然是可以的，可以使用不止一个索引，通过新添加的索引来表示重写的倒排索引方案，
-
-新文档建立的时候，先在内存中建立buffer，然后再写入磁盘中
-
-当新的请求到来，就会遍历所有写入磁盘中的文档
-
-
-删除和更新索引
-删除和更新文档都是逻辑删除和更新，也就是说在更新或者删除的时候，知识对删除或者更新的文档做一个标记，并且删除的文档也会本检索到，只是在返回的时候将已经删除的元素从返回的集合中剔除。
-
-
-上述策略能使文档在分钟级别内被检索到，但是还是很慢
-
-实时索引
-为了解决索引查询慢的问题，首先解决的是将文档写入磁盘的过程，因为这个过程本身很耗时。而在buffer和磁盘之
-          ...
+          <h3 id="elasticSearch学习"><a href="#elasticSearch学习" class="headerlink" title="elasticSearch学习"></a><code>elasticSearch</code>学习</h3><h6 id="索引不变性"><a href="#索引不变性" class="headerlink" title="索引不变性"></a>索引不变性</h6><ul>
+<li><p>索引写到磁盘中是不会变的，这使多线程的时候不需要添加锁</p>
+</li>
+<li><p>但是存在一个缺陷，就是想让修改过后的文档被搜索到，必须重构整个索引</p>
+</li>
+</ul>
+<h6 id="动态更新索引"><a href="#动态更新索引" class="headerlink" title="动态更新索引"></a>动态更新索引</h6><ul>
+<li><p>由于索引不变性的缺陷，能否动态更新索引呢？当然是可以的，可以使用不止一个索引，通过新添加的索引来表示重写的倒排索引方案，</p>
+</li>
+<li><p>新文档建立的时候，先在内存中建立buffer，然后再写入磁盘中</p>
+</li>
+<li><p>当新的请求到来，就会遍历所有写入磁盘中的文档</p>
+</li>
+</ul>
+<h6 id="删除和更新索引"><a href="#删除和更新索引" class="headerlink" title="删除和更新索引"></a>删除和更新索引</h6><ul>
+<li>删除和更新文档都是逻辑删除和更新，也就是说在更新或者删除的时候，知识对删除或者更新的文档做一个标记，并且删除的文档也会本检索到，只是在返回的时候将已经删除的元素从返回的集合中剔除。</li>
+</ul>
+<ul>
+<li><font color=red>上述策略能使文档在分钟级别内被检索到，但是还是很慢</font></li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/22/elasticSearch%E5%AD%A6%E4%B9%A0/#more" rel="contents">
@@ -594,44 +590,37 @@
       
         
           
-          多线程
-callable和runnablle的区别，启动线程的方式
-synchronized和lock的区别
-集合类的实现和区别，hashmap当红黑树中元素减少会变为链表么？
-各种线程池
-
-JVM
-垃圾回收机制
-
-事务
-什么是事务，事务的特性
-
-Mysql
-怎么优化查询速率
-模糊查询的%位置的区别
-limit分页查询和效率，以及怎么提高效率
-
-Spring
-AOP的作用
-自己抽象一个方法实现日志记录和AOP有什么区别
-
-ES
-修改索引的时候是直接修改某个字段么。删除呢
-
-MQ
-mq的消息丢失问题
-mq的消息重复消费问题
-幂等性是什么
-
+            <h4 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h4><ul>
+<li><code>callable</code>和<code>runnablle</code>的区别，启动线程的方式</li>
+<li>synchronized和lock的区别</li>
+<li>集合类的实现和区别，<code>hashmap</code>当红黑树中元素减少会变为链表么？</li>
+<li>各种线程池</li>
+</ul>
+<h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a><code>JVM</code></h4><ul>
+<li>垃圾回收机制</li>
+</ul>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><ul>
+<li>什么是事务，事务的特性</li>
+</ul>
+<h4 id="Mysql"><a href="#Mysql" class="headerlink" title="Mysql"></a><code>Mysql</code></h4><ul>
+<li>怎么优化查询速率</li>
+<li>模糊查询的<code>%</code>位置的区别</li>
+<li>limit分页查询和效率，以及怎么提高效率</li>
+</ul>
+<h4 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h4><ul>
+<li><code>AOP</code>的作用</li>
+<li>自己抽象一个方法实现日志记录和<code>AOP</code>有什么区别</li>
+</ul>
+<h4 id="ES"><a href="#ES" class="headerlink" title="ES"></a>ES</h4><ul>
+<li>修改索引的时候是直接修改某个字段么。删除呢</li>
+</ul>
+<h4 id="MQ"><a href="#MQ" class="headerlink" title="MQ"></a><code>MQ</code></h4><ul>
+<li><code>mq</code>的消息丢失问题</li>
+<li><code>mq</code>的消息重复消费问题</li>
+<li>幂等性是什么</li>
+</ul>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/22/%E8%8D%A3%E5%A4%A7%E7%A7%91%E6%8A%80%E9%9D%A2%E8%AF%95/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -802,30 +791,23 @@ mq的消息重复消费问题
       
         
           
-          事务是如何保证的
-事务的特性
-原子性
-一致性
-持久性
-隔离性
-
-
-各个特性是如何实现的
-回滚日志保持事务的原子性和一致性
-重做日志实现事务的持久性
-隔离性是通过锁实现
-
-
-
+            <h3 id="事务是如何保证的"><a href="#事务是如何保证的" class="headerlink" title="事务是如何保证的"></a>事务是如何保证的</h3><ul>
+<li>事务的特性<ul>
+<li>原子性</li>
+<li>一致性</li>
+<li>持久性</li>
+<li>隔离性</li>
+</ul>
+</li>
+<li>各个特性是如何实现的<ul>
+<li>回滚日志保持事务的原子性和一致性</li>
+<li>重做日志实现事务的持久性</li>
+<li>隔离性是通过锁实现</li>
+</ul>
+</li>
+</ul>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/%E4%BA%8B%E5%8A%A1%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%9A%84/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -996,23 +978,20 @@ mq的消息重复消费问题
       
         
           
-          104. Maximum Depth of Binary Tree
-description
-The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
-Note: A leaf is a node with no children.
+            <h4 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a>104. Maximum Depth of Binary Tree</h4><ul>
+<li><p><strong>description</strong></p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<p><strong>Note:</strong> A leaf is a node with no children.</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> leftMax = maxDepth(root.left)+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> rightMax = maxDepth(root.right)+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> Math.max(leftMax,rightMax);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 
-
-solution
-1234567891011class Solution &#123;    public int maxDepth(TreeNode root) &#123;        if(root == null)&#123;            return 0;        &#125;        int leftMax = maxDepth(root.left)+
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/104.%20Maximum%20Depth%20of%20Binary%20Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1183,30 +1162,27 @@ solution
       
         
           
-          102. Binary Tree Level Order Traversal
-description
-Given a binary tree, return the level order traversal of its nodes’ values. (ie, from left to right, level by level).
-For example:Given binary tree [3,9,20,null,null,15,7],
-12345  3 &#x2F; \9  20  &#x2F;  \ 15   7
+            <h4 id="102-Binary-Tree-Level-Order-Traversal"><a href="#102-Binary-Tree-Level-Order-Traversal" class="headerlink" title="102. Binary Tree Level Order Traversal"></a>102. Binary Tree Level Order Traversal</h4><ul>
+<li><p><strong>description</strong></p>
+<p>Given a binary tree, return the <em>level order</em> traversal of its nodes’ values. (ie, from left to right, level by level).</p>
+<p>For example:<br>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> &#x2F; \</span><br><span class="line">9  20</span><br><span class="line">  &#x2F;  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure>
 
 
 
+</li>
+</ul>
+<p>  return its level order traversal as:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> Arrays.asList();</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">            List&lt;Integer&gt; level = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">int</span> queueNum = queue.size();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; queueNum; i++)&#123;</span><br><span class="line">                TreeNode node = queue.poll();</span><br><span class="line">                <span class="keyword">if</span>(node.left!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.add(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(node.right !=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    queue.add(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                level.add(node.val);</span><br><span class="line">            &#125;</span><br><span class="line">            result.add(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  return its level order traversal as:
-  12345[  [3],  [9,20],  [15,7]]
+</li>
+</ul>
 
-
-solution
-12345678910111213141516171819202122232425262728
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/102.%20Binary%20Tree%20Level%20Order%20Traversal/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>

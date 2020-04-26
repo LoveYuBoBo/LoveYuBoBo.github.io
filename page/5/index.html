@@ -394,21 +394,18 @@
       
         
           
-          101. Symmetric Tree
-description
-Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
-For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+            <h4 id="101-Symmetric-Tree"><a href="#101-Symmetric-Tree" class="headerlink" title="101. Symmetric Tree"></a>101. Symmetric Tree</h4><ul>
+<li><p><strong>description</strong></p>
+<p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p>
+<p>For example, this binary tree <code>[1,2,2,3,4,4,3]</code> is symmetric:</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isSymmetric</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isSymetric( root.left, root.right);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isSymetric</span><span class="params">(TreeNode left,TreeNode right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="keyword">null</span> &amp;&amp; right == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>((left==<span class="keyword">null</span>&amp;&amp;right!=<span class="keyword">null</span>) || (left!=<span class="keyword">null</span>&amp;&amp;right==<span class="keyword">null</span>))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(left.val!=right.val)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isSymetric(left.left,right.right)&amp;&amp;isSymetric(left.right,right.left);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-solution
-12345678910111213141516171819202122class Solution &#123;    public boolean isSymmetric(TreeNode root) &#123;        if(root==null)&#123;            return true;        &#125;        return isSymetric( ro
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/101.%20Symmetric%20Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -579,22 +576,19 @@ solution
       
         
           
-          23. Merge k Sorted Lists
-description
-Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
-Example:
-1234567Input:[  1-&gt;4-&gt;5,  1-&gt;3-&gt;4,  2-&gt;6]Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+            <h4 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a>23. Merge k Sorted Lists</h4><ul>
+<li><p><strong>description</strong></p>
+<p>Merge <em>k</em> sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        PriorityQueue&lt;ListNode&gt; minHeap = <span class="keyword">new</span> PriorityQueue&lt;&gt;((a,b)-&gt;a.val-b.val);</span><br><span class="line">        <span class="keyword">for</span>(ListNode node:lists)&#123;</span><br><span class="line">            <span class="keyword">if</span>(node!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                minHeap.add(node);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode head = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode current = head;</span><br><span class="line">        <span class="keyword">while</span>(!minHeap.isEmpty())&#123;</span><br><span class="line">            ListNode top = minHeap.remove();</span><br><span class="line">            current.next = top;</span><br><span class="line">            current = current.next;</span><br><span class="line">            <span class="keyword">if</span>(top.next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                minHeap.add(top.next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-solution
-1234567891011121314151617181920212223class Solution &#123;    public ListNode mergeKLists(ListNode[] lists) &#123;                Priorit
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/23.%20Merge%20k%20Sorted%20Lists/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -765,22 +759,19 @@ solution
       
         
           
-          111. Minimum Depth of Binary Tree
-description
-Given a binary tree, find its minimum depth.
-The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
-Note: A leaf is a node with no children.
+            <h4 id="111-Minimum-Depth-of-Binary-Tree"><a href="#111-Minimum-Depth-of-Binary-Tree" class="headerlink" title="111. Minimum Depth of Binary Tree"></a>111. Minimum Depth of Binary Tree</h4><ul>
+<li><p><strong>description</strong></p>
+<p>Given a binary tree, find its minimum depth.</p>
+<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
+<p><strong>Note:</strong> A leaf is a node with no children.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minDepth</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> minDepth(root.right)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.right ==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> minDepth(root.left)+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> Math.min(minDepth(root.left),minDepth(root.right))+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-solution
-123456789101112131415class Solution &#123;    public int minDepth(TreeNode root) &#123;        if(root == null)&#123;            return 0;     
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/111.%20Minimum%20Depth%20of%20Binary%20Tree/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -951,29 +942,30 @@ solution
       
         
           
-          564. Find the Closest Palindrome
-description
-Given an integer n, find the closest integer (not including itself), which is a palindrome.
-The ‘closest’ is defined as absolute difference minimized between two integers.
-Example 1:
-12Input: &quot;123&quot;Output: &quot;121&quot;
+            <h2 id="564-Find-the-Closest-Palindrome"><a href="#564-Find-the-Closest-Palindrome" class="headerlink" title="564. Find the Closest Palindrome"></a>564. Find the Closest Palindrome</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given an integer n, find the closest integer (not including itself), which is a palindrome.</p>
+<p>The ‘closest’ is defined as absolute difference minimized between two integers.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;123&quot;</span><br><span class="line">Output: &quot;121&quot;</span><br></pre></td></tr></table></figure>
 
 
 
+</li>
+</ul>
+<p>  <strong>Note:</strong></p>
+<ol>
+<li>The input <strong>n</strong> is a positive integer represented by string, whose length will not exceed 18.</li>
+<li>If there is a tie, return the smaller one as answer.</li>
+</ol>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">nearestPalindromic</span><span class="params">(String n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n.length() &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> String.valueOf(Integer.parseInt(n)-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = n.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> m = s1.length;</span><br><span class="line">        <span class="keyword">int</span> left =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[left] != s1[right])&#123;</span><br><span class="line">                s1[right] = s1[left];</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        Integer i = Integer.parseInt( String.valueOf(s1));</span><br><span class="line">        Integer j = Integer.parseInt( n);</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= j )&#123;</span><br><span class="line">            String s = String.valueOf(<span class="number">2</span>*j-i);</span><br><span class="line">            <span class="keyword">if</span>(isPalindromic(s))&#123;</span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(s1);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindromic</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = s.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> m = s1.length;</span><br><span class="line">        <span class="keyword">int</span> left =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[left] != s1[right])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 
-  Note:
-
-The input n is a positive integer represented by string, whose length will not exceed 18.
-If there is a tie, r
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/564.%20Find%20the%20Closest%20Palindrome/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1144,25 +1136,25 @@ If there is a tie, r
       
         
           
-          557. Reverse Words in a String III
-description
-Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
-Example 1:
-12Input: &quot;Let&#39;s take LeetCode contest&quot;Output: &quot;s&#39;teL ekat edoCteeL tsetnoc&quot;
+            <h2 id="557-Reverse-Words-in-a-String-III"><a href="#557-Reverse-Words-in-a-String-III" class="headerlink" title="557. Reverse Words in a String III"></a>557. Reverse Words in a String III</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Let&#39;s take LeetCode contest&quot;</span><br><span class="line">Output: &quot;s&#39;teL ekat edoCteeL tsetnoc&quot;</span><br></pre></td></tr></table></figure>
 
 
 
+</li>
+</ul>
+<p>  <strong>Note:</strong> In the string, each word is separated by single space and there will not be any extra space in the string.</p>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        String[] s1 = s.trim().split(<span class="string">" "</span>);</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s1.length ;i++)&#123;</span><br><span class="line">            <span class="keyword">char</span>[] tmp = s1[i].toCharArray();</span><br><span class="line">            <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> right = tmp.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">               <span class="keyword">char</span> t = tmp[left];</span><br><span class="line">               tmp[left] = tmp[right];</span><br><span class="line">               tmp[right] = t;</span><br><span class="line">               left++;</span><br><span class="line">               right--;</span><br><span class="line">        &#125;</span><br><span class="line">            sb.append(tmp).append(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 
-  Note: In the string, each word is separated by single space and there will not be 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/557.%20Reverse%20Words%20in%20a%20String%20III/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>

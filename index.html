@@ -355,7 +355,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  218
+                  219
                 </span>
               
 
@@ -393,16 +393,16 @@
 
       
         
-          
-          560. Subarray Sum Equals K
-题目描述
-1234给定一个数组和一个整数，求出数组中连续数字求和等于k的所有可能例子：Input:nums &#x3D; [1,1,1], k &#x3D; 2Output: 2
+          <h4 id="560-Subarray-Sum-Equals-K"><a href="#560-Subarray-Sum-Equals-K" class="headerlink" title="560. Subarray Sum Equals K"></a>560. Subarray Sum Equals K</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定一个数组和一个整数，求出数组中连续数字求和等于k的所有可能</span><br><span class="line">例子：</span><br><span class="line">Input:nums &#x3D; [1,1,1], k &#x3D; 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.首先想到的是暴力法</span><br></pre></td></tr></table></figure>
 
-解答
-11.首先想到的是暴力法
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i; j &lt; nums.length;j++)&#123;</span><br><span class="line">                sum +=nums[j];</span><br><span class="line">                <span class="keyword">if</span>(sum == k)&#123;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-123456789101112131415class Solution &#123;    public int subarraySum(int[] nums, int k) &#123;        int result = 0;        for(int i = 0; i &lt; nums.length; i++)&#123;            int sum = 0;            for(int j=i; j &lt; nums.length;j++)&#123;                s
-          ...
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.暴力法时间复杂度太高，尝试优化以下，使用hashmap存储结果</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/26/560.%20Subarray%20Sum%20Equals%20K/#more" rel="contents">
@@ -541,7 +541,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  188
+                  189
                 </span>
               
 
@@ -579,16 +579,12 @@
 
       
         
-          
-          1143.  Longest Common Subsequence
-题目描述
-12345给定两个字符串，求出最长公共字串的长度例子Input: text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; Output: 3  Explanation: The longest common subsequence is &quot;ace&quot; and its length is 3.
-
-解答
-12使用动态规划，如果text1[i] &#x3D;&#x3D; text2[j],则dp[i][j] &#x3D; dp[i-1][j-1]+1否则dp[i][j] &#x3D; Math.max(dp[i-1][j],dp[i][j-1])
-
-123456789101112131415161718class Solution &#
-          ...
+          <h4 id="1143-Longest-Common-Subsequence"><a href="#1143-Longest-Common-Subsequence" class="headerlink" title="1143.  Longest Common Subsequence"></a>1143.  Longest Common Subsequence</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串，求出最长公共字串的长度</span><br><span class="line">例子</span><br><span class="line">Input: text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; </span><br><span class="line">Output: 3  </span><br><span class="line">Explanation: The longest common subsequence is &quot;ace&quot; and its length is 3.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用动态规划，如果text1[i] &#x3D;&#x3D; text2[j],则dp[i][j] &#x3D; dp[i-1][j-1]+1</span><br><span class="line">否则dp[i][j] &#x3D; Math.max(dp[i-1][j],dp[i][j-1])</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/26/1143.%20%20Longest%20Common%20Subsequence/#more" rel="contents">
@@ -727,7 +723,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  276
+                  278
                 </span>
               
 
@@ -765,16 +761,12 @@
 
       
         
-          
-          55. jump game
-题目描述
-12345给定一个非负的整数数组，每个元素表示可以向前走多少步，判断是否可以走到最后的位置例子：Input: [2,3,1,1,4]Output: trueExplanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
-
-解答
-1可以使用动态规划，每个dp[i]表示是否可以到达该位置
-
-1234567891011121314151617181920212223class Solution &#123;    public boolean canJump(int[] nums) &#123;        int n = nums.length;        boolean[] dp = new boolean[n];        if(n == 1)&#123;
-          ...
+          <h4 id="55-jump-game"><a href="#55-jump-game" class="headerlink" title="55. jump game"></a>55. jump game</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定一个非负的整数数组，每个元素表示可以向前走多少步，判断是否可以走到最后的位置</span><br><span class="line">例子：</span><br><span class="line">Input: [2,3,1,1,4]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解答</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以使用动态规划，每个dp[i]表示是否可以到达该位置</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/26/55.%20jump%20game/#more" rel="contents">
@@ -913,7 +905,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  364
+                  365
                 </span>
               
 
@@ -951,16 +943,12 @@
 
       
         
-          
-          146. LRU Cache
-题目描述
-1实现一个LUR缓存，实现get和put方法
-
-解答
-121. 使用双向链表2. 使用LinkedHashMap
-
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990class LRUCache&#123;    private int capacity;    class Node&#123;        int key;        int value;        Node next;        Node before;            &#
-          ...
+          <h4 id="146-LRU-Cache"><a href="#146-LRU-Cache" class="headerlink" title="146. LRU Cache"></a>146. LRU Cache</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实现一个LUR缓存，实现get和put方法</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 使用双向链表</span><br><span class="line">2. 使用LinkedHashMap</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/26/146.%20LRU%20Cache/#more" rel="contents">
@@ -1099,7 +1087,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  220
+                  221
                 </span>
               
 
@@ -1137,18 +1125,12 @@
 
       
         
-          
-          201. Bitwise AND of Numbers Range
-题目描述
-1234给定两个整数，求出这两个整数之间所有数的按位与结果例子：Input: [5,7]Output: 4
-
-解答：
-12按位与的结果要么是最小的数字，要么是比最小数字还小的数 按位与只有对应位置为1，结果的相应位置才为1，所以将两个数移位操作，当两个数相等时就是结果
-
-123456789public int rangeBitwiseAnd(int m, int n) &#123;        int count = 0;		while(m != n)&#123;			m &gt;&gt;= 1;			n &gt;&gt;= 1;			count++;		&#125;		return m&lt;&lt;count;    &#125;
-
-1另外一种解法，则依赖位运算，使用n&amp;(n-1)逐步将大的数减小，
-          ...
+          <h4 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a>201. Bitwise AND of Numbers Range</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定两个整数，求出这两个整数之间所有数的按位与结果</span><br><span class="line">例子：</span><br><span class="line">Input: [5,7]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解答：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">按位与的结果要么是最小的数字，要么是比最小数字还小的数</span><br><span class="line"> 按位与只有对应位置为1，结果的相应位置才为1，所以将两个数移位操作，当两个数相等时就是结果</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/26/201.%20Bitwise%20AND%20of%20Numbers%20Range/#more" rel="contents">

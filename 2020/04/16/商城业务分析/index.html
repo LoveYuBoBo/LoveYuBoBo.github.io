@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="学习小记">
 <meta property="og:description" content="商城业务分析购物车订单 在进行库存扣减的时候，必须注意不要进行内存运算,以免多线程造成错误，应该使用数据库的行级锁 校验实时的商品价格而不是购物车中的价格 每次都需要校验购买数量是否大于库存量  支付业务 超时订单，应该取消，并回滚库存量 用户携带订单编号发送给支付系统，支付系统通过http请求,通过支付服务授权，生成支付二维码，支付成功后，通知MQ，订单系统取得MQ中的雄消息，并执行相应的操作">
 <meta property="article:published_time" content="2020-04-16T00:19:40.033Z">
-<meta property="article:modified_time" content="2020-04-16T14:56:00.264Z">
+<meta property="article:modified_time" content="2020-04-26T18:10:40.038Z">
 <meta property="article:author" content="ijavaweb">
 <meta name="twitter:card" content="summary">
 
@@ -430,6 +430,8 @@
 </ul>
 </li>
 </ul>
+<a id="more"></a>
+
 <h4 id="大文件存储"><a href="#大文件存储" class="headerlink" title="大文件存储"></a>大文件存储</h4><h5 id="使用FastDFS"><a href="#使用FastDFS" class="headerlink" title="使用FastDFS"></a>使用<code>FastDFS</code></h5><ul>
 <li>结构<ul>
 <li>其中Tracker负责均衡管理和Storage的注册中心功能</li>

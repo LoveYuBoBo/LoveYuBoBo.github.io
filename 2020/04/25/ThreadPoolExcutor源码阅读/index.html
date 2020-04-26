@@ -84,15 +84,15 @@
 
 
 
-<meta name="description" content="ThreadPoolExcutor源码阅读 继承结构如下    Executor接口只有一个方法execute()  构造方法如下 123456789public ThreadPoolExecutor(int corePoolSize,&#x2F;&#x2F;核心线程数                          int maximumPoolSize,&#x2F;&#x2F;最大线程数">
+<meta name="description" content="ThreadPoolExcutor源码阅读 继承结构如下    Executor接口只有一个方法execute()  构造方法如下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ThreadPoolExcutor源码阅读">
 <meta property="og:url" content="https://ijavaweb.github.io/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="ThreadPoolExcutor源码阅读 继承结构如下    Executor接口只有一个方法execute()  构造方法如下 123456789public ThreadPoolExecutor(int corePoolSize,&#x2F;&#x2F;核心线程数                          int maximumPoolSize,&#x2F;&#x2F;最大线程数">
+<meta property="og:description" content="ThreadPoolExcutor源码阅读 继承结构如下    Executor接口只有一个方法execute()  构造方法如下">
 <meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425160729243.png">
 <meta property="article:published_time" content="2020-04-25T14:05:49.000Z">
-<meta property="article:modified_time" content="2020-04-25T17:26:30.985Z">
+<meta property="article:modified_time" content="2020-04-26T18:06:02.896Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="源码阅读">
 <meta name="twitter:card" content="summary">
@@ -407,6 +407,9 @@
 <li><p><code>Executor</code>接口只有一个方法<code>execute()</code></p>
 </li>
 <li><p>构造方法如下</p>
+</li>
+<li><a id="more"></a>
+
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,//核心线程数</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,//最大线程数</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">long</span> keepAliveTime,//线程超过核心线程数时，空闲线程最大等等待时间</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          //工作队列</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,</span><br><span class="line">         Executors.defaultThreadFactory(), defaultHandler);<span class="comment">//使用默认的拒绝策略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>

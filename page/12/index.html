@@ -393,19 +393,43 @@
 
       
         
-          
-          数据库基础DCL
-添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。    
-删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;    
-修改用户密码：update user set 字段名=新的值 where 条件子句    *忘记root密码：    
-使用管理员权限运行cmd，并停止mysql服务    
-使用无验证方式启动：mysqld –skip-grant-tables    
-打开新的窗口，直接输入mysql命令登录    
-
-
-use mysql    5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;    
-关闭窗口 
-          ...
+          <h3 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h3><h4 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h4><ul>
+<li>添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。    </li>
+<li>删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>修改用户密码：update user set 字段名=新的值 where 条件子句    *忘记root密码：    <ul>
+<li>使用管理员权限运行cmd，并停止mysql服务    </li>
+<li>使用无验证方式启动：mysqld –skip-grant-tables    </li>
+<li>打开新的窗口，直接输入mysql命令登录    </li>
+</ul>
+</li>
+<li>use mysql    5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;    </li>
+<li>关闭窗口    </li>
+<li>手动结束mysqld.exe进程    </li>
+<li>启动mysql服务    </li>
+<li>使用新密码登录    </li>
+<li>权限管理：    <ul>
+<li>查询权限：    show grants for &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>授予权限：    grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>撤销权限：    revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</li>
+</ul>
+</li>
+<li>语法 select字段列表from表名列表where条件列表group by分组字段having分组之后的条件order by排序limit分页限定</li>
+<li>基础查询<ul>
+<li>多字段查询select 字段名1，…，from 表名<em>注意：<em>如果查询所有字段，可以使用</em>代替字段列表</em></li>
+<li>去除重复的结果集使用distinct</li>
+<li>起别名<em>使用as</em></li>
+<li>计算列<em>一般使用四则运算计算列的值</em>如果有null参与运算，计算结果都是null可以使用ifnull()表达式</li>
+</ul>
+</li>
+<li>条件查询1.where子句<ul>
+<li>运算符<em>&gt; &lt; &gt;= &lt;=…<em>like(模糊查询)</em>占位符</em>_:单个任意字符<em>%：多个任意字符</em>is null(因为null值不能用=号判断)between(效果等效and)in(效果等效于or)</li>
+</ul>
+</li>
+</ul>
+<h4 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h4><ul>
+<li>order by 子句    *order by 排序字段1….    </li>
+<li>asc是升序，desc是降序</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/#more" rel="contents">
@@ -582,33 +606,40 @@ use mysql    5.update user set password=password(&quot;新密码&quot;) where us
 
       
         
-          
-          商城业务分析购物车订单
-在进行库存扣减的时候，必须注意不要进行内存运算,以免多线程造成错误，应该使用数据库的行级锁
-校验实时的商品价格而不是购物车中的价格
-每次都需要校验购买数量是否大于库存量
-
-支付业务
-超时订单，应该取消，并回滚库存量
-用户携带订单编号发送给支付系统，支付系统通过http请求,通过支付服务授权，生成支付二维码，支付成功后，通知MQ，订单系统取得MQ中的雄消息，并执行相应的操作
-
-秒杀业务
-秒杀商品信息存到缓存Redis中
-多线程下单的时候，将订单信息等存到延时队列中，以检测用户是否长时间未支付
-为了降低微服务的负载，将用户信息校验等交给redis
-遇到的问题
-重复排队的问题
-使用redis记录用户排队的次数，如果大于1，则说明已经重复排队
-
-
-实现并发削峰
-使用队列机制，将信息存入redis并使用多线程来处理
-每次下单，需要输入验证码
-
-
-防止超卖
-使用redis,每次
-          ...
+          <h3 id="商城业务分析"><a href="#商城业务分析" class="headerlink" title="商城业务分析"></a>商城业务分析</h3><h4 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h4><h5 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h5><ul>
+<li>在进行库存扣减的时候，必须注意不要进行<strong>内存运算</strong>,以免多线程造成错误，应该使用数据库的<strong>行级锁</strong></li>
+<li>校验实时的商品价格而不是购物车中的价格</li>
+<li>每次都需要校验购买数量是否大于库存量</li>
+</ul>
+<h5 id="支付业务"><a href="#支付业务" class="headerlink" title="支付业务"></a>支付业务</h5><ul>
+<li>超时订单，应该取消，并回滚库存量</li>
+<li>用户携带订单编号发送给支付系统，支付系统通过<code>http</code>请求,通过支付服务授权，生成支付二维码，支付成功后，通知<code>MQ</code>，订单系统取得<code>MQ</code>中的雄消息，并执行相应的操作</li>
+</ul>
+<h5 id="秒杀业务"><a href="#秒杀业务" class="headerlink" title="秒杀业务"></a>秒杀业务</h5><ul>
+<li>秒杀商品信息存到缓存<code>Redis</code>中</li>
+<li>多线程下单的时候，将订单信息等存到延时队列中，以检测用户是否长时间未支付</li>
+<li>为了降低微服务的负载，将用户信息校验等交给<code>redis</code></li>
+<li><font color=red>遇到的问题</font><ul>
+<li>重复排队的问题<ul>
+<li>使用<code>redis</code>记录用户排队的次数，如果大于1，则说明已经重复排队</li>
+</ul>
+</li>
+<li>实现并发削峰<ul>
+<li>使用队列机制，将信息存入<code>redis</code>并使用多线程来处理</li>
+<li>每次下单，需要输入验证码</li>
+</ul>
+</li>
+<li>防止超卖<ul>
+<li>使用<code>redis</code>,每次下单都从<code>redis</code>中查询</li>
+</ul>
+</li>
+<li>订单超时回滚<ul>
+<li>每次下单的时候都将信息存入延时队列，时间到达之后，关闭支付，回滚订单</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/#more" rel="contents">
@@ -785,49 +816,41 @@ use mysql    5.update user set password=password(&quot;新密码&quot;) where us
 
       
         
-          
-          商B2C模式网站开发电商网站开发需求分析
-前台
-主站频道，用户中心，秒杀，优惠券等
-
-
-后台
-商品，订单，库存，用户，运营，统计，财务，设置等
-
-
-
-系统设计数据库设计
-商品库
-订单库
-基础设置库
-运营库
-用户库
-系统库
-支付库
-短信库
-
-技术选型
-SSM(通用mapper) +Dubbo
-前端技术，vue.js+ElementUI,前台使用vue.js+thymeleaf
-消息中间件RabbitMQ
-搜索中间件elasticsearch
-缓存中间件技术Redis
-报表 插件echas
-安全框架SpringSecurity
-单点登录中间件CAS
-
-工程搭建准备工作
-配置maven本地仓库
-创建数据库
-注册中心zookeeper
-
-管理后端
-表结构：id name image letter seq
-查看品牌列表 findAll
-
-公共异常处理
-使用@ControllerAdvice定义一个控
-          ...
+          <h3 id="商B2C模式网站开发"><a href="#商B2C模式网站开发" class="headerlink" title="商B2C模式网站开发"></a>商<code>B2C</code>模式网站开发</h3><h3 id="电商网站开发"><a href="#电商网站开发" class="headerlink" title="电商网站开发"></a>电商网站开发</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><ul>
+<li>前台<ul>
+<li>主站频道，用户中心，秒杀，优惠券等</li>
+</ul>
+</li>
+<li>后台<ul>
+<li>商品，订单，库存，用户，运营，统计，财务，设置等</li>
+</ul>
+</li>
+</ul>
+<h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h5><ul>
+<li>商品库</li>
+<li>订单库</li>
+<li>基础设置库</li>
+<li>运营库</li>
+<li>用户库</li>
+<li>系统库</li>
+<li>支付库</li>
+<li>短信库</li>
+</ul>
+<h5 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h5><ul>
+<li><code>SSM(通用mapper) +Dubbo</code></li>
+<li>前端技术，<code>vue.js+ElementUI</code>,前台使用<code>vue.js+thymeleaf</code></li>
+<li>消息中间件<code>RabbitMQ</code></li>
+<li>搜索中间件<code>elasticsearch</code></li>
+<li>缓存中间件技术<code>Redis</code></li>
+<li>报表 插件<code>echas</code></li>
+<li>安全框架<code>SpringSecurity</code></li>
+<li>单点登录中间件<code>CAS</code></li>
+</ul>
+<h4 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h4><h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><ul>
+<li>配置<code>maven</code>本地仓库</li>
+<li>创建数据库</li>
+<li>注册中心<code>zookeeper</code></li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/#more" rel="contents">
@@ -1005,40 +1028,39 @@ SSM(通用mapper) +Dubbo
       
         
           
-          JPA`框架使用使用步骤
-创建maven工程并导入依赖坐标
-配置JPA的核心文件
-必须配置到类路径下META-INF文件夹中
-文件命名为persistence.xml
-需要配置的内容
-jpa的实现方式
-数据库信息
-事务管理方式
+            <h3 id="JPA-框架使用"><a href="#JPA-框架使用" class="headerlink" title="JPA`框架使用"></a>JPA`框架使用</h3><h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
+<li>创建<code>maven</code>工程并导入依赖坐标</li>
+<li>配置<code>JPA</code>的核心文件<ul>
+<li>必须配置到类路径下<code>META-INF</code>文件夹中</li>
+<li>文件命名为<code>persistence.xml</code></li>
+<li>需要配置的内容<ul>
+<li><code>jpa</code>的实现方式</li>
+<li>数据库信息</li>
+<li>事务管理方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>编写实体类</li>
+<li>配置实体类和数据表的映射关系</li>
+<li>保存实体类数据到数据表中</li>
+</ul>
+<h4 id="注解的使用"><a href="#注解的使用" class="headerlink" title="注解的使用"></a>注解的使用</h4><ul>
+<li><code>@Entity</code>声明实体类</li>
+<li><code>@Table</code>配置实体类和数据表的映射，属性<code>name</code> 表示数据表的名称</li>
+<li><code>@Id</code>声明主键的配置，使用<code>@GeneratedValue</code>声明其属性，<code>strategy</code>属性配置这件生成策略，支持自增的数据库使用<code>GenerationType.INDENTITY</code>，支持序列的使用<code>GenerationType.SEQUENCE</code></li>
+<li><code>@Column</code>配置属性和字段的映射关系，<code>name</code>属性是数据表中字段的名称</li>
+</ul>
+<h4 id="JPA的使用步骤"><a href="#JPA的使用步骤" class="headerlink" title="JPA的使用步骤"></a><code>JPA</code>的使用步骤</h4><ul>
+<li>加载配置文件，创建工厂对象</li>
+<li>通过实体管理类工厂获取实体管理器</li>
+<li>获取事务对象，开启事务</li>
+<li>完成增删改查</li>
+<li>提交事务</li>
+<li>释放资源</li>
+</ul>
 
-
-
-
-编写实体类
-配置实体类和数据表的映射关系
-保存实体类数据到数据表中
-
-注解的使用
-@Entity声明实体类
-@Table配置实体类和数据表的映射，属性name 表示数据表的名称
-@Id声明主键的配置，使用@GeneratedValue声明其属性，strategy属性配置这件生成策略，支持自增的数据库使用GenerationType.INDENTITY，支持序列的使用GenerationType.SEQUENCE
-@Column配置属性和字段的映射关系，name属性是数据表中字段的名称
-
-JPA的使用步骤
-加载配置文件，创建工厂对象
-通过实体管理类工厂获取实体
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/08/JPA%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1208,29 +1230,31 @@ JPA的使用步骤
 
       
         
-          
-          权限管理系统的设计技术选型
-AdminLTE作为view
-采用ssm+spring-security的方式，数据库采用Mysql
-使用PageHelper作为分页工具
-
-新知识
-使用spring-security作为登录认证以及页面权限控制以及服务器权限控制
-日志记录系统
-
-设计过程
-数据库和数据表的设计
-
-建立maven工程，配置pom.xml文件，导入依赖的坐标
-
-建立applicationConfig.xml文件，作为spring的配置文件，整合spring和mybatis
-
-配置文件中使用&lt;component-scan&gt;标签配置注解扫描，扫描service 和dao包
-使用v2.c3p0配置连接池，此处需要一个数据库的配置文件jdbcConfig.properties
-整合mybatis,配置sqlSessionFactoryBean
-配置PageHelper插件
-配置
-          ...
+          <h3 id="权限管理系统的设计"><a href="#权限管理系统的设计" class="headerlink" title="权限管理系统的设计"></a>权限管理系统的设计</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><ul>
+<li><code>AdminLTE</code>作为<code>view</code></li>
+<li>采用<code>ssm+spring-security</code>的方式，数据库采用<code>Mysql</code></li>
+<li>使用<code>PageHelper</code>作为分页工具</li>
+</ul>
+<h4 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h4><ul>
+<li>使用<code>spring-security</code>作为<strong>登录认证</strong>以及<strong>页面权限控制</strong>以及<strong>服务器</strong>权限控制</li>
+<li>日志记录系统</li>
+</ul>
+<h4 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h4><ul>
+<li><p>数据库和数据表的设计</p>
+</li>
+<li><p>建立<code>maven</code>工程，配置<code>pom.xml</code>文件，导入依赖的坐标</p>
+</li>
+<li><p>建立<code>applicationConfig.xml</code>文件，作为<code>spring</code>的配置文件，整合s<code>pring</code>和<code>mybatis</code></p>
+<ul>
+<li>配置文件中使用<code>&lt;component-scan&gt;</code>标签配置注解扫描，扫描<code>service</code> 和<code>dao</code>包</li>
+<li>使用<code>v2.c3p0</code>配置连接池，此处需要一个数据库的配置文件<code>jdbcConfig.properties</code></li>
+<li>整合<code>mybatis</code>,配置<code>sqlSessionFactoryBean</code></li>
+<li>配置<code>PageHelper</code>插件</li>
+<li>配置声明式事务</li>
+<li>使用<code>MapperScannerConfigurer</code>配置扫描<code>dao</code>接口</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/#more" rel="contents">

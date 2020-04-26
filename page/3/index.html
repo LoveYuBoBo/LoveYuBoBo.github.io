@@ -393,33 +393,20 @@
 
       
         
-          
-          HashMap源码阅读
-HashMap的继承结构如下:
-
-
-
-HashMap中的变量有如下这些
-
-
-其中默认容量是16
-最大容量是2^30，原因是最高位是符号位，同时要保证容量是2的次方数，所以是2^30
-list转化为tree的阈值是8，也就是链表长度超过8以后就转化为树(红黑树)
-tree转化为list的阈值是6，也就是tree中元素小于6就会转化为list
-MIN_TREEIFY_CAPACITY是64，也就是hashTable中元素超过64个才会转换成tree
-
-
-hashMap中的方法
-
-首先关注``hashcode和hash`方法
-
-
-可以看到调用的是object的``hashCode方法，该方法是native方法，将key和value的hashCode`异或
-
-hash函数
-
-这个函数就是大名鼎鼎的扰动函数，通过将hashCode右移16位以后异或，同时保留了高位的特性，降低
-          ...
+          <h4 id="HashMap源码阅读"><a href="#HashMap源码阅读" class="headerlink" title="HashMap源码阅读"></a>HashMap源码阅读</h4><ul>
+<li>HashMap的继承结构如下:</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425114712643.png" alt="image-20200425114712643"></p>
+<ul>
+<li><p><code>HashMap</code>中的变量有如下这些</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425120236019.png" alt="image-20200425120236019"></p>
+<ul>
+<li>其中默认容量是16</li>
+<li>最大容量是2^30，原因是最高位是符号位，同时要保证容量是2的次方数，所以是2^30</li>
+<li>list转化为tree的阈值是8，也就是链表长度超过8以后就转化为树(红黑树)</li>
+<li>tree转化为list的阈值是6，也就是tree中元素小于6就会转化为list</li>
+<li><code>MIN_TREEIFY_CAPACITY</code>是64，也就是hashTable中元素超过64个才会转换成tree</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
@@ -596,33 +583,24 @@ hash函数
 
       
         
-          
-          线程池基础常用的线程池
-Executors
-newFixedThreadPool:无界队列
-newCachedThreaPool：线程无上限
-newSingleThredPool:无界队列
-newScheduledThreadPool：线程无上限
-
-
-ThreadPoolExecutor
-
-线程池重要参数
-corePoolSize:核心线程数
-maxinumPoolSize：最大线程数
-keepAliveTime:线程最大空闲时间
-workQueue：任务队列
-threadFactory：线程工厂
-handler：拒绝策略
-
-拒绝策略
-AbortPolicy:丢弃任务并抛出异常
-DiscardPolicy:丢弃任务不抛异常
-DiscardOldestPolicy:丢弃队列最前面的任务
-CallerRunsPolicy:由调用线程处理该任务
-
-
-          
+          <h4 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h4><h5 id="常用的线程池"><a href="#常用的线程池" class="headerlink" title="常用的线程池"></a>常用的线程池</h5><ul>
+<li><code>Executors</code><ul>
+<li><code>newFixedThreadPool</code>:无界队列</li>
+<li><code>newCachedThreaPool</code>：线程无上限</li>
+<li><code>newSingleThredPool</code>:无界队列</li>
+<li><code>newScheduledThreadPool</code>：线程无上限</li>
+</ul>
+</li>
+<li><code>ThreadPoolExecutor</code></li>
+</ul>
+<h5 id="线程池重要参数"><a href="#线程池重要参数" class="headerlink" title="线程池重要参数"></a>线程池重要参数</h5><ul>
+<li><code>corePoolSize</code>:核心线程数</li>
+<li><code>maxinumPoolSize</code>：最大线程数</li>
+<li><code>keepAliveTime</code>:线程最大空闲时间</li>
+<li><code>workQueue</code>：任务队列</li>
+<li><code>threadFactory</code>：线程工厂</li>
+<li><code>handler</code>：拒绝策略</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more" rel="contents">
@@ -799,40 +777,27 @@ CallerRunsPolicy:由调用线程处理该任务
 
       
         
-          
-          git基本操作本文来源git基本操作
-
-git的通用操作流程如下
-
-
-
-主要涉及四个部分，工作区，暂存区，本地仓库。远程仓库
-
-查看配置命令
-
-git config --list
-
-
-工作区命令
-
-新建：git init或者`git clone
-提交: git add .
-撤销：git rm
-
-
-暂存区命令
-
-提交到版本库：git commit -m
-查看信息： git diff --cached
-分支管理
-创建分支：git branch，如git branch testing；
-从当前所处的分支切换到其他分支：git checkout，如git checkout testing；
-新建并切换到新建分支上：git checkout -b;
-删除分支：git branch -d；
-将当前分支与指定分支进行合并：git merge;
-显示本地仓库的所有分支：git branch;
-查看各个分支
-          ...
+          <h4 id="git基本操作"><a href="#git基本操作" class="headerlink" title="git基本操作"></a>git基本操作</h4><p>本文来源<a href="https://juejin.im/post/5ae072906fb9a07a9e4ce596" target="_blank" rel="noopener">git基本操作</a></p>
+<ul>
+<li>git的通用操作流程如下</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/2.jpg" alt=""></p>
+<ul>
+<li><p>主要涉及四个部分，工作区，暂存区，本地仓库。远程仓库</p>
+</li>
+<li><p>查看配置命令</p>
+<ul>
+<li><code>git config --list</code></li>
+</ul>
+</li>
+<li><p>工作区命令</p>
+<ul>
+<li>新建：<code>git init</code>或者`git clone</li>
+<li>提交: <code>git add .</code></li>
+<li>撤销：<code>git rm</code></li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/23/git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/#more" rel="contents">
@@ -1009,50 +974,37 @@ git config --list
 
       
         
-          
-          
-单点登录的实现
-
-java基础中重要的几块
-
-ArrayList什么时候扩容，怎么扩容
-
-http和websocket的区别
-
-http是短链接，socket是长连接
-socket主要是对tcp的封装
-
-
-
-一次页面请求发生了什么
-
-DNS解析出IP地址
-根据IP建立TCP连接
-发送HTTP请求
-服务端返回页面
-
-
-重定向和转发的区别，是服务端的还是客户端行为？
-
-IOC的作用
-
-资源集中管理
-降低耦合
-
-
-503，302，403错误码
-
-AOP的使用场景
-
-Authentication 权限
-Caching 缓存
-Context passing 内容传递
-Error handling 错误处理
-Lazy loading 懒加载
-Debugging 调试
-logging，tracing，profiling and monitoring 记录跟踪 优化 校准
-Performance opt
-          ...
+          <ul>
+<li><p>单点登录的实现</p>
+</li>
+<li><p><code>java</code>基础中重要的几块</p>
+</li>
+<li><p><code>ArrayList</code>什么时候扩容，怎么扩容</p>
+</li>
+<li><p><code>http</code>和<code>websocket</code>的区别</p>
+<ul>
+<li><code>http</code>是短链接，<code>socket</code>是长连接</li>
+<li><code>socket</code>主要是对<code>tcp</code>的封装</li>
+<li></li>
+</ul>
+</li>
+<li><p>一次页面请求发生了什么</p>
+<ul>
+<li><code>DNS</code>解析出<code>IP</code>地址</li>
+<li>根据<code>IP</code>建立<code>TCP</code>连接</li>
+<li>发送<code>HTTP</code>请求</li>
+<li>服务端返回页面</li>
+</ul>
+</li>
+<li><p>重定向和转发的区别，是服务端的还是客户端行为？</p>
+</li>
+<li><p><code>IOC</code>的作用</p>
+<ul>
+<li>资源集中管理</li>
+<li>降低耦合</li>
+</ul>
+</li>
+<li><p>503，302，403错误码</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/23/%E4%BA%BA%E4%BA%BA%E8%BD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/#more" rel="contents">
@@ -1229,29 +1181,18 @@ Performance opt
 
       
         
-          
-          优化准则基数某一列唯一键的数量叫基数
-查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描
-
-在做SQL优化的时候，如果怀疑列数据分布不均衡，我们可以使用
-select列，count(*) from表group by列order by 2 desc来查看列的数据分布
-
-优化单表查询的时候，可能走索引查询，也可能是全表扫描。这个需要查看数据分布
-
-
-选择性选择性=基数/某一列总数x100%
-当选择性在20%左右的时候，数据分布是比较均衡的。所以当列出现在where条件中的时候且该列的选择性大于20%的时候就应该创建索引。
-
-优化方法
-最左匹配原则
-因为mysql会一直向右匹配直到遇到范围查询，所以应该把”=”放在前边
-
-
-根据数据分布设定索引
-使用like的时候，使用向右模糊匹配
-使用前模糊匹配不会走索引，但是可以通过翻转函数实现走索引
-使用模糊匹配，不能使用索引，也不能使用翻转函数
-          ...
+          <h4 id="优化准则"><a href="#优化准则" class="headerlink" title="优化准则"></a>优化准则</h4><h5 id="基数"><a href="#基数" class="headerlink" title="基数"></a>基数</h5><h6 id="某一列唯一键的数量叫基数"><a href="#某一列唯一键的数量叫基数" class="headerlink" title="某一列唯一键的数量叫基数"></a>某一列唯一键的数量叫基数</h6><ul>
+<li><p>查询结果返回表中数据5%以内，使用索引，超过5%使用全表扫描</p>
+</li>
+<li><p>在做<code>SQL</code>优化的时候，如果怀疑列数据分布不均衡，我们可以使用</p>
+<p><code>select列，count(*) from表group by列order by 2 desc来查看列的数据分布</code></p>
+</li>
+<li><p>优化单表查询的时候，可能走索引查询，也可能是全表扫描。这个需要查看数据分布</p>
+</li>
+</ul>
+<h5 id="选择性"><a href="#选择性" class="headerlink" title="选择性"></a>选择性</h5><h6 id="选择性-基数-某一列总数x100"><a href="#选择性-基数-某一列总数x100" class="headerlink" title="选择性=基数/某一列总数x100%"></a><code>选择性=基数/某一列总数x100%</code></h6><ul>
+<li>当选择性在20%左右的时候，数据分布是比较均衡的。所以当列出现在where条件中的时候且该列的选择性大于20%的时候就应该创建索引。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/04/23/sql%E4%BC%98%E5%8C%96/#more" rel="contents">
