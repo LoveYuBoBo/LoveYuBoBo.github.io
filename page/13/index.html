@@ -270,6 +270,423 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url">java基础知识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T18:55:01+02:00">
+                2020-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  9.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  34
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h4><ul>
+<li>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </li>
+<li>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</li>
+<li>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </li>
+<li>引用数据类型：字符串，数组，类，接口，Lambda  </li>
+<li>浮点型可能是一个近似值</li>
+<li>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</li>
+<li>Java内存划分为5个部分：<ul>
+<li>栈(stack)：存放的是方法中的局部变量，一旦超过作用域，立即消失</li>
+<li>堆(Heap):凡是new出来的，都在堆中，堆内存中的东西都有一个16进制的地址值，里面存放的数据都有默认值  </li>
+<li>方法区(Method Area):存储.class相关的信息，包含方法的信息</li>
+<li>本地方法栈(Native Method Stack):与操作系统有关</li>
+<li>寄存器(pc Register)：与cpu有关</li>
+</ul>
+</li>
+<li>空指针异常 NullPointException,通过添加new解决。</li>
+<li>数组一旦创建，程序运行期间，长度不可变。</li>
+<li>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</li>
+<li>当对象作为参数的时候，传入的是参数的地址值</li>
+<li>局部变量和成员变量：<ul>
+<li>定义的位置不一样，局部变量在方法内部，成员变量直接写在类中</li>
+<li>作用的范围不一样，局部变量只在方法中起作用，成员变量在整个类中都有用</li>
+<li>默认值不一样，局部变量没有默认值，必须手动赋值，成员变量有默认值，规则和数组一样。</li>
+<li>内存位置不一样，局部变量在栈内存中，成员变量在堆内存中</li>
+<li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/16/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" itemprop="url">Mysql基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T17:28:40+02:00">
+                2020-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h3><h4 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h4><ul>
+<li>添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。    </li>
+<li>删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>修改用户密码：update user set 字段名=新的值 where 条件子句    *忘记root密码：    <ul>
+<li>使用管理员权限运行cmd，并停止mysql服务    </li>
+<li>使用无验证方式启动：mysqld –skip-grant-tables    </li>
+<li>打开新的窗口，直接输入mysql命令登录    </li>
+</ul>
+</li>
+<li>use mysql    5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;    </li>
+<li>关闭窗口    </li>
+<li>手动结束mysqld.exe进程    </li>
+<li>启动mysql服务    </li>
+<li>使用新密码登录    </li>
+<li>权限管理：    <ul>
+<li>查询权限：    show grants for &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>授予权限：    grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;    </li>
+<li>撤销权限：    revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</li>
+</ul>
+</li>
+<li>语法 select字段列表from表名列表where条件列表group by分组字段having分组之后的条件order by排序limit分页限定</li>
+<li>基础查询<ul>
+<li>多字段查询select 字段名1，…，from 表名<em>注意：<em>如果查询所有字段，可以使用</em>代替字段列表</em></li>
+<li>去除重复的结果集使用distinct</li>
+<li>起别名<em>使用as</em></li>
+<li>计算列<em>一般使用四则运算计算列的值</em>如果有null参与运算，计算结果都是null可以使用ifnull()表达式</li>
+</ul>
+</li>
+<li>条件查询1.where子句<ul>
+<li>运算符<em>&gt; &lt; &gt;= &lt;=…<em>like(模糊查询)</em>占位符</em>_:单个任意字符<em>%：多个任意字符</em>is null(因为null值不能用=号判断)between(效果等效and)in(效果等效于or)</li>
+</ul>
+</li>
+</ul>
+<h4 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h4><ul>
+<li>order by 子句    *order by 排序字段1….    </li>
+<li>asc是升序，desc是降序</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -881,396 +1298,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" itemprop="url">权限管理系统的设计</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-07T19:00:54+02:00">
-                2020-04-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index">
-                    <span itemprop="name">权限管理系统设计</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  634
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="权限管理系统的设计"><a href="#权限管理系统的设计" class="headerlink" title="权限管理系统的设计"></a>权限管理系统的设计</h3><h4 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h4><ul>
-<li><code>AdminLTE</code>作为<code>view</code></li>
-<li>采用<code>ssm+spring-security</code>的方式，数据库采用<code>Mysql</code></li>
-<li>使用<code>PageHelper</code>作为分页工具</li>
-</ul>
-<h4 id="新知识"><a href="#新知识" class="headerlink" title="新知识"></a>新知识</h4><ul>
-<li>使用<code>spring-security</code>作为<strong>登录认证</strong>以及<strong>页面权限控制</strong>以及<strong>服务器</strong>权限控制</li>
-<li>日志记录系统</li>
-</ul>
-<h4 id="设计过程"><a href="#设计过程" class="headerlink" title="设计过程"></a>设计过程</h4><ul>
-<li><p>数据库和数据表的设计</p>
-</li>
-<li><p>建立<code>maven</code>工程，配置<code>pom.xml</code>文件，导入依赖的坐标</p>
-</li>
-<li><p>建立<code>applicationConfig.xml</code>文件，作为<code>spring</code>的配置文件，整合s<code>pring</code>和<code>mybatis</code></p>
-<ul>
-<li>配置文件中使用<code>&lt;component-scan&gt;</code>标签配置注解扫描，扫描<code>service</code> 和<code>dao</code>包</li>
-<li>使用<code>v2.c3p0</code>配置连接池，此处需要一个数据库的配置文件<code>jdbcConfig.properties</code></li>
-<li>整合<code>mybatis</code>,配置<code>sqlSessionFactoryBean</code></li>
-<li>配置<code>PageHelper</code>插件</li>
-<li>配置声明式事务</li>
-<li>使用<code>MapperScannerConfigurer</code>配置扫描<code>dao</code>接口</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/07/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/05/SSM%E6%95%B4%E5%90%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/05/SSM%E6%95%B4%E5%90%88/" itemprop="url">SSM整合</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-05T15:53:47+02:00">
-                2020-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSM%E6%95%B4%E5%90%88/" itemprop="url" rel="index">
-                    <span itemprop="name">SSM整合</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  106
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="SSM整合"><a href="#SSM整合" class="headerlink" title="SSM整合"></a>SSM整合</h3><h4 id="spring整合springmvc"><a href="#spring整合springmvc" class="headerlink" title="spring整合springmvc"></a>spring整合springmvc</h4><ul>
-<li>启动tomcat的时候加载spring配置文件</li>
-<li>SercletContext域对象：开启服务器的时候创建，关闭服务器销毁</li>
-<li>监听器监听servletContext域对象的创建和销毁</li>
-<li>监听器加载spring.xml文件</li>
-<li>监听器由spring-web提供</li>
-</ul>
-<h4 id="spring和Mybatis整合"><a href="#spring和Mybatis整合" class="headerlink" title="spring和Mybatis整合"></a>spring和Mybatis整合</h4><ul>
-<li>代理对象存入ioc容器中</li>
-<li>在spring的配置文件中配置整合Mybatis</li>
-<li>spring配置声明式事务管理</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
   </nav>
 
 
@@ -1320,7 +1352,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">77</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1331,7 +1363,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1342,7 +1374,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1409,7 +1441,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.1k</span>
+    <span title="Site words total count">41.5k</span>
   
 </div>
 
