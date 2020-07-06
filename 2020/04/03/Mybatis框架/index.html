@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Mybatis框架持久层技术解决方案 JDBC技术 Connection PreparedStatement ResultSet   Spring中的JdbcTemplate Apache的DBUtils  mabatis概述 使用了ORM的思想实现对结果集的封装 环境搭建 创建maven工程并导入坐标 创建实体类和dao接口 创建Mybatis主配置文件 创建映射配置文件   注意 mabati">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis框架">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/03/Mybatis%E6%A1%86%E6%9E%B6/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="Mybatis框架持久层技术解决方案 JDBC技术 Connection PreparedStatement ResultSet   Spring中的JdbcTemplate Apache的DBUtils  mabatis概述 使用了ORM的思想实现对结果集的封装 环境搭建 创建maven工程并导入坐标 创建实体类和dao接口 创建Mybatis主配置文件 创建映射配置文件   注意 mabati">
+<meta property="article:published_time" content="2020-04-02T21:24:05.645Z">
+<meta property="article:modified_time" content="2020-04-26T18:11:18.354Z">
+<meta property="article:author" content="ijavaweb">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/03/Mybatis框架/"/>
+
+
+
+
+
+  <title>Mybatis框架 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/03/Mybatis%E6%A1%86%E6%9E%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Mybatis框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-03T05:24:05+08:00">
+                2020-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">Mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Mybatis框架"><a href="#Mybatis框架" class="headerlink" title="Mybatis框架"></a>Mybatis框架</h3><h4 id="持久层技术解决方案"><a href="#持久层技术解决方案" class="headerlink" title="持久层技术解决方案"></a>持久层技术解决方案</h4><ul>
+<li>JDBC技术<ul>
+<li>Connection</li>
+<li>PreparedStatement</li>
+<li>ResultSet</li>
+</ul>
+</li>
+<li>Spring中的JdbcTemplate</li>
+<li>Apache的DBUtils</li>
+</ul>
+<h4 id="mabatis概述"><a href="#mabatis概述" class="headerlink" title="mabatis概述"></a>mabatis概述</h4><ul>
+<li>使用了ORM的思想实现对结果集的封装</li>
+<li>环境搭建<ul>
+<li>创建maven工程并导入坐标</li>
+<li>创建实体类和dao接口</li>
+<li>创建Mybatis主配置文件</li>
+<li>创建映射配置文件</li>
+</ul>
+</li>
+<li>注意<ul>
+<li><strong>mabatis的映射配置文件位置必须和dao接口的包结构相同</strong></li>
+<li>映射配置文件中的namespace属性的取值必须是dao接口的全限定类名</li>
+<li>映射文件的配置。id属性的取值必须是dao接口的方法名</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h4><ul>
+<li>配置Mysql环境<ul>
+<li>配置事务 <code>transcationManager</code>标签</li>
+<li>配置连接池<code>dataSource</code></li>
+<li>配置映射文件位置 <code>mappers</code>b标签的<code>resource</code>属性</li>
+</ul>
+</li>
+</ul>
+<h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><ul>
+<li>读取配置文件</li>
+<li>创建SqlSessionFactory</li>
+<li>使用工厂生产SqlSession对象: <code>factory.oepnSession</code></li>
+<li>使用SqlSession创建dao接口的代理对象：<code>session.getMapper()</code></li>
+<li>使用代理对象执行方法</li>
+<li>释放资源</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>读取配置文件的时候(不使用相对路径和绝对路径)<ul>
+<li>使用类加载器，只能加载类路径的配置文件</li>
+<li>使用ServletContext对象的<code>getRealPath()</code></li>
+</ul>
+</li>
+<li>Mybatis创建工厂使用了<strong>构建者模式</strong>，使用<code>SqlSessionFactoryBuilder</code>创建工厂，使用者直接调用方法即可拿到对象</li>
+<li>在生产<code>SqlSession</code>的时候使用了工厂模式，降低了类之间的依赖</li>
+<li>创建dao接口实现类使用了<strong>代理模式</strong>，在不修改源码的基础上实现功能增强</li>
+</ul>
+<h4 id="自定义Mybatis"><a href="#自定义Mybatis" class="headerlink" title="自定义Mybatis"></a>自定义Mybatis</h4><ul>
+<li>执行的流程<ul>
+<li>根据配置文件的信息创建connection对象，注册驱动，获取连接</li>
+<li>获取预处理对象preparedStatement，此处需要SQL语句</li>
+<li>执行查询</li>
+<li>遍历结果用于封装，此处用配置文件中的全限定类名，使用反射创建对象并封装</li>
+</ul>
+</li>
+<li>自定义Mybatis涉及的类<ul>
+<li>class Resources</li>
+<li>class SqlSessionFactoryBuilder</li>
+<li>interface SqlSessionFactory</li>
+</ul>
+</li>
+</ul>
+<h4 id="CRUD操作"><a href="#CRUD操作" class="headerlink" title="CRUD操作"></a>CRUD操作</h4><h4 id="Dao实现类的执行过程"><a href="#Dao实现类的执行过程" class="headerlink" title="Dao实现类的执行过程"></a>Dao实现类的执行过程</h4><ul>
+<li>PreparedStatement对象的方法<ul>
+<li><code>excute</code>只能执行CRUD中任意一种,返回值是布尔值，表示是否有结果集</li>
+<li><code>excuteUpdate</code>只能执行CUD语句。返回值是影响数据库的行数</li>
+<li><code>excuteQuery</code>只能执行Select语句，返回结果集 resultSet</li>
+</ul>
+</li>
+</ul>
+<h4 id="Dao代理的执行过程"><a href="#Dao代理的执行过程" class="headerlink" title="Dao代理的执行过程"></a>Dao代理的执行过程</h4><h5 id="解决实体类和数据库列名不对应的情况"><a href="#解决实体类和数据库列名不对应的情况" class="headerlink" title="解决实体类和数据库列名不对应的情况"></a>解决实体类和数据库列名不对应的情况</h5><ul>
+<li>sql语句中使用别名</li>
+<li>使用<code>resultMap</code>标签</li>
+<li><code>typeAlias</code>指定别名，属性是domain中的实体类</li>
+</ul>
+<h5 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h5><ul>
+<li>使用<code>insert</code>标签注册事件并制定实体类的全限定类名，加sql语句</li>
+<li>使用<code>SqlCommit</code>保存数据操作</li>
+<li>获取插曲用户的id<ul>
+<li>使用<code>keyPropety</code>属性，并且使用sql语句<code>select last_insert_id()</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="update"><a href="#update" class="headerlink" title="update"></a>update</h5><ul>
+<li>使用<code>update</code>标签配置并制制定类型，加上sql语句</li>
+</ul>
+<h5 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h5><ul>
+<li>使用<code>delete</code>标签配置</li>
+</ul>
+<h5 id="select"><a href="#select" class="headerlink" title="select"></a>select</h5><ul>
+<li><p>使用<code>select</code>标签并指定返回的数据类型</p>
+</li>
+<li><p>模糊查询传入<code>%</code>，保证sql语句的正确性</p>
+</li>
+</ul>
+<h4 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h4><ul>
+<li><p>连接池就是用于存储链接的容器，可以减少获取链接消耗的时间</p>
+<ul>
+<li>连接池配置方式</li>
+<li>在主配置文件SqlMapConfig.xml中dataSource标签，type属性表示采用何种连接池方式</li>
+<li>type属性的取值<ul>
+<li>POOLED：采用传统的javax.sql.DataSource规范中的连接池，每次从池中获取链接使用</li>
+<li>UNPOOLED：采用传统获取链接的方式，但是没有实现连接池。每次创建一个新的链接</li>
+<li>JNDI:采用服务器提供的JNDI技术实现，获取DataSource对象，如果不是web或者maven工程，不能使用</li>
+</ul>
+</li>
+</ul>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4></li>
+</ul>
+<ul>
+<li><p>什么是事务</p>
+</li>
+<li><p>事务的四大特性（原子性，一致性，隔离性，持久性）</p>
+</li>
+<li><p>不考虑隔离性会产生的三大问题（脏读，不可重复读，幻读）</p>
+</li>
+<li><p>隔离级别（serializable,repeated read(Mysql默认级别),read commited,read uncommited）</p>
+<h4 id="自动提交设置"><a href="#自动提交设置" class="headerlink" title="自动提交设置"></a>自动提交设置</h4></li>
+<li><p>在<code>openSession()</code>中设置为true</p>
+</li>
+</ul>
+<h4 id="动态sql"><a href="#动态sql" class="headerlink" title="动态sql"></a>动态sql</h4><h5 id="单一条件查询"><a href="#单一条件查询" class="headerlink" title="单一条件查询"></a>单一条件查询</h5><ul>
+<li><p>配置中使用if标签，拼接SQL语句</p>
+</li>
+<li><p>使用where标签，嵌套if标签</p>
+<h5 id="多条件查询"><a href="#多条件查询" class="headerlink" title="多条件查询"></a>多条件查询</h5></li>
+<li><p>使用foreach标签，有<code>collection</code> <code>open</code> <code>close</code> <code>item</code> <code>seperate</code>等属性</p>
+<h5 id="抽取重复的标签"><a href="#抽取重复的标签" class="headerlink" title="抽取重复的标签"></a>抽取重复的标签</h5></li>
+</ul>
+<ul>
+<li>使用<code>sql</code>标签</li>
+</ul>
+<h4 id="Mybatis中的延迟加载"><a href="#Mybatis中的延迟加载" class="headerlink" title="Mybatis中的延迟加载"></a>Mybatis中的延迟加载</h4><ul>
+<li><p>使用数据的时候才发起查询，叫延迟加载，一对多和多对多一般使用延迟加载</p>
+</li>
+<li><p>只要一调用方法，马上发起查询，叫立即加载</p>
+<h4 id="Mabits中的缓存"><a href="#Mabits中的缓存" class="headerlink" title="Mabits中的缓存"></a>Mabits中的缓存</h4><h4 id="Mybatis中的注解开发"><a href="#Mybatis中的注解开发" class="headerlink" title="Mybatis中的注解开发"></a>Mybatis中的注解开发</h4></li>
+</ul>
+<ul>
+<li>使用results和result注解</li>
+</ul>
+<h3 id="Mybatis中多表查询"><a href="#Mybatis中多表查询" class="headerlink" title="Mybatis中多表查询"></a>Mybatis中多表查询</h3><h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ul>
+<li><p>建立两张表，使用外键关联起来</p>
+</li>
+<li><p>建立两个实体类并关联两个表</p>
+</li>
+<li><p>建立两个配置文件</p>
+</li>
+<li><p>实现配置</p>
+<h4 id="一对一查询"><a href="#一对一查询" class="headerlink" title="一对一查询"></a>一对一查询</h4><h4 id="一对多查询"><a href="#一对多查询" class="headerlink" title="一对多查询"></a>一对多查询</h4></li>
+<li><p>主表应该包含从表的实体集合</p>
+<h4 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h4><h3 id="通用mapper"><a href="#通用mapper" class="headerlink" title="通用mapper"></a>通用mapper</h3></li>
+<li><p>是对<code>Mybatis</code>的封装</p>
+</li>
+<li><p>集成的时候使用将第一层包名改为<code>tk</code>举行</p>
+</li>
+<li><p>实体类映射，使用<code>@Table</code>和<code>@Id</code>注解</p>
+</li>
+<li><p>创建<code>Mapper</code>接口</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/01/SpringMVC/" rel="next" title="SpringMVC">
+                <i class="fa fa-chevron-left"></i> SpringMVC
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/05/SSM%E6%95%B4%E5%90%88/" rel="prev" title="SSM整合">
+                SSM整合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis框架"><span class="nav-number">1.</span> <span class="nav-text">Mybatis框架</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#持久层技术解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">持久层技术解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mabatis概述"><span class="nav-number">1.2.</span> <span class="nav-text">mabatis概述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置步骤"><span class="nav-number">1.3.</span> <span class="nav-text">配置步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用步骤"><span class="nav-number">1.4.</span> <span class="nav-text">使用步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">1.5.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义Mybatis"><span class="nav-number">1.6.</span> <span class="nav-text">自定义Mybatis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CRUD操作"><span class="nav-number">1.7.</span> <span class="nav-text">CRUD操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dao实现类的执行过程"><span class="nav-number">1.8.</span> <span class="nav-text">Dao实现类的执行过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dao代理的执行过程"><span class="nav-number">1.9.</span> <span class="nav-text">Dao代理的执行过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解决实体类和数据库列名不对应的情况"><span class="nav-number">1.9.1.</span> <span class="nav-text">解决实体类和数据库列名不对应的情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#insert"><span class="nav-number">1.9.2.</span> <span class="nav-text">insert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#update"><span class="nav-number">1.9.3.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#delete"><span class="nav-number">1.9.4.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#select"><span class="nav-number">1.9.5.</span> <span class="nav-text">select</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连接池"><span class="nav-number">1.10.</span> <span class="nav-text">连接池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">1.11.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动提交设置"><span class="nav-number">1.12.</span> <span class="nav-text">自动提交设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态sql"><span class="nav-number">1.13.</span> <span class="nav-text">动态sql</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单一条件查询"><span class="nav-number">1.13.1.</span> <span class="nav-text">单一条件查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多条件查询"><span class="nav-number">1.13.2.</span> <span class="nav-text">多条件查询</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抽取重复的标签"><span class="nav-number">1.13.3.</span> <span class="nav-text">抽取重复的标签</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mybatis中的延迟加载"><span class="nav-number">1.14.</span> <span class="nav-text">Mybatis中的延迟加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mabits中的缓存"><span class="nav-number">1.15.</span> <span class="nav-text">Mabits中的缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mybatis中的注解开发"><span class="nav-number">1.16.</span> <span class="nav-text">Mybatis中的注解开发</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mybatis中多表查询"><span class="nav-number">2.</span> <span class="nav-text">Mybatis中多表查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤"><span class="nav-number">2.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一对一查询"><span class="nav-number">2.2.</span> <span class="nav-text">一对一查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一对多查询"><span class="nav-number">2.3.</span> <span class="nav-text">一对多查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多对多"><span class="nav-number">2.4.</span> <span class="nav-text">多对多</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通用mapper"><span class="nav-number">3.</span> <span class="nav-text">通用mapper</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

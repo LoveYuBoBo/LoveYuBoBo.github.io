@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今日内容：1. Servlet 2. HTTP协议 3. RequestServlet：1. 概念 2. 步骤 3. 执行原理 4. 生命周期 5. Servlet3.0 注解配置 6. Servlet的体系结构         Servlet -- 接口         |     GenericServlet -- 抽象类         |     HttpServlet  -- 抽象类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet&amp;HTTP&amp;Request笔记">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/03/22/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="今日内容：1. Servlet 2. HTTP协议 3. RequestServlet：1. 概念 2. 步骤 3. 执行原理 4. 生命周期 5. Servlet3.0 注解配置 6. Servlet的体系结构         Servlet -- 接口         |     GenericServlet -- 抽象类         |     HttpServlet  -- 抽象类">
+<meta property="article:published_time" content="2020-03-21T20:17:29.881Z">
+<meta property="article:modified_time" content="2020-04-26T18:10:55.633Z">
+<meta property="article:author" content="ijavaweb">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/03/22/Servlet&HTTP&Request笔记/"/>
+
+
+
+
+
+  <title>Servlet&HTTP&Request笔记 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/03/22/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet&HTTP&Request笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-22T04:17:29+08:00">
+                2020-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Servlet/" itemprop="url" rel="index">
+                    <span itemprop="name">Servlet</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="今日内容："><a href="#今日内容：" class="headerlink" title="今日内容："></a>今日内容：</h1><pre><code>1. Servlet
+2. HTTP协议
+3. Request</code></pre><h2 id="Servlet："><a href="#Servlet：" class="headerlink" title="Servlet："></a>Servlet：</h2><pre><code>1. 概念
+2. 步骤
+3. 执行原理
+4. 生命周期
+5. Servlet3.0 注解配置
+6. Servlet的体系结构    
+    Servlet -- 接口
+        |
+    GenericServlet -- 抽象类
+        |
+    HttpServlet  -- 抽象类
+
+    * GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象
+        * 将来定义Servlet类时，可以继承GenericServlet，实现service()方法即可
+
+    * HttpServlet：对http协议的一种封装，简化操作
+        1. 定义类继承HttpServlet
+        2. 复写doGet/doPost方法
+
+7. Servlet相关配置
+    1. urlpartten:Servlet访问路径
+        1. 一个Servlet可以定义多个访问路径 ： @WebServlet({&quot;/d4&quot;,&quot;/dd4&quot;,&quot;/ddd4&quot;})
+        2. 路径定义规则：
+            1. /xxx：路径匹配
+            2. /xxx/xxx:多层路径，目录结构
+            3. *.do：扩展名匹配</code></pre><a id="more"></a>
+
+<h2 id="HTTP："><a href="#HTTP：" class="headerlink" title="HTTP："></a>HTTP：</h2><pre><code>* 概念：Hyper Text Transfer Protocol 超文本传输协议
+    * 传输协议：定义了，客户端和服务器端通信时，发送数据的格式
+    * 特点：
+        1. 基于TCP/IP的高级协议
+        2. 默认端口号:80
+        3. 基于请求/响应模型的:一次请求对应一次响应
+        4. 无状态的：每次请求之间相互独立，不能交互数据
+
+    * 历史版本：
+        * 1.0：每一次请求响应都会建立新的连接
+        * 1.1：复用连接
+
+* 请求消息数据格式
+    1. 请求行
+        请求方式 请求url 请求协议/版本
+        GET /login.html    HTTP/1.1
+
+        * 请求方式：
+            * HTTP协议有7中请求方式，常用的有2种
+                * GET：
+                    1. 请求参数在请求行中，在url后。
+                    2. 请求的url长度有限制的
+                    3. 不太安全
+                * POST：
+                    1. 请求参数在请求体中
+                    2. 请求的url长度没有限制的
+                    3. 相对安全
+    2. 请求头：客户端浏览器告诉服务器一些信息
+        请求头名称: 请求头值
+        * 常见的请求头：
+            1. User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息
+                * 可以在服务器端获取该头的信息，解决浏览器的兼容性问题
+
+            2. Referer：http://localhost/login.html
+                * 告诉服务器，我(当前请求)从哪里来？
+                    * 作用：
+                        1. 防盗链：
+                        2. 统计工作：
+    3. 请求空行
+        空行，就是用于分割POST请求的请求头，和请求体的。
+    4. 请求体(正文)：
+        * 封装POST请求消息的请求参数的
+
+    * 字符串格式：
+        POST /login.html    HTTP/1.1
+        Host: localhost
+        User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0
+        Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+        Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+        Accept-Encoding: gzip, deflate
+        Referer: http://localhost/login.html
+        Connection: keep-alive
+        Upgrade-Insecure-Requests: 1
+
+        username=zhangsan    
+
+
+* 响应消息数据格式</code></pre><h2 id="Request："><a href="#Request：" class="headerlink" title="Request："></a>Request：</h2><pre><code>1. request对象和response对象的原理
+    1. request和response对象是由服务器创建的。我们来使用它们
+    2. request对象是来获取请求消息，response对象是来设置响应消息
+
+2. request对象继承体系结构：    
+    ServletRequest        --    接口
+        |    继承
+    HttpServletRequest    -- 接口
+        |    实现
+    org.apache.catalina.connector.RequestFacade 类(tomcat)
+
+3. request功能：
+    1. 获取请求消息数据
+        1. 获取请求行数据
+            * GET /day14/demo1?name=zhangsan HTTP/1.1
+            * 方法：
+                1. 获取请求方式 ：GET
+                    * String getMethod()  
+                2. (*)获取虚拟目录：/day14
+                    * String getContextPath()
+                3. 获取Servlet路径: /demo1
+                    * String getServletPath()
+                4. 获取get方式请求参数：name=zhangsan
+                    * String getQueryString()
+                5. (*)获取请求URI：/day14/demo1
+                    * String getRequestURI():        /day14/demo1
+                    * StringBuffer getRequestURL()  :http://localhost/day14/demo1
+
+                    * URL:统一资源定位符 ： http://localhost/day14/demo1    中华人民共和国
+                    * URI：统一资源标识符 : /day14/demo1                    共和国
+
+                6. 获取协议及版本：HTTP/1.1
+                    * String getProtocol()
+
+                7. 获取客户机的IP地址：
+                    * String getRemoteAddr()
+
+        2. 获取请求头数据
+            * 方法：
+                * (*)String getHeader(String name):通过请求头的名称获取请求头的值
+                * Enumeration&lt;String&gt; getHeaderNames():获取所有的请求头名称
+
+        3. 获取请求体数据:
+            * 请求体：只有POST请求方式，才有请求体，在请求体中封装了POST请求的请求参数
+            * 步骤：
+                1. 获取流对象
+                    *  BufferedReader getReader()：获取字符输入流，只能操作字符数据
+                    *  ServletInputStream getInputStream()：获取字节输入流，可以操作所有类型数据
+                        * 在文件上传知识点后讲解
+
+                2. 再从流对象中拿数据</code></pre><p>​<br>​        2. 其他功能：<br>​            1. 获取请求参数通用方式：不论get还是post请求方式都可以使用下列方法来获取请求参数<br>​                1. String getParameter(String name):根据参数名称获取参数值    username=zs&amp;password=123<br>​                2. String[] getParameterValues(String name):根据参数名称获取参数值的数组  hobby=xx&amp;hobby=game<br>​                3. Enumeration<String> getParameterNames():获取所有请求的参数名称<br>​                4. Map&lt;String,String[]&gt; getParameterMap():获取所有参数的map集合<br>​<br>​                * 中文乱码问题：<br>​                    * get方式：tomcat 8 已经将get方式乱码问题解决了<br>​                    * post方式：会乱码<br>​                        * 解决：在获取参数前，设置request的编码request.setCharacterEncoding(“utf-8”);</p>
+<p>​<br>​            2. 请求转发：一种在服务器内部的资源跳转方式<br>​                1. 步骤：<br>​                    1. 通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)<br>​                    2. 使用RequestDispatcher对象来进行转发：forward(ServletRequest request, ServletResponse response)<br>​<br>​                2. 特点：<br>​                    1. 浏览器地址栏路径不发生变化<br>​                    2. 只能转发到当前服务器内部资源中。<br>​                    3. 转发是一次请求</p>
+<pre><code>3. 共享数据：
+    * 域对象：一个有作用范围的对象，可以在范围内共享数据
+    * request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据
+    * 方法：
+        1. void setAttribute(String name,Object obj):存储数据
+        2. Object getAttitude(String name):通过键获取值
+        3. void removeAttribute(String name):通过键移除键值对
+
+4. 获取ServletContext：
+    * ServletContext getServletContext()</code></pre><h2 id="案例：用户登录"><a href="#案例：用户登录" class="headerlink" title="案例：用户登录"></a>案例：用户登录</h2><pre><code>* 用户登录案例需求：
+    1.编写login.html登录页面
+        username &amp; password 两个输入框
+    2.使用Druid数据库连接池技术,操作mysql，day14数据库中user表
+    3.使用JdbcTemplate技术封装JDBC
+    4.登录成功跳转到SuccessServlet展示：登录成功！用户名,欢迎您
+    5.登录失败跳转到FailServlet展示：登录失败，用户名或密码错误
+
+
+* 分析
+
+* 开发步骤
+    1. 创建项目，导入html页面，配置文件，jar包
+    2. 创建数据库环境
+        CREATE DATABASE day14;
+        USE day14;
+        CREATE TABLE USER(
+
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            username VARCHAR(32) UNIQUE NOT NULL,
+            PASSWORD VARCHAR(32) NOT NULL
+        );
+
+    3. 创建包cn.itcast.domain,创建类User
+        package cn.itcast.domain;
+        /**
+         * 用户的实体类
+         */
+        public class User {
+
+            private int id;
+            private String username;
+            private String password;</code></pre><p>​<br>​                public int getId() {<br>​                    return id;<br>​                }<br>​<br>​                public void setId(int id) {<br>​                    this.id = id;<br>​                }<br>​<br>                public String getUsername() {<br>                    return username;<br>                }</p>
+<pre><code>        public void setUsername(String username) {
+            this.username = username;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;User{&quot; +
+                    &quot;id=&quot; + id +
+                    &quot;, username=&apos;&quot; + username + &apos;\&apos;&apos; +
+                    &quot;, password=&apos;&quot; + password + &apos;\&apos;&apos; +
+                    &apos;}&apos;;
+        }
+    }
+4. 创建包cn.itcast.util,编写工具类JDBCUtils
+    package cn.itcast.util;
+
+    import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+    import javax.sql.DataSource;
+    import javax.xml.crypto.Data;
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.sql.Connection;
+    import java.sql.SQLException;
+    import java.util.Properties;
+
+    /**
+     * JDBC工具类 使用Durid连接池
+     */
+    public class JDBCUtils {
+
+        private static DataSource ds ;
+
+        static {
+
+            try {
+                //1.加载配置文件
+                Properties pro = new Properties();
+                //使用ClassLoader加载配置文件，获取字节输入流
+                InputStream is = JDBCUtils.class.getClassLoader().getResourceAsStream(&quot;druid.properties&quot;);
+                pro.load(is);
+
+                //2.初始化连接池对象
+                ds = DruidDataSourceFactory.createDataSource(pro);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        /**
+         * 获取连接池对象
+         */
+        public static DataSource getDataSource(){
+            return ds;
+        }</code></pre><p>​<br>​                /**<br>​                 * 获取连接Connection对象<br>​                 */<br>​                public static Connection getConnection() throws SQLException {<br>​                    return  ds.getConnection();<br>​                }<br>​            }<br>​        5. 创建包cn.itcast.dao,创建类UserDao,提供login方法<br>​<br>​            package cn.itcast.dao;<br>​<br>            import cn.itcast.domain.User;<br>            import cn.itcast.util.JDBCUtils;<br>            import org.springframework.dao.DataAccessException;<br>            import org.springframework.jdbc.core.BeanPropertyRowMapper;<br>            import org.springframework.jdbc.core.JdbcTemplate;</p>
+<pre><code>/**
+ * 操作数据库中User表的类
+ */
+public class UserDao {
+
+    //声明JDBCTemplate对象共用
+    private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
+    /**
+     * 登录方法
+     * @param loginUser 只有用户名和密码
+     * @return user包含用户全部数据,没有查询到，返回null
+     */
+    public User login(User loginUser){
+        try {
+            //1.编写sql
+            String sql = &quot;select * from user where username = ? and password = ?&quot;;
+            //2.调用query方法
+            User user = template.queryForObject(sql,
+                    new BeanPropertyRowMapper&lt;User&gt;(User.class),
+                    loginUser.getUsername(), loginUser.getPassword());</code></pre><p>​<br>​                        return user;<br>​                    } catch (DataAccessException e) {<br>​                        e.printStackTrace();//记录日志<br>​                        return null;<br>​                    }<br>​                }<br>​            }<br>​<br>​        6. 编写cn.itcast.web.servlet.LoginServlet类<br>​            package cn.itcast.web.servlet;<br>​<br>            import cn.itcast.dao.UserDao;<br>            import cn.itcast.domain.User;</p>
+<pre><code>import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;</code></pre><p>​<br>​            @WebServlet(“/loginServlet”)<br>​            public class LoginServlet extends HttpServlet {</p>
+<p>​<br>​                @Override<br>​                protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {<br>​                    //1.设置编码<br>​                    req.setCharacterEncoding(“utf-8”);<br>​                    //2.获取请求参数<br>​                    String username = req.getParameter(“username”);<br>​                    String password = req.getParameter(“password”);<br>​                    //3.封装user对象<br>​                    User loginUser = new User();<br>​                    loginUser.setUsername(username);<br>​                    loginUser.setPassword(password);<br>​<br>​                    //4.调用UserDao的login方法<br>​                    UserDao dao = new UserDao();<br>​                    User user = dao.login(loginUser);<br>​<br>                    //5.判断user<br>                    if(user == null){<br>                        //登录失败<br>                        req.getRequestDispatcher(“/failServlet”).forward(req,resp);<br>                    }else{<br>                        //登录成功<br>                        //存储数据<br>                        req.setAttribute(“user”,user);<br>                        //转发<br>                        req.getRequestDispatcher(“/successServlet”).forward(req,resp);<br>                    }</p>
+<pre><code>        }
+
+        @Override
+        protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            this.doGet(req,resp);
+        }
+    }
+
+7. 编写FailServlet和SuccessServlet类
+    @WebServlet(&quot;/successServlet&quot;)
+    public class SuccessServlet extends HttpServlet {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            //获取request域中共享的user对象
+            User user = (User) request.getAttribute(&quot;user&quot;);
+
+            if(user != null){
+                //给页面写一句话
+
+                //设置编码
+                response.setContentType(&quot;text/html;charset=utf-8&quot;);
+                //输出
+                response.getWriter().write(&quot;登录成功！&quot;+user.getUsername()+&quot;,欢迎您&quot;);
+            }</code></pre><p>​<br>​                }        </p>
+<pre><code>    @WebServlet(&quot;/failServlet&quot;)
+    public class FailServlet extends HttpServlet {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            //给页面写一句话
+
+            //设置编码
+            response.setContentType(&quot;text/html;charset=utf-8&quot;);
+            //输出
+            response.getWriter().write(&quot;登录失败，用户名或密码错误&quot;);
+
+        }
+
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            this.doPost(request,response);
+        }
+    }
+
+
+
+8. login.html中form表单的action路径的写法
+    * 虚拟目录+Servlet的资源路径
+
+9. BeanUtils工具类，简化数据封装
+    * 用于封装JavaBean的
+    1. JavaBean：标准的Java类
+        1. 要求：
+            1. 类必须被public修饰
+            2. 必须提供空参的构造器
+            3. 成员变量必须使用private修饰
+            4. 提供公共setter和getter方法
+        2. 功能：封装数据
+
+
+    2. 概念：
+        成员变量：
+        属性：setter和getter方法截取后的产物
+            例如：getUsername() --&gt; Username--&gt; username
+
+
+    3. 方法：
+        1. setProperty()
+        2. getProperty()
+        3. populate(Object obj , Map map):将map集合的键值对信息，封装到对应的JavaBean对象中</code></pre><h2 id="响应消息格式"><a href="#响应消息格式" class="headerlink" title="响应消息格式"></a>响应消息格式</h2><h3 id="数据格式"><a href="#数据格式" class="headerlink" title="数据格式"></a>数据格式</h3><ul>
+<li>响应行<ul>
+<li>组成 :协议，响应状态码，状态码描述</li>
+<li>响应状态码：服务器告诉浏览器本次请求和响应的一个状态<ul>
+<li>状态码分为5类，分别以1-5开头</li>
+<li>1xx : 服务器接收客户端消息但是没有接收完成，发送1xx码</li>
+<li>2xx：成功</li>
+<li>3xx: 重定向,302(重定向),304(访问缓存)</li>
+<li>4xx：客户端错误，404(请求路径没有 相应的资源)</li>
+<li>5xx:服务器端错误</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>响应头</li>
+<li>响应空行</li>
+<li>响应体</li>
+</ul>
+<h2 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h2><ul>
+<li><p>功能：设置响应消息</p>
+<ul>
+<li>设置响应行：包括格式个状态码</li>
+<li>设置响应头：setHeader(String name, String value)</li>
+<li>设置响应体：<ul>
+<li>获取输出流</li>
+<li>使用输出流</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>重定向的特点：</p>
+<ul>
+<li><p>地址栏发生变化</p>
+</li>
+<li><p>重定向可以访问其他服务器的资源</p>
+</li>
+<li><p>重定向是两次请求，不能使用request对象共享数据</p>
+</li>
+</ul>
+</li>
+<li><p>服务器输出数据到浏览器</p>
+<ul>
+<li>获取字符输出流：<code>response.getWriter()</code></li>
+<li>输出数据</li>
+<li>乱码问题：使用<code>response.setContentType()</code></li>
+</ul>
+</li>
+<li><p>服务器输出字节数据到浏览器</p>
+<ul>
+<li><p>获取字节输出流</p>
+<p><code>response.getOutputStream()</code></p>
+</li>
+<li><p>输出数据</p>
+<p><code>write(&quot;String&quot;.getBytes())</code></p>
+</li>
+</ul>
+</li>
+<li><p><strong>验证码</strong></p>
+</li>
+</ul>
+<h2 id="ServletContext-对象"><a href="#ServletContext-对象" class="headerlink" title="ServletContext 对象"></a>ServletContext 对象</h2><ul>
+<li>概念：代表整个web应用和服务器来通信</li>
+<li>获取<ul>
+<li>通过request获取： <code>requset.getServletContext()</code></li>
+<li>通过HttpServlet获取：<code>this.getServletContext()</code></li>
+<li></li>
+</ul>
+</li>
+<li>功能<ul>
+<li>获取MIME类型<ul>
+<li><code>String getMimeType(filename)</code>可以获取</li>
+</ul>
+</li>
+<li>共享数据<ul>
+<li><code>setArrtibute(String name ,Object value)</code></li>
+<li><code>getAttribute(String name )</code></li>
+<li><code>removeAttribute(String name )</code></li>
+</ul>
+</li>
+<li>获取文件的服务器路径<ul>
+<li><code>getRealPath(String path)</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/22/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/" rel="next" title="详细servlet解析">
+                <i class="fa fa-chevron-left"></i> 详细servlet解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/28/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" rel="prev" title="JavaWeb三大组件">
+                JavaWeb三大组件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#今日内容："><span class="nav-number">1.</span> <span class="nav-text">今日内容：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet："><span class="nav-number">1.1.</span> <span class="nav-text">Servlet：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP："><span class="nav-number">1.2.</span> <span class="nav-text">HTTP：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Request："><span class="nav-number">1.3.</span> <span class="nav-text">Request：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#案例：用户登录"><span class="nav-number">1.4.</span> <span class="nav-text">案例：用户登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应消息格式"><span class="nav-number">1.5.</span> <span class="nav-text">响应消息格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据格式"><span class="nav-number">1.5.1.</span> <span class="nav-text">数据格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#response对象"><span class="nav-number">1.6.</span> <span class="nav-text">response对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ServletContext-对象"><span class="nav-number">1.7.</span> <span class="nav-text">ServletContext 对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

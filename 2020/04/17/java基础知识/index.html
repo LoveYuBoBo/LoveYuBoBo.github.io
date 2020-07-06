@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Java基础知识 大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。   如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。 基本数据类型：byt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础知识">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="Java基础知识 大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。   如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。 基本数据类型：byt">
+<meta property="article:published_time" content="2020-04-16T16:55:01.000Z">
+<meta property="article:modified_time" content="2020-04-26T18:10:29.744Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/04/17/java基础知识/"/>
+
+
+
+
+
+  <title>java基础知识 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T00:55:01+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  9.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  34
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h4><ul>
+<li>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </li>
+<li>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</li>
+<li>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </li>
+<li>引用数据类型：字符串，数组，类，接口，Lambda  </li>
+<li>浮点型可能是一个近似值</li>
+<li>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</li>
+<li>Java内存划分为5个部分：<ul>
+<li>栈(stack)：存放的是方法中的局部变量，一旦超过作用域，立即消失</li>
+<li>堆(Heap):凡是new出来的，都在堆中，堆内存中的东西都有一个16进制的地址值，里面存放的数据都有默认值  </li>
+<li>方法区(Method Area):存储.class相关的信息，包含方法的信息</li>
+<li>本地方法栈(Native Method Stack):与操作系统有关</li>
+<li>寄存器(pc Register)：与cpu有关</li>
+</ul>
+</li>
+<li>空指针异常 NullPointException,通过添加new解决。</li>
+<li>数组一旦创建，程序运行期间，长度不可变。</li>
+<li>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</li>
+<li>当对象作为参数的时候，传入的是参数的地址值</li>
+<li>局部变量和成员变量：<ul>
+<li>定义的位置不一样，局部变量在方法内部，成员变量直接写在类中</li>
+<li>作用的范围不一样，局部变量只在方法中起作用，成员变量在整个类中都有用</li>
+<li>默认值不一样，局部变量没有默认值，必须手动赋值，成员变量有默认值，规则和数组一样。</li>
+<li>内存位置不一样，局部变量在栈内存中，成员变量在堆内存中</li>
+<li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>当方法的局部变量和类的成员变量重名的时候，根据“就近原则”优先使用局部变量，如果要访问本类中的成员变量，应使用this.成员变量名的方式。通过谁调用该方法，谁就是this。</li>
+<li>构造方法是专门用来创建对象的方法，当使用new创建对象的时候，就是在调用构造方法<ul>
+<li>构造方法名称必须和所在类的名称完全一样</li>
+<li>构造方法不写返回值类型，连void也不写</li>
+<li>构造方法不能return一个具体的返回值</li>
+<li>如果没有编写任何构造方法，编译器默认一个构造方法，没有参数，方法体什么也不做</li>
+<li>一旦编写至少一个构造方法，编译器不再产生默认的构造方法</li>
+</ul>
+</li>
+<li>一个标准类通常有四部分组成(称为Java Bean)<ul>
+<li>所有成员变量使用privat修饰</li>
+<li>编写getter/setter方法</li>
+<li>编写全参构造方法</li>
+<li>编写无参构造函数</li>
+</ul>
+</li>
+<li>final修饰一个类的时候表示当前类不能有任何子类，格式如：public final class 类名<ul>
+<li>final修饰方法的时候，表示最终方法，不能覆盖重写。</li>
+<li>对于类和方法来说，不能同时使用abstract和final关键字</li>
+<li>一旦用final修饰局部变量，这个变量不能更改，只要保证有唯一一次赋值就行。</li>
+<li>对于基本类型，指的是数据不可变；对于引用类型来说，指的是引用的地址不变</li>
+<li>成员变量有默认值，使用final之后必须手动赋值。赋值方式要么直接赋值，要么通过构造函数赋值；同时应保证类中所有重载的构造方法，都能对final的成员变量赋值(此时set方法不可行)。</li>
+</ul>
+</li>
+<li>加上关键字abstract关键字，去掉大括号，直接分号结束，实现抽象方法。抽象方法所在的类必须是抽象类</li>
+<li>不能直接用new创建抽象类对象，必须用一个子类继承抽象父类，子类必须覆盖重写父类中所有的抽象方法，创建子类对象使用。</li>
+<li>方法的重载(overload)是方法的名称一样，但参数列表不一样；重写(override)是名称一样，参数列表也一样。重写的时候子类方法的返回值必须小于等于父类方法返回值的范围。子类方法的权限必须大于等于父类的权限修饰符(public&gt;protected&gt;default&gt;private)</li>
+<li>super关键字访问父类内容，this关键字用来访问本类内容(包括本类的成员变量，成员方法和本类的另一个构造方法)，this调用必须是构造方法的第一个语句。</li>
+<li>Java的接口中可以包含常量，抽象方法，默认方法，静态方法，以及私有方法(java9).接口中的抽象方法，修饰符必须是两个固定的关键字public和abstract。接口不能直接使用，必须有一个类实现该接口。并且实现类的时候必须实现所有的抽象方法。如果没有全部实现抽象方法，该类必须是抽象类。</li>
+<li>接口中的默认方法可以解决接口升级的问题。不能通过接口实现类的对象调用接口当中的静态方法，应该通过接口名称直接调用接口中的静态方法。</li>
+<li>接口中也可以定义成员变量，但必须使用public static final三个关键字修饰。接口中的变量必须赋值。变量名称使用全部大写和下划线连接的方式。</li>
+<li>接口没有静态代码块或者构造方法的；一个类的直接父类是唯一的，但是一个类可以同时实现多个接口；如果实现类所实现的多个接口中，存在重复的抽象方法，那么只需要覆写一次；如果实现类没有全部覆写接口中的抽象方法，该实现类必须是抽象类；如果实现类中存在重复的默认方法，实现类必须重写冲突的方法；如果一个类的直接父类中的方法和接口的默认方法冲突，优先使用直接父类的方法。</li>
+<li>编译看左边，运行看右边(成员变量除外，成员变量编译和运行都看左边)。</li>
+<li>对象的向上转型表明创建一个子类，可以把它当作父类使用，向上转型是安全的，但无法调用子类特有的方法。</li>
+<li>如何知道父类引用的对象，原来是什么子类？使用（instanceof 类名)的方式，得到一个boolean值。 特别是向下转型的时候应该使用该关键字判断。</li>
+<li>外部类使用内部类，需要内部类对象；如果出现重名的情况，访问格式如(外部类名称.this外部类成员变量名).</li>
+<li>局部内部类的定义，只有所属的方法可以使用，出了方法后不能使用。</li>
+<li>修饰符的优先级public&gt;protected&gt;default&gt;private。定义一个类的时候。权限修饰符的规则如下：<ul>
+<li>外部类：public(default)</li>
+<li>成员内部类：所有修饰符都可以</li>
+<li>局部内部类：什么都不能写</li>
+</ul>
+</li>
+<li>局部内部类，如果希望访问所在方法的局部变量，那么这个局部变量必须是有效final的，因为局部变量随着方法的出栈而消失，但是new出来的对象会存在堆内存中，直到垃圾回收消失。</li>
+<li>匿名内部类：如果接口的实现类(或者父类的子类)只需要使用唯一的一次，这种情况下可以省略该类的定义，改为使用匿名内部类。其格式为 (接口名称 对象名 = new 接口名称(){重写所有抽象方法})。</li>
+</ul>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><ul>
+<li>Array数组的长度不可以改变，但是ArrayList的长度是可以改变的。泛型表明装在集合中的所有元素全部是统一的什么类型，要注意，泛型只能是引用类型，不能是基本类型。对于ArrayList来说，直接打印显示的是内容而不是地址值。</li>
+<li>ArrayList中常用的方法：<ul>
+<li>Public boolean add(E e):向集合中添加元素，参数的类型和泛型一致。该方法一定成功，但在其他集合中不一定成功。</li>
+<li>Public E get(int index):从集合中获取元素，参数是索引编号，返回值是对应位置的元素</li>
+<li>Public E remove（int index):从集合中删除元素，参数是索引编号，返回值是删除的元素。</li>
+<li>Public int size()：获取集合的尺寸长度，返回值是集合中元素的个数。</li>
+</ul>
+</li>
+<li>如果希望往ArrayList中存储基本类型数据，必须使用基本类型对应的包装类。JDK1.5开始，支持自动装箱，自动拆箱。</li>
+</ul>
+<h4 id="Object工具类"><a href="#Object工具类" class="headerlink" title="Object工具类"></a>Object工具类</h4><ul>
+<li>null不能调用方法，会抛出空指针异常NullPointerException</li>
+</ul>
+<h4 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h4><ul>
+<li>栈：先进后出</li>
+<li>队列：先进先出</li>
+<li>数组：<ul>
+<li>查询快：数组地址是连续的，通过数组首地址可以找到数组，通过索引可以快速查找</li>
+<li>增删慢：数组长度是固定的，增删的时候必须创建新的数组，把原数组复制过来。</li>
+</ul>
+</li>
+<li>链表：<ul>
+<li>查询慢：地址不连续，每次查询必须从头开始。</li>
+<li>增删快：增删不影响整体结构。链表每个结点有三部分组成：数据源，两个指针域</li>
+</ul>
+</li>
+<li>红黑树：趋近于平衡树，查询速度很快，查询叶子节点最大次数不超过最小次数的2倍</li>
+</ul>
+<h4 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a>Collection集合</h4><ul>
+<li>集合当中的方法<ul>
+<li>boolean add :添加元素</li>
+<li>void clear:清空集合</li>
+<li>boolean contains:判断几个中是否包含某个元素</li>
+<li>boolean Empty:判断集合是否为空</li>
+<li>int size:集合的长度</li>
+<li>Object[] toArray:转换为数组</li>
+</ul>
+</li>
+<li>集合重写了toString方法，所以能打印出其中的内容</li>
+<li>Iterator迭代器是一个接口，需要使用其实现类。Collection接口中的一个方法iterator就是其实现类。有两个常用方法，hasNext()和next(),分别判断是否还有元素和取出下一个元素。迭代器的泛型和集合一样。</li>
+<li>增强for循环底层也是迭代器。</li>
+<li>泛型：含有泛型的方法，含有泛型的接口(接口使用什么泛型，实现类也是用什么泛型<ul>
+<li>泛型类和泛型方法：</li>
+<li>泛型接口和泛型方法：</li>
+<li>泛型通配符： 只能作为方法的参数使用，使用通配符以后只能使用Object的共性方法。</li>
+<li>泛型的上限限定：？ extends E</li>
+<li>泛型的下限限定：？ super E</li>
+</ul>
+</li>
+<li>List接口，Set接口，Map接口中增加了一个静态方法，可以一次性添加多个元素，但使用前提是集合中元素个数已经确定，不再改变的时候使用。注意<ul>
+<li>不适用与这些接口的实现类。</li>
+<li>返回值是一个不可改变的集合，集合不能在使用add，put方法添加元素。</li>
+<li>Set接口和Map接口不允许有重复元素，否则抛出异常</li>
+</ul>
+</li>
+</ul>
+<h4 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h4><ul>
+<li>1.存储是有序的(存储和取出是一致的)  ，是有索引的，允许存储重复元素</li>
+<li>使用索引操作数组的时候一定注意不要越界，有add，remove，get,set等常用的方法。</li>
+<li>List下的重要的实现类有ArrayList和LinkedList<ul>
+<li>ArrayList因为地址连续所以查询快，但是由于每次增删都要调用底层复制数组的方法，因此增删慢。因此，应用于查询比较多的场景。</li>
+<li>LinkedList底层是链表结构，所以查询慢，增删快，其中包含大量操作首尾元素的方法，不能使用多态。常用方法有add,addFirst,addLast(等效与add),push(等效于addFirst)，getFirst，getLast，isEmpty，removeFirst,pop(相当于removeFirst)，removeLast</li>
+</ul>
+</li>
+</ul>
+<h4 id="set接口"><a href="#set接口" class="headerlink" title="set接口"></a>set接口</h4><ul>
+<li>Set接口不允许存储重复的元素，没有带索引的方法，也不能使用普通的for循环遍历</li>
+<li>HashSet：由HashMap实现，因此查询速度很快，不保证迭代的顺序。<ul>
+<li>String类重写了hashCode方法</li>
+<li>dk1.8以后哈希表=数组+红黑树，以提高速度。哈希冲突(元素不同，哈希值相同)，解决办法是链地址法。</li>
+<li>当哈希值相同的元素超过8位，会将链表转换为红黑树</li>
+<li>当调用add方法的时候，会先调用hashCode方法计算哈希值，如果有相同哈希值的元素就会调用equals方法比较内容是否一致，所以set集合不会有重复的元素。(但是有个前提是必须重写了hashCode方法和equals方法)，所以存储自定义元素必须重写hashCode和equals方法。</li>
+</ul>
+</li>
+<li>.LinkedHashSet：底层是哈希表(数组+链表/红黑树)，多了一条链表(记录元素的存储顺序)，保证元素有序</li>
+</ul>
+<h4 id="map集合"><a href="#map集合" class="headerlink" title="map集合"></a>map集合</h4><ul>
+<li><p>Collection是单列集合，Map集合是双列集合</p>
+</li>
+<li><p>Map即使是双列集合。一个元素包含两个值(一个key，一个value，数据类型可以相同，也可以不同，Key值唯一)。</p>
+</li>
+<li><p>HashMap：底层是哈希表，查询速度快；是一个无序的集合(存取的顺序可能不一致)。线程不安全的集合，速度快。</p>
+</li>
+<li><p>LinkedHashMap：继承自HashMap，底层是哈希表+链表，是有序的集合。    </p>
+</li>
+<li><p>HashTable：底层也是哈希表，是线程安全的集合，单线程集合，速度慢。不能存储null值，null键。其子类Properties是唯一一个和IO结合的集合。</p>
+</li>
+<li><p>常用方法：</p>
+<ul>
+<li>public V put(K key,V value):存储的时候如果key不重复，则返回null，如果key值重复，则替换原来的value值，并且返回被替换的值。</li>
+<li>Public V remove(Object key):删除集合中指定key的元素，返回删除的元素，如果key不存在，则返回null</li>
+<li>Public V get(Object k):返回指定K的元素，如果不存在，则返回null。</li>
+<li>Boolean containsKey(Object k):判断几个中是否包含指定的键。</li>
+<li>遍历Map集合：<ul>
+<li>keySet()(把集合中所有key值取出来放到set集合中)，之后用迭代器/增强for 来遍历set集合获取key，然后通过key获取value</li>
+<li>entrySet()(把entry对象取出来存到set集合中)，遍历set集合，通过getKey和getValue方法获取键值。</li>
+</ul>
+</li>
+<li>Map集合中有一个内部接口Entry(Map.Entry&lt;K,V&gt;)：当Map集合创建的时候，就会同时创建一个Entry对象，用来记录键值的映射关系</li>
+</ul>
+</li>
+</ul>
+<h4 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h4><ul>
+<li>向集合中添加多个元素的静态方法：addALL(Collection&lt;T&gt; c,T…elements)。</li>
+<li>Shuffle()打乱集合中元素的位置。</li>
+<li>Sort(),默认升序排序。使用前提是：被排序的元素必须实现Comparable接口，重写其中的compareTo方法，也就是自定义比较规则。其规则是：return this.参数-o.参数是升序排列。</li>
+<li>comparable是自己(this)和别(参数)比较，而comparator是寻找第三方裁判</li>
+</ul>
+<h4 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h4><ul>
+<li>可变参数的底层是一个数组，会根据传递的参数个数不同，创建不同长度的数组，来存储这些参数的个数。使用的时候格式如：修饰符 返回值类型方法名(数据类型…变量名){}</li>
+<li>一个方法的可变参数列表只能有一个。</li>
+<li>如果方法的参数有多个，可变参数必须写在末尾。</li>
+</ul>
+<h4 id="Date和Calendar"><a href="#Date和Calendar" class="headerlink" title="Date和Calendar"></a>Date和Calendar</h4><ul>
+<li>使用DateFormat类中的format方法，把日期格式化为文本；使用DateFormat类中的parse方法把日期解析为文本。ToLocalString（）转化为本地格式。</li>
+<li>Calendar是一个抽象类，无法直接创建对象使用，使用其中的静态方法getInstance(),来返回子类对象</li>
+</ul>
+<h4 id="System类常用方法"><a href="#System类常用方法" class="headerlink" title="System类常用方法"></a>System类常用方法</h4><ul>
+<li>System.currentTimeMillis()</li>
+<li>System.arraycopy()</li>
+</ul>
+<h4 id="String类和StringBuilder类"><a href="#String类和StringBuilder类" class="headerlink" title="String类和StringBuilder类"></a>String类和StringBuilder类</h4><ul>
+<li>字符串是常量，它们的值创建后不能修改，字符串底层是被final修饰的数组，是一个常量，因此进行字符串相加，内存中会有多个字符串，占用空间多，效率低下。</li>
+<li>StringBuilder：字符串缓冲区，可以提高字符串的操作效率(可与看成是长度可变的字符串)，底层也是数组，但没有被final修饰。</li>
+<li>StringBuilder常用的方法有两个：    <ul>
+<li>append方法往StringBulider中添加数据，该方法返回调用方法的对象，使用== 比较添加数据前后的对象，结果是true。 </li>
+<li>toString()方法将当前的StringBuilder对象转换为String对象。</li>
+</ul>
+</li>
+</ul>
+<h4 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h4><ul>
+<li>基本数据类型虽然使用起来很方便，但是没有方法操作数据，因此使用包装类可以添加一些方法。</li>
+<li>装箱：把基本数据类型包装到包装类中<ul>
+<li>Integer的构造方法  Integer(int),Integer(String),但是String处应传入基本类型，否则会抛出异常</li>
+<li>Integer的静态方法 valueOf和intValue()  </li>
+</ul>
+</li>
+<li>拆箱：在包装类中取出基本数据类型。  </li>
+<li>自动装箱与自动拆箱：基本类型的数据和包装类之间的相互转换(JDK1.5后的特性)。</li>
+<li>.字符串转换为基本类型可以使用包装类的静态方法parse；如果基本类型转换为字符串可以直接用基本数据+””的方式，或者使用包装类的静态方法toString()，或者使用String中的静态方法String.valueOf（）</li>
+</ul>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><ul>
+<li>Throwable是所有异常和错误的超类。<ul>
+<li>Exception：编译期异常(处理完可以继续运行)  <ul>
+<li>RuntimeException:运行期异常   </li>
+</ul>
+</li>
+<li>Error:必须修改源码，程序才能继续运行。</li>
+</ul>
+</li>
+<li>异常的产生： jvm检测出异常后做出相应的操作   <ul>
+<li>JVM根据异常的产生原因创建一个异常对象，其中包含异常产生的内容，原因和位置。    </li>
+<li>如果没有try…catch逻辑。JVM会把异常对象抛出给方法的调用者</li>
+</ul>
+</li>
+<li>throw关键字可以在指定的方法中抛出指定的异常。    <ul>
+<li>必须写在方法内部，new的对象必须是Exception类或者其子类    </li>
+<li>如果是RuntimeException或者其子类等运行期异常，则可以交给JVM处理</li>
+</ul>
+</li>
+<li>Objects类中的静态方法 public static &lt;T&gt; T requireNonNuLL(T obj):查看指定引用对象是不是空</li>
+<li>异常处理的方式：   <ul>
+<li>throw关键字：交给别人处理，关键字必须写在方法声明处，声明了抛出异常的方法，就必须处理异常，要么交给JVM，要么try…catch处理。</li>
+<li>try….catch：自己处理异常    try{    可能产生异常的代码    }catch{    异常的处理逻辑    }    </li>
+<li>Throwable类中定义了三个异常处理的方法    <ul>
+<li>String getMessage():返回throwable的简短描述   </li>
+<li>String toString()：返回详细消息字符串   </li>
+<li>Void printStackTrace()：JVM打印异常对象，打印信息最全面</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>子父类异常：父类异常是什么，子类异常也是什么，父类没有抛出异常，子类也不能抛出异常，如果子类产生异常，只能捕获处理不能声明抛出。</li>
+<li>自定义异常类：    <ul>
+<li>自定义异常类一般以Exception结尾。 </li>
+<li>必须继承自Exception或者RuntimeException：如果继承自Exception定义了一个编译器期异常，必须处理这个异常或者抛出        </li>
+</ul>
+</li>
+<li>finally代码块和try…catch一起使用，一般用于资源释放。Finally代码块无论是否出现异常都会执行。</li>
+</ul>
+<h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><ul>
+<li>JVM执行main方法，找OS开辟一条通向cpu的路径，这个路径叫做main线程，也就是主线程；当使用new Thread和thread.start()方法的时候，又开辟另一条通向cpu的路径。</li>
+<li>单线程执行从main方法开始，从上往下依次执行</li>
+<li>获取线程的名称：getName方法， </li>
+<li>设置线程名称：setName(String name)    </li>
+<li>常用方法：public static void sleep(long millis)使线程以指定的毫秒数暂停。</li>
+<li>创建线程的方法：  <ul>
+<li>创建Thread类的子类，实现步骤：   <ul>
+<li>创建Thread类的子类    </li>
+<li>在Thread的子类中重写run方法，设置线程任务  </li>
+<li>创建Thread类的子类对象   </li>
+<li>调用start方法    </li>
+</ul>
+</li>
+<li>(2)实现Runnable接口：应该通过某一线程执行其实例的类实现，类必须定义一个run的无参方法。   <ul>
+<li>创建一个Runnable接口的实现类   </li>
+<li>实现了类中重写run方法，设置线程任务   </li>
+<li>创建实现类对象   </li>
+<li>创建Thread类对象。构造方法中传递Runnable接口的实现类对象 </li>
+<li>调用Thread类中的start方法，开启新的线程执行run方法 </li>
+</ul>
+</li>
+<li>匿名内部类实现线程的创建：简化代码，格式如：new 父类(){重写方法}</li>
+</ul>
+</li>
+<li>创建线程方法的区别： <ul>
+<li>Runnable避免了单继承的局限性，实现了Runnable接口还可以继承其他的类，实现其他的接口；增强了程序的扩展性，降低了耦合性：把设置线程任务和开启新线程进行了分离(解耦)，实现类中重写了run方法用来设置现线程任务。</li>
+</ul>
+</li>
+<li>并发和并行：   <ul>
+<li>并发是两个或多个事件在同一时间段发生，是交替执行</li>
+<li>并行是两个或者多个事件在同一时刻发生</li>
+</ul>
+</li>
+<li>线程属于进程，是进程中的一个执行单元，负责程序的执行。线程调度分为分时调度(平均分配每个线程占用cpu的时间)和抢占式调度(优先级高的线程优先使用cpu)。</li>
+<li>线程安全问题：    <ul>
+<li>单线程不会出现线程安全问题，访问共享资源的多线程程序会出现线程安全问题，多线程程序，没有访问共享数据，不会出现安全问题。   </li>
+<li>线程安全问题是不能产生的，为了解决这个问题，无论线程是否失去cpu的执行权，其他线程只能等待 </li>
+<li>解决线程安全问题，可以使线程同步，具体方法有：    <ul>
+<li>同步代码块，使用synchronized(同步锁){需要同步的代码块}，但是要注意多个线程中代码块中的锁对象是同一个，锁对象可以把同步代码块锁住，只让一个线程在同步代码块中执行。    </li>
+<li>同步方法：同步方法的原理：使用一个锁对象，这个锁对象叫同步锁，也叫对象监视器。定义一个synchronized修饰的方法 。同步方法的锁对象是实现类对象。在静态同步方法中public static synchronized void 方法名()，所以静态同步方法的锁对象是本类的class属性。    </li>
+<li>锁机制：Lock接口中有两个方法：lock(),unlock(),类Reentrantlock是Lock接口的实现类，使用： <ul>
+<li>在成员位置创建一个Reentrantlock对象。  </li>
+<li>在可能会出现线程安全问题前调用Lock接口的lock方法。</li>
+<li>在有安全问题代码后调用unlock方法释放锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="等待唤醒机制-线程之间的通信"><a href="#等待唤醒机制-线程之间的通信" class="headerlink" title="等待唤醒机制(线程之间的通信)"></a>等待唤醒机制(线程之间的通信)</h4><ul>
+<li>wait,notify,notifyAll三个方法 <ul>
+<li>wait和notify必须使用同一个锁对象    </li>
+<li>wait和notify是属于Object类的方法    </li>
+<li>wait和notify必须在同步代码块中使用，因为必须通过锁对象调用这两个方法。    </li>
+<li>wait(long time):等待time以后，如果还没有被notify唤醒，则自动醒来    </li>
+<li>Notifyall()唤醒所有等待的线程</li>
+</ul>
+</li>
+<li>线程的状态：    <ul>
+<li>blocked状态，锁阻塞状态    </li>
+<li>Waiting状态，无限等待状态    </li>
+<li>Runnable状态</li>
+</ul>
+</li>
+</ul>
+<h4 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h4><ul>
+<li>.线程池是可以容纳很多线程的容器。当程序第一次启动的时候创建多个线程，保存到集合中，当需要使用线程的时候，可以从集合中取出线程来使用Thread t=list.remove(0),当使用结束后，归还给线程池list.add(t)。       </li>
+<li>使用线程池的优点：   <ul>
+<li>降低资源的消耗    </li>
+<li>提高响应的速度  </li>
+<li>提高线程的可管理性        </li>
+</ul>
+</li>
+<li>JDK1.5以后在concurrent.Executors：线程池的工厂类，来生产线程池，其中的静态方法：static ExecutorService newFixedThreadPool(int Threads):创建一个可重用固定线程数的线程池。使用ExecutorService接口获取线程，调用start方法，submit方法用来提交一个Runnable任务，用shutdown关闭/销毁线程池。        </li>
+<li>线程池的使用步骤：    <ul>
+<li>使用线程池的工厂类executors提供的静态方法生产一个指定线程数量的线程池。    </li>
+<li>创建一个类，实现Runnable接口，重写run方法    </li>
+<li>调用ExecutorService中的submit方法，传递线程，开始线程。执行run方法    </li>
+<li>调用ExecutorService中的shutdown方法销毁线程(不建议执行)</li>
+</ul>
+</li>
+</ul>
+<h4 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h4><ul>
+<li>Lambda：必须具有接口，且接口中有且仅有一个抽象方法才可以使用Lambda表达式，Lambda表达式必须具有上下文推断。</li>
+<li>Lambda表达式是可推导，可省略的：括号中参数列表的数据类型是可以省略的，如果括号中的参数只有一个，括号和参数都可以省略。如果代码块中只有一行代码，无论是否有返回值，可以省略({},return ,分号)。</li>
+</ul>
+<h4 id="file类"><a href="#file类" class="headerlink" title="file类"></a>file类</h4><ul>
+<li><p>java把电脑中的文件和文件夹封装成File类，可以使用File类方法。</p>
+</li>
+<li><p>构造方法：    </p>
+<ul>
+<li>File(String pathname):路径可以以文件结尾也可以文件夹结尾，可以是相对的也可以是绝对的，可以是存在的，也可以是不存在的。重写了toString()方法。    </li>
+<li>File(String parent,String child):父路径和子路径，优点在于可以单独书写，均可以变化，使用很灵活。 </li>
+<li>File(File parent,String child):父路径是File类，可以使用File类方法堆路径进行操作。        </li>
+</ul>
+</li>
+<li><p>常用的获取方法：getPath(),getAbsolutePath(),getName(),length()(返回字节为单位的文件大小)。       </p>
+</li>
+<li><p>判断方法：exit()判断构造方法中的路径是否存在，isDirectory(),判断是否是目录，isFile()判断是否是文件。       </p>
+</li>
+<li><p>删除方法：    </p>
+<ul>
+<li>creatNewFile(),当且仅当文件不存在的时候，会创建文件，并且不能创建文件夹。如果路径不存在，会抛出异常。    </li>
+<li>boolean mkdir():创建单级空文件夹    </li>
+<li>boolean mkdirs():可以创建单级文件夹，也可以创建多级文件夹    </li>
+<li>boolean delete():删除File表示的文件或者目录。   </li>
+</ul>
+</li>
+<li><p>遍历方法：    </p>
+<ul>
+<li>public String[] list():返回一个String数组，表示该File目录中的所有文件或者目录，如果路径不存在或者路径不是一个目录，会抛出空指针异常。    </li>
+<li>public File listFiles():返回一个File数组，表示该File目录中的素有子文件或目录。</li>
+</ul>
+</li>
+</ul>
+<h4 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h4><ul>
+<li><p>字节输出流：OutputStream是所有 输出流的超类，是一个抽象类。定义了一些共性方法：close()关闭输出流并释放资源，flush()刷新输出流并强制任何缓冲的输出字节被写出，write(byte[] b)将指定字节写入此输出流，write(byte[] b,int off,int len)将指定字节从偏移量off开始写入输出流，abstract void write(byte[] b)将指定的字节输出流。    </p>
+<ul>
+<li>构造方法：FileOutputStream(String name)创建一个向指定名称的文件中写入数据的输出流文件；FileOutputStream(File file)创建一个向指定File对象文件中写入数据的文件输出流。    (</li>
+<li>追加写和换行：FileOutputStream(String name，boolean b)当boolean是true的时候就是追加写入，当使用”\r\n”的时候就换行写入    </li>
+</ul>
+</li>
+<li><p>字节输入流：InputStream是所有字节输入流的超类，定义了共性方法read()读取一个字节并返回,in read(byte[] b)读取多个字节并返回,close()关闭流释放资源。   </p>
+<ul>
+<li>构造方法：FileInputStream(String name),读取路径的下的文件，FileInputStream(File file)读取指定文件的内容。    </li>
+<li>一次读取一个字节和一次读取多个字节：一次读取多个字节的时候创建的数组，也就是in read(byte[] b)中的参数byte[]起到缓冲的作用，存储每次读取到的多个字节，数组的长度一般定义为1024(1kb)或者1024的证整数倍,返回值int表示每次读取的有效字节长度。    </li>
+</ul>
+</li>
+<li><p>读取中文的时候可能会出现问题，因为GBK编码下一个中文占两个字节，UTF-8下占三个字节。使用字符流读取可以解决这个问题。</p>
+</li>
+<li><p>字符输入流：Reader是字符输入流最顶层的父类，共性方法有int read()读取一个字符,int read(char[] cbuf)一次读取多个字符，close()关闭流并且释放所有资源但要先刷新流flush()。    </p>
+<ul>
+<li>构造方法: FileReader(String fileName),FileReader(File file),创建一个FileReader对象，会把FileReader对象指向要读取的文件。    </li>
+<li>一次读取单个字符和一次读取多个字符    </li>
+</ul>
+</li>
+<li><p>字符输出流：Writer是字符输出流的超类,关闭流之前需要先刷新flush()，刷新流之后可以继续使用流，如果关闭流之后不能继续使用。       </p>
+</li>
+<li><p>把对象以流的方式写入到文件中保存，叫写对象，也叫对象的序列化，将对象以流的方式读取出来，也叫做对象的反序列化。序列化和反序列化会抛出没有序列化异常，需要实现Serializable接口，该接口也叫标记型接口，序列化和反序列化的时候会检测类上是否有这个标记。   </p>
+</li>
+<li><p>ObjectOutputStream：对象的序列化流：    </p>
+<ul>
+<li>构造方法：ObjectOutputStream(OutputStream out)创建写入指定OutputStream的ObjectPutStream。  </li>
+<li>特有的方法：void writeObject(Object obj)将指定的对象写入ObjectOutputStream。   </li>
+</ul>
+</li>
+<li><p>ObjectInputStream：对象的反序列化流：   </p>
+<ul>
+<li>构造方法：ObjectInputStream(InputStream in):创建指定读取  </li>
+<li>特有方法：Object read Object()读取文件。其中read方法不仅有IO异常，还有ClassNotFound异常，需要声明抛出。 </li>
+</ul>
+</li>
+<li><p>transient关键字修饰的成员变量和static修饰的一样，不能被序列化。    </p>
+</li>
+<li><p>异常原理和处理：当修改了类之后没有序列化，直接反序列化，会出现序列号冲突的异常。所以在可序列化的类中声明serialVersionUID字段(必须是static，final的long型字段)显式的声明自己的serialVersionUID</p>
+</li>
+<li><p>printStream为其他输出流添加了功能，只负责打印，不负责读取，永远不会抛出IO异常，有特有的方法print和println  </p>
+<ul>
+<li>构造方法：PrintStream(File file),PrintStream(String fileName),PrintStream(OutputStream out)。    </li>
+</ul>
+</li>
+<li><p>继承自父类的成员方法：close(),flush(),write(),如果使用继承自父类的放write方法写数据，那么查看数据的时候会查看编码表，如果使用自己的方法写数据，写的数据将原样输出。   </p>
+</li>
+<li><p>使用System.setOut(PrintStream out)可以改变输出流的目的地。</p>
+</li>
+<li><p>.字节缓冲输出流继承自OutputStream，有很多共用方法    2.构造方法：BufferedOutputStream(OutputStream out,int size),创建缓冲区并将指定缓冲区大小的数据写入指定的底层输出流，不指定size的时候使用默认的大小。    </p>
+</li>
+<li><p>使用步骤：    (1)创建FileOutputStream对象，构造方法中绑定要输出的目的地。    (2)使用BuffferedOutputStream对象，构造方法中传入FileOutputStream对象    (3)使用write方法写入内部缓冲区    (4)使用flush，将缓冲区数据刷新到文件中    (5)释放资源        </p>
+</li>
+<li><p>字节缓冲输入流：继承自InputStream    5.构造方法：BufferedInputStream(InputStream in,int size)    6.使用步骤：    (1)创建FileIutputStream对象，构造方法中绑定要读的文件的路径。    (2)使用BuffferedIutputStream对象，构造方法中传入FileIutputStream对象    (3)使用reade方法写入内部缓冲区    (4)释放资源        </p>
+</li>
+<li><p>字符缓冲输出流构造方法：BufferedWriter(Writer out,int size)。    </p>
+</li>
+<li><p>特有的成员方法：void newLine()写入一个行分隔符，会根据不同的系统获取不同的分隔符    </p>
+</li>
+<li><p>使用步骤：    (1)创建字符缓冲流对象，构造方法中传递字符输出流    (2)调用字符缓冲输出流中的方法write,把数据写入内存缓冲区    (3)调用flush刷新缓冲区内容到文件中    (4)释放资源    </p>
+</li>
+<li><p>字符缓冲输入流：BufferedReader(Reader in,int size)    </p>
+</li>
+<li><p>特有的成员方法：readLine()读取一个文本行，行的终止符号有换行，回车或者回车后直接跟着换行。如果已经到达末尾，则返回null。    </p>
+</li>
+<li><p>使用步骤：    (1)创建字符缓冲流对象，构造方法中传递字符输出流    (2)调用字符缓冲输出流中的方法read,把数据写入内存缓冲区    (3)释放资源                   </p>
+</li>
+<li><p>.InputStreamReader是字节通向字符的桥梁，可以查看指定的码表,继承Reader。    </p>
+</li>
+<li><p>使用步骤：    (1)创建IutputStreamWriter对象，构造方法中传递字节输入流和指定的编码表名称，注意，要和文件编码相同    (2)使用read方法    (3)释放资源    </p>
+</li>
+<li><p>OutputStreamWriter，可以指定编码表    </p>
+</li>
+<li><p>使用步骤：    (1)创建OutputStreamWriter对象，构造方法中传递字节输出流和指定的编码表名称    (2)使用write方法    (3)调用flush方法    (4)释放资源        </p>
+</li>
+<li><p>FileFilter接口是文件过滤器，boolean accept(File pathname) 测试指定抽象路径名是否应该包含在某个路径列表中,其中File pathname是通过ListFiles()方法遍历目录页得到的每一个文件对象。    </p>
+</li>
+<li><p>FilenameFilter接口实现此接口实例可用于过滤器文件名,boolean accept(File dir,String name),其中File dir是需要遍历的文件目录。String name 是使用ListFiles()得到的文件名。</p>
+</li>
+</ul>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><ul>
+<li>构造方法，禁止递归，递归次数不能太多，要有递归结束的条件。当方法使用的时候，参数不同，方法主体不变，可以使用递归</li>
+<li>函数式接口指的是有且只有一个抽象方法的接口，接口中可以包含其他的非抽象方法</li>
+<li>可以使用注解检测一个接口是否是一个函数式接口 @FunctionalInterface  </li>
+<li>函数式接口可以作为方法的参数和返回值类型</li>
+<li>Lambda表达式是延迟执行的。    </li>
+<li>常用的函数式接口：    <ul>
+<li>Supplier &lt;T&gt;:接口中包含一个无参的方法：T get()。   </li>
+<li>Consumer&lt;T&gt;:接口中包含抽象方法void accept(T,t),消费一个指定泛型的数据。    </li>
+<li>Consumer接口默认方法andThen()把两个Consumer接口组合到一起 。   </li>
+<li>Predicate接口：对某种数据类型的数据进行判断, test(T t),and方法，or方法   </li>
+<li>Function接口：数据类型转换 apply(T,R)返回R型数据，andThen方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h4><ul>
+<li>Stream是来自数据源的元素队列。filter和forEach</li>
+<li>获取流的方式：通过Stream默认方式获取流；通过静态方法of获取：    <ul>
+<li>Stream&lt;E&gt; stream()    </li>
+<li>Static &lt;T&gt; Stream&lt;T&gt; of(T…values)</li>
+</ul>
+</li>
+<li>.延迟方法和终结方法：    <ul>
+<li>Void forEach(Consumer&lt;? super T&gt; action);该方法接受一个Consumer接口函数，会将每一个流元素交给该函数处理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h4><ul>
+<li>有两个类实现TCP通信，java.net.Socket和Java.net.ServerSocket。必须先启动服务器端，然后使客户端请求服务器端，客户端和服务器端就可以建立逻辑链接。链接中包含一个IO对象，客户端和服务端就可以使用这个对象进行通信，该对象使字节流对象。        </li>
+<li>TCP客户端通信：    (1)构造方法：Socket(String host,int port)    (2)成员方法：OutputStream getOutputStream()返回套接字的输出流，InputStream getInputStream()返回输入流，void close()关闭套接字    (3)当创建客户端对象Socket以后，和服务器端建立链接，如果服务器没有启动，则会抛出异常。    </li>
+<li>TCP服务器端通信    (1)构造方法：ServerSocket(int port)    (2)成员方法：Socket.accept()        </li>
+<li>服务器端和客户端本地硬盘交互需要自己创建字节流对象(本地流)，客户端可服务器进行读写，使用Socket中提供的字节流对象(网络流)            </li>
+<li>read方法读取不到结束标记的时候会进入阻塞状态，当文件上传结束写入一个结束标志。socket.shutdownInput();</li>
+</ul>
+<h4 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h4><ul>
+<li>java代码在计算机中的三个阶段：编译，类加载，运行。</li>
+<li>类加载中将成员变量封装成Filed[],构造方法封装成Constructor[],成员方法封装成Methods[]。  </li>
+<li>反射就是就昂各个组成部分封装成其他对象，这就是反射机制。    (1)可以在程序运行中，操作这些对象。    (2)可以解耦，提高程序的可扩展性        </li>
+<li>获取字节码class的方式：    (1)没有加载到内存的时候可以使用Class.forName(“全类名”)；多用于配置文件中    (2)加载到内存后可以使用类名.class，通过类名的属性class获取；多用于参数传递    (3)可以使用对象.getClass():该方法在Object类中定义。多用于获取字节码文件        </li>
+<li>同一个字节码文件在一次程序运行过程中，指挥被加载一次，不论通过哪一种方式获取的Class对象都是同一个。        </li>
+<li>Class对象的功能    (1)获取成员变量：Field[] getFields()获取public修饰的成员变量,Field getField(String nema),Field[] getDeclaredFields(),Field[] getDeclaredFields(String name)。    (2)获取构造方法：Constructor&lt;?&gt;[] getConstructors(),……    (3)获取成员方法：Method[] getMethod()…….    (4)获取类名：String getName()        </li>
+<li>暴力反射setAccessable(true)</li>
+</ul>
+<h4 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h4><ul>
+<li>注解本质上是接口，且须有返回类型(基本数据类型，string，枚举，数组)。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" rel="next" title="Mysql基础">
+                <i class="fa fa-chevron-left"></i> Mysql基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/17/367.%20Valid%20Perfect%20Square/" rel="prev" title="367. Valid Perfect Square">
+                367. Valid Perfect Square <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">92</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Java基础知识"><span class="nav-number">1.</span> <span class="nav-text">Java基础知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">2.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object工具类"><span class="nav-number">3.</span> <span class="nav-text">Object工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据结构"><span class="nav-number">4.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collection集合"><span class="nav-number">5.</span> <span class="nav-text">Collection集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#List接口"><span class="nav-number">6.</span> <span class="nav-text">List接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set接口"><span class="nav-number">7.</span> <span class="nav-text">set接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map集合"><span class="nav-number">8.</span> <span class="nav-text">map集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections工具类"><span class="nav-number">9.</span> <span class="nav-text">Collections工具类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变参数"><span class="nav-number">10.</span> <span class="nav-text">可变参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Date和Calendar"><span class="nav-number">11.</span> <span class="nav-text">Date和Calendar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#System类常用方法"><span class="nav-number">12.</span> <span class="nav-text">System类常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String类和StringBuilder类"><span class="nav-number">13.</span> <span class="nav-text">String类和StringBuilder类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#包装类"><span class="nav-number">14.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常"><span class="nav-number">15.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程"><span class="nav-number">16.</span> <span class="nav-text">线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待唤醒机制-线程之间的通信"><span class="nav-number">17.</span> <span class="nav-text">等待唤醒机制(线程之间的通信)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-number">18.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Lambda表达式"><span class="nav-number">19.</span> <span class="nav-text">Lambda表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#file类"><span class="nav-number">20.</span> <span class="nav-text">file类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO流"><span class="nav-number">21.</span> <span class="nav-text">IO流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归"><span class="nav-number">22.</span> <span class="nav-text">递归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stream流"><span class="nav-number">23.</span> <span class="nav-text">Stream流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络编程"><span class="nav-number">24.</span> <span class="nav-text">网络编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射"><span class="nav-number">25.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注解"><span class="nav-number">26.</span> <span class="nav-text">注解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">51.5k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
