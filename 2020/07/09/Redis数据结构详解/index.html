@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="redis," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Redis中数据结构redis中常用的数据结构由string  list hash set sorted set，还有比如sub&#x2F;pub等 各种数据结构使用场景string 计数，由于Redis单线程的特点，我们不用考虑并发造成计数不准的问题，通过 incrby 命令，我们可以正确的得到我们想要的结果 限制次数，比如登录次数校验，错误超过三次5分钟内就不让登录了，每次登录设置key自增一次，并设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis数据结构详解">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="Redis中数据结构redis中常用的数据结构由string  list hash set sorted set，还有比如sub&#x2F;pub等 各种数据结构使用场景string 计数，由于Redis单线程的特点，我们不用考虑并发造成计数不准的问题，通过 incrby 命令，我们可以正确的得到我们想要的结果 限制次数，比如登录次数校验，错误超过三次5分钟内就不让登录了，每次登录设置key自增一次，并设置">
+<meta property="article:published_time" content="2020-07-08T17:19:49.000Z">
+<meta property="article:modified_time" content="2020-07-08T18:30:16.475Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="redis">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/07/09/Redis数据结构详解/"/>
+
+
+
+
+
+  <title>Redis数据结构详解 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Redis数据结构详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T01:19:49+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/redis/" itemprop="url" rel="index">
+                    <span itemprop="name">redis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  2.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Redis中数据结构"><a href="#Redis中数据结构" class="headerlink" title="Redis中数据结构"></a>Redis中数据结构</h3><p>redis中常用的数据结构由<code>string</code>  <code>list</code> <code>hash</code> <code>set</code> <code>sorted set</code>，还有比如<code>sub/pub</code>等</p>
+<h4 id="各种数据结构使用场景"><a href="#各种数据结构使用场景" class="headerlink" title="各种数据结构使用场景"></a>各种数据结构使用场景</h4><h5 id="string"><a href="#string" class="headerlink" title="string"></a><code>string</code></h5><ul>
+<li>计数，由于Redis单线程的特点，我们不用考虑并发造成计数不准的问题，通过 incrby 命令，我们可以正确的得到我们想要的结果</li>
+<li>限制次数，比如登录次数校验，错误超过三次5分钟内就不让登录了，每次登录设置key自增一次，并设置该key的过期时间为5分钟后，每次登录检查一下该key的值来进行限制登录。</li>
+</ul>
+<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a><code>hash</code></h5><ul>
+<li>查询时间复杂度是O(1)，常用作缓存</li>
+</ul>
+<h5 id="list"><a href="#list" class="headerlink" title="list"></a><code>list</code></h5><ul>
+<li>栈，通过命令 lpush+lpop</li>
+<li>队列，命令 lpush+rpop</li>
+<li>有限集合，命令 lpush+ltrim</li>
+<li>消息队列，命令 lpush+rpop</li>
+</ul>
+<h5 id="set"><a href="#set" class="headerlink" title="set"></a><code>set</code></h5><ul>
+<li>利用set的特性，可以方便的获取多个用户的共同好友等</li>
+</ul>
+<h5 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted set"></a><code>sorted set</code></h5><ul>
+<li>利用排序的特点，可以做排行榜等</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="Redis底层数据结构"><a href="#Redis底层数据结构" class="headerlink" title="Redis底层数据结构"></a>Redis底层数据结构</h3><p>可以通过<code>object encoding key</code>查看某个key的底层数据结构，比如<code>string</code>的底层是<code>embstr和int</code></p>
+<h4 id="string的底层实现"><a href="#string的底层实现" class="headerlink" title="string的底层实现"></a><code>string</code>的底层实现</h4><ul>
+<li><p>底层是c语言实现的，但是不同于c语言的字符串，。被称为简单动态字符串，它包含额外两个变量<code>len和free</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct sdshdr&#123;</span><br><span class="line">     <span class="comment">//记录buf数组中已使用字节的数量</span></span><br><span class="line">     <span class="comment">//等于 SDS 保存字符串的长度</span></span><br><span class="line">     <span class="keyword">int</span> len;</span><br><span class="line">     <span class="comment">//记录 buf 数组中未使用字节的数量</span></span><br><span class="line">     <span class="keyword">int</span> free;</span><br><span class="line">     <span class="comment">//字节数组，用于保存字符串</span></span><br><span class="line">     <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为什么要实现自己的字符串数据结构呢</p>
+<ul>
+<li>可以常数时间获取字符串长度</li>
+<li>因为存在<code>free</code>,一旦空间不满足，就会扩展，不会造成缓冲区溢出</li>
+<li>通过空间预分配和惰性空间释放减少了修改字符串的内存分配次数</li>
+<li>二进制安全的，因为c语言是通过空字符作为字符串结束标志，而sds是以len属性来判断，即使二进制文件中包含空字符也能正确截取</li>
+<li>兼容c字符串函数</li>
+</ul>
+</li>
+</ul>
+<h4 id="链表的底层实现"><a href="#链表的底层实现" class="headerlink" title="链表的底层实现"></a><code>链表的底层实现</code></h4><ul>
+<li><p>c语言没有链表数据结构，redis是自己实现的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">typedef  struct listNode&#123;</span><br><span class="line">       <span class="comment">//前置节点</span></span><br><span class="line">       struct listNode *prev;</span><br><span class="line">       <span class="comment">//后置节点</span></span><br><span class="line">       struct listNode *next;</span><br><span class="line">       <span class="comment">//节点的值</span></span><br><span class="line">       <span class="keyword">void</span> *value;  </span><br><span class="line">&#125;listNode</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">typedef struct list&#123;</span><br><span class="line">     <span class="comment">//表头节点</span></span><br><span class="line">     listNode *head;</span><br><span class="line">     <span class="comment">//表尾节点</span></span><br><span class="line">     listNode *tail;</span><br><span class="line">     <span class="comment">//链表所包含的节点数量</span></span><br><span class="line">     unsigned <span class="keyword">long</span> len;</span><br><span class="line">     <span class="comment">//节点值复制函数</span></span><br><span class="line">     <span class="keyword">void</span> (*free) (<span class="keyword">void</span> *ptr);</span><br><span class="line">     <span class="comment">//节点值释放函数</span></span><br><span class="line">     <span class="keyword">void</span> (*free) (<span class="keyword">void</span> *ptr);</span><br><span class="line">     <span class="comment">//节点值对比函数</span></span><br><span class="line">     <span class="keyword">int</span> (*match) (<span class="keyword">void</span> *ptr,<span class="keyword">void</span> *key);</span><br><span class="line">&#125;list;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以看到，是双端链表，且无环</p>
+</li>
+<li><p>有一个长度计数器</p>
+</li>
+</ul>
+<h4 id="hash底层实现"><a href="#hash底层实现" class="headerlink" title="hash底层实现"></a><code>hash底层实现</code></h4><ul>
+<li><p>仍然是自己实现的数据结构</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">typedef struct dictht&#123;</span><br><span class="line">     <span class="comment">//哈希表数组</span></span><br><span class="line">     dictEntry **table;</span><br><span class="line">     <span class="comment">//哈希表大小</span></span><br><span class="line">     unsigned <span class="keyword">long</span> size;</span><br><span class="line">     <span class="comment">//哈希表大小掩码，用于计算索引值</span></span><br><span class="line">     <span class="comment">//总是等于 size-1</span></span><br><span class="line">     unsigned <span class="keyword">long</span> sizemask;</span><br><span class="line">     <span class="comment">//该哈希表已有节点的数量</span></span><br><span class="line">     unsigned <span class="keyword">long</span> used;</span><br><span class="line"> </span><br><span class="line">&#125;dictht</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">typedef struct dictEntry&#123;</span><br><span class="line">     <span class="comment">//键</span></span><br><span class="line">     <span class="keyword">void</span> *key;</span><br><span class="line">     <span class="comment">//值</span></span><br><span class="line">     union&#123;</span><br><span class="line">          <span class="keyword">void</span> *val;</span><br><span class="line">          uint64_tu64;</span><br><span class="line">          int64_ts64;</span><br><span class="line">     &#125;v;</span><br><span class="line"> </span><br><span class="line">     <span class="comment">//指向下一个哈希表节点，形成链表</span></span><br><span class="line">     struct dictEntry *next;</span><br><span class="line">&#125;dictEntry</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>扩容和缩容</p>
+<ul>
+<li>如果执行扩展操作，会基于原哈希表创建一个大小等于 ht[0].used*2n 的哈希表（也就是每次扩展都是根据原哈希表已使用的空间扩大一倍创建另一个哈希表）。相反如果执行的是收缩操作，每次收缩是根据已使用空间缩小一倍创建一个新的哈希表。</li>
+<li>重新利用上面的哈希算法，计算索引值，然后将键值对放到新的哈希表位置上。</li>
+<li>所有键值对都迁徙完毕后，释放原哈希表的内存空间。</li>
+<li>触发扩容的条件<ul>
+<li>服务器目前没有执行 BGSAVE 命令或者 BGREWRITEAOF 命令，并且负载因子大于等于1</li>
+<li>服务器目前正在执行 BGSAVE 命令或者 BGREWRITEAOF 命令，并且负载因子大于等于5。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>渐近式rehash</p>
+<ul>
+<li>Redis采用渐进式 rehash,这样在进行渐进式rehash期间，字典的删除查找更新等操作可能会在两个哈希表上进行，第一个哈希表没有找到，就会去第二个哈希表上进行查找。但是进行 增加操作，一定是在新的哈希表上进行的。</li>
+</ul>
+</li>
+</ul>
+<h4 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a><code>跳跃表</code></h4><ul>
+<li>搜索：从最高层的链表节点开始，如果比当前节点要大和比当前层的下一个节点要小，那么则往下找，也就是和当前层的下一层的节点的下一个节点进行比较，以此类推，一直找到最底层的最后一个节点，如果找到则返回，反之则返回空。</li>
+<li>插入：首先确定插入的层数，有一种方法是假设抛一枚硬币，如果是正面就累加，直到遇见反面为止，最后记录正面的次数作为插入的层数。当确定插入的层数k后，则需要将新元素插入到从底层到k层。</li>
+<li>删除：在各个层中找到包含指定值的节点，然后将节点从链表中删除即可，如果删除以后只剩下头尾两个节点，则删除这一层。</li>
+</ul>
+<h4 id="整数集合"><a href="#整数集合" class="headerlink" title="整数集合"></a><code>整数集合</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef struct intset&#123;</span><br><span class="line">     <span class="comment">//编码方式</span></span><br><span class="line">     uint32_t encoding;</span><br><span class="line">     <span class="comment">//集合包含的元素数量</span></span><br><span class="line">     uint32_t length;</span><br><span class="line">     <span class="comment">//保存元素的数组</span></span><br><span class="line">     int8_t contents[];</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>整数集合的每个元素都是 contents 数组的一个数据项，它们按照从小到大的顺序排列，并且不包含任何重复项。length 属性记录了 contents 数组的大小。</li>
+<li>需要注意的是虽然 contents 数组声明为 int8_t 类型，但是实际上contents 数组并不保存任何 int8_t 类型的值，其真正类型有 encoding 来决定</li>
+</ul>
+<h4 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a><code>压缩列表</code></h4><ul>
+<li>压缩列表并不是对数据利用某种算法进行压缩，而是将数据按照一定规则编码在一块连续的内存区域，目的是节省内存</li>
+</ul>
+<h3 id="redis的数据结构底层使用了哪些实现"><a href="#redis的数据结构底层使用了哪些实现" class="headerlink" title="redis的数据结构底层使用了哪些实现"></a>redis的数据结构底层使用了哪些实现</h3><h4 id="对象类型"><a href="#对象类型" class="headerlink" title="对象类型"></a>对象类型</h4><ul>
+<li><p>每次创建键值对的时候，至少会创建两个对象：健对象和值对象，redis中对象是通过redisObject的结构保存的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">typedef struct redisObject&#123;</span><br><span class="line">     <span class="comment">//类型</span></span><br><span class="line">     unsigned type:<span class="number">4</span>;</span><br><span class="line">     <span class="comment">//编码</span></span><br><span class="line">     unsigned encoding:<span class="number">4</span>;</span><br><span class="line">     <span class="comment">//指向底层数据结构的指针</span></span><br><span class="line">     <span class="keyword">void</span> *ptr;</span><br><span class="line">     <span class="comment">//引用计数</span></span><br><span class="line">     <span class="keyword">int</span> refcount;</span><br><span class="line">     <span class="comment">//记录最后一次被程序访问的时间</span></span><br><span class="line">     unsigned lru:<span class="number">22</span>;</span><br><span class="line"> </span><br><span class="line">&#125;robj</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其中type属性保存了对象的类型，即五大数据类型</p>
+</li>
+<li><p>encoding属性决定数据结构，ptr指针指向底层的数据结构</p>
+</li>
+<li><p>lru属性用来保存对象上一次被程序使用的时间，使用当前时间减去这个时间就获得对象空转时间，内存回收策略中也使用到这个属性</p>
+</li>
+<li><p>refcount用于帮助释放内存（引用计数），和共享内存（支持整数值的自负床对象，因为比较是否相等的复杂度是O(1),其他结构比较是否相等复杂度太高）</p>
+<ul>
+<li>创建一个新对象，属性 refcount 初始化为1</li>
+<li>对象被一个新程序使用，属性 refcount 加 1</li>
+<li>对象不再被一个程序使用，属性 refcount 减 1</li>
+<li>当对象的引用计数值变为 0 时，对象所占用的内存就会被释放</li>
+</ul>
+</li>
+<li><p>内存回收策略（当内存使用达到设置的最大值）</p>
+<ul>
+<li>volatile-lru  利用LRU算法移除设置过过期时间的key (LRU:最近使用 Least Recently Used ) </li>
+<li>allkeys-lru  利用LRU算法移除任何key </li>
+<li>volatile-random 移除设置过过期时间的随机key </li>
+<li>allkeys-random 移除随机key</li>
+<li>volatile-ttl  移除即将过期的key(minor TTL) </li>
+<li>noeviction noeviction  不移除任何key，只是返回一个写错误 ，默认选项</li>
+</ul>
+</li>
+</ul>
+<h4 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h4><ul>
+<li>字符串的encoding可以是int（保存可以用long表示的整数值），raw（保存长度大于44字节的字符串）或者embstr（保存长度小于44字节的字符串）</li>
+<li>raw需要分配两次内存，而embstr只需要分配一次，但是如果需要增加长度，需要新分配空间，包括redisObject和sdshdr，因此设为只读的</li>
+<li>int编码保存的值不再是整数或者超出范围的时候，自动转化为iraw，embstr是只读的，如果对其修改，无论是否超过44字节，都转化为raw</li>
+</ul>
+<h4 id="list对象"><a href="#list对象" class="headerlink" title="list对象"></a>list对象</h4><ul>
+<li>底层使用ziplist和linkedlist</li>
+<li>满足以下条件是用ziplist编码，否则使用linkedlist<ul>
+<li>列表保存元素小于512个</li>
+<li>每个元素产犊小于64字节</li>
+</ul>
+</li>
+</ul>
+<h4 id="哈希对象"><a href="#哈希对象" class="headerlink" title="哈希对象"></a>哈希对象</h4><ul>
+<li>编码是ziplist或者hashtable</li>
+<li>ziplist存储的时候将键值对相邻存放</li>
+<li>满足以下条件使用ziplist，否则使用hashtable<ul>
+<li>列表保存元素小于512个</li>
+<li>每个元素产犊小于64字节</li>
+</ul>
+</li>
+</ul>
+<h4 id="集合对象"><a href="#集合对象" class="headerlink" title="集合对象"></a>集合对象</h4><ul>
+<li>编码方式是intset或者hashtable</li>
+<li>使用hashtable的时候，键建是集合中的元素，值都是null</li>
+<li>满足下列条件，使用intset，否则使用hashtable<ul>
+<li>集合对象中所有元素都是整数</li>
+<li>集合对象所有元素数量不超过512</li>
+</ul>
+</li>
+</ul>
+<h4 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h4><ul>
+<li>使用ziplist或者skiplist，使用score排序</li>
+<li>ziplist 编码的有序集合对象使用压缩列表作为底层实现，每个集合元素使用两个紧挨在一起的压缩列表节点来保存，第一个节点保存元素的成员，第二个节点保存元素的分值。并且压缩列表内的集合元素按分值从小到大的顺序进行排列，小的放置在靠近表头的位置，大的放置在靠近表尾的位置</li>
+<li>skiplist 编码的有序集合对象使用 zet 结构作为底层实现，一个 zset 结构同时包含一个字典和一个跳跃表，因为要兼顾具体score操作和范围score操作</li>
+<li>满足以下条件使用ziplist，否则使用skiplist<ul>
+<li>保存的元素数量小于128；</li>
+<li>保存的所有元素长度都小于64字节。</li>
+</ul>
+</li>
+</ul>
+<h4 id="具体应用"><a href="#具体应用" class="headerlink" title="具体应用"></a>具体应用</h4><ul>
+<li>对于string 数据类型，因为string 类型是二进制安全的，可以用来存放图片，视频等内容，另外由于Redis的高性能读写功能，而string类型的value也可以是数字，可以用作计数器（INCR,DECR），比如分布式环境中统计系统的在线人数，秒杀等。</li>
+<li>对于 hash 数据类型，value 存放的是键值对，比如可以做单点登录存放用户信息。</li>
+<li>对于 list 数据类型，可以实现简单的消息队列，另外可以利用lrange命令，做基于redis的分页功</li>
+<li>对于 set 数据类型，由于底层是字典实现的，查找元素特别快，另外set 数据类型不允许重复，利用这两个特性我们可以进行全局去重，比如在用户注册模块，判断用户名是否注册；另外就是利用交集、并集、差集等操作，可以计算共同喜好，全部的喜好，自己独有的喜好等功能。</li>
+<li>对于 zset 数据类型，有序的集合，可以做范围查找，排行榜应用，取 TOP N 操作等</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" rel="next" title="elasticSearch学习（四）">
+                <i class="fa fa-chevron-left"></i> elasticSearch学习（四）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/" rel="prev" title="Redis持久化方式">
+                Redis持久化方式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis中数据结构"><span class="nav-number">1.</span> <span class="nav-text">Redis中数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各种数据结构使用场景"><span class="nav-number">1.1.</span> <span class="nav-text">各种数据结构使用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#string"><span class="nav-number">1.1.1.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#hash"><span class="nav-number">1.1.2.</span> <span class="nav-text">hash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#list"><span class="nav-number">1.1.3.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#set"><span class="nav-number">1.1.4.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sorted-set"><span class="nav-number">1.1.5.</span> <span class="nav-text">sorted set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis底层数据结构"><span class="nav-number">2.</span> <span class="nav-text">Redis底层数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#string的底层实现"><span class="nav-number">2.1.</span> <span class="nav-text">string的底层实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#链表的底层实现"><span class="nav-number">2.2.</span> <span class="nav-text">链表的底层实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hash底层实现"><span class="nav-number">2.3.</span> <span class="nav-text">hash底层实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#跳跃表"><span class="nav-number">2.4.</span> <span class="nav-text">跳跃表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数集合"><span class="nav-number">2.5.</span> <span class="nav-text">整数集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩列表"><span class="nav-number">2.6.</span> <span class="nav-text">压缩列表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#redis的数据结构底层使用了哪些实现"><span class="nav-number">3.</span> <span class="nav-text">redis的数据结构底层使用了哪些实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对象类型"><span class="nav-number">3.1.</span> <span class="nav-text">对象类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串对象"><span class="nav-number">3.2.</span> <span class="nav-text">字符串对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list对象"><span class="nav-number">3.3.</span> <span class="nav-text">list对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#哈希对象"><span class="nav-number">3.4.</span> <span class="nav-text">哈希对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#集合对象"><span class="nav-number">3.5.</span> <span class="nav-text">集合对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有序集合"><span class="nav-number">3.6.</span> <span class="nav-text">有序集合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#具体应用"><span class="nav-number">3.7.</span> <span class="nav-text">具体应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">57.2k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
