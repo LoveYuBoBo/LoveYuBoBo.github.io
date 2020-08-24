@@ -270,6 +270,556 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/123.%20Best%20time%20to%20buy%20and%20sell%20stock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/123.%20Best%20time%20to%20buy%20and%20sell%20stock/" itemprop="url">123. Best time to buy and sell stock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:39+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  343
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="123-Best-time-to-buy-and-sell-stock"><a href="#123-Best-time-to-buy-and-sell-stock" class="headerlink" title="123. Best time to buy and sell stock"></a>123. Best time to buy and sell stock</h2><ul>
+<li><strong>description</strong></li>
+</ul>
+<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete at most <em>two</em> transactions.</p>
+<p><strong>Note:</strong> You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = prices.length;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> maxInt = Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i] &gt; maxInt)&#123;</span><br><span class="line">                maxInt = prices[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//分别用三个变量记录天数和交易数和是否持有股票</span></span><br><span class="line">       <span class="keyword">int</span>[][][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[prices.length][<span class="number">3</span>][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>] = -maxInt;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>][<span class="number">1</span>] = -maxInt;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>][<span class="number">0</span>] = -maxInt;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">2</span>][<span class="number">1</span>] = -maxInt;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length ; i++)&#123;</span><br><span class="line">            dp[i][<span class="number">0</span>][<span class="number">0</span>] = dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]; </span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>] + prices[i]);<span class="comment">//某一天交易了一次且不持有股票，等于前一天交易了一次不持有股票和前一天持有股票交易了零次且当天卖出持有股票当中的较大者</span></span><br><span class="line">            dp[i][<span class="number">0</span>][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">            dp[i][<span class="number">2</span>][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>],dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>] + prices[i]);</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.max(dp[n-<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>],Math.max(dp[n-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>],dp[n-<span class="number">1</span>][<span class="number">2</span>][<span class="number">0</span>]));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/122.%20Best%20time%20to%20buy%20and%20sell%20stock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/122.%20Best%20time%20to%20buy%20and%20sell%20stock/" itemprop="url">122. Best time to buy and sell stock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:39+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  130
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="122-Best-time-to-buy-and-sell-stock"><a href="#122-Best-time-to-buy-and-sell-stock" class="headerlink" title="122. Best time to buy and sell stock"></a>122. Best time to buy and sell stock</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times).</p>
+<p><strong>Note:</strong> You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; prices.length-<span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i+<span class="number">1</span>] &gt; prices[i])&#123;</span><br><span class="line">                count += prices[i+<span class="number">1</span>] - prices[i];</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/121.%20Best%20time%20to%20buy%20and%20sell%20stock/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/121.%20Best%20time%20to%20buy%20and%20sell%20stock/" itemprop="url">121. Best time to buy and sell stock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:39+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  125
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="121-Best-time-to-buy-and-sell-stock"><a href="#121-Best-time-to-buy-and-sell-stock" class="headerlink" title="121. Best time to buy and sell stock"></a>121. Best time to buy and sell stock</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Say you have an array for which the <em>i</em>th element is the price of a given stock on day <em>i</em>.</p>
+<p>If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
+<p>Note that you cannot sell a stock before you buy one.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> minPrice = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">0</span>; i&lt; prices.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>( prices[i] &lt; minPrice)&#123;</span><br><span class="line">                minPrice = prices[i];</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(prices[i] - minPrice &gt; maxProfit)&#123;</span><br><span class="line">                maxProfit = prices[i] - minPrice;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxProfit;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/120.%20Triangle/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -633,573 +1183,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/leetcode%2064%20Minimun%20Path%20Sum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/leetcode%2064%20Minimun%20Path%20Sum/" itemprop="url">leetcode 64 Minimun Path Sum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:39+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  230
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="64-Minimun-Path-Sum"><a href="#64-Minimun-Path-Sum" class="headerlink" title="64  Minimun Path Sum"></a>64  Minimun Path Sum</h2><p>Given a <em>m</em> x <em>n</em> grid filled with non-negative numbers, find a path from top left to bottom right which <em>minimizes</em> the sum of all numbers along its path.</p>
-<p><strong>Note:</strong> You can only move either down or right at any point in time.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1,3,1],</span><br><span class="line">  [1,5,1],</span><br><span class="line">  [4,2,1]</span><br><span class="line">]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Because the path 1→3→1→1→1 minimizes the sum.</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="solution"><a href="#solution" class="headerlink" title="solution"></a>solution</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> row = grid.length;</span><br><span class="line">        <span class="keyword">int</span> col = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">int</span>[][] minPath = <span class="keyword">new</span> <span class="keyword">int</span>[row][col];<span class="comment">//记录到达每个节点需要走的最短路径</span></span><br><span class="line">        minPath[<span class="number">0</span>][<span class="number">0</span>] = grid[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; row; i++ )&#123;</span><br><span class="line">            minPath[i][<span class="number">0</span>] = grid[i][<span class="number">0</span>]+ minPath[i-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt; col ;j++)&#123;</span><br><span class="line">            minPath[<span class="number">0</span>][j] = grid[<span class="number">0</span>][j]+minPath[<span class="number">0</span>][j-<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; row ;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">1</span>; j &lt; col ;j++)&#123;</span><br><span class="line">                minPath[i][j] = Math.min(minPath[i-<span class="number">1</span>][j],minPath[i][j-<span class="number">1</span>]) + grid[i][j];<span class="comment">//到达节点的方式只有从上或者从左边到达，更新到达节点的最小路径</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> minPath[row-<span class="number">1</span>][col-<span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/367.%20Valid%20Perfect%20Square/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/367.%20Valid%20Perfect%20Square/" itemprop="url">367. Valid Perfect Square</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:32+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  100
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="367-Valid-Perfect-Square"><a href="#367-Valid-Perfect-Square" class="headerlink" title="367. Valid Perfect Square"></a>367. Valid Perfect Square</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a positive integer <em>num</em>, write a function which returns True if <em>num</em> is a perfect square else False.</p>
-<p><strong>Note:</strong> <strong>Do not</strong> use any built-in library function such as <code>sqrt</code>.</p>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> low = <span class="number">1</span>, high = num / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">long</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (mid * mid == num) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mid * mid &lt; num) &#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url">java基础知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T00:55:01+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  9.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  34
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h4><ul>
-<li>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </li>
-<li>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</li>
-<li>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </li>
-<li>引用数据类型：字符串，数组，类，接口，Lambda  </li>
-<li>浮点型可能是一个近似值</li>
-<li>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</li>
-<li>Java内存划分为5个部分：<ul>
-<li>栈(stack)：存放的是方法中的局部变量，一旦超过作用域，立即消失</li>
-<li>堆(Heap):凡是new出来的，都在堆中，堆内存中的东西都有一个16进制的地址值，里面存放的数据都有默认值  </li>
-<li>方法区(Method Area):存储.class相关的信息，包含方法的信息</li>
-<li>本地方法栈(Native Method Stack):与操作系统有关</li>
-<li>寄存器(pc Register)：与cpu有关</li>
-</ul>
-</li>
-<li>空指针异常 NullPointException,通过添加new解决。</li>
-<li>数组一旦创建，程序运行期间，长度不可变。</li>
-<li>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</li>
-<li>当对象作为参数的时候，传入的是参数的地址值</li>
-<li>局部变量和成员变量：<ul>
-<li>定义的位置不一样，局部变量在方法内部，成员变量直接写在类中</li>
-<li>作用的范围不一样，局部变量只在方法中起作用，成员变量在整个类中都有用</li>
-<li>默认值不一样，局部变量没有默认值，必须手动赋值，成员变量有默认值，规则和数组一样。</li>
-<li>内存位置不一样，局部变量在栈内存中，成员变量在堆内存中</li>
-<li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1254,7 +1237,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1265,7 +1248,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1276,7 +1259,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1343,7 +1326,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.2k</span>
+    <span title="Site words total count">58.4k</span>
   
 </div>
 

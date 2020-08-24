@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="秒杀系统设计">
+<meta name="description" content="秒杀系统设计现在很多电商平台都会有秒杀功能，在短时间内，少数参加秒杀的商品会由大量请求到达。很明显，后端db不可能扛得住这么大的压力，这时，缓存，负载均衡，集群等是解决问题的好办法。 需要解决的问题 高性能 一致性，特别是库存一致性 高可用  细节处理 nginx，高性能web服务器，能达到几万的并发，但是tomcat只有几百的并发，这个时候可以水平扩展tomcat 秒杀商品的详情等静态资源存放到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="秒杀系统设计">
 <meta property="og:url" content="https://ijavaweb.github.io/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/index.html">
 <meta property="og:site_name" content="学习小记">
-<meta property="og:description" content="秒杀系统设计">
+<meta property="og:description" content="秒杀系统设计现在很多电商平台都会有秒杀功能，在短时间内，少数参加秒杀的商品会由大量请求到达。很明显，后端db不可能扛得住这么大的压力，这时，缓存，负载均衡，集群等是解决问题的好办法。 需要解决的问题 高性能 一致性，特别是库存一致性 高可用  细节处理 nginx，高性能web服务器，能达到几万的并发，但是tomcat只有几百的并发，这个时候可以水平扩展tomcat 秒杀商品的详情等静态资源存放到">
 <meta property="article:published_time" content="2020-07-01T12:26:51.000Z">
-<meta property="article:modified_time" content="2020-07-08T18:31:39.846Z">
+<meta property="article:modified_time" content="2020-07-09T14:36:07.206Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="网站开发">
 <meta name="twitter:card" content="summary">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  6
+                  409
                 </span>
               
 
@@ -397,7 +397,36 @@
       
 
       
-        <h3 id="秒杀系统设计"><a href="#秒杀系统设计" class="headerlink" title="秒杀系统设计"></a>秒杀系统设计</h3>
+        <h3 id="秒杀系统设计"><a href="#秒杀系统设计" class="headerlink" title="秒杀系统设计"></a>秒杀系统设计</h3><p>现在很多电商平台都会有秒杀功能，在短时间内，少数参加秒杀的商品会由大量请求到达。很明显，后端db不可能扛得住这么大的压力，这时，缓存，负载均衡，集群等是解决问题的好办法。</p>
+<h4 id="需要解决的问题"><a href="#需要解决的问题" class="headerlink" title="需要解决的问题"></a>需要解决的问题</h4><ul>
+<li>高性能</li>
+<li>一致性，特别是库存一致性</li>
+<li>高可用</li>
+</ul>
+<h4 id="细节处理"><a href="#细节处理" class="headerlink" title="细节处理"></a>细节处理</h4><ul>
+<li>nginx，高性能web服务器，能达到几万的并发，但是tomcat只有几百的并发，这个时候可以水平扩展tomcat</li>
+<li>秒杀商品的详情等静态资源存放到cdn中，进一步减轻服务器压力</li>
+<li>倒数时间，秒杀系统一般都会有一个秒杀倒计时，但是不可能时时刻刻请求服务端来获取倒计时，这是时候，可以采用本地计时的方式，定时获取后端时间并更新</li>
+<li>秒杀按钮，秒杀没开始的时候，按钮应该置灰</li>
+</ul>
+<h4 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h4><p>限流分为i前端限流和后端限流，尽可能使到达后端的流量使有效流量</p>
+<ul>
+<li>前端限流<ul>
+<li>按钮点击频率限制</li>
+</ul>
+</li>
+<li>后端限流<ul>
+<li>同一ip一个时间段允许一定频谱的访问</li>
+<li>加入消息队列，后端根据消费能力取消息来消费</li>
+</ul>
+</li>
+</ul>
+<h4 id="库存预热"><a href="#库存预热" class="headerlink" title="库存预热"></a>库存预热</h4><ul>
+<li>redis集群缓存数据，秒杀结束在异步写入数据库</li>
+<li>并发问题：使用lua脚本，lua脚本类似事务，有一定的原子性</li>
+<li>预扣库存的方式，将订单扔到延时队列中，超时失效</li>
+</ul>
+
       
     </div>
     
@@ -520,7 +549,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -531,7 +560,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -542,7 +571,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -591,7 +620,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#秒杀系统设计"><span class="nav-number">1.</span> <span class="nav-text">秒杀系统设计</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#秒杀系统设计"><span class="nav-number">1.</span> <span class="nav-text">秒杀系统设计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#需要解决的问题"><span class="nav-number">1.1.</span> <span class="nav-text">需要解决的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#细节处理"><span class="nav-number">1.2.</span> <span class="nav-text">细节处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#限流"><span class="nav-number">1.3.</span> <span class="nav-text">限流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#库存预热"><span class="nav-number">1.4.</span> <span class="nav-text">库存预热</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -625,7 +654,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.2k</span>
+    <span title="Site words total count">58.4k</span>
   
 </div>
 

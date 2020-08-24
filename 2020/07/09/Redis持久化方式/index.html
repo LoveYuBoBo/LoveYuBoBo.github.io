@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="学习小记">
 <meta property="og:description" content="Redis持久化方式由于Redis在内存中操作数据，一旦发生断电或者宕机，数据会丢失，因此，Redis提供了将内存数据持久化到硬盘的方式 RDB 是快照写入的方式  自动触发和手动触发  手动触发  save：使用改命令会阻塞当前redis服务，知道rdb完成 bgsave： fork子进程异步进行快照，此时写操作，将数据写到缓冲区中，快照结束后，再将缓冲区数据快照。   恢复数据和停止rdb持久">
 <meta property="article:published_time" content="2020-07-08T18:30:48.000Z">
-<meta property="article:modified_time" content="2020-07-08T18:43:18.416Z">
+<meta property="article:modified_time" content="2020-07-09T08:15:09.669Z">
 <meta property="article:author" content="ijavaweb">
 <meta property="article:tag" content="redis">
 <meta name="twitter:card" content="summary">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  483
+                  968
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -430,6 +430,38 @@
 <p>　 在一定间隔时间做一次备份，所以如果redis意外down掉的话，就会丢失最后一次快照后的所有修改(数据有丢失)</p>
 </li>
 </ul>
+<a id="more"></a>
+
+<h4 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h4><p> AOF 通过保存Redis服务器所执行的写命令来记录数据库状态</p>
+<ul>
+<li><p>appendonly:redis默认的持久化方式是rdb，如果要开启aof，将该属性设置为yes</p>
+</li>
+<li><p>appendfilename：aof的文件名</p>
+</li>
+<li><p>appendfsync：持久化策略</p>
+<ul>
+<li>no表示不执行fsync，由操作系统保证同步到磁盘，速度最快，不安去</li>
+<li>always表示每次写入都执行fsync</li>
+<li>everysec表示每秒执行一次fsync</li>
+</ul>
+</li>
+<li><p>AOF重写，当aof文件达到设置的大小时，redis就会启动aof文件的内容压缩，只保留恢复数据的最小指令集</p>
+</li>
+<li><p>优缺点</p>
+<ul>
+<li><p>优点</p>
+<p>AOF 持久化的方法提供了多种的同步频率，即使使用默认的同步频率每秒同步一次，Redis 最多也就丢失 1 秒的数据而已。</p>
+<p>AOF 文件使用 Redis 命令追加的形式来构造，因此，即使 Redis 只能向 AOF 文件写入命令的片断，使用 redis-check-aof 工具也很容易修正 AOF 文件。</p>
+<p>AOF 文件的格式可读性较强，这也为使用者提供了更灵活的处理方式。例如，如果我们不小心错用了 FLUSHALL 命令，在重写还没进行时，我们可以手工将最后的 FLUSHALL 命令去掉，然后再使用 AOF 来恢复数据。</p>
+</li>
+<li><p>缺点</p>
+<p>　对于具有相同数据的的 Redis，AOF 文件通常会比 RDF 文件体积更大。</p>
+<p>　虽然 AOF 提供了多种同步的频率，默认情况下，每秒同步一次的频率也具有较高的性能。但在 Redis 的负载较高时，RDB 比 AOF 具好更好的性能保证。</p>
+<p>　RDB 使用快照的形式来持久化整个 Redis 数据，而 AOF 只是将每次执行的命令追加到 AOF 文件中，因此从理论上说，RDB 比 AOF 方式更健壮。官方文档也指出，AOF 的确也存在一些 BUG，这些 BUG 在 RDB 没有存在。</p>
+</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
@@ -469,6 +501,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/09/Redis%E9%AB%98%E5%8F%AF%E7%94%A8/" rel="prev" title="Redis高可用">
+                Redis高可用 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -549,7 +585,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +596,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -571,7 +607,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -620,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化方式"><span class="nav-number">1.</span> <span class="nav-text">Redis持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-number">1.1.</span> <span class="nav-text">RDB</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化方式"><span class="nav-number">1.</span> <span class="nav-text">Redis持久化方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RDB"><span class="nav-number">1.1.</span> <span class="nav-text">RDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AOF"><span class="nav-number">1.2.</span> <span class="nav-text">AOF</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -654,7 +690,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.2k</span>
+    <span title="Site words total count">58.4k</span>
   
 </div>
 

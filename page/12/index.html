@@ -270,6 +270,582 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/" itemprop="url">151. Reverse Words in a String</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  189
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="151-Reverse-Words-in-a-String"><a href="#151-Reverse-Words-in-a-String" class="headerlink" title="151. Reverse Words in a String"></a>151. Reverse Words in a String</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given an input string, reverse the string word by word.</p>
+</li>
+</ul>
+<p>  <strong>Example 1:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;the sky is blue&quot;</span><br><span class="line">Output: &quot;blue is sky the&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Example 2:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;  hello world!  &quot;</span><br><span class="line">Output: &quot;world! hello&quot;</span><br><span class="line">Explanation: Your reversed string should not contain leading or trailing spaces.</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Example 3:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a good   example&quot;</span><br><span class="line">Output: &quot;example good a&quot;</span><br><span class="line">Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>  <strong>Note:</strong></p>
+<ul>
+<li>A word is defined as a sequence of non-space characters.</li>
+<li>Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.</li>
+<li>You need to reduce multiple spaces between two words to a sin</li>
+</ul>
+<ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s== <span class="keyword">null</span> || s.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] s1 = s.trim().split(<span class="string">" "</span>); </span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!s1[i].trim().isEmpty())&#123;</span><br><span class="line">                sb.append(s1[i]).append(<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/65.%20Valid%20Number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/65.%20Valid%20Number/" itemprop="url">65. Valid Number</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  355
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="65-Valid-Number"><a href="#65-Valid-Number" class="headerlink" title="65. Valid Number"></a>65. Valid Number</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Validate if a given string can be interpreted as a decimal number.</p>
+<p>Some examples:<br><code>&quot;0&quot;</code> =&gt; <code>true</code><br><code>&quot; 0.1 &quot;</code> =&gt; <code>true</code><br><code>&quot;abc&quot;</code> =&gt; <code>false</code><br><code>&quot;1 a&quot;</code> =&gt; <code>false</code><br><code>&quot;2e10&quot;</code> =&gt; <code>true</code><br><code>&quot; -90e3  &quot;</code> =&gt; <code>true</code><br><code>&quot; 1e&quot;</code> =&gt; <code>false</code><br><code>&quot;e3&quot;</code> =&gt; <code>false</code><br><code>&quot; 6e-1&quot;</code> =&gt; <code>true</code><br><code>&quot; 99e2.5 &quot;</code> =&gt; <code>false</code><br><code>&quot;53.5e93&quot;</code> =&gt; <code>true</code><br><code>&quot; --6 &quot;</code> =&gt; <code>false</code><br><code>&quot;-+3&quot;</code> =&gt; <code>false</code><br><code>&quot;95a54e53&quot;</code> =&gt; <code>false</code></p>
+<p><strong>Note:</strong> It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one. However, here is a list of characters that can be in a valid decimal number:</p>
+<ul>
+<li>Numbers 0-9</li>
+<li>Exponent - “e”</li>
+<li>Positive/negative sign - “+”/“-“</li>
+<li>Decimal point - “.”</li>
+</ul>
+<p>Of course, the context of these characters also matters in the input.</p>
+</li>
+<li><p><strong>solution 1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.util.regex.*;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">	private static Pattern NUMBER &#x3D; Pattern.compile(&quot;[+-]?(\\.\\d+|\\d+(\\.\\d*)?)(e[+-]?\\d+)?&quot;);</span><br><span class="line"></span><br><span class="line">	public boolean isNumber(String s) &#123;</span><br><span class="line">		return NUMBER.matcher(s.trim()).matches();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>solution 2</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        s = s.trim();</span><br><span class="line">        <span class="keyword">int</span> idx = s.indexOf(<span class="string">'e'</span>);</span><br><span class="line">        <span class="keyword">if</span>(idx == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> validateLeft(s);</span><br><span class="line">        <span class="keyword">return</span> validateLeft(s.substring(<span class="number">0</span>, idx)) &amp;&amp; validateRight(s.substring(idx + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateLeft</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> dot = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == <span class="string">'-'</span> || s.charAt(i) == <span class="string">'+'</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">"."</span>) || s.equals(<span class="string">"+."</span>) || s.equals(<span class="string">"-."</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">'.'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dot) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                dot = <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!Character.isDigit(s.charAt(i))) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateRight</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == <span class="string">'+'</span> || s.charAt(i) == <span class="string">'-'</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(!Character.isDigit(s.charAt(i))) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/" itemprop="url">17. Letter Combinations of a Phone Number</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  173
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="17-Letter-Combinations-of-a-Phone-Number"><a href="#17-Letter-Combinations-of-a-Phone-Number" class="headerlink" title="17. Letter Combinations of a Phone Number"></a>17. Letter Combinations of a Phone Number</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent.</p>
+<p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt="img"></p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character,String&gt; map = Map.of(<span class="string">'2'</span>,<span class="string">"abc"</span>,<span class="string">'3'</span>,<span class="string">"def"</span>,</span><br><span class="line">                                           <span class="string">'4'</span>,<span class="string">"ghi"</span>,<span class="string">'5'</span>,<span class="string">"jkl"</span>,<span class="string">'6'</span>,<span class="string">"mno"</span>,</span><br><span class="line">                                           <span class="string">'7'</span>,<span class="string">"pqrs"</span>,<span class="string">'8'</span>,<span class="string">"tuv"</span>,<span class="string">'9'</span>,<span class="string">"wxyz"</span>);</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">if</span>(digits.length() == <span class="number">0</span>)<span class="keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">        buildString(<span class="string">""</span>,digits,map,ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildString</span><span class="params">(String result,String curr,Map&lt;Character,String&gt; map,List&lt;String&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(curr.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            ans.add(result);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        String bag = map.get(curr.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bag.length();i++)&#123;</span><br><span class="line">            buildString(<span class="keyword">new</span> StringBuilder(result)</span><br><span class="line">                        .append(bag.charAt(i)).toString()</span><br><span class="line">                        ,curr.substring(<span class="number">1</span>,curr.length()) ,map ,ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/14.%20Longest%20Common%20Prefix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -630,578 +1206,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/8.%20String%20to%20Integer%20(atoi)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/8.%20String%20to%20Integer%20(atoi)/" itemprop="url">8. String to Integer (atoi)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  321
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="8-String-to-Integer-atoi"><a href="#8-String-to-Integer-atoi" class="headerlink" title="8. String to Integer (atoi)"></a>8. String to Integer (atoi)</h2><ul>
-<li><p><strong>description</strong></p>
-<p>implement <code>atoi</code> which converts a string to an integer.</p>
-<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
-<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
-<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
-<p>If no valid conversion could be performed, a zero value is returned.</p>
-<p><strong>Note:</strong></p>
-<ul>
-<li>Only the space character <code>&#39; &#39;</code> is considered as whitespace character.</li>
-<li>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231, 231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.</li>
-</ul>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(str.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">0</span>;<span class="comment">//检测是否只有一个符号位</span></span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        str = str.trim();</span><br><span class="line">        <span class="keyword">int</span> n = str.length();</span><br><span class="line">        <span class="keyword">while</span>(i &lt; n &amp;&amp; (str.charAt(i) == <span class="string">'-'</span> || str.charAt(i) == <span class="string">'+'</span>))&#123;</span><br><span class="line">            <span class="keyword">if</span>(sign &gt;= <span class="number">1</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(str.charAt(i++));</span><br><span class="line">                sign++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(i &lt; n &amp;&amp; Character.isDigit(str.charAt(i)))&#123;</span><br><span class="line">            sb.append(str.charAt(i++));</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.parseInt(sb.toString());</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            <span class="keyword">return</span> sb.toString().charAt(<span class="number">0</span>) == <span class="string">'-'</span> ? Integer.MIN_VALUE:Integer.MAX_VALUE;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/5.%20Longest%20Palindromic%20Substring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/5.%20Longest%20Palindromic%20Substring/" itemprop="url">5. Longest Palindromic Substring</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  362
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a>5. Longest Palindromic Substring</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>solution</strong></p>
-<ul>
-<li><p><strong>brute-force</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  String maxStr = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isValid(s, i, j) == <span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxStr.length()) &#123; <span class="comment">// update maxStr</span></span><br><span class="line">          maxStr = s.substring(i, j + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxStr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = hi - lo + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s.charAt(lo + i) != s.charAt(hi - i)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>dp</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  <span class="keyword">boolean</span>[][] dp = generateDP(s);</span><br><span class="line">  <span class="comment">// Check each substring</span></span><br><span class="line">  <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span>[] maxIdx = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dp[i][j] == <span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxLen) &#123;</span><br><span class="line">          maxLen = j - i + <span class="number">1</span>;</span><br><span class="line">          maxIdx[<span class="number">0</span>] = i;</span><br><span class="line">          maxIdx[<span class="number">1</span>] = j;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s.substring(maxIdx[<span class="number">0</span>], maxIdx[<span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span>[][] generateDP(String s) &#123;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">  <span class="comment">// Init</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123; <span class="comment">// diagonal</span></span><br><span class="line">    dp[i][i] = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) &#123; <span class="comment">// one line below diagonal</span></span><br><span class="line">    dp[i][i + <span class="number">1</span>] = (s.charAt(i) == s.charAt(i + <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// DP</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">3</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">2</span>; j &lt; n; ++j) &#123;</span><br><span class="line">      dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] &amp;&amp; s.charAt(i) == s.charAt(j);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/" itemprop="url">3. Longest Substring Without Repeating Characters</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  203
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string, find the length of the <strong>longest substring</strong> without repeating characters.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcabcbb&quot;</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: The answer is &quot;abc&quot;, with the length of 3.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;bbbbb&quot;</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The answer is &quot;b&quot;, with the length of 1.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;pwwkew&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The answer is &quot;wke&quot;, with the length of 3. </span><br><span class="line">             Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> s.length();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s1.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>( s1[i] == s1[j])&#123;</span><br><span class="line">                    dp[i] = Math.min(i-j,dp[i-<span class="number">1</span>]+<span class="number">1</span>) ;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>] +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;dp.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] &gt; result)&#123;</span><br><span class="line">                result = dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1256,7 +1260,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">96</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1267,7 +1271,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1278,7 +1282,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1345,7 +1349,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">57.2k</span>
+    <span title="Site words total count">58.4k</span>
   
 </div>
 
