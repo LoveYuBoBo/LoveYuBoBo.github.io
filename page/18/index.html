@@ -337,6 +337,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -550,6 +560,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -759,6 +779,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -971,6 +1001,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/08/JPA%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/08/JPA%E6%A1%86%E6%9E%B6%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1173,6 +1213,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/08/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/08/%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1624,6 +1674,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

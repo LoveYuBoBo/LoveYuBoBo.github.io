@@ -337,6 +337,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/29/%E6%97%85%E6%B8%B8%E7%BD%91%E9%A1%B9%E7%9B%AE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -529,6 +539,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/29/redis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/29/redis/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -737,6 +757,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/28/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/28/JavaWeb%E4%B8%89%E5%A4%A7%E7%BB%84%E4%BB%B6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -931,6 +961,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/03/22/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/03/22/Servlet&HTTP&Request%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1135,6 +1175,16 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/02/22/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/02/22/%E8%AF%A6%E7%BB%86servlet%E8%A7%A3%E6%9E%90/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1577,6 +1627,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
