@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E8%BF%9B%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url">单点登录系统设计</a></h1>
+                <a class="post-title-link" href="/2020/11/04/%E8%BF%9B%E7%A8%8B/" itemprop="url">进程</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T22:36:34+08:00">
-                2020-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T17:32:34+08:00">
+                2020-11-04
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">网站开发</span>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
                   </a>
                 </span>
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
+                <a href="/2020/11/04/%E8%BF%9B%E7%A8%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E8%BF%9B%E7%A8%8B/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,443 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  133
+                  2.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  7
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><h4 id="进程描述"><a href="#进程描述" class="headerlink" title="进程描述"></a>进程描述</h4><ul>
+<li><p>进程的定义：一个具有一定独立功能的程序在一个数据集合上的一次动态执行过程</p>
+</li>
+<li><p>进程的组成：</p>
+<ul>
+<li>程序代码</li>
+<li>程序处理的数据</li>
+<li>程序计数器中的值，只是下一条将运行的指令</li>
+<li>一组通用的寄存器的当前值，堆，栈</li>
+<li>一组系统资源，比如打开的文件</li>
+</ul>
+</li>
+<li><p>进程和程序的联系</p>
+<ul>
+<li>程序是产生进程的基础</li>
+<li>程序的每次运行构成不同的进程</li>
+<li>进程是程序功能的体现</li>
+<li>通过多次执行，一个程序可以对应多个进程，通过调用关系，一个进程可包括多个程序</li>
+</ul>
+</li>
+<li><p>进程和程序的区别</p>
+<ul>
+<li>今晨是动态的，程序是静态的，程序是有序代码的集合；进程是程序的执行，进程有核心态/用户态</li>
+<li>进程是暂时的，程序是永久的，进程是一个状态变化的过程，程序可长久保存</li>
+<li>进程和程序的组成不同：进程的组成包括程序、数据和进程控制块</li>
+</ul>
+</li>
+<li><p>进程的特点</p>
+<ul>
+<li>动态性：可动态的创建、结束进程</li>
+<li>并发性：进程可以被独立调度并占用处理机运行</li>
+<li>独立性（通过页表实现）：不同进程的工作相互之间不影响</li>
+<li>制约性：因访问共享数据/资源或进程间同步而产生制约</li>
+</ul>
+</li>
+<li><p>描述进程的数据结构：进程控制块PCB</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/04/%E8%BF%9B%E7%A8%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">操作系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T15:01:25+08:00">
+                2020-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  4.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h4 id="操作系统的特点"><a href="#操作系统的特点" class="headerlink" title="操作系统的特点"></a>操作系统的特点</h4><ul>
+<li>并发</li>
+<li>异步</li>
+<li>虚拟</li>
+<li>共享</li>
+</ul>
+<h4 id="通过中断通知操作系统切换进程"><a href="#通过中断通知操作系统切换进程" class="headerlink" title="通过中断通知操作系统切换进程"></a>通过中断通知操作系统切换进程</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><ul>
+<li>CPU,内存，I/O(disk等)</li>
+<li>每部分作用<ul>
+<li>disk：存放OS</li>
+<li>BIOS:基本的I/O处理，加电以后从一个固定的地址开始执行CS:IP=0xf000:fff0(CS:段寄存器，IP：指令寄存器)，通过该地址进行自检（POST，加电自检），寻找显卡和执行BIOS，之后将Bootloader放到内存中</li>
+<li>Bootloader：加载OS，放在硬盘的第一个扇区（512字节）。通过BIOS将Bootloader放到内存中，x86系统是从0x7c00开始，往上512个字节。此时CPU执行权由Bootloader掌握，之后由Bootloader将操作系统从磁盘块读到内存中</li>
+</ul>
+</li>
+</ul>
+<h4 id="中断，异常和系统调用"><a href="#中断，异常和系统调用" class="headerlink" title="中断，异常和系统调用"></a>中断，异常和系统调用</h4><ul>
+<li>各个部分的定义<ul>
+<li>系统调用：应用程序主动向操作系统发出服务请求</li>
+<li>异常：非法指令或者其他换的处理状态，由应用程序产生</li>
+<li>中断：来自不同硬件设备的计时器和网络的中断，由外设产生</li>
+</ul>
+</li>
+<li>为什么操作系统不能直接操作外设？<ul>
+<li>计算机运行中，内核是被信任的第三方，安全的角度</li>
+<li>只有内核可以执行特权指令</li>
+<li>提供统一的接口，为了方便应用程序</li>
+</ul>
+</li>
+<li>操作系统怎么设计和实现中断、异常和系统调用的，他们的区别和特点是什么<ul>
+<li>源头：<ul>
+<li>中断：外设</li>
+<li>异常：应用程序意想不到的行为</li>
+<li>系统调用：应用程序请求操作提供服务</li>
+</ul>
+</li>
+<li>处理时间<ul>
+<li>中断：异步的</li>
+<li>异常：同步</li>
+<li>系统调用：异步或者同步（异步体现在返回数据的时候，不在等待返回）</li>
+</ul>
+</li>
+<li>响应<ul>
+<li>中断：持续的，对用户应用程序时透明的</li>
+<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
+<li>系统调用：等待和持续</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/" itemprop="url">用友一面</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T11:39:06+08:00">
+                2020-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  110
                 </span>
               
 
@@ -404,10 +840,20 @@
       
         
           
-            <h3 id="基于JWT的单点登录系统设计"><a href="#基于JWT的单点登录系统设计" class="headerlink" title="基于JWT的单点登录系统设计"></a>基于JWT的单点登录系统设计</h3><p>JWT（json web token）是一个含签名并携带用户相关信息的加密串，页面请求校验登录接口时，请求头中携带JWT串到后端服务，后端通过签名加密串匹配校验，保证信息未被篡改</p>
-<ul>
-<li>JWT因为不需要在服务端记录用户信息，轻量，可以用作单点登录系统设计</li>
-<li>通过签名，验证合法性，通过头部和载荷验证数据的完整性</li>
+            <h4 id="用友一面"><a href="#用友一面" class="headerlink" title="用友一面"></a>用友一面</h4><h5 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h5><ul>
+<li>实习做的什么</li>
+<li>spring中ioc的过程</li>
+<li>spring中的bean是单例还是多例的，怎么实现单例</li>
+<li>hashmap的底层数据结构，哈希冲突的解决方法</li>
+<li>jvm的内存划分</li>
+<li>垃圾回收算法，垃圾回收器</li>
+<li>线程安全的实现，synchronized是可重入的么，怎么实现的</li>
+<li>mysql调优，慢查询</li>
+<li>mysql大表拆分</li>
+</ul>
+<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
+<li>单向链表中点</li>
+<li>10万数据tok10</li>
 </ul>
 
           
@@ -457,7 +903,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/Redis%E9%AB%98%E5%8F%AF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/08/30/kubernetes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -476,7 +922,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/09/Redis%E9%AB%98%E5%8F%AF%E7%94%A8/" itemprop="url">Redis高可用</a></h1>
+                <a class="post-title-link" href="/2020/08/30/kubernetes/" itemprop="url">kubernetes</a></h1>
         
 
         <div class="post-meta">
@@ -488,8 +934,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T16:15:38+08:00">
-                2020-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-30T16:53:27+08:00">
+                2020-08-30
               </time>
             
 
@@ -499,28 +945,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -529,8 +953,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/09/Redis%E9%AB%98%E5%8F%AF%E7%94%A8/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/Redis%E9%AB%98%E5%8F%AF%E7%94%A8/" itemprop="commentCount"></span>
+                <a href="/2020/08/30/kubernetes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/30/kubernetes/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -552,7 +976,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  163
+                  352
                 </span>
               
 
@@ -591,22 +1015,34 @@
       
         
           
-            <h3 id="Redis高可用方案"><a href="#Redis高可用方案" class="headerlink" title="Redis高可用方案"></a>Redis高可用方案</h3><h4 id="主从复制"><a href="#主从复制" class="headerlink" title="主从复制"></a>主从复制</h4><ul>
-<li>主从读写分离</li>
-<li>增量复制，全量复制</li>
-<li>主节点宕机后，从节点角色不会变化</li>
-<li>主节点重启后恢复主节点的角色</li>
+            <h3 id="kubernetes"><a href="#kubernetes" class="headerlink" title="kubernetes"></a>kubernetes</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h5 id="master"><a href="#master" class="headerlink" title="master"></a>master</h5><ul>
+<li>组件<ul>
+<li>kube-apiserver</li>
+<li>kube-controller-manager</li>
+<li>kube-scheduler</li>
 </ul>
-<h4 id="哨兵模式"><a href="#哨兵模式" class="headerlink" title="哨兵模式"></a>哨兵模式</h4><p>主从复制中，主节点宕机后从节点不能担任主节点的角色，因此，哨兵模式就是解决这个问题的</p>
-<ul>
-<li><p>后台监控主机是否故障，如果故障自动将从节点升级为主节点</p>
-</li>
-<li><p>如果哨兵出现故障，就无法进行监控了，可以为哨兵也建立集群</p>
 </li>
 </ul>
-<h4 id="cluster"><a href="#cluster" class="headerlink" title="cluster"></a>cluster</h4><ul>
-<li>一致性哈希</li>
-<li>主从结构保证高可用</li>
+<h5 id="node"><a href="#node" class="headerlink" title="node"></a>node</h5><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><h5 id="使用kubeadm"><a href="#使用kubeadm" class="headerlink" title="使用kubeadm"></a>使用kubeadm</h5><ul>
+<li>kubeadm <strong>init</strong><ul>
+<li>做一些参数、环境校验</li>
+<li>为集群配置证书和对应的目录，证书都在master的/etc/kubernetes/kpi目录下，主要的文件是ca.cat和对应的私钥ca.key</li>
+<li>除了证书还会为其他组件生成配置文件，位置/etc/kubernetes/xxx.conf,记录了master的服务器地址，端口号，证书目录等信息，对应的客户端可以使用这些信息建立安全连接</li>
+<li><strong>为master组件生成pod配置文件</strong>，该文件放在etc/kubernetes/manifests 路径下，kublet启动的时候自动检查该路径下的配置文件</li>
+<li>还会生成etcd.yaml文件，所以会生成这些配置文件<br><strong>etcd.yaml  kube-apiserver.yaml  kube-controller-manager.yaml  kube-scheduler.yaml</strong></li>
+<li>集群运行起来，会检查其健康状态，并为集群生成<strong>bootstrap token</strong>,其他持有改token的节点可以加到该集群中</li>
+<li>之后，将ca.crt等重要信息以ConfigMap的方式包保存在Etcd中，供后续部署节点使用，这个configMap叫做cluster-info</li>
+<li>最后一步就是安装插件，默认kube-proxy 和 DNS是必须的</li>
+</ul>
+</li>
+<li>kubeadm <strong>join</strong> &lt;master节点的端口和ip&gt;<ul>
+<li>通过持有token以安全的方式加入集群，</li>
+</ul>
+</li>
+<li>自定义参数部署<ul>
+<li>在init的时候使用kubeadm init –config kubeadm.yaml，通过在yaml文件中写入配置参数</li>
+</ul>
+</li>
 </ul>
 
           
@@ -656,7 +1092,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -675,7 +1111,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/" itemprop="url">Redis持久化方式</a></h1>
+                <a class="post-title-link" href="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/" itemprop="url">多线程交替打印ABC</a></h1>
         
 
         <div class="post-meta">
@@ -687,8 +1123,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T02:30:48+08:00">
-                2020-07-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T23:47:49+08:00">
+                2020-08-24
               </time>
             
 
@@ -710,8 +1146,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -728,8 +1164,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/" itemprop="commentCount"></span>
+                <a href="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -751,7 +1187,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  968
+                  997
                 </span>
               
 
@@ -767,7 +1203,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  5
                 </span>
               
             </div>
@@ -789,454 +1225,33 @@
 
       
         
-          <h3 id="Redis持久化方式"><a href="#Redis持久化方式" class="headerlink" title="Redis持久化方式"></a>Redis持久化方式</h3><p>由于Redis在内存中操作数据，一旦发生断电或者宕机，数据会丢失，因此，Redis提供了将内存数据持久化到硬盘的方式</p>
-<h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><ul>
-<li><p>是快照写入的方式</p>
-</li>
-<li><p>自动触发和手动触发</p>
-</li>
-<li><p>手动触发</p>
+          
+            <h4 id="多线程交替打印ABC的实现方式"><a href="#多线程交替打印ABC的实现方式" class="headerlink" title="多线程交替打印ABC的实现方式"></a>多线程交替打印ABC的实现方式</h4><ul>
+<li>通过LockSupport实现</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">static</span> Thread threadA, threadB, threadC;</span><br><span class="line">  </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        threadA = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 打印当前线程名称</span></span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadB);</span><br><span class="line">                <span class="comment">// 当前线程阻塞</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>);</span><br><span class="line">        threadB = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 先阻塞等待被唤醒</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadC);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>);</span><br><span class="line">        threadC = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 先阻塞等待被唤醒</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadA);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>);</span><br><span class="line">        threadA.start();</span><br><span class="line">        threadB.start();</span><br><span class="line">        threadC.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>save：使用改命令会阻塞当前redis服务，知道rdb完成</li>
-<li>bgsave： fork子进程异步进行快照，此时写操作，将数据写到缓冲区中，快照结束后，再将缓冲区数据快照。</li>
+<li>通过synchronized实现</li>
 </ul>
-</li>
-<li><p>恢复数据和停止rdb持久化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 使用布尔变量对打印顺序进行控制，true表示轮到当前线程打印</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startA = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startB = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startC = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 作为锁对象</span></span><br><span class="line">        <span class="keyword">final</span> Object o = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startA) &#123;</span><br><span class="line">                        <span class="comment">// 代表轮到当前线程打印</span></span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        <span class="comment">// 下一个轮到B打印，所以把startB置为true，其它为false</span></span><br><span class="line">                        startA = <span class="keyword">false</span>;</span><br><span class="line">                        startB = <span class="keyword">true</span>;</span><br><span class="line">                        startC = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="comment">// 唤醒其他线程</span></span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        <span class="comment">// 在这里对i进行增加操作</span></span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 说明没有轮到当前线程打印，继续wait</span></span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startB) &#123;</span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        startA = <span class="keyword">false</span>;</span><br><span class="line">                        startB = <span class="keyword">false</span>;</span><br><span class="line">                        startC = <span class="keyword">true</span>;</span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startC) &#123;</span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        startA = <span class="keyword">true</span>;</span><br><span class="line">                        startB = <span class="keyword">false</span>;</span><br><span class="line">                        startC = <span class="keyword">false</span>;</span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>将备份文件移动到redis安装目录并启动服务即可恢复数据</li>
-<li>注释掉redis.conf中所有save行即可停用</li>
-</ul>
-</li>
-<li><p>优劣势</p>
-<ul>
-<li>优势</li>
-</ul>
-<p>　　RDB是一个非常紧凑(compact)的文件，它保存了redis 在某个时间点上的数据集。这种文件非常适合用于进行备份和灾难恢复。</p>
-<p>　    生成RDB文件的时候，redis主进程会fork()一个子进程来处理所有保存工作，主进程不需要进行任何磁盘IO操作。</p>
-<p>　    RDB 在恢复大数据集时的速度比 AOF 的恢复速度要快。</p>
-<ul>
-<li>劣势</li>
-</ul>
-<p>　　RDB方式数据没办法做到实时持久化/秒级持久化。因为bgsave每次运行都要执行fork操作创建子进程，属于重量级操作，如果不采用压缩算法(内存中的数据被克隆了一份，大致2倍的膨胀性需要考虑)，频繁执行成本过高(影响性能)</p>
-<p>　　RDB文件使用特定二进制格式保存，Redis版本演进过程中有多个格式的RDB版本，存在老版本Redis服务无法兼容新版RDB格式的问题(版本不兼容)</p>
-<p>　 在一定间隔时间做一次备份，所以如果redis意外down掉的话，就会丢失最后一次快照后的所有修改(数据有丢失)</p>
+<li><p>通过condition实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">        <span class="comment">// 使用ReentrantLock的newCondition()方法创建三个Condition</span></span><br><span class="line">        <span class="comment">// 分别对应A、B、C三个线程</span></span><br><span class="line">        Condition conditionA = lock.newCondition();</span><br><span class="line">        Condition conditionB = lock.newCondition();</span><br><span class="line">        Condition conditionC = lock.newCondition();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    <span class="comment">// 叫醒B线程</span></span><br><span class="line">                    conditionB.signal();</span><br><span class="line">                    <span class="comment">// 本线程阻塞</span></span><br><span class="line">                    conditionA.await();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 这里有个坑，要记得在循环之后调用signal()，否则线程可能会一直处于</span></span><br><span class="line">                <span class="comment">// wait状态，导致程序无法结束</span></span><br><span class="line">                conditionB.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 在finally代码块调用unlock方法</span></span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionC.signal();</span><br><span class="line">                    conditionB.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionC.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionA.signal();</span><br><span class="line">                    conditionC.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionA.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/09/Redis%E6%8C%81%E4%B9%85%E5%8C%96%E6%96%B9%E5%BC%8F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
+<ul>
+<li><p>通过semaphore实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">        <span class="comment">// 使用ReentrantLock的newCondition()方法创建三个Condition</span></span><br><span class="line">        <span class="comment">// 分别对应A、B、C三个线程</span></span><br><span class="line">        Condition conditionA = lock.newCondition();</span><br><span class="line">        Condition conditionB = lock.newCondition();</span><br><span class="line">        Condition conditionC = lock.newCondition();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    <span class="comment">// 叫醒B线程</span></span><br><span class="line">                    conditionB.signal();</span><br><span class="line">                    <span class="comment">// 本线程阻塞</span></span><br><span class="line">                    conditionA.await();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 这里有个坑，要记得在循环之后调用signal()，否则线程可能会一直处于</span></span><br><span class="line">                <span class="comment">// wait状态，导致程序无法结束</span></span><br><span class="line">                conditionB.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 在finally代码块调用unlock方法</span></span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionC.signal();</span><br><span class="line">                    conditionB.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionC.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionA.signal();</span><br><span class="line">                    conditionC.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionA.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/" itemprop="url">Redis数据结构详解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T01:19:49+08:00">
-                2020-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/redis/" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  2.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Redis中数据结构"><a href="#Redis中数据结构" class="headerlink" title="Redis中数据结构"></a>Redis中数据结构</h3><p>redis中常用的数据结构由<code>string</code>  <code>list</code> <code>hash</code> <code>set</code> <code>sorted set</code>，还有比如<code>sub/pub</code>等</p>
-<h4 id="各种数据结构使用场景"><a href="#各种数据结构使用场景" class="headerlink" title="各种数据结构使用场景"></a>各种数据结构使用场景</h4><h5 id="string"><a href="#string" class="headerlink" title="string"></a><code>string</code></h5><ul>
-<li>计数，由于Redis单线程的特点，我们不用考虑并发造成计数不准的问题，通过 incrby 命令，我们可以正确的得到我们想要的结果</li>
-<li>限制次数，比如登录次数校验，错误超过三次5分钟内就不让登录了，每次登录设置key自增一次，并设置该key的过期时间为5分钟后，每次登录检查一下该key的值来进行限制登录。</li>
+</li>
 </ul>
-<h5 id="hash"><a href="#hash" class="headerlink" title="hash"></a><code>hash</code></h5><ul>
-<li>查询时间复杂度是O(1)，常用作缓存</li>
-</ul>
-<h5 id="list"><a href="#list" class="headerlink" title="list"></a><code>list</code></h5><ul>
-<li>栈，通过命令 lpush+lpop</li>
-<li>队列，命令 lpush+rpop</li>
-<li>有限集合，命令 lpush+ltrim</li>
-<li>消息队列，命令 lpush+rpop</li>
-</ul>
-<h5 id="set"><a href="#set" class="headerlink" title="set"></a><code>set</code></h5><ul>
-<li>利用set的特性，可以方便的获取多个用户的共同好友等</li>
-</ul>
-<h5 id="sorted-set"><a href="#sorted-set" class="headerlink" title="sorted set"></a><code>sorted set</code></h5><ul>
-<li>利用排序的特点，可以做排行榜等</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/09/Redis%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%A6%E8%A7%A3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="url">elasticSearch学习（四）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T00:06:08+08:00">
-                2020-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/elasticSearch/" itemprop="url" rel="index">
-                    <span itemprop="name">elasticSearch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  613
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><h4 id="空查询及参数"><a href="#空查询及参数" class="headerlink" title="空查询及参数"></a>空查询及参数</h4><ul>
-<li>使用不带参数<code>_search</code>，返回结果中包含<code>hits,took,shards,timeout</code>等信息</li>
-<li>空查询会查询出集群中所有的文档</li>
-</ul>
-<h4 id="多索引，多类型"><a href="#多索引，多类型" class="headerlink" title="多索引，多类型"></a>多索引，多类型</h4><ul>
-<li>指定索引查询</li>
-<li>当在单一的索引下进行搜索的时候，Elasticsearch 转发请求到索引的每个分片中，可以是主分片也可以是副本分片，然后从每个分片中收集结果。多索引搜索恰好也是用相同的方式工作的，只是会涉及到更多的分片</li>
-</ul>
-<h4 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h4><ul>
-<li>使用<code>from</code>和<code>size</code>指定查询分页，个请求经常跨越多个分片，每个分片都产生自己的排序结果，这些结果需要进行集中排序以保证整体顺序是正确的</li>
-<li>分布式系统中深度分页，在分布式系统中，对结果排序的成本随分页的深度成指数上升。这就是 web 搜索引擎对任何查询都不要返回超过 1000 个结果的原因。</li>
-</ul>
-<h4 id="映射和分析"><a href="#映射和分析" class="headerlink" title="映射和分析"></a>映射和分析</h4><ul>
-<li>不同类型的字段的索引方式不完全相同</li>
-<li>倒排索引由文档中所有不重复的词的列表构成，对于每个词，由一个包含它的文档列表</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/09/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E5%9B%9B%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1274,7 +1289,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
 
 
@@ -1324,7 +1339,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1335,7 +1350,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1346,7 +1361,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1413,7 +1428,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">64.7k</span>
+    <span title="Site words total count">72k</span>
   
 </div>
 

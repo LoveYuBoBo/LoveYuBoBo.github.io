@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">操作系统</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" itemprop="url">文件系统</a></h1>
         
 
         <div class="post-meta">
@@ -301,1062 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T15:01:25+08:00">
-                2020-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  4.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h4 id="操作系统的特点"><a href="#操作系统的特点" class="headerlink" title="操作系统的特点"></a>操作系统的特点</h4><ul>
-<li>并发</li>
-<li>异步</li>
-<li>虚拟</li>
-<li>共享</li>
-</ul>
-<h4 id="通过中断通知操作系统切换进程"><a href="#通过中断通知操作系统切换进程" class="headerlink" title="通过中断通知操作系统切换进程"></a>通过中断通知操作系统切换进程</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><ul>
-<li>CPU,内存，I/O(disk等)</li>
-<li>每部分作用<ul>
-<li>disk：存放OS</li>
-<li>BIOS:基本的I/O处理，加电以后从一个固定的地址开始执行CS:IP=0xf000:fff0(CS:段寄存器，IP：指令寄存器)，通过该地址进行自检（POST，加电自检），寻找显卡和执行BIOS，之后将Bootloader放到内存中</li>
-<li>Bootloader：加载OS，放在硬盘的第一个扇区（512字节）。通过BIOS将Bootloader放到内存中，x86系统是从0x7c00开始，往上512个字节。此时CPU执行权由Bootloader掌握，之后由Bootloader将操作系统从磁盘块读到内存中</li>
-</ul>
-</li>
-</ul>
-<h4 id="中断，异常和系统调用"><a href="#中断，异常和系统调用" class="headerlink" title="中断，异常和系统调用"></a>中断，异常和系统调用</h4><ul>
-<li>各个部分的定义<ul>
-<li>系统调用：应用程序主动向操作系统发出服务请求</li>
-<li>异常：非法指令或者其他换的处理状态，由应用程序产生</li>
-<li>中断：来自不同硬件设备的计时器和网络的中断，由外设产生</li>
-</ul>
-</li>
-<li>为什么操作系统不能直接操作外设？<ul>
-<li>计算机运行中，内核是被信任的第三方，安全的角度</li>
-<li>只有内核可以执行特权指令</li>
-<li>提供统一的接口，为了方便应用程序</li>
-</ul>
-</li>
-<li>操作系统怎么设计和实现中断、异常和系统调用的，他们的区别和特点是什么<ul>
-<li>源头：<ul>
-<li>中断：外设</li>
-<li>异常：应用程序意想不到的行为</li>
-<li>系统调用：应用程序请求操作提供服务</li>
-</ul>
-</li>
-<li>处理时间<ul>
-<li>中断：异步的</li>
-<li>异常：同步</li>
-<li>系统调用：异步或者同步（异步体现在返回数据的时候，不在等待返回）</li>
-</ul>
-</li>
-<li>响应<ul>
-<li>中断：持续的，对用户应用程序时透明的</li>
-<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
-<li>系统调用：等待和持续</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>中断和异常处理机制</p>
-<ul>
-<li>中断<ul>
-<li>硬件<ul>
-<li>将内部、外部事件设置中断标记</li>
-<li>中断事件的ID</li>
-</ul>
-</li>
-<li>软件<ul>
-<li>保存当前的处理状态(即保存程序当前的状态，包括寄存器等)</li>
-<li>中断服务程序处理</li>
-<li>清除中断标记</li>
-<li>恢复之前保存的处理状态</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>异常：产生异常的编号<ul>
-<li>保存现场</li>
-<li>异常处理<ul>
-<li>杀死产生异常的程序</li>
-<li>重新执行产生异常的指令</li>
-</ul>
-</li>
-<li>恢复异常</li>
-</ul>
-</li>
-<li>系统调用<ul>
-<li>底层是win32 API或者post API</li>
-<li>用户调用库函数会触发系统调用，此时会涉及到用户态到内核态（可以完全控制操作系统）的转换</li>
-<li>产生系统调用的时候，应用程序和操作系统拥有各自的堆栈，所以状态切换还涉及到堆栈的切换</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>跨越操作系统边界的开销</p>
-<ul>
-<li>在执行时间上的开销超过程序调用</li>
-<li>开销：<ul>
-<li>建立中断/异常/系统调用号与对应服务例程映射关系的初始化开销（即需要建中断表）</li>
-<li>建立内核堆栈</li>
-<li>验证参数（安全考虑）</li>
-<li>内核态到用户态的地址空间，更新页面映射权限</li>
-<li>和内核态独立地址空间TLB</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>面向I/O是通过中断来处理的</p>
-</li>
-<li><p>面向应用程序时通过系统调用和异常来处理的</p>
-</li>
-</ul>
-<h3 id="计算机体系结构-内存分层体系"><a href="#计算机体系结构-内存分层体系" class="headerlink" title="计算机体系结构/内存分层体系"></a>计算机体系结构/内存分层体系</h3><h4 id="计算机的基本硬件结构"><a href="#计算机的基本硬件结构" class="headerlink" title="计算机的基本硬件结构"></a>计算机的基本硬件结构</h4><ul>
-<li>CPU</li>
-<li>内存：<ul>
-<li>寄存器</li>
-<li>cache（L1，L2，L3）</li>
-<li>主存</li>
-<li>磁盘（虚拟内存）</li>
-</ul>
-</li>
-<li>设备</li>
-</ul>
-<h3 id="操作系统的内存管理"><a href="#操作系统的内存管理" class="headerlink" title="操作系统的内存管理"></a>操作系统的内存管理</h3><h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h4><ul>
-<li>抽象：逻辑地址空间</li>
-<li>保护：独立的地址空间</li>
-<li>共享：访问相同的内存</li>
-<li>虚拟化：更多的地址空间</li>
-</ul>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><ul>
-<li>程序重定位</li>
-<li>分段</li>
-<li>分页</li>
-<li>虚拟内存</li>
-<li>按需分页虚拟内存</li>
-</ul>
-<h3 id="地址空间-amp-地址生成"><a href="#地址空间-amp-地址生成" class="headerlink" title="地址空间&amp;地址生成"></a>地址空间&amp;地址生成</h3><ul>
-<li>地址空间的定义<ul>
-<li>物理地址空间：硬件支持的地址空间</li>
-<li>逻辑地址空间：运行的程序所拥有的内存范围</li>
-</ul>
-</li>
-<li>地址空间的生成<ul>
-<li>逻辑地址空间的生成（编译器）<ul>
-<li>编译</li>
-<li>汇编：将文件通过汇编转换为.o文件，这些文件起始地址都是0，此时完成逻辑地址的生成</li>
-<li>链接：一个程序由多个小的程序组成，通过linker将多个.o文件转换为.exe文件，此时，程序可以在内存中运行</li>
-<li>载入：通过loader将.exe文件载入内存，此时内存由一定的偏移量，可以直接访问相应的内存数据等</li>
-</ul>
-</li>
-<li>物理地址生成（操作系统）<ul>
-<li>CPU方面<ul>
-<li>取出逻辑地址的内存内容</li>
-<li>内存管理单元寻找逻辑地址和物理地址之间的映射</li>
-<li>控制器从总线发送在物理地址的内存内容的请求</li>
-</ul>
-</li>
-<li>内存方面<ul>
-<li>内存发送物理地址内内存的内容给CPU</li>
-</ul>
-</li>
-<li>操作系统方面<ul>
-<li>建立逻辑地址和物理地址之间的映射 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>地址安全检查</li>
-</ul>
-<h3 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h3><ul>
-<li>内存碎片问题<ul>
-<li>分类<ul>
-<li>空闲碎片不能被利用</li>
-<li>外部碎片<ul>
-<li>在分配单元间未使用的内存</li>
-</ul>
-</li>
-<li>内部碎片<ul>
-<li>在分配单元中未使用的内存 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>分区的动态分配<ul>
-<li>第一适配<ul>
-<li>过程<ul>
-<li>按地址排序的空闲块列表</li>
-<li>分配需要寻找一个合适的分区</li>
-<li>重分配需要检查，看是否自由分区能合并于相邻的空闲分区</li>
-</ul>
-</li>
-<li>优劣势<ul>
-<li>优势： 简单</li>
-<li>劣势：容易产生外部碎片</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>最佳适配<ul>
-<li>避免分割大空闲块</li>
-<li>最小化外部碎片</li>
-<li>优势<ul>
-<li>当大部分分配时小尺寸的时候非常有效</li>
-<li>比较简单</li>
-</ul>
-</li>
-<li>劣势<ul>
-<li>外部碎片</li>
-<li>重分配慢</li>
-<li>容易产生很多没有的微小碎片</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>最差适配<ul>
-<li>避免有太多微小的碎片</li>
-<li>优势：<ul>
-<li>分配是中等尺寸效果最好</li>
-</ul>
-</li>
-<li>劣势<ul>
-<li>重分配慢</li>
-<li>外部碎片</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>压缩式碎片整理<ul>
-<li>压缩的时机</li>
-<li>压缩的开销</li>
-</ul>
-</li>
-<li>交换式碎片整理（把硬盘当作备份）<ul>
-<li>交换哪些程序</li>
-<li>何时交换</li>
-</ul>
-</li>
-</ul>
-<h3 id="非连续内存分配"><a href="#非连续内存分配" class="headerlink" title="非连续内存分配"></a>非连续内存分配</h3><h4 id="连续内存分配的缺点"><a href="#连续内存分配的缺点" class="headerlink" title="连续内存分配的缺点"></a>连续内存分配的缺点</h4><ul>
-<li>分配给一个程序的物理内存是连续的</li>
-<li>内存利用率较低</li>
-<li>有外碎片、内碎片的问题</li>
-</ul>
-<h4 id="非连续分配的优点"><a href="#非连续分配的优点" class="headerlink" title="非连续分配的优点"></a>非连续分配的优点</h4><ul>
-<li>一个程序的物理地址空间是非连续的</li>
-<li>更好内存利用和管理</li>
-<li>允许共享代码和数据</li>
-<li>支持动态加载和动态链接</li>
-</ul>
-<h4 id="非连续分配的缺点"><a href="#非连续分配的缺点" class="headerlink" title="非连续分配的缺点"></a>非连续分配的缺点</h4><ul>
-<li>如何建立虚拟地址和物理地址的转换<ul>
-<li>软件方案</li>
-<li>硬件方案<ul>
-<li>分段</li>
-<li>分页</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="非连续分配的方案"><a href="#非连续分配的方案" class="headerlink" title="非连续分配的方案"></a>非连续分配的方案</h4><ul>
-<li><p>分段：更好的分离和共享</p>
-<ul>
-<li>连续的逻辑地址空间和分段的物理地址空间</li>
-<li>程序的分段地址空间</li>
-<li>分段寻址方案<ul>
-<li>段访问机制<ul>
-<li>一个段是一个内存”块“</li>
-<li>程序访问内存需要：段号和段内偏移</li>
-</ul>
-</li>
-<li>硬件实现方案<ul>
-<li>逻辑地址：由段号和偏移组成</li>
-<li>段表（由操作系统建立）：由base和limit组成，其中段的尺寸是可变的</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>分页</p>
-<ul>
-<li>分页地址空间<ul>
-<li>划分物理内存到固定大小的帧，一般是的2的幂，一个物理内存物理地址是一个二元组：由帧号f（F位，一共有2^F个帧）和o帧内偏移（S位，每帧有2^S字节）组成，物理地址=2^S*f+o</li>
-<li>划分逻辑地址空间至相同大小的页 </li>
-<li>转换逻辑地址为物理地址<ul>
-<li>页表</li>
-<li>MMU/TLB</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>页寻址方案<ul>
-<li>逻辑地址：页号，页内偏移</li>
-<li>页表（操作系统建立）：帧号</li>
-</ul>
-</li>
-<li>页寻址机制<ul>
-<li>页映射到帧</li>
-<li>页是连续的虚拟内存</li>
-<li>帧是非连续的物理内存</li>
-<li>不是所有的页都有对应的帧</li>
-</ul>
-</li>
-<li>分页机制的性能问题<ul>
-<li>访问一个内存单元需要2次内存访问<ul>
-<li>一次用于获取页表项</li>
-<li>一次用于访问数据</li>
-</ul>
-</li>
-<li>页表可能非常大</li>
-<li>可以通过缓存或者间接访问来解决</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>页表</p>
-<ul>
-<li><p>每个运行的程序都有一个页表</p>
-<ul>
-<li>属于程序运行状态，会动态的变化</li>
-<li>PTBR：页表基址寄存器</li>
-<li>一些特殊的标志位来标志地址是否合法（比如，是否有相应的物理地址与之对应）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="分页机制性能问题解决"><a href="#分页机制性能问题解决" class="headerlink" title="分页机制性能问题解决"></a>分页机制性能问题解决</h4><h5 id="通过TLB缓存近期访问的页帧转换表项（解决时间问题）"><a href="#通过TLB缓存近期访问的页帧转换表项（解决时间问题）" class="headerlink" title="通过TLB缓存近期访问的页帧转换表项（解决时间问题）"></a>通过TLB缓存近期访问的页帧转换表项（解决时间问题）</h5><ul>
-<li>TLB具备快速访问性能</li>
-<li>TLB命中，物理页号可以很快被获取</li>
-<li>如果未命中，对应的表项被更新到TLB中（编程中尽可能将使用的资源集中在一起）</li>
-</ul>
-<h5 id="多级页表（解决空间问题）"><a href="#多级页表（解决空间问题）" class="headerlink" title="多级页表（解决空间问题）"></a>多级页表（解决空间问题）</h5><h4 id="页表"><a href="#页表" class="headerlink" title="页表"></a>页表</h4><ul>
-<li>快表</li>
-<li>二级/多级页表</li>
-<li>反向页表<ul>
-<li>不是让页表和逻辑地址空间大小对应，而让页表与物理地址空间大小对应（由于逻辑地址空间增长快于物理地址空间增长）</li>
-<li>实现方案<ul>
-<li>页寄存器：<ul>
-<li>以页帧号为索引，页表项内容是页号（和页表相反）</li>
-</ul>
-</li>
-<li>基于关联内存的方案</li>
-<li>基于哈希查找方案</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="虚拟内存"><a href="#虚拟内存" class="headerlink" title="虚拟内存"></a>虚拟内存</h3><h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><ul>
-<li>程序规模的增长的速度远大于存储器容量增长的速度</li>
-<li>理想中的存储器<ul>
-<li>更大，更便宜，更快，非易失性存储器</li>
-</ul>
-</li>
-</ul>
-<h4 id="覆盖技术"><a href="#覆盖技术" class="headerlink" title="覆盖技术"></a>覆盖技术</h4><ul>
-<li>如果程序太大，导致内存放不下，可以使用手动覆盖，只把需要的指令和数据保存在内存中</li>
-<li>目标：在较小的内存中运行较大的程序，常用于多道程序系统，与分区存储管理配合使用</li>
-<li>原理<ul>
-<li>把程序按照其自身的逻辑结构，划分为若干个功能上相对独立的程序模块，那些不会同时执行的模块共享同一块内存区域，按时间先后运行。</li>
-<li>必要部分的代码和数据常驻内存</li>
-<li>不常用的平时放在外存中，需要时才放入内存中</li>
-<li>不存在调用关系的模块不必同时装入内存中，从而可以 相互覆盖，也就是这些模块共用一个分区</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>将程序划分为若干模块，费时费力</li>
-<li>覆盖木块从外存装入内存，实际上是用时间换取空间</li>
-</ul>
-</li>
-</ul>
-<h4 id="交换技术"><a href="#交换技术" class="headerlink" title="交换技术"></a>交换技术</h4><ul>
-<li>如果程序太多，导致内存放不下，可以使用自动交换，把暂时不用的程序换到外存中</li>
-<li>方法<ul>
-<li>将暂时不能运行的程序送到外存，从而获得空闲的内存空间</li>
-<li>操作系统把一个进程的整个地址空间的内容保存到外存中，而将外村中的某个进程的地址空间读入带内存中，换入换出内容的大小为整个程序的地址空间</li>
-</ul>
-</li>
-<li>问题<ul>
-<li>交换时机：只当内存空间不够或有不够的危险时换出</li>
-<li>交换区的大小：必须足够大</li>
-<li>程序换入时的重定位：最好采用动态地址映射的方法</li>
-</ul>
-</li>
-</ul>
-<h4 id="虚存技术"><a href="#虚存技术" class="headerlink" title="虚存技术"></a>虚存技术</h4><ul>
-<li>想在有限的内存中，以更小的页粒度为单位装入更多更大的程序，可以使用自动虚拟存储技术</li>
-<li>覆盖技术增加了程序员的负担，交换技术增加了处理器的开销</li>
-<li>程序的局部性原理<ul>
-<li>程序在执行中的一个较短时期，执行的指令地址和指令操作数地址，分别局限于一定的区域<ul>
-<li>时间局部性：一条指令的一次执行和下次执行，一个数据的当前访问和下次访问都集中在一个较短的时期内</li>
-<li>空间局部性：当前指令和邻近的几条指令，当前数据和邻近的几数据都集中在一个较小的区域内</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>可以在页式或段式内存管理的记住上实现</li>
-<li>虚存技术的特征：<ul>
-<li>大的用户空间：通过把为u里内存和外存结合，提供给用户的虚拟内存空间通常大于实际的物理内存</li>
-<li>部分交换：与交换技术相比，虚拟存储的调入和调出式对部分虚拟地址空间进行的</li>
-<li>不连续性：物理内存分配是不连续的，虚拟地址空间使用不连续</li>
-</ul>
-</li>
-<li>实现<ul>
-<li>虚拟页式内存管理<ul>
-<li>页表完成逻辑也到物理页帧的映射</li>
-<li>大部分虚拟存储系统都采用虚拟页式存储管理技术，即在页式存储管理的基础上，增加请求调页和<strong>页面置换</strong>功能</li>
-<li>基本思路<ul>
-<li>请求调页：当一个用户程序调入内存运行时，只装入部分页面，就可启动程序运行</li>
-<li>置换：运行过程中，发现要运行的程序或者要访问的数据不在内存中，则向吸引同发出却页中断请求，系统在处理这个中断时，将外村中相应的页面调入内存中，使程序能继续运行</li>
-<li>页表表项：<ul>
-<li>驻留位：表示该页在内存还是外存</li>
-<li>保护位：表示该页做何种类型的访问，如只读，可读写等</li>
-<li>修改位：表示此页在内存中是否被修改过，当回收页面时，根据此位来决定是否写回外存</li>
-<li>访问位：如果该页面被访问过，则设置该位，用于页面置换算法</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>缺页中断的处理过程：<ul>
-<li>如果在内存中有空闲的物理页面，则分配以物理页帧f，转第四步，否则转第二步</li>
-<li>采用某种置换算法，选择一个将被替换的物理页帧f，他所对应的逻辑页为q，如果该页在内存期间被修改过，则需要写回外存</li>
-<li>对q所对应的页表项进行修改，驻留位置为0</li>
-<li>将需要访问你的页p装入物理页面f中</li>
-<li>修改p锁对应的页表项的内兄，把驻留位置为1，物理页帧号置为f</li>
-<li>重新运行被中断的指令</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h3><h4 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h4><ul>
-<li>发生缺页中断，需要调入新的页面而内存已满时，选择内存中那个物理页面被置换</li>
-</ul>
-<h4 id="目标-1"><a href="#目标-1" class="headerlink" title="目标"></a>目标</h4><ul>
-<li>尽可能减少页面的换入换出次数</li>
-<li>页面锁定：在页表中添加锁定标志位</li>
-</ul>
-<h4 id="局部页面置换算法"><a href="#局部页面置换算法" class="headerlink" title="局部页面置换算法"></a>局部页面置换算法</h4><ul>
-<li>最优页面置换算法<ul>
-<li>思路:发生缺页中断的时候，对于保存在内存中的每一个逻辑页面，计算在他的下一次访问之前还需要等待多长时间，选择等待时间最长的作为被置换的页面</li>
-<li>实际中无法实现，主要作为其他算法的性能评价依据</li>
-</ul>
-</li>
-<li>先进先出（FIFO）<ul>
-<li>思路：选择在内存中驻留时间最长的页面</li>
-<li>性能较差，调出的页面有可能时经常要访问的页面</li>
-</ul>
-</li>
-<li>最近最少使用（LRU）<ul>
-<li>思路：发生缺页中断时，选择最久未使用的那个页面</li>
-<li>是最优置换算法的一个近似，依据是程序的局部性原理</li>
-<li>实现方法：<ul>
-<li>系统维护一个页面链表，头插法，最近最久未使用的作为尾节点</li>
-<li>设置活动页面堆栈</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>时钟页面置换算法<ul>
-<li>Clock页面置换算法，LRU的近似</li>
-<li>思路<ul>
-<li>需要使用页表项中的访问位，当页面被装入内存的时候，该位初始化为0，如果该页面被访问，则置为1</li>
-<li>把各个页面组织成环形链表，指针指向最老的页面</li>
-<li>发生缺页中断的时候，考察指针指向的最老的页面，若访问位为0，立即淘汰；若访问位为1，则将其置为0，指针往下移动一格，如此下去，直到找到被淘汰的页面，然后将指针向下移动一格</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>二次机会法<ul>
-<li>修改Clock算法，使它允许脏页总是在一次时钟头扫描中保留下来</li>
-</ul>
-</li>
-<li>最不常用算法（LFU）<ul>
-<li>当发生缺页中断的时候，选择访问次数最少的那个页面，并淘汰</li>
-<li>实现方法：对每个页面设置一个访问计数器，没当一个页面被访问时，该页面的访问计数器加1.在发生缺页中断的时候。淘汰计数值最小的那个页面</li>
-</ul>
-</li>
-</ul>
-<h5 id="Belady现象"><a href="#Belady现象" class="headerlink" title="Belady现象"></a>Belady现象</h5><ul>
-<li>在采用FIFO算法的时候，有时候会出现分配的物理页面增加，缺页率反而提高的异常现象</li>
-<li>原因<ul>
-<li>FIFO算法的置换特征与进程访问内存的动态特征是矛盾的，与置换算法的目标是不一致的，因此，被它置换出去的页面并不一定是进程不会访问的</li>
-</ul>
-</li>
-</ul>
-<h4 id="全局页面置换算法"><a href="#全局页面置换算法" class="headerlink" title="全局页面置换算法"></a>全局页面置换算法</h4><ul>
-<li><p>局部页面置换算法基于局部性原理的前提</p>
-</li>
-<li><p>工作集：一个进程当前正在使用的逻辑页面的集合</p>
-</li>
-<li><p>常驻集：指当前时刻，进程实际驻留内存中的页面集合</p>
-</li>
-<li><p>区别</p>
-<ul>
-<li>工作集是进程运行中固有的性质，而常驻集取决于系统分配给进程的物理页面数目，依据所采用的页面置换算法</li>
-<li>如果一个进程的整个工作集都在内存中，进程就会顺利的运行，而不会造成太多的缺页中断</li>
-<li>进程常驻集的大小达到某个数目以后，再给他分配更多的物理页面，缺页中断率也不会明显下降</li>
-</ul>
-</li>
-<li><p>工作集切换算法</p>
-</li>
-<li><p>缺页率页面置换算法</p>
-<ul>
-<li>思路：常驻集大小可变，缺页率高的时候，增加工作集；反之。则减少工作集。<ul>
-<li>采用全局页面置换的方式，发生缺页中断的时候，被置换的页面可以是在其他进程中，各个并发进程竞争地使用物理页面</li>
-<li>性能好，但增加了系统开销</li>
-</ul>
-</li>
-<li>影响缺页率的因素：<ul>
-<li>页面置换算法</li>
-<li>分配给进程的物理页面数目</li>
-<li>页面本身的大小</li>
-<li>程序的编写方法</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>抖动问题</p>
-<ul>
-<li>如果分配给一个进程的物理页面太少，不能包含整个工作集，那么进程会造成很多的缺页中断，需要频繁的在内存和外存之间替换页面，从而使进程的运行速度变得很慢，称这种状态为”抖动“</li>
-<li>产生抖动的原因<ul>
-<li>随着驻留内存的进程数目增加，分配给每个进程的物理页面数不断减少，缺页率上升，所以OS要选择一个适当的进程数目和进程需要的帧数，以便在并发水平和缺页率之间达到一个平衡</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/" itemprop="url">用友一面</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T11:39:06+08:00">
-                2020-10-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  110
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="用友一面"><a href="#用友一面" class="headerlink" title="用友一面"></a>用友一面</h4><h5 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h5><ul>
-<li>实习做的什么</li>
-<li>spring中ioc的过程</li>
-<li>spring中的bean是单例还是多例的，怎么实现单例</li>
-<li>hashmap的底层数据结构，哈希冲突的解决方法</li>
-<li>jvm的内存划分</li>
-<li>垃圾回收算法，垃圾回收器</li>
-<li>线程安全的实现，synchronized是可重入的么，怎么实现的</li>
-<li>mysql调优，慢查询</li>
-<li>mysql大表拆分</li>
-</ul>
-<h5 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h5><ul>
-<li>单向链表中点</li>
-<li>10万数据tok10</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/08/30/kubernetes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/30/kubernetes/" itemprop="url">kubernetes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-30T16:53:27+08:00">
-                2020-08-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/08/30/kubernetes/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/30/kubernetes/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  352
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="kubernetes"><a href="#kubernetes" class="headerlink" title="kubernetes"></a>kubernetes</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><h5 id="master"><a href="#master" class="headerlink" title="master"></a>master</h5><ul>
-<li>组件<ul>
-<li>kube-apiserver</li>
-<li>kube-controller-manager</li>
-<li>kube-scheduler</li>
-</ul>
-</li>
-</ul>
-<h5 id="node"><a href="#node" class="headerlink" title="node"></a>node</h5><h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><h5 id="使用kubeadm"><a href="#使用kubeadm" class="headerlink" title="使用kubeadm"></a>使用kubeadm</h5><ul>
-<li>kubeadm <strong>init</strong><ul>
-<li>做一些参数、环境校验</li>
-<li>为集群配置证书和对应的目录，证书都在master的/etc/kubernetes/kpi目录下，主要的文件是ca.cat和对应的私钥ca.key</li>
-<li>除了证书还会为其他组件生成配置文件，位置/etc/kubernetes/xxx.conf,记录了master的服务器地址，端口号，证书目录等信息，对应的客户端可以使用这些信息建立安全连接</li>
-<li><strong>为master组件生成pod配置文件</strong>，该文件放在etc/kubernetes/manifests 路径下，kublet启动的时候自动检查该路径下的配置文件</li>
-<li>还会生成etcd.yaml文件，所以会生成这些配置文件<br><strong>etcd.yaml  kube-apiserver.yaml  kube-controller-manager.yaml  kube-scheduler.yaml</strong></li>
-<li>集群运行起来，会检查其健康状态，并为集群生成<strong>bootstrap token</strong>,其他持有改token的节点可以加到该集群中</li>
-<li>之后，将ca.crt等重要信息以ConfigMap的方式包保存在Etcd中，供后续部署节点使用，这个configMap叫做cluster-info</li>
-<li>最后一步就是安装插件，默认kube-proxy 和 DNS是必须的</li>
-</ul>
-</li>
-<li>kubeadm <strong>join</strong> &lt;master节点的端口和ip&gt;<ul>
-<li>通过持有token以安全的方式加入集群，</li>
-</ul>
-</li>
-<li>自定义参数部署<ul>
-<li>在init的时候使用kubeadm init –config kubeadm.yaml，通过在yaml文件中写入配置参数</li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/" itemprop="url">多线程交替打印ABC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-24T23:47:49+08:00">
-                2020-08-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T21:42:08+08:00">
+                2020-11-05
               </time>
             
 
@@ -1378,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
                   </a>
                 </span>
 
@@ -1396,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/08/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0ABC/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1419,7 +365,246 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  997
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>文件系统和文件<ul>
+<li>文件系统：一种用于持久性存储的系统抽象</li>
+<li>文件：文件系统中一个单元的相关数据在操作系统中的抽象</li>
+<li>文件属性</li>
+<li>文件头</li>
+</ul>
+</li>
+<li>文件描述符<ul>
+<li>文件使用模式<ul>
+<li>使用程序必须在使用前先“打开”文件</li>
+</ul>
+</li>
+<li>内核跟踪每个进程打开的文件<ul>
+<li>操作系统为每个进程维护一个打开的文件表</li>
+<li>一个打开文件描述符是这个表中的索引</li>
+</ul>
+</li>
+<li>需要元数据来管理打开文件<ul>
+<li>文件指针：指向最近一次读写位置，每个打开了这个文件的进程都有这个指针</li>
+<li>文件打开计数：记录文件打开的次数</li>
+<li>文件磁盘位置：缓存数据访问信息</li>
+<li>访问权限：每个程序访问模式信息</li>
+</ul>
+</li>
+<li>用户视图<ul>
+<li>用户怎么访问文件<ul>
+<li>顺序访问</li>
+<li>随机访问：从中间读写</li>
+<li>快速访问：通过特征</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文件的结构：<ul>
+<li>简单记录结构<ul>
+<li>列</li>
+<li>固定长度</li>
+<li>可变长度</li>
+</ul>
+</li>
+<li>复杂结构<ul>
+<li>格式化的文档</li>
+<li>可执行文件</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>系统访问接口</li>
+<li>操作系统内部视角</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%AD%BB%E9%94%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="url">死锁</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T20:02:22+08:00">
+                2020-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/05/%E6%AD%BB%E9%94%81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
                 </span>
               
 
@@ -1457,33 +642,67 @@
 
       
         
-          
-            <h4 id="多线程交替打印ABC的实现方式"><a href="#多线程交替打印ABC的实现方式" class="headerlink" title="多线程交替打印ABC的实现方式"></a>多线程交替打印ABC的实现方式</h4><ul>
-<li>通过LockSupport实现</li>
+          <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<li>一组阻塞的进程持有一种资源等待获取另一个进程所占有的一个资源</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">static</span> Thread threadA, threadB, threadC;</span><br><span class="line">  </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        threadA = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 打印当前线程名称</span></span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadB);</span><br><span class="line">                <span class="comment">// 当前线程阻塞</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>);</span><br><span class="line">        threadB = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 先阻塞等待被唤醒</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadC);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>);</span><br><span class="line">        threadC = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="comment">// 先阻塞等待被唤醒</span></span><br><span class="line">                LockSupport.park();</span><br><span class="line">                System.out.print(Thread.currentThread().getName());</span><br><span class="line">                <span class="comment">// 唤醒下一个线程</span></span><br><span class="line">                LockSupport.unpark(threadA);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>);</span><br><span class="line">        threadA.start();</span><br><span class="line">        threadB.start();</span><br><span class="line">        threadC.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>通过synchronized实现</li>
+<h4 id="死锁模型"><a href="#死锁模型" class="headerlink" title="死锁模型"></a>死锁模型</h4><ul>
+<li>可重复使用的资源<ul>
+<li>在一个时间只能一个进程使用且不能被删除</li>
+<li>进程获得资源，后来释放由其他进程重用</li>
+<li>处理器，I/O通道，设备和数据结构</li>
+<li>如果每个进程拥有一个资源并请求其他资源，死锁可能发生</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 使用布尔变量对打印顺序进行控制，true表示轮到当前线程打印</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startA = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startB = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> startC = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 作为锁对象</span></span><br><span class="line">        <span class="keyword">final</span> Object o = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startA) &#123;</span><br><span class="line">                        <span class="comment">// 代表轮到当前线程打印</span></span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        <span class="comment">// 下一个轮到B打印，所以把startB置为true，其它为false</span></span><br><span class="line">                        startA = <span class="keyword">false</span>;</span><br><span class="line">                        startB = <span class="keyword">true</span>;</span><br><span class="line">                        startC = <span class="keyword">false</span>;</span><br><span class="line">                        <span class="comment">// 唤醒其他线程</span></span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        <span class="comment">// 在这里对i进行增加操作</span></span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 说明没有轮到当前线程打印，继续wait</span></span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startB) &#123;</span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        startA = <span class="keyword">false</span>;</span><br><span class="line">                        startB = <span class="keyword">false</span>;</span><br><span class="line">                        startC = <span class="keyword">true</span>;</span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (startC) &#123;</span><br><span class="line">                        System.out.print(Thread.currentThread().getName());</span><br><span class="line">                        startA = <span class="keyword">true</span>;</span><br><span class="line">                        startB = <span class="keyword">false</span>;</span><br><span class="line">                        startC = <span class="keyword">false</span>;</span><br><span class="line">                        o.notifyAll();</span><br><span class="line">                        i++;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            o.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>通过condition实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">        <span class="comment">// 使用ReentrantLock的newCondition()方法创建三个Condition</span></span><br><span class="line">        <span class="comment">// 分别对应A、B、C三个线程</span></span><br><span class="line">        Condition conditionA = lock.newCondition();</span><br><span class="line">        Condition conditionB = lock.newCondition();</span><br><span class="line">        Condition conditionC = lock.newCondition();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    <span class="comment">// 叫醒B线程</span></span><br><span class="line">                    conditionB.signal();</span><br><span class="line">                    <span class="comment">// 本线程阻塞</span></span><br><span class="line">                    conditionA.await();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 这里有个坑，要记得在循环之后调用signal()，否则线程可能会一直处于</span></span><br><span class="line">                <span class="comment">// wait状态，导致程序无法结束</span></span><br><span class="line">                conditionB.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 在finally代码块调用unlock方法</span></span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionC.signal();</span><br><span class="line">                    conditionB.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionC.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionA.signal();</span><br><span class="line">                    conditionC.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionA.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+</li>
+<li>使用资源<ul>
+<li>创建和销毁</li>
+<li>在I/O缓冲区的中断，信号，消息。信息</li>
+<li>如果接收消息阻塞可能发生死锁</li>
+<li>可能 少见的组合时间会发生死锁</li>
+</ul>
+</li>
+<li>资源分配图<ul>
+<li>一组顶点V和边E的集合<ul>
+<li>V有两种类型<ul>
+<li>一种是包括系统中所欲的进程</li>
+<li>一种是包括系统中的所有资源类型</li>
+</ul>
 </li>
 </ul>
-<ul>
-<li><p>通过semaphore实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintABC</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ReentrantLock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line">        <span class="comment">// 使用ReentrantLock的newCondition()方法创建三个Condition</span></span><br><span class="line">        <span class="comment">// 分别对应A、B、C三个线程</span></span><br><span class="line">        Condition conditionA = lock.newCondition();</span><br><span class="line">        Condition conditionB = lock.newCondition();</span><br><span class="line">        Condition conditionC = lock.newCondition();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// A线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    <span class="comment">// 叫醒B线程</span></span><br><span class="line">                    conditionB.signal();</span><br><span class="line">                    <span class="comment">// 本线程阻塞</span></span><br><span class="line">                    conditionA.await();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 这里有个坑，要记得在循环之后调用signal()，否则线程可能会一直处于</span></span><br><span class="line">                <span class="comment">// wait状态，导致程序无法结束</span></span><br><span class="line">                conditionB.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">// 在finally代码块调用unlock方法</span></span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"A"</span>).start();</span><br><span class="line">        <span class="comment">// B线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionC.signal();</span><br><span class="line">                    conditionB.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionC.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"B"</span>).start();</span><br><span class="line">        <span class="comment">// C线程</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                    System.out.print(Thread.currentThread().getName());</span><br><span class="line">                    conditionA.signal();</span><br><span class="line">                    conditionC.await();</span><br><span class="line">                &#125;</span><br><span class="line">                conditionA.signal();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">"C"</span>).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+</li>
+<li>结论<ul>
+<li>图中不包含循环，则不会发生死锁</li>
+<li>如果有循环，则可能死锁，也不能不会发生死锁</li>
+</ul>
 </li>
 </ul>
-
-          
+</li>
+</ul>
+<h4 id="死锁特征（必要不充分条件）"><a href="#死锁特征（必要不充分条件）" class="headerlink" title="死锁特征（必要不充分条件）"></a>死锁特征（必要不充分条件）</h4><ul>
+<li>互斥：在一个时间内只有一个进程使用资源</li>
+<li>持有并等待：进程保持至少一个资源正在等待获取其他进程持有的额外资源</li>
+<li>不可抢占：一个资源只能被进程资源释放，进程已经完成了它的任务之后</li>
+<li>循环等待：</li>
+</ul>
+<h4 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h4><ul>
+<li>死锁预防<ul>
+<li>确保系统永远不会进入死锁状态（操作系统性能差）</li>
+<li>实现<ul>
+<li>互斥：共享资源不是必须的，必须占用非共享资源</li>
+<li>占有且等待：分配全部的资源，资源利用率低，可能发生饥饿</li>
+<li>不可抢占：分配不到资源则释放已经 持有的资源</li>
+<li>循环等待：对资源类型进行排序，按顺序申请资源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E6%AD%BB%E9%94%81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1530,7 +749,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/24/RPC%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1549,7 +768,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/24/RPC%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/" itemprop="url">RPC框架总结</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="url">信号量和管程</a></h1>
         
 
         <div class="post-meta">
@@ -1561,8 +780,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T23:07:03+08:00">
-                2020-07-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T12:29:20+08:00">
+                2020-11-05
               </time>
             
 
@@ -1572,28 +791,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index">
-                    <span itemprop="name">中间件</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1602,8 +799,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/24/RPC%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/24/RPC%E6%A1%86%E6%9E%B6%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1625,7 +822,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  44
+                  615
                 </span>
               
 
@@ -1641,7 +838,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -1663,9 +860,536 @@
 
       
         
+          <h3 id="信号量和管程"><a href="#信号量和管程" class="headerlink" title="信号量和管程"></a>信号量和管程</h3><h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><ul>
+<li>并发问题：竞态条件</li>
+<li>同步<ul>
+<li>多线程共享公共数据的协调执行</li>
+<li>包括互斥和条件同步</li>
+<li>互斥：在同一时间只有一个线程可以执行临界区</li>
+</ul>
+</li>
+<li>确保同步正确很难<ul>
+<li>需要高层次的编程抽象，比如锁</li>
+<li>从底层硬件支持编译，如禁用中断，原子操作等</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号量（semphere）"><a href="#信号量（semphere）" class="headerlink" title="信号量（semphere）"></a>信号量（semphere）</h4><ul>
+<li>信号量用一个整形（sem）表示，有两个原子操作<ul>
+<li>P（），sem减1，如果sem&lt;0,等待，否则继续</li>
+<li>V（）：sem加1，如果sem&lt;=0,唤醒一个等待的P</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号量的使用"><a href="#信号量的使用" class="headerlink" title="信号量的使用"></a>信号量的使用</h4><ul>
+<li><p>信号量是整数</p>
+</li>
+<li><p>信号量是被保护的变量</p>
+<ul>
+<li>初始化完成后。唯一改变一个信号量的值的办法是通过PV操作</li>
+<li>操作必须是原子</li>
+</ul>
+</li>
+<li><p>P操作会阻塞，V操作不会阻塞</p>
+</li>
+<li><p>两种类型信号量</p>
+<ul>
+<li>二进制信号量：0或者1</li>
+<li>计数信号量：可取任何非负值</li>
+</ul>
+</li>
+<li><p>用二进制信号量实现的互斥，初始值设为1</p>
+</li>
+<li><p>用二进制信号量实现的调度约束：初始值设为0</p>
+</li>
+</ul>
+<h4 id="信号量的实现"><a href="#信号量的实现" class="headerlink" title="信号量的实现"></a>信号量的实现</h4><ul>
+<li>使用硬件原语<ul>
+<li>禁用中断</li>
+<li>原子指令</li>
+</ul>
+</li>
+<li>用途<ul>
+<li>互斥和条件同步</li>
+<li>等待条件是独立的互斥</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>程序员必须精通信号量</li>
+<li>容易出错<ul>
+<li>使用的信号量已经被另一个线程占用</li>
+<li>忘记释放信号量</li>
+</ul>
+</li>
+<li>不能处理死锁的问题</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E5%90%8C%E6%AD%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="url">同步</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T09:30:55+08:00">
+                2020-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-            <h3 id="RPC框架"><a href="#RPC框架" class="headerlink" title="RPC框架"></a>RPC框架</h3><h4 id="实现基本的RPC框架需要哪些部分"><a href="#实现基本的RPC框架需要哪些部分" class="headerlink" title="实现基本的RPC框架需要哪些部分"></a>实现基本的RPC框架需要哪些部分</h4><h4 id="各个部分的实现"><a href="#各个部分的实现" class="headerlink" title="各个部分的实现"></a>各个部分的实现</h4><h5 id="服务注册"><a href="#服务注册" class="headerlink" title="服务注册"></a>服务注册</h5><h5 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h5><h5 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h5><h5 id="编解码"><a href="#编解码" class="headerlink" title="编解码"></a>编解码</h5><h5 id="服务端和客户端"><a href="#服务端和客户端" class="headerlink" title="服务端和客户端"></a>服务端和客户端</h5>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/05/%E5%90%8C%E6%AD%A5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  718
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>无论多个线程的指令序列怎么样交替执行，程序都必须正常工作<ul>
+<li>多线程程序具有不确定性和不可重现的特点</li>
+<li>调试难度很高</li>
+</ul>
+</li>
+<li>不确定性要求并行程序的正确性</li>
+<li>原子操作<ul>
+<li>原子操作是指一次不存在任何中断或者失败的执行<ul>
+<li>该执行成功结束</li>
+<li>或者根本没有执行</li>
+<li>并且不应该发现任何部分执行的状态</li>
+</ul>
+</li>
+<li>实际上操作往往不是原子的<ul>
+<li>有些操作看似是原子的，实际并不是，例如i++</li>
+<li>有时候，单条机器指令都不是原子的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>临界区<ul>
+<li>临界区指的是进程中的一段需要访问共享资源并且当另一个进程处于相应代码区域时便不会被执行的代码区域</li>
+</ul>
+</li>
+<li>互斥<ul>
+<li>当一个进程处于临界区并访问共享资源的时候，没有其他进程会处于临界区并且访问任何相同的共享资源</li>
+</ul>
+</li>
+<li>死锁<ul>
+<li>两个或以上的进程，在相互等待完成特定的任务，而最终没法将自身任务进行下去</li>
+</ul>
+</li>
+<li>饥饿<ul>
+<li>一个可执行的进程，被调度器持续忽略，以至于虽然处于可执行状态却不被执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h4><ul>
+<li>互斥<ul>
+<li>同一时间临界区中最多存在一个线程</li>
+</ul>
+</li>
+<li>Progress<ul>
+<li>如果一个线程想要进入临界区，它最终会成功</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E5%90%8C%E6%AD%A5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E8%B0%83%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="url">调度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T22:14:30+08:00">
+                2020-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/04/%E8%B0%83%E5%BA%A6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  898
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><h4 id="内核运行调度程序的条件"><a href="#内核运行调度程序的条件" class="headerlink" title="内核运行调度程序的条件"></a>内核运行调度程序的条件</h4><ul>
+<li>一个进程从运行态切换到等待状态</li>
+<li>一个进程被终结了</li>
+</ul>
+<h4 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h4><ul>
+<li>不可抢占：调度程序必须等待事件结束</li>
+<li>可以抢占<ul>
+<li>调度程序在中断被相应后执行</li>
+<li>当前的进程从运行切换到就绪，或者一个进程从 等待切换到就绪</li>
+<li>当前运行的进程可以被换出</li>
+</ul>
+</li>
+</ul>
+<h4 id="调度原则"><a href="#调度原则" class="headerlink" title="调度原则"></a>调度原则</h4><ul>
+<li>调度策略<ul>
+<li>不可抢占</li>
+<li>可以抢占</li>
+</ul>
+</li>
+<li>程序执行模型<ul>
+<li>程序在CPU突发和I/O中交替<ul>
+<li>每一个调度决定都是关于在下一个CPU突发时将那个工作交给CPU</li>
+<li>在时间分片机制下，线程可能在结束当前CPU突发前被迫放弃CPU</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比较调度算法的准则<ul>
+<li>CPU利用率</li>
+<li>吞吐量：单位时间内完成的进程数量</li>
+<li>周转时间：一个进程从初始化到结束，包括所有等待时间所花费的时间</li>
+<li>等待时间：进程在就绪队列中的总时间</li>
+<li>响应时间：从一个请求被提交到产生第一次响应所花费时间</li>
+</ul>
+</li>
+<li>吞吐量vs延迟</li>
+<li>公平的目标</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/04/%E8%B0%83%E5%BA%A6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1703,7 +1427,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -1753,7 +1477,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-count">109</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1764,7 +1488,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1775,7 +1499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1842,7 +1566,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">64.7k</span>
+    <span title="Site words total count">72k</span>
   
 </div>
 
