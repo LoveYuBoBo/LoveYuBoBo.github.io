@@ -270,6 +270,1075 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" itemprop="url">输入输出系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-09T17:17:11+08:00">
+                2020-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="输入输出系统"><a href="#输入输出系统" class="headerlink" title="输入输出系统"></a>输入输出系统</h3><h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><ul>
+<li><p>软件</p>
+<ul>
+<li>I/O指令：CPU指令的一部分</li>
+<li>通道指令（小型的DMA）：通道自身的指令<ul>
+<li>指出数组的首地址，传送字数、操作命令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>硬件</p>
+<ul>
+<li>I/O接口</li>
+<li>设备控制器</li>
+</ul>
+</li>
+<li><p>I/O设备和主机的联系方式</p>
+<ul>
+<li>I/O设备编址方式<ul>
+<li>统一编址：用取数、存数指令</li>
+<li>不统一编址：又专门的I/O指令</li>
+</ul>
+</li>
+<li>设备选址<ul>
+<li>用设备选择电路识别是否被选中</li>
+</ul>
+</li>
+<li>传送方式<ul>
+<li>串行</li>
+<li>并行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>联络方式</p>
+<ul>
+<li>立即响应</li>
+<li>异步工作采用应答信号</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134714083.png" alt="image-20201109134714083"></p>
+<ul>
+<li>同步工作采用同步时标</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/" itemprop="url">存储器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-09T17:17:11+08:00">
+                2020-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li>存储器的类型<ul>
+<li>存储介质<ul>
+<li>半导体：TTL，MOS</li>
+<li>磁表面存储器</li>
+<li>磁芯存储器</li>
+</ul>
+</li>
+<li>存取方式<ul>
+<li>随机存储器</li>
+<li>只读存储器</li>
+<li>顺序存取存储器：磁带</li>
+<li>直接存取存储器：磁盘</li>
+</ul>
+</li>
+<li>作用<ul>
+<li>主存储器<ul>
+<li>RAM</li>
+<li>ROM</li>
+</ul>
+</li>
+<li>高速缓冲存储器</li>
+<li>辅助存储器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>存储器的层次结构<ul>
+<li>存储器的三个主要特性的关系<ul>
+<li>速度</li>
+<li>容量</li>
+<li>价格</li>
+</ul>
+</li>
+<li>寄存器</li>
+<li>缓存</li>
+<li>主存</li>
+<li>磁盘</li>
+<li>为什么设计为层次结构</li>
+</ul>
+</li>
+</ul>
+<h4 id="主存储器"><a href="#主存储器" class="headerlink" title="主存储器"></a>主存储器</h4><ul>
+<li>主存的基本组成<ul>
+<li>主存的基本组成</li>
+</ul>
+</li>
+<li>主存和CPU之间的联系<ul>
+<li>数据总线：主存和MDR相连</li>
+<li>地址总线：主存和MAR相连</li>
+</ul>
+</li>
+<li>主存中存储单元地址的分配<ul>
+<li>大端大尾方式：高位地址为字地址</li>
+<li>小端小尾方式：低位字节地址为字地址</li>
+</ul>
+</li>
+<li>主存技术指标<ul>
+<li>速度</li>
+<li>容量</li>
+<li>带宽</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/08/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/08/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/" itemprop="url">系统总线</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-08T17:49:07+08:00">
+                2020-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/08/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/08/%E7%B3%BB%E7%BB%9F%E6%80%BB%E7%BA%BF/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  943
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="系统总线"><a href="#系统总线" class="headerlink" title="系统总线"></a>系统总线</h3><h4 id="总线的基本概念"><a href="#总线的基本概念" class="headerlink" title="总线的基本概念"></a>总线的基本概念</h4><ul>
+<li>为什么使用总线</li>
+<li>总线<ul>
+<li>总线是连接各个部件的信息传输线，是各个部件<strong>共享</strong>的传输介质</li>
+</ul>
+</li>
+<li>总线上信息的传送<ul>
+<li>串行</li>
+<li>并行</li>
+</ul>
+</li>
+<li>总线结构的计算机例子<ul>
+<li>单总线</li>
+<li>面向CPU的双总线，提供CUP到主存的专用总线，主存不和系统总线相连</li>
+</ul>
+</li>
+<li>以存储器为中心的双总线<ul>
+<li>主存和系统总线相连</li>
+</ul>
+</li>
+</ul>
+<h4 id="总线的分类"><a href="#总线的分类" class="headerlink" title="总线的分类"></a>总线的分类</h4><ul>
+<li>片内总线：芯片内部的总线</li>
+<li>系统总线：计算机各部件之间的信息传输线<ul>
+<li>数据总线：双向，与机器字长、存储字长有关</li>
+<li>地址总线：单向，与存储地址，I/O地址有关</li>
+<li>控制总线</li>
+</ul>
+</li>
+<li>通信总线：用域计算机之间或计算机系统与其他系统之间的通信<ul>
+<li>并行通信</li>
+<li>串行通信</li>
+</ul>
+</li>
+</ul>
+<h4 id="总线的特性及性能指标"><a href="#总线的特性及性能指标" class="headerlink" title="总线的特性及性能指标"></a>总线的特性及性能指标</h4><ul>
+<li>总线物理实现</li>
+<li>总线特性<ul>
+<li>机械特性<ul>
+<li>尺寸，形状，管脚数等</li>
+</ul>
+</li>
+<li>电气特性<ul>
+<li>传输方向和有效电平的范围</li>
+</ul>
+</li>
+<li>功能特性<ul>
+<li>每根传输线的功能</li>
+</ul>
+</li>
+<li>时间特性<ul>
+<li>信号的时序关系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>总线的性能指标<ul>
+<li>总线宽度：数据线的根数</li>
+<li>标准传输率：每秒传输的最大字节数</li>
+<li>时钟同步/异步</li>
+<li>总线复用：地址线与数据线复用</li>
+<li>信号线数：地址数，数据线和控制线的总和</li>
+<li>总线控制方式</li>
+<li>其他：负载能力</li>
+</ul>
+</li>
+<li>总线标准</li>
+</ul>
+<h4 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h4><ul>
+<li>双总线结构（通过通道连接，由通道对I/O统一管理）<ul>
+<li>主存总线</li>
+<li>I/O总线</li>
+</ul>
+</li>
+<li>三总线结构<ul>
+<li>I/O总线</li>
+<li>主存总线</li>
+<li>DMA总线</li>
+</ul>
+</li>
+<li>另一种三总线结构<ul>
+<li>局部总线</li>
+<li>系统总线</li>
+<li>扩展总线</li>
+</ul>
+</li>
+<li>四总线结构<ul>
+<li>局部总线</li>
+<li>系统总线</li>
+<li>高速总线</li>
+<li>扩展总线（连接到高速总线）</li>
+</ul>
+</li>
+</ul>
+<h4 id="总线控制"><a href="#总线控制" class="headerlink" title="总线控制"></a>总线控制</h4><ul>
+<li><p>总线判优控制</p>
+<ul>
+<li>基本概念<ul>
+<li>主设备：对总线由控制权</li>
+<li>从设备：响应从主设备发来的总线命令</li>
+<li>总线判优控制：<ul>
+<li>集中式<ul>
+<li>链式查询：对链路故障很敏感<ul>
+<li>BS：总线忙</li>
+<li>BR：总线请求</li>
+<li>BG：总线同意</li>
+</ul>
+</li>
+<li>定时器定时查询（优先级判断很灵活（从计数器计数开始））<ul>
+<li>设备地址线</li>
+<li>BS</li>
+<li>BR</li>
+</ul>
+</li>
+<li>独立请求方式<ul>
+<li>每一个I/O接口都增加了BG和BR</li>
+<li>通过总线控制部件控制优先级</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分布式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>总线通信控制</p>
+<ul>
+<li>目的：解决通信双方协调配合问题</li>
+<li>总线传输周期<ul>
+<li>申请分配阶段：主模块申请，总线仲裁决定</li>
+<li>寻址阶段：主模块向从模块给出地址和命令</li>
+<li>传数阶段：主模块和从模块交换数据</li>
+<li>结束阶段：主模块撤销有关信息</li>
+</ul>
+</li>
+<li>总线通信的方式<ul>
+<li>同步通信：由统一（定宽）时标控制数据传送</li>
+<li>异步通信：采用应答方式，没有公共时钟标准</li>
+<li>半同步通信：同步异步结合</li>
+<li>分离式通信：充分挖掘系统总线每个瞬间的潜力</li>
+</ul>
+</li>
+<li>一个总线传输周期<ul>
+<li>(同步，异步，半异步)<ul>
+<li>主模块发送地址、命令：占用总线</li>
+<li>从模块准备数据：不占用总线</li>
+<li>从模块向主模块发数据：占用总线</li>
+</ul>
+</li>
+<li>分离式通信<ul>
+<li>子周期1：主模块申请占用总线，使用完后即放弃总线的使用权</li>
+<li>子周期2：从模块申请占用总线，将各种信息送至总线上</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分离式通信的特点<ul>
+<li>各模块有权申请占用总线</li>
+<li>采用同步方式通信，不等对方回答</li>
+<li>各模块准备数据时，不占用总线</li>
+<li>总线被占用时，无空闲</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" itemprop="url">计算机系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-08T17:49:07+08:00">
+                2020-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  607
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="计算机系统"><a href="#计算机系统" class="headerlink" title="计算机系统"></a>计算机系统</h3><h4 id="计算机系统-1"><a href="#计算机系统-1" class="headerlink" title="计算机系统"></a>计算机系统</h4><ul>
+<li>硬件</li>
+<li>软件</li>
+<li>层次结构（硬件）：9层</li>
+<li>层次结构（软件）：高级语言—–&gt;汇编语言——&gt;操作系统——&gt;机器语言——&gt;微指令系统</li>
+</ul>
+<h4 id="计算机的基本组成"><a href="#计算机的基本组成" class="headerlink" title="计算机的基本组成"></a>计算机的基本组成</h4><ul>
+<li>冯诺伊曼计算机的特点<ul>
+<li>计算机有五大部分组成<ul>
+<li>运算器</li>
+<li>控制器</li>
+<li>存储器</li>
+<li>输入设备</li>
+<li>输出设备</li>
+</ul>
+</li>
+<li>指令和数据以同等地位存在存储器，可按址寻访</li>
+<li>指令和数据用二进制表示</li>
+<li>指令由操作码和地址组成</li>
+<li>存储程序</li>
+<li>以运算器为中心</li>
+</ul>
+</li>
+<li>冯诺依曼计算机的硬件图</li>
+</ul>
+<h4 id="存储器的基本组成"><a href="#存储器的基本组成" class="headerlink" title="存储器的基本组成"></a>存储器的基本组成</h4><ul>
+<li>MAR：存储器地址寄存器，反映存储单元的个数</li>
+<li>MDR：存储器数据寄存器，反映存储字长</li>
+</ul>
+<h4 id="运算器的基本组成"><a href="#运算器的基本组成" class="headerlink" title="运算器的基本组成"></a>运算器的基本组成</h4><ul>
+<li>ACC</li>
+<li>ALU</li>
+<li>X</li>
+<li>MQ</li>
+</ul>
+<h4 id="控制器的结构和功能"><a href="#控制器的结构和功能" class="headerlink" title="控制器的结构和功能"></a>控制器的结构和功能</h4><ul>
+<li>控制器的结构<ul>
+<li>完成一条指令<ul>
+<li>取指令：PC</li>
+<li>分析指令：IR（指令寄存器）</li>
+<li>执行指令：CU（控制单元）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>控制器的功能<ul>
+<li>解释指令</li>
+<li>保证指令的按序执行</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -496,938 +1565,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%AD%BB%E9%94%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="url">死锁</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T20:02:22+08:00">
-                2020-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/05/%E6%AD%BB%E9%94%81/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  1.6k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
-<li>一组阻塞的进程持有一种资源等待获取另一个进程所占有的一个资源</li>
-</ul>
-<h4 id="死锁模型"><a href="#死锁模型" class="headerlink" title="死锁模型"></a>死锁模型</h4><ul>
-<li>可重复使用的资源<ul>
-<li>在一个时间只能一个进程使用且不能被删除</li>
-<li>进程获得资源，后来释放由其他进程重用</li>
-<li>处理器，I/O通道，设备和数据结构</li>
-<li>如果每个进程拥有一个资源并请求其他资源，死锁可能发生</li>
-</ul>
-</li>
-<li>使用资源<ul>
-<li>创建和销毁</li>
-<li>在I/O缓冲区的中断，信号，消息。信息</li>
-<li>如果接收消息阻塞可能发生死锁</li>
-<li>可能 少见的组合时间会发生死锁</li>
-</ul>
-</li>
-<li>资源分配图<ul>
-<li>一组顶点V和边E的集合<ul>
-<li>V有两种类型<ul>
-<li>一种是包括系统中所欲的进程</li>
-<li>一种是包括系统中的所有资源类型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>结论<ul>
-<li>图中不包含循环，则不会发生死锁</li>
-<li>如果有循环，则可能死锁，也不能不会发生死锁</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="死锁特征（必要不充分条件）"><a href="#死锁特征（必要不充分条件）" class="headerlink" title="死锁特征（必要不充分条件）"></a>死锁特征（必要不充分条件）</h4><ul>
-<li>互斥：在一个时间内只有一个进程使用资源</li>
-<li>持有并等待：进程保持至少一个资源正在等待获取其他进程持有的额外资源</li>
-<li>不可抢占：一个资源只能被进程资源释放，进程已经完成了它的任务之后</li>
-<li>循环等待：</li>
-</ul>
-<h4 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h4><ul>
-<li>死锁预防<ul>
-<li>确保系统永远不会进入死锁状态（操作系统性能差）</li>
-<li>实现<ul>
-<li>互斥：共享资源不是必须的，必须占用非共享资源</li>
-<li>占有且等待：分配全部的资源，资源利用率低，可能发生饥饿</li>
-<li>不可抢占：分配不到资源则释放已经 持有的资源</li>
-<li>循环等待：对资源类型进行排序，按顺序申请资源</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/05/%E6%AD%BB%E9%94%81/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="url">信号量和管程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T12:29:20+08:00">
-                2020-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  615
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="信号量和管程"><a href="#信号量和管程" class="headerlink" title="信号量和管程"></a>信号量和管程</h3><h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><ul>
-<li>并发问题：竞态条件</li>
-<li>同步<ul>
-<li>多线程共享公共数据的协调执行</li>
-<li>包括互斥和条件同步</li>
-<li>互斥：在同一时间只有一个线程可以执行临界区</li>
-</ul>
-</li>
-<li>确保同步正确很难<ul>
-<li>需要高层次的编程抽象，比如锁</li>
-<li>从底层硬件支持编译，如禁用中断，原子操作等</li>
-</ul>
-</li>
-</ul>
-<h4 id="信号量（semphere）"><a href="#信号量（semphere）" class="headerlink" title="信号量（semphere）"></a>信号量（semphere）</h4><ul>
-<li>信号量用一个整形（sem）表示，有两个原子操作<ul>
-<li>P（），sem减1，如果sem&lt;0,等待，否则继续</li>
-<li>V（）：sem加1，如果sem&lt;=0,唤醒一个等待的P</li>
-</ul>
-</li>
-</ul>
-<h4 id="信号量的使用"><a href="#信号量的使用" class="headerlink" title="信号量的使用"></a>信号量的使用</h4><ul>
-<li><p>信号量是整数</p>
-</li>
-<li><p>信号量是被保护的变量</p>
-<ul>
-<li>初始化完成后。唯一改变一个信号量的值的办法是通过PV操作</li>
-<li>操作必须是原子</li>
-</ul>
-</li>
-<li><p>P操作会阻塞，V操作不会阻塞</p>
-</li>
-<li><p>两种类型信号量</p>
-<ul>
-<li>二进制信号量：0或者1</li>
-<li>计数信号量：可取任何非负值</li>
-</ul>
-</li>
-<li><p>用二进制信号量实现的互斥，初始值设为1</p>
-</li>
-<li><p>用二进制信号量实现的调度约束：初始值设为0</p>
-</li>
-</ul>
-<h4 id="信号量的实现"><a href="#信号量的实现" class="headerlink" title="信号量的实现"></a>信号量的实现</h4><ul>
-<li>使用硬件原语<ul>
-<li>禁用中断</li>
-<li>原子指令</li>
-</ul>
-</li>
-<li>用途<ul>
-<li>互斥和条件同步</li>
-<li>等待条件是独立的互斥</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>程序员必须精通信号量</li>
-<li>容易出错<ul>
-<li>使用的信号量已经被另一个线程占用</li>
-<li>忘记释放信号量</li>
-</ul>
-</li>
-<li>不能处理死锁的问题</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E5%90%8C%E6%AD%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="url">同步</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T09:30:55+08:00">
-                2020-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/05/%E5%90%8C%E6%AD%A5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  718
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
-<li>无论多个线程的指令序列怎么样交替执行，程序都必须正常工作<ul>
-<li>多线程程序具有不确定性和不可重现的特点</li>
-<li>调试难度很高</li>
-</ul>
-</li>
-<li>不确定性要求并行程序的正确性</li>
-<li>原子操作<ul>
-<li>原子操作是指一次不存在任何中断或者失败的执行<ul>
-<li>该执行成功结束</li>
-<li>或者根本没有执行</li>
-<li>并且不应该发现任何部分执行的状态</li>
-</ul>
-</li>
-<li>实际上操作往往不是原子的<ul>
-<li>有些操作看似是原子的，实际并不是，例如i++</li>
-<li>有时候，单条机器指令都不是原子的</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>临界区<ul>
-<li>临界区指的是进程中的一段需要访问共享资源并且当另一个进程处于相应代码区域时便不会被执行的代码区域</li>
-</ul>
-</li>
-<li>互斥<ul>
-<li>当一个进程处于临界区并访问共享资源的时候，没有其他进程会处于临界区并且访问任何相同的共享资源</li>
-</ul>
-</li>
-<li>死锁<ul>
-<li>两个或以上的进程，在相互等待完成特定的任务，而最终没法将自身任务进行下去</li>
-</ul>
-</li>
-<li>饥饿<ul>
-<li>一个可执行的进程，被调度器持续忽略，以至于虽然处于可执行状态却不被执行</li>
-</ul>
-</li>
-</ul>
-<h4 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h4><ul>
-<li>互斥<ul>
-<li>同一时间临界区中最多存在一个线程</li>
-</ul>
-</li>
-<li>Progress<ul>
-<li>如果一个线程想要进入临界区，它最终会成功</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/05/%E5%90%8C%E6%AD%A5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E8%B0%83%E5%BA%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="url">调度</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T22:14:30+08:00">
-                2020-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/04/%E8%B0%83%E5%BA%A6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  898
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><h4 id="内核运行调度程序的条件"><a href="#内核运行调度程序的条件" class="headerlink" title="内核运行调度程序的条件"></a>内核运行调度程序的条件</h4><ul>
-<li>一个进程从运行态切换到等待状态</li>
-<li>一个进程被终结了</li>
-</ul>
-<h4 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h4><ul>
-<li>不可抢占：调度程序必须等待事件结束</li>
-<li>可以抢占<ul>
-<li>调度程序在中断被相应后执行</li>
-<li>当前的进程从运行切换到就绪，或者一个进程从 等待切换到就绪</li>
-<li>当前运行的进程可以被换出</li>
-</ul>
-</li>
-</ul>
-<h4 id="调度原则"><a href="#调度原则" class="headerlink" title="调度原则"></a>调度原则</h4><ul>
-<li>调度策略<ul>
-<li>不可抢占</li>
-<li>可以抢占</li>
-</ul>
-</li>
-<li>程序执行模型<ul>
-<li>程序在CPU突发和I/O中交替<ul>
-<li>每一个调度决定都是关于在下一个CPU突发时将那个工作交给CPU</li>
-<li>在时间分片机制下，线程可能在结束当前CPU突发前被迫放弃CPU</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>比较调度算法的准则<ul>
-<li>CPU利用率</li>
-<li>吞吐量：单位时间内完成的进程数量</li>
-<li>周转时间：一个进程从初始化到结束，包括所有等待时间所花费的时间</li>
-<li>等待时间：进程在就绪队列中的总时间</li>
-<li>响应时间：从一个请求被提交到产生第一次响应所花费时间</li>
-</ul>
-</li>
-<li>吞吐量vs延迟</li>
-<li>公平的目标</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/04/%E8%B0%83%E5%BA%A6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
 
 
@@ -1477,7 +1619,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1488,7 +1630,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1499,7 +1641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1566,7 +1708,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72k</span>
+    <span title="Site words total count">75.7k</span>
   
 </div>
 

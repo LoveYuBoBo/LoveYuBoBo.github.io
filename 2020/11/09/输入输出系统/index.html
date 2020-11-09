@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机组成原理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="输入输出系统组成 软件  I&#x2F;O指令：CPU指令的一部分 通道指令（小型的DMA）：通道自身的指令 指出数组的首地址，传送字数、操作命令     硬件  I&#x2F;O接口 设备控制器   I&#x2F;O设备和主机的联系方式  I&#x2F;O设备编址方式 统一编址：用取数、存数指令 不统一编址：又专门的I&#x2F;O指令   设备选址 用设备选择电路识别是否被选中   传送方式 串行 并行     联络方式  立即响应 异步工作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="输入输出系统">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="输入输出系统组成 软件  I&#x2F;O指令：CPU指令的一部分 通道指令（小型的DMA）：通道自身的指令 指出数组的首地址，传送字数、操作命令     硬件  I&#x2F;O接口 设备控制器   I&#x2F;O设备和主机的联系方式  I&#x2F;O设备编址方式 统一编址：用取数、存数指令 不统一编址：又专门的I&#x2F;O指令   设备选址 用设备选择电路识别是否被选中   传送方式 串行 并行     联络方式  立即响应 异步工作">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134714083.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134923490.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135306379.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135529899.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135608954.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135932868.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140148099.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140400002.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140417899.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140557435.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140722243.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109141843547.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109142043331.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109142341115.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109143529075.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164123933.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164305227.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164533818.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164943522.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109165724179.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170134698.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170150426.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170333459.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170833010.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109171044731.png">
+<meta property="article:published_time" content="2020-11-09T09:17:11.702Z">
+<meta property="article:modified_time" content="2020-11-09T09:15:48.621Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134714083.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/09/输入输出系统/"/>
+
+
+
+
+
+  <title>输入输出系统 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">输入输出系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-09T17:17:11+08:00">
+                2020-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/09/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="输入输出系统"><a href="#输入输出系统" class="headerlink" title="输入输出系统"></a>输入输出系统</h3><h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><ul>
+<li><p>软件</p>
+<ul>
+<li>I/O指令：CPU指令的一部分</li>
+<li>通道指令（小型的DMA）：通道自身的指令<ul>
+<li>指出数组的首地址，传送字数、操作命令</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>硬件</p>
+<ul>
+<li>I/O接口</li>
+<li>设备控制器</li>
+</ul>
+</li>
+<li><p>I/O设备和主机的联系方式</p>
+<ul>
+<li>I/O设备编址方式<ul>
+<li>统一编址：用取数、存数指令</li>
+<li>不统一编址：又专门的I/O指令</li>
+</ul>
+</li>
+<li>设备选址<ul>
+<li>用设备选择电路识别是否被选中</li>
+</ul>
+</li>
+<li>传送方式<ul>
+<li>串行</li>
+<li>并行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>联络方式</p>
+<ul>
+<li>立即响应</li>
+<li>异步工作采用应答信号</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134714083.png" alt="image-20201109134714083"></p>
+<ul>
+<li>同步工作采用同步时标</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><p>I/O设备与主机的连接方式</p>
+<ul>
+<li>辐射式连接（不便于增删设备）</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109134923490.png" alt="image-20201109134923490"></p>
+<ul>
+<li>总线连接（便于增删）</li>
+</ul>
+</li>
+<li><p>I/O设备与主机信息传送的控制方式</p>
+<ul>
+<li><p>程序查询方式（信息交换必须通过CPU且CPU处于空等状态）</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135306379.png" alt="image-20201109135306379"></p>
+</li>
+<li><p>程序中断方式（没有中断现行程序，中断保存现场需要很多指令，内存和I/O的数据交换需要CPU）</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135529899.png" alt="image-20201109135529899"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135608954.png" alt="image-20201109135608954"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109135932868.png" alt="image-20201109135932868"></p>
+<ul>
+<li><p>DMA方式（主存和I/O设备之间有一条直接数据通道）</p>
+<ul>
+<li><p>不中断现行程序</p>
+</li>
+<li><p>周期挪用</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140148099.png" alt="image-20201109140148099"></p>
+</li>
+</ul>
+</li>
+<li><p>三种方式的CPU工作效率比较</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140400002.png" alt="image-20201109140400002"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140417899.png" alt="image-20201109140417899"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140557435.png" alt="image-20201109140557435"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="外部设备"><a href="#外部设备" class="headerlink" title="外部设备"></a>外部设备</h4><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109140722243.png" alt="image-20201109140722243"></p>
+<ul>
+<li>输入输出设备<ul>
+<li>键盘<ul>
+<li>按键</li>
+<li>判断哪个键被按下</li>
+<li>将此键翻译成ASCII码</li>
+</ul>
+</li>
+<li>显示器</li>
+</ul>
+</li>
+</ul>
+<h4 id="I-O接口"><a href="#I-O接口" class="headerlink" title="I/O接口"></a>I/O接口</h4><ul>
+<li><p>概述</p>
+<ul>
+<li>为什么设置接口<ul>
+<li>实现设备的选择</li>
+<li>实现数据缓冲达到速度匹配</li>
+<li>实现数据串——并格式转换</li>
+<li>实现电平转换</li>
+<li>传送控制命令</li>
+<li>反映设备的状态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>接口的功能和组成</p>
+<ul>
+<li>总线连接的I/O接口电路</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109141843547.png" alt="image-20201109141843547"></p>
+<ul>
+<li>接口的功能和组成</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109142043331.png" alt="image-20201109142043331"></p>
+<ul>
+<li>I/O接口的基本组成</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109142341115.png" alt="image-20201109142341115"></p>
+</li>
+<li><p>接口类型</p>
+</li>
+</ul>
+<h4 id="程序查询方式"><a href="#程序查询方式" class="headerlink" title="程序查询方式"></a>程序查询方式</h4><h4 id="程序中断方式"><a href="#程序中断方式" class="headerlink" title="程序中断方式"></a>程序中断方式</h4><h5 id="中断的概念"><a href="#中断的概念" class="headerlink" title="中断的概念"></a>中断的概念</h5><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109143529075.png" alt="image-20201109143529075"></p>
+<h5 id="中断的产生"><a href="#中断的产生" class="headerlink" title="中断的产生"></a>中断的产生</h5><ul>
+<li><p>程序中断方式的接口电路</p>
+<ul>
+<li>配置中断请求触发器和中断屏蔽触发器</li>
+<li>排队器（对发出中断信号的设备按优先级排列）<ul>
+<li>在CPU或在接口电路中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>中断向量地址形成部件</p>
+<ul>
+<li>入口地址<ul>
+<li>软件</li>
+<li>硬件：由硬件产生向量地址，再由向量地址找到入口地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>中断服务流程程序</p>
+<ul>
+<li>保护现场<ul>
+<li>程序断点的保护：中断隐指令完成</li>
+<li>寄存器内容的保护：进栈指令</li>
+</ul>
+</li>
+<li>中断服务<ul>
+<li>对不同的I/O设备具有不同内容的设备服务</li>
+</ul>
+</li>
+<li>恢复现场：出栈指令</li>
+<li>中断返回：中断返回指令</li>
+</ul>
+</li>
+<li><p>单重中断和多重中断的服务程序流程</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164123933.png" alt="image-20201109164123933"></p>
+</li>
+<li><p>主程序和服务程序抢占CPU示意图</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164305227.png" alt="image-20201109164305227"></p>
+</li>
+</ul>
+<h4 id="DMA"><a href="#DMA" class="headerlink" title="DMA"></a>DMA</h4><h5 id="DMA方式的特点"><a href="#DMA方式的特点" class="headerlink" title="DMA方式的特点"></a>DMA方式的特点</h5><ul>
+<li>DMA和程序中断两种方式的数据通路</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164533818.png" alt="image-20201109164533818"></p>
+<ul>
+<li><p>DMA和主存交换数据的三种方式</p>
+<ul>
+<li><p>停止CPU访问主存</p>
+<ul>
+<li>控制简单，CPU处于不工作或者保持状态，不能充分发挥CPU对主存的利用率</li>
+</ul>
+</li>
+<li><p>周期挪用</p>
+<ul>
+<li><p>DMA访问主存的三种可能</p>
+<ul>
+<li>CPU此时不访问主存</li>
+<li>CPU正在访问主存</li>
+<li>CPU和DMA同时请求主存：此时CPU将总线控制权让给DMA</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109164943522.png" alt="image-20201109164943522"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="DMA接口的功能和组成"><a href="#DMA接口的功能和组成" class="headerlink" title="DMA接口的功能和组成"></a>DMA接口的功能和组成</h5><ul>
+<li>功能<ul>
+<li>向CPU申请DMA传送</li>
+<li>处理总线控制权的转交</li>
+<li>管理系统总线，控制数据传送</li>
+<li>确定数据传送的首地址和 长度：修正传送过程中的数据首地址和长度</li>
+<li>DMA传送结束时，给出操作完成信号</li>
+</ul>
+</li>
+<li>组成</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109165724179.png" alt="image-20201109165724179"></p>
+<h5 id="DMA的工作过程"><a href="#DMA的工作过程" class="headerlink" title="DMA的工作过程"></a>DMA的工作过程</h5><ul>
+<li>DMA传送数据：预处理，数据传送，后处理</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170134698.png" alt="image-20201109170134698"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170150426.png" alt="image-20201109170150426"></p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170333459.png" alt="image-20201109170333459"></p>
+<ul>
+<li>后处理<ul>
+<li>检验送入主存的数是否正确</li>
+<li>是否急促额用DMA</li>
+<li>测试传送过程是否正确</li>
+</ul>
+</li>
+</ul>
+<h5 id="DMA接口与系统的连接方式"><a href="#DMA接口与系统的连接方式" class="headerlink" title="DMA接口与系统的连接方式"></a>DMA接口与系统的连接方式</h5><ul>
+<li>具有公共请求线的DMA请求</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109170833010.png" alt="image-20201109170833010"></p>
+<ul>
+<li>独立DMA请求</li>
+</ul>
+<h5 id="DMA和程序中断方式比较"><a href="#DMA和程序中断方式比较" class="headerlink" title="DMA和程序中断方式比较"></a>DMA和程序中断方式比较</h5><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201109171044731.png" alt="image-20201109171044731"></p>
+<h5 id="DMA接口的类型"><a href="#DMA接口的类型" class="headerlink" title="DMA接口的类型"></a>DMA接口的类型</h5><ul>
+<li>选择型：在物理上连接多个设备，在逻辑上只允许连接一个设备</li>
+<li>多路型：在物理上连接多个设备，在逻辑上允许连接多个设备同时工作</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/09/%E5%AD%98%E5%82%A8%E5%99%A8/" rel="next" title="存储器">
+                <i class="fa fa-chevron-left"></i> 存储器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">113</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出系统"><span class="nav-number">1.</span> <span class="nav-text">输入输出系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组成"><span class="nav-number">1.1.</span> <span class="nav-text">组成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部设备"><span class="nav-number">1.2.</span> <span class="nav-text">外部设备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O接口"><span class="nav-number">1.3.</span> <span class="nav-text">I&#x2F;O接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序查询方式"><span class="nav-number">1.4.</span> <span class="nav-text">程序查询方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#程序中断方式"><span class="nav-number">1.5.</span> <span class="nav-text">程序中断方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#中断的概念"><span class="nav-number">1.5.1.</span> <span class="nav-text">中断的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中断的产生"><span class="nav-number">1.5.2.</span> <span class="nav-text">中断的产生</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DMA"><span class="nav-number">1.6.</span> <span class="nav-text">DMA</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA方式的特点"><span class="nav-number">1.6.1.</span> <span class="nav-text">DMA方式的特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA接口的功能和组成"><span class="nav-number">1.6.2.</span> <span class="nav-text">DMA接口的功能和组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA的工作过程"><span class="nav-number">1.6.3.</span> <span class="nav-text">DMA的工作过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA接口与系统的连接方式"><span class="nav-number">1.6.4.</span> <span class="nav-text">DMA接口与系统的连接方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA和程序中断方式比较"><span class="nav-number">1.6.5.</span> <span class="nav-text">DMA和程序中断方式比较</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DMA接口的类型"><span class="nav-number">1.6.6.</span> <span class="nav-text">DMA接口的类型</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">75.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -270,6 +270,822 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">elasticSearch学习（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T22:54:46+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/elasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">elasticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><ul>
+<li><code>_index</code>：表明文档存放在哪里</li>
+<li><code>_type</code>: 文档表示的对象类别</li>
+<li><code>_id</code>文档唯一标识</li>
+</ul>
+<h4 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h4><ul>
+<li><p>通过提供id</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">put /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"field"</span>:<span class="string">"value"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不添加id的时候，使用自增id</p>
+</li>
+</ul>
+<h4 id="取回文档"><a href="#取回文档" class="headerlink" title="取回文档"></a>取回文档</h4><ul>
+<li>使用<code>get</code>,带上元数据参数，<code>get</code>请求会返回整个文档</li>
+<li>获取部分文档，可以通过<code>_source</code>指定返回的字段</li>
+<li>使用<code>_mget</code>批量获取文档</li>
+</ul>
+<h4 id="检查文档是否存在"><a href="#检查文档是否存在" class="headerlink" title="检查文档是否存在"></a>检查文档是否存在</h4><ul>
+<li>使用<code>head</code>代替<code>get</code>,只返回一个状态码</li>
+</ul>
+<h4 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h4><ul>
+<li>文档一旦创建是不能更改的，如果需要更新文档，只能重新索引，旧的文档也不会立刻删除，只是无法访问到</li>
+<li>部分更新，同样是更新然后重索引，不过是在分片内部进行，减少了交互操作</li>
+</ul>
+<h4 id="创建新文档"><a href="#创建新文档" class="headerlink" title="创建新文档"></a>创建新文档</h4><ul>
+<li>通过元数据唯一表示一个文档，在创建新文档的时候，通过元数据来区别，判断是否已经存在相同的文档，也可以使用自增id</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">elasticSearch学习（二）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T21:14:32+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/elsticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">elsticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="mapping定义"><a href="#mapping定义" class="headerlink" title="mapping定义"></a>mapping定义</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>只有使用<code>post</code>命令写入文档，<code>es</code>才会自动为其创建<code>id</code>，而使用<code>put</code>的时候不会创建</li>
+<li><code>update</code>一个文档，只能使用<code>post</code>，<code>put</code>只能用来<code>index</code>或者<code>create</code></li>
+<li><code>index</code>一个已经存在的文档，旧的文档会被删除，新的文档再被写入且版本号加一</li>
+<li>当创建一个新的文档到不存在的索引中，默认情况会创建相应的索引，且可以设置<code>mapping</code></li>
+<li><code>ES7</code>中合法的<code>type</code>是<code>_doc</code></li>
+<li>精确值和全文本的本质区别在于是否会被<code>Analyzer</code>分词</li>
+<li><code>Analyzer</code>由三部分组成，分别是<code>Character filter+Tokenizer+Token Filter</code></li>
+</ul>
+<ul>
+<li><code>match</code>和<code>match_phrase</code>的区别，``match<code>中</code>terms<code>之间是</code>or<code>的关系，而</code>match_phrase<code>的</code>terms<code>是</code>and<code>的关系且</code>term`之间的关系也会影响查询</li>
+<li>如果希望<code>match_phrase</code>匹配更多的结果，可以增加<code>slot</code>参数</li>
+<li>如果<code>mapping</code>的<code>dynamic</code>设置为<code>stric</code>，索引一个包含新新增字段的文档时会报错</li>
+<li>如果<code>mapping</code>的<code>dynamic</code>设置为<code>false</code>，索引一个包含新新增字段的文档时，文档会被索引，且新字段在<code>_source</code>中可见，但是该字段无法被搜索。</li>
+<li>不能所以修改字段类型，修稿字段类型都会造成<code>reindex</code></li>
+<li>可以在<code>mapping</code>文件中为<code>indexing</code>和<code>searching</code>指定不同的<code>Analyzer</code></li>
+<li>字段类型为<code>text</code>的时候，也不一定会被全文搜索，因为可以为其字段指定 <code>not index</code></li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/" itemprop="url">字节跳动面试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-06T15:07:44+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  168
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="字节跳动面试"><a href="#字节跳动面试" class="headerlink" title="字节跳动面试"></a>字节跳动面试</h2><ul>
+<li><p>redis为什么快</p>
+</li>
+<li><p>redis有没有并发问题</p>
+</li>
+<li><p>redis的数据结构</p>
+</li>
+<li><p>sorted set的使用场景和底层实现，复杂度</p>
+</li>
+<li><p>mybatis的缓存</p>
+</li>
+<li><p>spring boot和spring的优劣势</p>
+</li>
+<li><p>mysql的索引</p>
+</li>
+<li><pre><code>tb_score
+id name course score
+1  小明  语文    81
+2  小明  数学    78
+3  小红  数学    90
+...
+
+获取所有课程得分均大于80分的学生的平均得分</code></pre></li>
+<li><p>有一个 1GB 大小的文件，文件里每一行是一个词，每个词的大小不超过 16B，内存大小限制是 1MB，要求返回频数最高的 100 个词</p>
+</li>
+<li><p>二叉树的对称性判断，判断一颗二叉树是否对称</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url">秒杀系统设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-01T20:26:51+08:00">
+                2020-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">网站开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  409
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="秒杀系统设计"><a href="#秒杀系统设计" class="headerlink" title="秒杀系统设计"></a>秒杀系统设计</h3><p>现在很多电商平台都会有秒杀功能，在短时间内，少数参加秒杀的商品会由大量请求到达。很明显，后端db不可能扛得住这么大的压力，这时，缓存，负载均衡，集群等是解决问题的好办法。</p>
+<h4 id="需要解决的问题"><a href="#需要解决的问题" class="headerlink" title="需要解决的问题"></a>需要解决的问题</h4><ul>
+<li>高性能</li>
+<li>一致性，特别是库存一致性</li>
+<li>高可用</li>
+</ul>
+<h4 id="细节处理"><a href="#细节处理" class="headerlink" title="细节处理"></a>细节处理</h4><ul>
+<li>nginx，高性能web服务器，能达到几万的并发，但是tomcat只有几百的并发，这个时候可以水平扩展tomcat</li>
+<li>秒杀商品的详情等静态资源存放到cdn中，进一步减轻服务器压力</li>
+<li>倒数时间，秒杀系统一般都会有一个秒杀倒计时，但是不可能时时刻刻请求服务端来获取倒计时，这是时候，可以采用本地计时的方式，定时获取后端时间并更新</li>
+<li>秒杀按钮，秒杀没开始的时候，按钮应该置灰</li>
+</ul>
+<h4 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h4><p>限流分为i前端限流和后端限流，尽可能使到达后端的流量使有效流量</p>
+<ul>
+<li>前端限流<ul>
+<li>按钮点击频率限制</li>
+</ul>
+</li>
+<li>后端限流<ul>
+<li>同一ip一个时间段允许一定频谱的访问</li>
+<li>加入消息队列，后端根据消费能力取消息来消费</li>
+</ul>
+</li>
+</ul>
+<h4 id="库存预热"><a href="#库存预热" class="headerlink" title="库存预热"></a>库存预热</h4><ul>
+<li>redis集群缓存数据，秒杀结束在异步写入数据库</li>
+<li>并发问题：使用lua脚本，lua脚本类似事务，有一定的原子性</li>
+<li>预扣库存的方式，将订单扔到延时队列中，超时失效</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -439,827 +1255,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/" itemprop="url">输入url到响应页面发生的事情</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T22:44:42+08:00">
-                2020-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  596
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="输入url到响应页面发生了什么"><a href="#输入url到响应页面发生了什么" class="headerlink" title="输入url到响应页面发生了什么"></a>输入url到响应页面发生了什么</h4><h5 id="涉及到的协议及作用"><a href="#涉及到的协议及作用" class="headerlink" title="涉及到的协议及作用"></a>涉及到的协议及作用</h5><ul>
-<li><strong>DNS</strong><ul>
-<li>根据输入的url解析出相应的ip地址</li>
-<li>流程<ul>
-<li>浏览器会首先查看本地硬盘的 hosts 文件，看看其中有没有和这个域名对应的规则，如果有的话就直接使用 hosts 文件里面的 ip 地址。</li>
-<li>如果在本地的 hosts 文件没有能够找到对应的 ip 地址，浏览器会发出一个 DNS请求到本地DNS服务器 。本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动。</li>
-<li>查询你输入的网址的DNS请求到达本地DNS服务器之后，本地DNS服务器会首先查询它的缓存记录，如果缓存中有此条记录，就可以直接返回结果，此过程是递归的方式进行查询。如果没有，本地DNS服务器还要向DNS根服务器进行查询。</li>
-<li>根DNS服务器没有记录具体的域名和IP地址的对应关系，而是告诉本地DNS服务器，你可以到域服务器上去继续查询，并给出域服务器的地址。这种过程是迭代的过程。</li>
-<li>本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。</li>
-<li>最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/30/ping%E7%9A%84%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/30/ping%E7%9A%84%E5%8E%9F%E7%90%86/" itemprop="url">ping的原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T22:44:13+08:00">
-                2020-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/30/ping%E7%9A%84%E5%8E%9F%E7%90%86/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/30/ping%E7%9A%84%E5%8E%9F%E7%90%86/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  709
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="ping命令的原理和过程"><a href="#ping命令的原理和过程" class="headerlink" title="ping命令的原理和过程"></a>ping命令的原理和过程</h3><h5 id="ping的使用"><a href="#ping的使用" class="headerlink" title="ping的使用"></a>ping的使用</h5><ul>
-<li>简单来说，ping是用来探测本机与网络中另一主机之间是否可达的命令，如果两台主机之间ping不通，则表明这两台主机不能建立起连接。ping是定位网络通不通的一个重要手段</li>
-</ul>
-<h5 id="ping的流程"><a href="#ping的流程" class="headerlink" title="ping的流程"></a>ping的流程</h5><ul>
-<li>假设有两个主机，主机A（192.168.0.1）和主机B（192.168.0.2），现在我们要监测主机A和主机B之间网络是否可达，那么我们在主机A上输入命令：ping 192.168.0.2；</li>
-<li>此时，ping命令会在主机A上构建一个 ICMP的请求数据包（数据包里的内容后面再详述），然后 ICMP协议会将这个数据包以及目标IP（192.168.0.2）等信息一同交给IP层协议；</li>
-<li>IP层协议得到这些信息后，将源地址（即本机IP）、目标地址（即目标IP：192.168.0.2）、再加上一些其它的控制信息，构建成一个IP数据包；</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/30/ping%E7%9A%84%E5%8E%9F%E7%90%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="url">数据库知识总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-29T23:51:07+08:00">
-                2020-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/29/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  879
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据库知识总结"><a href="#数据库知识总结" class="headerlink" title="数据库知识总结"></a>数据库知识总结</h2><h5 id="数据库的结构"><a href="#数据库的结构" class="headerlink" title="数据库的结构"></a>数据库的结构</h5><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/0d2070e8f84c4801adbfa03bda1f98d9.png" alt=""></p>
-<h5 id="一条查询语句是怎么执行的"><a href="#一条查询语句是怎么执行的" class="headerlink" title="一条查询语句是怎么执行的"></a>一条查询语句是怎么执行的</h5><ul>
-<li><strong>连接器</strong><ul>
-<li>首先通过连接器连接到数据库上，如果客户端长时间没有操作，连接会断开，使用wait_timeout设置。默认8小时</li>
-<li>尽量少使用长连接</li>
-</ul>
-</li>
-<li><strong>查询缓存</strong><ul>
-<li>连接建立以后，会先到缓存中查看，如果存在，就直接返回，如果不存在，就继续下面的流程</li>
-<li>但是对插入更新频繁的数据库，应该少使用缓存，因为每次更新都会使缓存失效，在8.0版本以后完全删除了这个功能</li>
-</ul>
-</li>
-<li><strong>分析器</strong><ul>
-<li>如果没有命中缓存，就会真正开始执行语句，包括词法分析等</li>
-</ul>
-</li>
-<li><strong>优化器</strong><ul>
-<li>优化器决定使用哪个索引，或者使用join的时候，各个表的顺序</li>
-</ul>
-</li>
-<li><strong>执行器</strong><ul>
-<li>先判断是否有执行权限</li>
-<li>有权限，就重复执行逻辑，写入结果集中，直到不符合条件</li>
-</ul>
-</li>
-</ul>
-<h5 id="更新语句执行流程"><a href="#更新语句执行流程" class="headerlink" title="更新语句执行流程"></a>更新语句执行流程</h5><ul>
-<li><p>流程和查询差不多，不过此时所有缓存都会被清空，通过执行器找到需要更新的行，执行更新操作</p>
-</li>
-<li><p><strong>redo log</strong>(InnoDB特有的)</p>
-<ul>
-<li>在更新操作的时候，会先将记录写入到redo log中并更新内存，此时更新完成，在适当的时候，再将记录更新到磁盘中</li>
-<li>redo log大小是固定的，是可以循环写的，在write pos h和check point之间写，当write pos 追上check point的时候就需要更新记录到磁盘以腾出空间</li>
-</ul>
-</li>
-<li><p><strong>binlog</strong>（server层）</p>
-<ul>
-<li>binlog只能用用于归档不，没有crash-safe能力</li>
-</ul>
-</li>
-<li><p><strong>两阶段提交</strong></p>
-<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/2e5bff4910ec189fe1ee6e2ecc7b4bbe.png" alt=""></p>
-<ul>
-<li>redo log 和 binlog 都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致</li>
-</ul>
-</li>
-</ul>
-<h5 id="事务的隔离性"><a href="#事务的隔离性" class="headerlink" title="事务的隔离性"></a>事务的隔离性</h5><ul>
-<li>脏读，不可重复读，幻读<ul>
-<li>脏读使读到事务还未提交的记录</li>
-<li>不同重复读是同一事务不同阶段读到的结果不一致（主要指更新操作）</li>
-<li>幻读是两次读取得到不同的结果（主要是新增操作）</li>
-</ul>
-</li>
-<li><strong>隔离级别</strong><ul>
-<li>读未提交</li>
-<li>读已提交</li>
-<li>可重复读</li>
-<li>串行化</li>
-</ul>
-</li>
-<li><strong>隔离级别是怎么实现的</strong><ul>
-<li>read view视图，在读已提交中，每个sql都会创建视图，而在可重复读中，是在事务开始的时候创建视图，整个事务都访问这个视图，串行化使用加锁实现。</li>
-<li>数据库的mvvc，在每次更改数据后都会生成read view并且记录操作的事务id，每个事务只能访问到比自己id小的版本（事务id是递增的）</li>
-</ul>
-</li>
-<li><strong>事务的启动方式</strong><ul>
-<li>显示的事务启动，使用begin或者start transaction</li>
-<li>set autocommit = 0会导致长事务</li>
-</ul>
-</li>
-</ul>
-<h5 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h5><ul>
-<li><strong>InnoDB索引模型</strong><ul>
-<li>B+树，即每个索引都会对应一颗B+树</li>
-<li>根据叶子结点的内容，索引有主键索引和非主键索引，主键索引叶子节点存储整行数据，主键索引也被称为聚簇索引，非主键索引的叶子结点存储的是主键的值</li>
-<li>基于非主键索引查询会产生回表</li>
-</ul>
-</li>
-<li><strong>降低回表次数</strong><ul>
-<li>使用联合索引，实现覆盖索引</li>
-</ul>
-</li>
-<li><strong>最左匹配原则</strong><ul>
-<li>因为索引是有序的，当匹配到范围查询等条件时，后续索引会失效</li>
-</ul>
-</li>
-</ul>
-<h5 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h5><ul>
-<li><strong>全局锁，表锁，行锁</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/29/TCP%E9%93%BE%E5%BB%BA%E7%AB%8B%E5%8E%86%E5%92%8C%E6%96%AD%E5%BC%80%E7%9A%84%E8%BF%87%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/29/TCP%E9%93%BE%E5%BB%BA%E7%AB%8B%E5%8E%86%E5%92%8C%E6%96%AD%E5%BC%80%E7%9A%84%E8%BF%87%E7%A8%8B/" itemprop="url">TCP链建立历和断开的过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-29T23:15:24+08:00">
-                2020-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/29/TCP%E9%93%BE%E5%BB%BA%E7%AB%8B%E5%8E%86%E5%92%8C%E6%96%AD%E5%BC%80%E7%9A%84%E8%BF%87%E7%A8%8B/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/29/TCP%E9%93%BE%E5%BB%BA%E7%AB%8B%E5%8E%86%E5%92%8C%E6%96%AD%E5%BC%80%E7%9A%84%E8%BF%87%E7%A8%8B/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  733
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="TCP三次握手和四次挥手的过程"><a href="#TCP三次握手和四次挥手的过程" class="headerlink" title="TCP三次握手和四次挥手的过程"></a>TCP三次握手和四次挥手的过程</h2><h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><ul>
-<li><p><strong>TCP报文格式</strong></p>
-<p>TCP报文格式中包括源端口号和目的端口号，32位的序号和32为的确认序号，以及6位标志位(<strong>ACK,FIN,SYN URG PSH RSI</strong>)</p>
-<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/1334067788_5038.jpg" alt=""></p>
-</li>
-<li><p><strong>三次握手</strong></p>
-<p>TCP在建立连接的时候需要进行三次握手</p>
-<ul>
-<li><p>第一次握手</p>
-<p>客户端发送SYN = 1 到服务端，且随机生成一个序列号seq = c</p>
-</li>
-<li><p>第二次握手</p>
-<p>服务端发送SYN = 1 和 ACK = c+1,且随机生成序列号seq = s</p>
-</li>
-<li><p>第三次握手</p>
-<p>客户端发送SYN = 0  ACK = s+1，seq = c +1</p>
-</li>
-</ul>
-</li>
-<li><p><strong>三次握手各个变量的意义</strong></p>
-<ul>
-<li>前两次SYN表示客户端和服务端需要进行同步，包括各自发送报文的序号等，第三次的SYN，由于双方已经完成同步，所以置0</li>
-<li>前两次的seq都是客户端和服务端各自随机生成的随机序列号，第三次的seq是客户端生成的seq加1，这也是为什么需要三次握手的重要原因</li>
-<li>每次的ACK都是接收到的seq加1，表示对接收到的报文确认</li>
-</ul>
-</li>
-<li><p><strong>为什么需要三次握手</strong></p>
-<ul>
-<li>考虑这样的场景：当完成两次握手之后，客户端断开了链接，服务端不知道这个情况，会一直等待客户端发送数据，造成服务端资源浪费，如果大量这样的请求甚至会造成服务端宕机</li>
-<li>第三次握手还是确认已经同步的一个重要步骤，当客户端发送ACK的时候，表明两方已经完成同步（即确认了对方的序列号，可以开始发送数据），此时第三次握手是可以携带数据的</li>
-</ul>
-</li>
-</ul>
-<h4 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h4><ul>
-<li><p><strong>过程</strong></p>
-<ul>
-<li><p>第一次挥手：客户端发送FIN = 1，ACK = s + 1为最近接收到服务端发送数据包的序列号加1，seq = c + 1为客户端最近发送数据包序号加1，此时进入fin_waited状态</p>
-</li>
-<li><p>第二次挥手：服务端发送ACK = c+ 2</p>
-</li>
-<li><p>第三次挥手： 服务端发送FIN = 1 seq = s+1，此时服务端进入closed_waited</p>
-</li>
-<li><p>第四次挥手： 客户端发送ACK = s+ 2，进入time_waited，等待2msl时间，断开链接</p>
-<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/v2-0bfeeb1ec19aa076b2023d0d6b40c712_1440w.jpg" alt=""></p>
-</li>
-</ul>
-</li>
-<li><p><strong>为什么需要四次挥手</strong></p>
-<p>因为<strong>TCP连接是全双工的</strong>，所以需要确认各自均没有数据需要发送给对方才能断开连接</p>
-</li>
-<li><p><strong>为什么需要等待2msl</strong></p>
-<p>因为客户端发送ACK后无法确认服务端时候收到，因此等待2msl用于确认消息送达服务端，另外，可以释放网络中传输的资源，因为当客户端收到FIN以后，由于网络原因，可能还有资源在传输，以免出现端口复用从而不可预估的错误，需要等待一定的时间。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
 
 
@@ -1309,7 +1309,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">109</span>
+                  <span class="site-state-item-count">113</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1320,7 +1320,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1331,7 +1331,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1398,7 +1398,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72k</span>
+    <span title="Site words total count">75.7k</span>
   
 </div>
 
