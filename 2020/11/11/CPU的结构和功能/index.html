@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机组成原理," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CPU的结构和功能CPU的结构CPU的功能 控制器的功能 运算器的功能  CPU结构 CPU与系统总线    CPU的寄存器 用户可见的寄存器 通用寄存器：存放操作数，可作某种寻址方式所需的专用寄存器 数据寄存器：存放操作数，两个寄存器拼接存放双倍字长数据 地址寄存器：存放地址，其位数应该满足最大的地址范围，用于特殊的寻址方式 条件码寄存器：存放条件码，可作程序分支的依据   控制和状态寄存器 控">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU的结构和功能">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="CPU的结构和功能CPU的结构CPU的功能 控制器的功能 运算器的功能  CPU结构 CPU与系统总线    CPU的寄存器 用户可见的寄存器 通用寄存器：存放操作数，可作某种寻址方式所需的专用寄存器 数据寄存器：存放操作数，两个寄存器拼接存放双倍字长数据 地址寄存器：存放地址，其位数应该满足最大的地址范围，用于特殊的寻址方式 条件码寄存器：存放条件码，可作程序分支的依据   控制和状态寄存器 控">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111151533850.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111152650450.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111152932395.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153437116.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153629260.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153922604.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111154659755.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111154645148.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111161201483.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111161302773.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111164408099.png">
+<meta property="article:published_time" content="2020-11-11T09:33:49.988Z">
+<meta property="article:modified_time" content="2020-11-11T09:32:30.853Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="计算机组成原理">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111151533850.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/11/CPU的结构和功能/"/>
+
+
+
+
+
+  <title>CPU的结构和功能 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CPU的结构和功能</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-11T17:33:49+08:00">
+                2020-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="CPU的结构和功能"><a href="#CPU的结构和功能" class="headerlink" title="CPU的结构和功能"></a>CPU的结构和功能</h3><h4 id="CPU的结构"><a href="#CPU的结构" class="headerlink" title="CPU的结构"></a>CPU的结构</h4><h5 id="CPU的功能"><a href="#CPU的功能" class="headerlink" title="CPU的功能"></a>CPU的功能</h5><ul>
+<li>控制器的功能</li>
+<li>运算器的功能</li>
+</ul>
+<h5 id="CPU结构"><a href="#CPU结构" class="headerlink" title="CPU结构"></a>CPU结构</h5><ul>
+<li><p>CPU与系统总线</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111151533850.png" alt="image-20201111151533850"></p>
+</li>
+</ul>
+<h5 id="CPU的寄存器"><a href="#CPU的寄存器" class="headerlink" title="CPU的寄存器"></a>CPU的寄存器</h5><ul>
+<li>用户可见的寄存器<ul>
+<li>通用寄存器：存放操作数，可作某种寻址方式所需的专用寄存器</li>
+<li>数据寄存器：存放操作数，两个寄存器拼接存放双倍字长数据</li>
+<li>地址寄存器：存放地址，其位数应该满足最大的地址范围，用于特殊的寻址方式</li>
+<li>条件码寄存器：存放条件码，可作程序分支的依据</li>
+</ul>
+</li>
+<li>控制和状态寄存器<ul>
+<li>控制寄存器<ul>
+<li>用户不可见：MAR，MDR，IR</li>
+<li>用户可见：PC</li>
+</ul>
+</li>
+<li>状态寄存器<ul>
+<li>状态寄存器：存放条件码</li>
+<li>PSW寄存器：存放程序状态字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="控制单元CU和中断系统"><a href="#控制单元CU和中断系统" class="headerlink" title="控制单元CU和中断系统"></a>控制单元CU和中断系统</h5><ul>
+<li>CU：产生全部指令的微操作命令序列<ul>
+<li>组合逻辑设计：硬连接逻辑</li>
+<li>微程序设计：存储逻辑</li>
+</ul>
+</li>
+<li>中断系统</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="指令周期"><a href="#指令周期" class="headerlink" title="指令周期"></a>指令周期</h4><h5 id="指令周期的概念"><a href="#指令周期的概念" class="headerlink" title="指令周期的概念"></a>指令周期的概念</h5><ul>
+<li><p>指令周期：取出并执行一条指令所需的全部时间</p>
+</li>
+<li><p>每条指令的指令周期不同</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111152650450.png" alt="image-20201111152650450"></p>
+</li>
+<li><p>具有间接寻址的指令周期</p>
+</li>
+<li><p>带有中断周期的指令周期</p>
+</li>
+</ul>
+<h5 id="指令周期的流程"><a href="#指令周期的流程" class="headerlink" title="指令周期的流程"></a>指令周期的流程</h5><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111152932395.png" alt="image-20201111152932395"></p>
+<h5 id="CPU工作周期的标志"><a href="#CPU工作周期的标志" class="headerlink" title="CPU工作周期的标志"></a>CPU工作周期的标志</h5><ul>
+<li>CPU访存的四种性质<ul>
+<li>取指令：取指周期</li>
+<li>取地址：间址周期</li>
+<li>存取操作数或结果：执行周期</li>
+<li>存程序断点：中断周期</li>
+</ul>
+</li>
+</ul>
+<h5 id="指令周期的数据流"><a href="#指令周期的数据流" class="headerlink" title="指令周期的数据流"></a>指令周期的数据流</h5><ul>
+<li><p>取指周期数据流</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153437116.png" alt="image-20201111153437116"></p>
+</li>
+<li><p>间址周期数据流</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153629260.png" alt="image-20201111153629260"></p>
+</li>
+<li><p>执行周期数据流</p>
+<ul>
+<li>不同指令的执行周期数据流不同</li>
+</ul>
+</li>
+<li><p>中断周期数据流</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111153922604.png" alt="image-20201111153922604"></p>
+</li>
+</ul>
+<h4 id="指令流水"><a href="#指令流水" class="headerlink" title="指令流水"></a>指令流水</h4><h5 id="如何提高机器速度"><a href="#如何提高机器速度" class="headerlink" title="如何提高机器速度"></a>如何提高机器速度</h5><ul>
+<li>提高访存的速度<ul>
+<li>高速芯片</li>
+<li>Cache</li>
+<li>多体并行</li>
+</ul>
+</li>
+<li>提高I/O和主机之间的传送速度<ul>
+<li>中断</li>
+<li>DMA</li>
+<li>通道</li>
+<li>I/O处理机</li>
+<li>多总线</li>
+</ul>
+</li>
+<li>提高运算器速度<ul>
+<li>高速芯片</li>
+<li>改进算法</li>
+<li>快速进位法</li>
+</ul>
+</li>
+</ul>
+<h5 id="系统的并行性"><a href="#系统的并行性" class="headerlink" title="系统的并行性"></a>系统的并行性</h5><ul>
+<li>并行：两个或者多个以上事件在同一时间段发生</li>
+<li>并行的等级<ul>
+<li>过程级：粗粒度，通过软件实现</li>
+<li>指令级：细粒度，通过硬件实现</li>
+</ul>
+</li>
+</ul>
+<h5 id="指令流水的原理"><a href="#指令流水的原理" class="headerlink" title="指令流水的原理"></a>指令流水的原理</h5><ul>
+<li><p>指令的串行执行</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111154659755.png" alt="image-20201111154659755"></p>
+</li>
+<li><p>二级流水指令</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111154645148.png" alt="image-20201111154645148"></p>
+</li>
+<li><p>影响指令流水效率加倍的因素</p>
+<ul>
+<li>执行时间&gt;取指时间：通过增加指令部件缓冲区</li>
+<li>条件转移指令对指令流水的影响：必须等上条指令执行结束，才能确定x下条指令的地址</li>
+</ul>
+</li>
+</ul>
+<h5 id="影响指令流水线性能的因素"><a href="#影响指令流水线性能的因素" class="headerlink" title="影响指令流水线性能的因素"></a>影响指令流水线性能的因素</h5><ul>
+<li>结构相关：不同指令争用同一功能部件产生资源冲突<ul>
+<li>解决办法<ul>
+<li>停顿（加入气泡）</li>
+<li>指令存储器和数据存储器分开（哈佛结构）</li>
+<li>指令预取技术（适用于访存周期短的情况）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据相关<ul>
+<li>不同指令因重叠操作，可能改变操作数的读写访问顺序<ul>
+<li>写后读相关</li>
+<li>读后写相关</li>
+<li>写后写相关</li>
+</ul>
+</li>
+<li>解决方法<ul>
+<li>后推法</li>
+<li>旁路技术</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>控制相关<ul>
+<li>由转移指令引起</li>
+</ul>
+</li>
+</ul>
+<h5 id="流水线性能"><a href="#流水线性能" class="headerlink" title="流水线性能"></a>流水线性能</h5><ul>
+<li>吞吐率：单位时间内流水线所弯沉过的指令或者输出结果的数量</li>
+<li>加速比</li>
+</ul>
+<h5 id="流水线的多发技术"><a href="#流水线的多发技术" class="headerlink" title="流水线的多发技术"></a>流水线的多发技术</h5><ul>
+<li>超标量技术：每个时钟周期内可并发多条独立指令<ul>
+<li>不能调整指令的执行顺序：通过编译优化技术，把课并行执 的指令搭配起来</li>
+</ul>
+</li>
+<li>超流水技术：在一个时钟周期内再分段<ul>
+<li>一个时钟周期内一个功能部件使用多次</li>
+</ul>
+</li>
+<li>超长指令字技术<ul>
+<li>由编译程序挖掘处指令间潜在的并行性，将多条能并并行操作的指令组合成一条具有多个操作码字段的超长指令字</li>
+</ul>
+</li>
+</ul>
+<h5 id="流水线结构"><a href="#流水线结构" class="headerlink" title="流水线结构"></a>流水线结构</h5><ul>
+<li><p>指令流水线结构：完成一条指令分6段，每段需要一个时钟周期</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111161201483.png" alt="image-20201111161201483"></p>
+</li>
+<li><p>运算流水线</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111161302773.png" alt="image-20201111161302773"></p>
+</li>
+</ul>
+<h4 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>引发中断的因素<ul>
+<li>人为设置的中断</li>
+<li>程序性事故</li>
+</ul>
+</li>
+</ul>
+<h5 id="保存现场和恢复现场"><a href="#保存现场和恢复现场" class="headerlink" title="保存现场和恢复现场"></a>保存现场和恢复现场</h5><ul>
+<li><p>保护现场：断点，寄存器内容</p>
+</li>
+<li><p>恢复现场</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111164408099.png" alt="image-20201111164408099"></p>
+</li>
+</ul>
+<h5 id="多重中断"><a href="#多重中断" class="headerlink" title="多重中断"></a>多重中断</h5><ul>
+<li>实现多重中断的条件<ul>
+<li>提前设置开中断指令</li>
+<li>优先级别高的中断源有权中断优先级别低的中断源</li>
+</ul>
+</li>
+</ul>
+<h5 id="屏蔽技术"><a href="#屏蔽技术" class="headerlink" title="屏蔽技术"></a>屏蔽技术</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" rel="tag"># 计算机组成原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/11/%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" rel="next" title="指令系统">
+                <i class="fa fa-chevron-left"></i> 指令系统
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/11/%E6%95%B0%E5%AD%97/" rel="prev" title="数字">
+                数字 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU的结构和功能"><span class="nav-number">1.</span> <span class="nav-text">CPU的结构和功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU的结构"><span class="nav-number">1.1.</span> <span class="nav-text">CPU的结构</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU的功能"><span class="nav-number">1.1.1.</span> <span class="nav-text">CPU的功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU结构"><span class="nav-number">1.1.2.</span> <span class="nav-text">CPU结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU的寄存器"><span class="nav-number">1.1.3.</span> <span class="nav-text">CPU的寄存器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#控制单元CU和中断系统"><span class="nav-number">1.1.4.</span> <span class="nav-text">控制单元CU和中断系统</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令周期"><span class="nav-number">1.2.</span> <span class="nav-text">指令周期</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指令周期的概念"><span class="nav-number">1.2.1.</span> <span class="nav-text">指令周期的概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令周期的流程"><span class="nav-number">1.2.2.</span> <span class="nav-text">指令周期的流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CPU工作周期的标志"><span class="nav-number">1.2.3.</span> <span class="nav-text">CPU工作周期的标志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令周期的数据流"><span class="nav-number">1.2.4.</span> <span class="nav-text">指令周期的数据流</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令流水"><span class="nav-number">1.3.</span> <span class="nav-text">指令流水</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何提高机器速度"><span class="nav-number">1.3.1.</span> <span class="nav-text">如何提高机器速度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统的并行性"><span class="nav-number">1.3.2.</span> <span class="nav-text">系统的并行性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令流水的原理"><span class="nav-number">1.3.3.</span> <span class="nav-text">指令流水的原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#影响指令流水线性能的因素"><span class="nav-number">1.3.4.</span> <span class="nav-text">影响指令流水线性能的因素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线性能"><span class="nav-number">1.3.5.</span> <span class="nav-text">流水线性能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线的多发技术"><span class="nav-number">1.3.6.</span> <span class="nav-text">流水线的多发技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#流水线结构"><span class="nav-number">1.3.7.</span> <span class="nav-text">流水线结构</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断系统"><span class="nav-number">1.4.</span> <span class="nav-text">中断系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概述"><span class="nav-number">1.4.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#保存现场和恢复现场"><span class="nav-number">1.4.2.</span> <span class="nav-text">保存现场和恢复现场</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多重中断"><span class="nav-number">1.4.3.</span> <span class="nav-text">多重中断</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#屏蔽技术"><span class="nav-number">1.4.4.</span> <span class="nav-text">屏蔽技术</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">77.8k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
