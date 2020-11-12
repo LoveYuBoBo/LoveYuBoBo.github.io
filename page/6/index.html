@@ -270,6 +270,219 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">elasticSearch学习（三）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T22:54:46+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/elasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">elasticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><ul>
+<li><code>_index</code>：表明文档存放在哪里</li>
+<li><code>_type</code>: 文档表示的对象类别</li>
+<li><code>_id</code>文档唯一标识</li>
+</ul>
+<h4 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h4><ul>
+<li><p>通过提供id</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">put /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"field"</span>:<span class="string">"value"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不添加id的时候，使用自增id</p>
+</li>
+</ul>
+<h4 id="取回文档"><a href="#取回文档" class="headerlink" title="取回文档"></a>取回文档</h4><ul>
+<li>使用<code>get</code>,带上元数据参数，<code>get</code>请求会返回整个文档</li>
+<li>获取部分文档，可以通过<code>_source</code>指定返回的字段</li>
+<li>使用<code>_mget</code>批量获取文档</li>
+</ul>
+<h4 id="检查文档是否存在"><a href="#检查文档是否存在" class="headerlink" title="检查文档是否存在"></a>检查文档是否存在</h4><ul>
+<li>使用<code>head</code>代替<code>get</code>,只返回一个状态码</li>
+</ul>
+<h4 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h4><ul>
+<li>文档一旦创建是不能更改的，如果需要更新文档，只能重新索引，旧的文档也不会立刻删除，只是无法访问到</li>
+<li>部分更新，同样是更新然后重索引，不过是在分片内部进行，减少了交互操作</li>
+</ul>
+<h4 id="创建新文档"><a href="#创建新文档" class="headerlink" title="创建新文档"></a>创建新文档</h4><ul>
+<li>通过元数据唯一表示一个文档，在创建新文档的时候，通过元数据来区别，判断是否已经存在相同的文档，也可以使用自增id</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1042,185 +1255,6 @@ id name course score
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/" itemprop="url">输入url到响应页面发生的事情</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T22:44:42+08:00">
-                2020-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  596
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="输入url到响应页面发生了什么"><a href="#输入url到响应页面发生了什么" class="headerlink" title="输入url到响应页面发生了什么"></a>输入url到响应页面发生了什么</h4><h5 id="涉及到的协议及作用"><a href="#涉及到的协议及作用" class="headerlink" title="涉及到的协议及作用"></a>涉及到的协议及作用</h5><ul>
-<li><strong>DNS</strong><ul>
-<li>根据输入的url解析出相应的ip地址</li>
-<li>流程<ul>
-<li>浏览器会首先查看本地硬盘的 hosts 文件，看看其中有没有和这个域名对应的规则，如果有的话就直接使用 hosts 文件里面的 ip 地址。</li>
-<li>如果在本地的 hosts 文件没有能够找到对应的 ip 地址，浏览器会发出一个 DNS请求到本地DNS服务器 。本地DNS服务器一般都是你的网络接入服务器商提供，比如中国电信，中国移动。</li>
-<li>查询你输入的网址的DNS请求到达本地DNS服务器之后，本地DNS服务器会首先查询它的缓存记录，如果缓存中有此条记录，就可以直接返回结果，此过程是递归的方式进行查询。如果没有，本地DNS服务器还要向DNS根服务器进行查询。</li>
-<li>根DNS服务器没有记录具体的域名和IP地址的对应关系，而是告诉本地DNS服务器，你可以到域服务器上去继续查询，并给出域服务器的地址。这种过程是迭代的过程。</li>
-<li>本地DNS服务器继续向域服务器发出请求，在这个例子中，请求的对象是.com域服务器。.com域服务器收到请求之后，也不会直接返回域名和IP地址的对应关系，而是告诉本地DNS服务器，你的域名的解析服务器的地址。</li>
-<li>最后，本地DNS服务器向域名的解析服务器发出请求，这时就能收到一个域名和IP地址对应关系，本地DNS服务器不仅要把IP地址返回给用户电脑，还要把这个对应关系保存在缓存中，以备下次别的用户查询时，可以直接返回结果，加快网络访问。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/30/%E8%BE%93%E5%85%A5url%E5%88%B0%E5%93%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E6%83%85/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1275,7 +1309,7 @@ id name course score
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1364,7 +1398,7 @@ id name course score
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.8k</span>
+    <span title="Site words total count">78k</span>
   
 </div>
 

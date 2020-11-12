@@ -270,6 +270,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%AD%BB%E9%94%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="url">死锁</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T20:02:22+08:00">
+                2020-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/05/%E6%AD%BB%E9%94%81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<li>一组阻塞的进程持有一种资源等待获取另一个进程所占有的一个资源</li>
+</ul>
+<h4 id="死锁模型"><a href="#死锁模型" class="headerlink" title="死锁模型"></a>死锁模型</h4><ul>
+<li>可重复使用的资源<ul>
+<li>在一个时间只能一个进程使用且不能被删除</li>
+<li>进程获得资源，后来释放由其他进程重用</li>
+<li>处理器，I/O通道，设备和数据结构</li>
+<li>如果每个进程拥有一个资源并请求其他资源，死锁可能发生</li>
+</ul>
+</li>
+<li>使用资源<ul>
+<li>创建和销毁</li>
+<li>在I/O缓冲区的中断，信号，消息。信息</li>
+<li>如果接收消息阻塞可能发生死锁</li>
+<li>可能 少见的组合时间会发生死锁</li>
+</ul>
+</li>
+<li>资源分配图<ul>
+<li>一组顶点V和边E的集合<ul>
+<li>V有两种类型<ul>
+<li>一种是包括系统中所欲的进程</li>
+<li>一种是包括系统中的所有资源类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结论<ul>
+<li>图中不包含循环，则不会发生死锁</li>
+<li>如果有循环，则可能死锁，也不能不会发生死锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="死锁特征（必要不充分条件）"><a href="#死锁特征（必要不充分条件）" class="headerlink" title="死锁特征（必要不充分条件）"></a>死锁特征（必要不充分条件）</h4><ul>
+<li>互斥：在一个时间内只有一个进程使用资源</li>
+<li>持有并等待：进程保持至少一个资源正在等待获取其他进程持有的额外资源</li>
+<li>不可抢占：一个资源只能被进程资源释放，进程已经完成了它的任务之后</li>
+<li>循环等待：</li>
+</ul>
+<h4 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h4><ul>
+<li>死锁预防<ul>
+<li>确保系统永远不会进入死锁状态（操作系统性能差）</li>
+<li>实现<ul>
+<li>互斥：共享资源不是必须的，必须占用非共享资源</li>
+<li>占有且等待：分配全部的资源，资源利用率低，可能发生饥饿</li>
+<li>不可抢占：分配不到资源则释放已经 持有的资源</li>
+<li>循环等待：对资源类型进行排序，按顺序申请资源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E6%AD%BB%E9%94%81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1166,242 +1406,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">操作系统</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T15:01:25+08:00">
-                2020-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  4.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h4 id="操作系统的特点"><a href="#操作系统的特点" class="headerlink" title="操作系统的特点"></a>操作系统的特点</h4><ul>
-<li>并发</li>
-<li>异步</li>
-<li>虚拟</li>
-<li>共享</li>
-</ul>
-<h4 id="通过中断通知操作系统切换进程"><a href="#通过中断通知操作系统切换进程" class="headerlink" title="通过中断通知操作系统切换进程"></a>通过中断通知操作系统切换进程</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><ul>
-<li>CPU,内存，I/O(disk等)</li>
-<li>每部分作用<ul>
-<li>disk：存放OS</li>
-<li>BIOS:基本的I/O处理，加电以后从一个固定的地址开始执行CS:IP=0xf000:fff0(CS:段寄存器，IP：指令寄存器)，通过该地址进行自检（POST，加电自检），寻找显卡和执行BIOS，之后将Bootloader放到内存中</li>
-<li>Bootloader：加载OS，放在硬盘的第一个扇区（512字节）。通过BIOS将Bootloader放到内存中，x86系统是从0x7c00开始，往上512个字节。此时CPU执行权由Bootloader掌握，之后由Bootloader将操作系统从磁盘块读到内存中</li>
-</ul>
-</li>
-</ul>
-<h4 id="中断，异常和系统调用"><a href="#中断，异常和系统调用" class="headerlink" title="中断，异常和系统调用"></a>中断，异常和系统调用</h4><ul>
-<li>各个部分的定义<ul>
-<li>系统调用：应用程序主动向操作系统发出服务请求</li>
-<li>异常：非法指令或者其他换的处理状态，由应用程序产生</li>
-<li>中断：来自不同硬件设备的计时器和网络的中断，由外设产生</li>
-</ul>
-</li>
-<li>为什么操作系统不能直接操作外设？<ul>
-<li>计算机运行中，内核是被信任的第三方，安全的角度</li>
-<li>只有内核可以执行特权指令</li>
-<li>提供统一的接口，为了方便应用程序</li>
-</ul>
-</li>
-<li>操作系统怎么设计和实现中断、异常和系统调用的，他们的区别和特点是什么<ul>
-<li>源头：<ul>
-<li>中断：外设</li>
-<li>异常：应用程序意想不到的行为</li>
-<li>系统调用：应用程序请求操作提供服务</li>
-</ul>
-</li>
-<li>处理时间<ul>
-<li>中断：异步的</li>
-<li>异常：同步</li>
-<li>系统调用：异步或者同步（异步体现在返回数据的时候，不在等待返回）</li>
-</ul>
-</li>
-<li>响应<ul>
-<li>中断：持续的，对用户应用程序时透明的</li>
-<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
-<li>系统调用：等待和持续</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1456,7 +1460,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1545,7 +1549,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.8k</span>
+    <span title="Site words total count">78k</span>
   
 </div>
 

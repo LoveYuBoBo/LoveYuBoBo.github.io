@@ -270,6 +270,242 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">操作系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T15:01:25+08:00">
+                2020-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  4.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h3><h4 id="操作系统的特点"><a href="#操作系统的特点" class="headerlink" title="操作系统的特点"></a>操作系统的特点</h4><ul>
+<li>并发</li>
+<li>异步</li>
+<li>虚拟</li>
+<li>共享</li>
+</ul>
+<h4 id="通过中断通知操作系统切换进程"><a href="#通过中断通知操作系统切换进程" class="headerlink" title="通过中断通知操作系统切换进程"></a>通过中断通知操作系统切换进程</h4><h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><ul>
+<li>CPU,内存，I/O(disk等)</li>
+<li>每部分作用<ul>
+<li>disk：存放OS</li>
+<li>BIOS:基本的I/O处理，加电以后从一个固定的地址开始执行CS:IP=0xf000:fff0(CS:段寄存器，IP：指令寄存器)，通过该地址进行自检（POST，加电自检），寻找显卡和执行BIOS，之后将Bootloader放到内存中</li>
+<li>Bootloader：加载OS，放在硬盘的第一个扇区（512字节）。通过BIOS将Bootloader放到内存中，x86系统是从0x7c00开始，往上512个字节。此时CPU执行权由Bootloader掌握，之后由Bootloader将操作系统从磁盘块读到内存中</li>
+</ul>
+</li>
+</ul>
+<h4 id="中断，异常和系统调用"><a href="#中断，异常和系统调用" class="headerlink" title="中断，异常和系统调用"></a>中断，异常和系统调用</h4><ul>
+<li>各个部分的定义<ul>
+<li>系统调用：应用程序主动向操作系统发出服务请求</li>
+<li>异常：非法指令或者其他换的处理状态，由应用程序产生</li>
+<li>中断：来自不同硬件设备的计时器和网络的中断，由外设产生</li>
+</ul>
+</li>
+<li>为什么操作系统不能直接操作外设？<ul>
+<li>计算机运行中，内核是被信任的第三方，安全的角度</li>
+<li>只有内核可以执行特权指令</li>
+<li>提供统一的接口，为了方便应用程序</li>
+</ul>
+</li>
+<li>操作系统怎么设计和实现中断、异常和系统调用的，他们的区别和特点是什么<ul>
+<li>源头：<ul>
+<li>中断：外设</li>
+<li>异常：应用程序意想不到的行为</li>
+<li>系统调用：应用程序请求操作提供服务</li>
+</ul>
+</li>
+<li>处理时间<ul>
+<li>中断：异步的</li>
+<li>异常：同步</li>
+<li>系统调用：异步或者同步（异步体现在返回数据的时候，不在等待返回）</li>
+</ul>
+</li>
+<li>响应<ul>
+<li>中断：持续的，对用户应用程序时透明的</li>
+<li>异常：杀死或者重新执行意想不到的应用程序指令</li>
+<li>系统调用：等待和持续</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/04/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/10/15/%E7%94%A8%E5%8F%8B%E4%B8%80%E9%9D%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1009,193 +1245,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url">单点登录系统设计</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T22:36:34+08:00">
-                2020-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">网站开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/09/%E5%8D%95%E7%82%B9%E7%99%BB%E5%BD%95%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  133
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基于JWT的单点登录系统设计"><a href="#基于JWT的单点登录系统设计" class="headerlink" title="基于JWT的单点登录系统设计"></a>基于JWT的单点登录系统设计</h3><p>JWT（json web token）是一个含签名并携带用户相关信息的加密串，页面请求校验登录接口时，请求头中携带JWT串到后端服务，后端通过签名加密串匹配校验，保证信息未被篡改</p>
-<ul>
-<li>JWT因为不需要在服务端记录用户信息，轻量，可以用作单点登录系统设计</li>
-<li>通过签名，验证合法性，通过头部和载荷验证数据的完整性</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1250,7 +1299,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">117</span>
+                  <span class="site-state-item-count">118</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1339,7 +1388,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">77.8k</span>
+    <span title="Site words total count">78k</span>
   
 </div>
 
