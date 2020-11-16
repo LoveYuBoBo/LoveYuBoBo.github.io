@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/367.%20Valid%20Perfect%20Square/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/367.%20Valid%20Perfect%20Square/" itemprop="url">367. Valid Perfect Square</a></h1>
+                <a class="post-title-link" href="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/" itemprop="url">151. Reverse Words in a String</a></h1>
         
 
         <div class="post-meta">
@@ -301,7 +301,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:45:32+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
                 2020-04-17
               </time>
             
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/367.%20Valid%20Perfect%20Square/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/367.%20Valid%20Perfect%20Square/" itemprop="commentCount"></span>
+                <a href="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  100
+                  189
                 </span>
               
 
@@ -404,13 +404,31 @@
       
         
           
-            <h2 id="367-Valid-Perfect-Square"><a href="#367-Valid-Perfect-Square" class="headerlink" title="367. Valid Perfect Square"></a>367. Valid Perfect Square</h2><ul>
+            <h2 id="151-Reverse-Words-in-a-String"><a href="#151-Reverse-Words-in-a-String" class="headerlink" title="151. Reverse Words in a String"></a>151. Reverse Words in a String</h2><ul>
 <li><p><strong>description</strong></p>
-<p>Given a positive integer <em>num</em>, write a function which returns True if <em>num</em> is a perfect square else False.</p>
-<p><strong>Note:</strong> <strong>Do not</strong> use any built-in library function such as <code>sqrt</code>.</p>
+<p>Given an input string, reverse the string word by word.</p>
 </li>
+</ul>
+<p>  <strong>Example 1:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;the sky is blue&quot;</span><br><span class="line">Output: &quot;blue is sky the&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Example 2:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;  hello world!  &quot;</span><br><span class="line">Output: &quot;world! hello&quot;</span><br><span class="line">Explanation: Your reversed string should not contain leading or trailing spaces.</span><br></pre></td></tr></table></figure>
+
+<p>  <strong>Example 3:</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a good   example&quot;</span><br><span class="line">Output: &quot;example good a&quot;</span><br><span class="line">Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.</span><br></pre></td></tr></table></figure>
+
+
+
+<p>  <strong>Note:</strong></p>
+<ul>
+<li>A word is defined as a sequence of non-space characters.</li>
+<li>Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.</li>
+<li>You need to reduce multiple spaces between two words to a sin</li>
+</ul>
+<ul>
 <li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">long</span> low = <span class="number">1</span>, high = num / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">long</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (mid * mid == num) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mid * mid &lt; num) &#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s== <span class="keyword">null</span> || s.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] s1 = s.trim().split(<span class="string">" "</span>); </span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!s1[i].trim().isEmpty())&#123;</span><br><span class="line">                sb.append(s1[i]).append(<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -462,7 +480,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/65.%20Valid%20Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -481,7 +499,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url">java基础知识</a></h1>
+                <a class="post-title-link" href="/2020/04/17/65.%20Valid%20Number/" itemprop="url">65. Valid Number</a></h1>
         
 
         <div class="post-meta">
@@ -493,7 +511,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T00:55:01+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
                 2020-04-17
               </time>
             
@@ -516,8 +534,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -534,8 +552,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="commentCount"></span>
+                <a href="/2020/04/17/65.%20Valid%20Number/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/65.%20Valid%20Number/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -557,7 +575,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  9.5k
+                  355
                 </span>
               
 
@@ -573,7 +591,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  34
+                  2
                 </span>
               
             </div>
@@ -595,41 +613,30 @@
 
       
         
-          <h4 id="Java基础知识"><a href="#Java基础知识" class="headerlink" title="Java基础知识"></a>Java基础知识</h4><ul>
-<li>大多数时候，在switch表达式内部，我们会返回简单的值。但是，如果需要复杂的语句，我们也可以写很多语句，放到{…}里，然后，用yield返回一个值作为switch语句的返回值。  </li>
-<li>如果右侧赋值没有超过左侧的范围，会自动补全（byte）（short）之类的；在给变量赋值的时候，如果表达式中都是常量，编译器会直接计算结果，但如果包含变量，则不能进行常量优化。</li>
-<li>基本数据类型：byte ,short ,int ,long ,float,double,char,boolean  </li>
-<li>引用数据类型：字符串，数组，类，接口，Lambda  </li>
-<li>浮点型可能是一个近似值</li>
-<li>数据范围和字节数不一定相关(比如short(4字节)和 long(8字节)</li>
-<li>Java内存划分为5个部分：<ul>
-<li>栈(stack)：存放的是方法中的局部变量，一旦超过作用域，立即消失</li>
-<li>堆(Heap):凡是new出来的，都在堆中，堆内存中的东西都有一个16进制的地址值，里面存放的数据都有默认值  </li>
-<li>方法区(Method Area):存储.class相关的信息，包含方法的信息</li>
-<li>本地方法栈(Native Method Stack):与操作系统有关</li>
-<li>寄存器(pc Register)：与cpu有关</li>
+          
+            <h2 id="65-Valid-Number"><a href="#65-Valid-Number" class="headerlink" title="65. Valid Number"></a>65. Valid Number</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Validate if a given string can be interpreted as a decimal number.</p>
+<p>Some examples:<br><code>&quot;0&quot;</code> =&gt; <code>true</code><br><code>&quot; 0.1 &quot;</code> =&gt; <code>true</code><br><code>&quot;abc&quot;</code> =&gt; <code>false</code><br><code>&quot;1 a&quot;</code> =&gt; <code>false</code><br><code>&quot;2e10&quot;</code> =&gt; <code>true</code><br><code>&quot; -90e3  &quot;</code> =&gt; <code>true</code><br><code>&quot; 1e&quot;</code> =&gt; <code>false</code><br><code>&quot;e3&quot;</code> =&gt; <code>false</code><br><code>&quot; 6e-1&quot;</code> =&gt; <code>true</code><br><code>&quot; 99e2.5 &quot;</code> =&gt; <code>false</code><br><code>&quot;53.5e93&quot;</code> =&gt; <code>true</code><br><code>&quot; --6 &quot;</code> =&gt; <code>false</code><br><code>&quot;-+3&quot;</code> =&gt; <code>false</code><br><code>&quot;95a54e53&quot;</code> =&gt; <code>false</code></p>
+<p><strong>Note:</strong> It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one. However, here is a list of characters that can be in a valid decimal number:</p>
+<ul>
+<li>Numbers 0-9</li>
+<li>Exponent - “e”</li>
+<li>Positive/negative sign - “+”/“-“</li>
+<li>Decimal point - “.”</li>
 </ul>
+<p>Of course, the context of these characters also matters in the input.</p>
 </li>
-<li>空指针异常 NullPointException,通过添加new解决。</li>
-<li>数组一旦创建，程序运行期间，长度不可变。</li>
-<li>数组作为方法参数的时候，传递的是数组的地址值，作为返回值也是地址。</li>
-<li>当对象作为参数的时候，传入的是参数的地址值</li>
-<li>局部变量和成员变量：<ul>
-<li>定义的位置不一样，局部变量在方法内部，成员变量直接写在类中</li>
-<li>作用的范围不一样，局部变量只在方法中起作用，成员变量在整个类中都有用</li>
-<li>默认值不一样，局部变量没有默认值，必须手动赋值，成员变量有默认值，规则和数组一样。</li>
-<li>内存位置不一样，局部变量在栈内存中，成员变量在堆内存中</li>
-<li>生命周期不一样，局部变量随着方法进栈诞生，方法出栈结束，成员变量随着对象被创建产生，随着被垃圾回收而结束。</li>
-</ul>
+<li><p><strong>solution 1</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import java.util.regex.*;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line"></span><br><span class="line">	private static Pattern NUMBER &#x3D; Pattern.compile(&quot;[+-]?(\\.\\d+|\\d+(\\.\\d*)?)(e[+-]?\\d+)?&quot;);</span><br><span class="line"></span><br><span class="line">	public boolean isNumber(String s) &#123;</span><br><span class="line">		return NUMBER.matcher(s.trim()).matches();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>solution 2</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isNumber</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        s = s.trim();</span><br><span class="line">        <span class="keyword">int</span> idx = s.indexOf(<span class="string">'e'</span>);</span><br><span class="line">        <span class="keyword">if</span>(idx == -<span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> validateLeft(s);</span><br><span class="line">        <span class="keyword">return</span> validateLeft(s.substring(<span class="number">0</span>, idx)) &amp;&amp; validateRight(s.substring(idx + <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateLeft</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> dot = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == <span class="string">'-'</span> || s.charAt(i) == <span class="string">'+'</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">"."</span>) || s.equals(<span class="string">"+."</span>) || s.equals(<span class="string">"-."</span>)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(s.charAt(i) == <span class="string">'.'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dot) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                dot = <span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!Character.isDigit(s.charAt(i))) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">validateRight</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(s.charAt(i) == <span class="string">'+'</span> || s.charAt(i) == <span class="string">'-'</span>) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            <span class="keyword">if</span>(s.length() == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(!Character.isDigit(s.charAt(i))) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/17/java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
@@ -676,7 +683,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -695,7 +702,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" itemprop="url">Mysql基础</a></h1>
+                <a class="post-title-link" href="/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/" itemprop="url">17. Letter Combinations of a Phone Number</a></h1>
         
 
         <div class="post-meta">
@@ -707,8 +714,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T23:28:40+08:00">
-                2020-04-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
               </time>
             
 
@@ -730,8 +737,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">Mysql</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -748,8 +755,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/" itemprop="commentCount"></span>
+                <a href="/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/17.%20Letter%20Combinations%20of%20a%20Phone%20Number/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -771,230 +778,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="数据库基础"><a href="#数据库基础" class="headerlink" title="数据库基础"></a>数据库基础</h3><h4 id="DCL"><a href="#DCL" class="headerlink" title="DCL"></a>DCL</h4><ul>
-<li>添加用户：create user &apos;用户名&apos; @&apos;主机名&apos; identify &apos;密码&apos;。    </li>
-<li>删除用户：drop user &apos;用户名&apos; @&apos;主机名&apos;    </li>
-<li>修改用户密码：update user set 字段名=新的值 where 条件子句    *忘记root密码：    <ul>
-<li>使用管理员权限运行cmd，并停止mysql服务    </li>
-<li>使用无验证方式启动：mysqld –skip-grant-tables    </li>
-<li>打开新的窗口，直接输入mysql命令登录    </li>
-</ul>
-</li>
-<li>use mysql    5.update user set password=password(&quot;新密码&quot;) where user = &apos;root&apos;    </li>
-<li>关闭窗口    </li>
-<li>手动结束mysqld.exe进程    </li>
-<li>启动mysql服务    </li>
-<li>使用新密码登录    </li>
-<li>权限管理：    <ul>
-<li>查询权限：    show grants for &apos;用户名&apos; @&apos;主机名&apos;    </li>
-<li>授予权限：    grant 权限列表 on 数据库名.表名 to &apos;用户名&apos; @&apos;主机名&apos;    </li>
-<li>撤销权限：    revoke 权限列表 on 数据库名.表名 from &apos;用户名&apos; @&apos;主机名&apos;</li>
-</ul>
-</li>
-<li>语法 select字段列表from表名列表where条件列表group by分组字段having分组之后的条件order by排序limit分页限定</li>
-<li>基础查询<ul>
-<li>多字段查询select 字段名1，…，from 表名<em>注意：<em>如果查询所有字段，可以使用</em>代替字段列表</em></li>
-<li>去除重复的结果集使用distinct</li>
-<li>起别名<em>使用as</em></li>
-<li>计算列<em>一般使用四则运算计算列的值</em>如果有null参与运算，计算结果都是null可以使用ifnull()表达式</li>
-</ul>
-</li>
-<li>条件查询1.where子句<ul>
-<li>运算符<em>&gt; &lt; &gt;= &lt;=…<em>like(模糊查询)</em>占位符</em>_:单个任意字符<em>%：多个任意字符</em>is null(因为null值不能用=号判断)between(效果等效and)in(效果等效于or)</li>
-</ul>
-</li>
-</ul>
-<h4 id="DQL中的排序查询"><a href="#DQL中的排序查询" class="headerlink" title="DQL中的排序查询"></a>DQL中的排序查询</h4><ul>
-<li>order by 子句    *order by 排序字段1….    </li>
-<li>asc是升序，desc是降序</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/16/Mysql%E5%9F%BA%E7%A1%80/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" itemprop="url">商城业务分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-16T08:19:40+08:00">
-                2020-04-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">网站开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  443
+                  173
                 </span>
               
 
@@ -1032,47 +816,20 @@
 
       
         
-          <h3 id="商城业务分析"><a href="#商城业务分析" class="headerlink" title="商城业务分析"></a>商城业务分析</h3><h4 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h4><h5 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h5><ul>
-<li>在进行库存扣减的时候，必须注意不要进行<strong>内存运算</strong>,以免多线程造成错误，应该使用数据库的<strong>行级锁</strong></li>
-<li>校验实时的商品价格而不是购物车中的价格</li>
-<li>每次都需要校验购买数量是否大于库存量</li>
-</ul>
-<h5 id="支付业务"><a href="#支付业务" class="headerlink" title="支付业务"></a>支付业务</h5><ul>
-<li>超时订单，应该取消，并回滚库存量</li>
-<li>用户携带订单编号发送给支付系统，支付系统通过<code>http</code>请求,通过支付服务授权，生成支付二维码，支付成功后，通知<code>MQ</code>，订单系统取得<code>MQ</code>中的雄消息，并执行相应的操作</li>
-</ul>
-<h5 id="秒杀业务"><a href="#秒杀业务" class="headerlink" title="秒杀业务"></a>秒杀业务</h5><ul>
-<li>秒杀商品信息存到缓存<code>Redis</code>中</li>
-<li>多线程下单的时候，将订单信息等存到延时队列中，以检测用户是否长时间未支付</li>
-<li>为了降低微服务的负载，将用户信息校验等交给<code>redis</code></li>
-<li><font color=red>遇到的问题</font><ul>
-<li>重复排队的问题<ul>
-<li>使用<code>redis</code>记录用户排队的次数，如果大于1，则说明已经重复排队</li>
-</ul>
+          
+            <h2 id="17-Letter-Combinations-of-a-Phone-Number"><a href="#17-Letter-Combinations-of-a-Phone-Number" class="headerlink" title="17. Letter Combinations of a Phone Number"></a>17. Letter Combinations of a Phone Number</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent.</p>
+<p>A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png" alt="img"></p>
 </li>
-<li>实现并发削峰<ul>
-<li>使用队列机制，将信息存入<code>redis</code>并使用多线程来处理</li>
-<li>每次下单，需要输入验证码</li>
-</ul>
-</li>
-<li>防止超卖<ul>
-<li>使用<code>redis</code>,每次下单都从<code>redis</code>中查询</li>
-</ul>
-</li>
-<li>订单超时回滚<ul>
-<li>每次下单的时候都将信息存入延时队列，时间到达之后，关闭支付，回滚订单</li>
-</ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        Map&lt;Character,String&gt; map = Map.of(<span class="string">'2'</span>,<span class="string">"abc"</span>,<span class="string">'3'</span>,<span class="string">"def"</span>,</span><br><span class="line">                                           <span class="string">'4'</span>,<span class="string">"ghi"</span>,<span class="string">'5'</span>,<span class="string">"jkl"</span>,<span class="string">'6'</span>,<span class="string">"mno"</span>,</span><br><span class="line">                                           <span class="string">'7'</span>,<span class="string">"pqrs"</span>,<span class="string">'8'</span>,<span class="string">"tuv"</span>,<span class="string">'9'</span>,<span class="string">"wxyz"</span>);</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">if</span>(digits.length() == <span class="number">0</span>)<span class="keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">        buildString(<span class="string">""</span>,digits,map,ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildString</span><span class="params">(String result,String curr,Map&lt;Character,String&gt; map,List&lt;String&gt; ans)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(curr.length() == <span class="number">0</span>)&#123;</span><br><span class="line">            ans.add(result);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        String bag = map.get(curr.charAt(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bag.length();i++)&#123;</span><br><span class="line">            buildString(<span class="keyword">new</span> StringBuilder(result)</span><br><span class="line">                        .append(bag.charAt(i)).toString()</span><br><span class="line">                        ,curr.substring(<span class="number">1</span>,curr.length()) ,map ,ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/16/%E5%95%86%E5%9F%8E%E4%B8%9A%E5%8A%A1%E5%88%86%E6%9E%90/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
@@ -1119,7 +876,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/14.%20Longest%20Common%20Prefix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1138,7 +895,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url">电商B2C模式网站开发</a></h1>
+                <a class="post-title-link" href="/2020/04/17/14.%20Longest%20Common%20Prefix/" itemprop="url">14. Longest Common Prefix</a></h1>
         
 
         <div class="post-meta">
@@ -1150,8 +907,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-09T06:42:56+08:00">
-                2020-04-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
               </time>
             
 
@@ -1173,8 +930,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">网站开发</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -1191,8 +948,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="commentCount"></span>
+                <a href="/2020/04/17/14.%20Longest%20Common%20Prefix/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/14.%20Longest%20Common%20Prefix/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1214,7 +971,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  3.4k
+                  156
                 </span>
               
 
@@ -1230,7 +987,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  1
                 </span>
               
             </div>
@@ -1252,48 +1009,220 @@
 
       
         
-          <h3 id="商B2C模式网站开发"><a href="#商B2C模式网站开发" class="headerlink" title="商B2C模式网站开发"></a>商<code>B2C</code>模式网站开发</h3><h3 id="电商网站开发"><a href="#电商网站开发" class="headerlink" title="电商网站开发"></a>电商网站开发</h3><h4 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h4><ul>
-<li>前台<ul>
-<li>主站频道，用户中心，秒杀，优惠券等</li>
-</ul>
+          
+            <h2 id="14-Longest-Common-Prefix"><a href="#14-Longest-Common-Prefix" class="headerlink" title="14. Longest Common Prefix"></a>14. Longest Common Prefix</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
+<p>If there is no common prefix, return an empty string <code>&quot;&quot;</code>.</p>
 </li>
-<li>后台<ul>
-<li>商品，订单，库存，用户，运营，统计，财务，设置等</li>
-</ul>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">longestCommonPrefix</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(strs.length==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(strs.length ==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[strs.length];</span><br><span class="line">        <span class="keyword">int</span> n = strs.length;</span><br><span class="line">        dp[<span class="number">0</span>] = strs[<span class="number">0</span>].length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>; i &lt; strs.length;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> k = Math.min(strs[i-<span class="number">1</span>].length(),strs[i].length());</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(strs[i-<span class="number">1</span>].charAt(j) != strs[i].charAt(j))&#123;</span><br><span class="line">                    dp[i] = Math.min(j,dp[i-<span class="number">1</span>]);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[i] = Math.min(dp[i-<span class="number">1</span>],k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> m = dp[n-<span class="number">1</span>];</span><br><span class="line">        String s = strs[<span class="number">0</span>];</span><br><span class="line">        String result = s.substring(<span class="number">0</span>,m);</span><br><span class="line">        <span class="keyword">return</span> result.length() == <span class="number">0</span> ? <span class="string">""</span>: result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h4 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h4><h5 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h5><ul>
-<li>商品库</li>
-<li>订单库</li>
-<li>基础设置库</li>
-<li>运营库</li>
-<li>用户库</li>
-<li>系统库</li>
-<li>支付库</li>
-<li>短信库</li>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/12.%20Integer%20to%20Roman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/12.%20Integer%20to%20Roman/" itemprop="url">12. Integer to Roman</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/17/12.%20Integer%20to%20Roman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/12.%20Integer%20to%20Roman/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  299
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="12-Integer-to-Roman"><a href="#12-Integer-to-Roman" class="headerlink" title="12. Integer to Roman"></a>12. Integer to Roman</h2><ul>
+<li><p><strong>description</strong></p>
+<p>Roman numerals are represented by seven different symbols: <code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Symbol       Value</span><br><span class="line">I             1</span><br><span class="line">V             5</span><br><span class="line">X             10</span><br><span class="line">L             50</span><br><span class="line">C             100</span><br><span class="line">D             500</span><br><span class="line">M             1000</span><br></pre></td></tr></table></figure>
+
+<p>For example, two is written as <code>II</code> in Roman numeral, just two one’s added together. Twelve is written as, <code>XII</code>, which is simply <code>X</code> + <code>II</code>. The number twenty seven is written as <code>XXVII</code>, which is <code>XX</code> + <code>V</code> + <code>II</code>.</p>
+<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not <code>IIII</code>. Instead, the number four is written as <code>IV</code>. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as <code>IX</code>. There are six instances where subtraction is used:</p>
+<ul>
+<li><code>I</code> can be placed before <code>V</code> (5) and <code>X</code> (10) to make 4 and 9. </li>
+<li><code>X</code> can be placed before <code>L</code> (50) and <code>C</code> (100) to make 40 and 90. </li>
+<li><code>C</code> can be placed before <code>D</code> (500) and <code>M</code> (1000) to make 400 and 900.</li>
 </ul>
-<h5 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h5><ul>
-<li><code>SSM(通用mapper) +Dubbo</code></li>
-<li>前端技术，<code>vue.js+ElementUI</code>,前台使用<code>vue.js+thymeleaf</code></li>
-<li>消息中间件<code>RabbitMQ</code></li>
-<li>搜索中间件<code>elasticsearch</code></li>
-<li>缓存中间件技术<code>Redis</code></li>
-<li>报表 插件<code>echas</code></li>
-<li>安全框架<code>SpringSecurity</code></li>
-<li>单点登录中间件<code>CAS</code></li>
+<p>Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.</p>
+</li>
+<li><p><strong>solution</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">intToRoman</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Integer&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        map.put(<span class="string">"M"</span>,<span class="number">1000</span>);</span><br><span class="line">        map.put(<span class="string">"CM"</span>,<span class="number">900</span>);</span><br><span class="line">        map.put(<span class="string">"D"</span>,<span class="number">500</span>);</span><br><span class="line">        map.put(<span class="string">"CD"</span>,<span class="number">400</span>);</span><br><span class="line">        map.put(<span class="string">"C"</span>,<span class="number">100</span>);</span><br><span class="line">        map.put(<span class="string">"XC"</span>,<span class="number">90</span>);</span><br><span class="line">        map.put(<span class="string">"L"</span>,<span class="number">50</span>);</span><br><span class="line">        map.put(<span class="string">"XL"</span>,<span class="number">40</span>);</span><br><span class="line">        map.put(<span class="string">"X"</span>,<span class="number">10</span>);</span><br><span class="line">        map.put(<span class="string">"IX"</span>,<span class="number">9</span>);</span><br><span class="line">        map.put(<span class="string">"V"</span>,<span class="number">5</span>);</span><br><span class="line">        map.put(<span class="string">"IV"</span>,<span class="number">4</span>);</span><br><span class="line">        map.put(<span class="string">"I"</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(String key : map.keySet())&#123;</span><br><span class="line">            <span class="keyword">while</span>(num &gt;= map.get(key))&#123;</span><br><span class="line">                num -= map.get(key);</span><br><span class="line">                sb.append(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h4 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h4><h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><ul>
-<li>配置<code>maven</code>本地仓库</li>
-<li>创建数据库</li>
-<li>注册中心<code>zookeeper</code></li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/09/%E7%94%B5%E5%95%86B2C%E6%A8%A1%E5%BC%8F%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
@@ -1331,7 +1260,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/22/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/20/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/22/">下一页</a>
   </nav>
 
 
@@ -1381,7 +1310,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1392,7 +1321,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1403,7 +1332,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1470,7 +1399,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.2k</span>
+    <span title="Site words total count">148k</span>
   
 </div>
 

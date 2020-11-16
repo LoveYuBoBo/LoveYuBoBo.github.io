@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Strings包strings包中提供了各种操作字符串的方法，下面详细介绍 Index操作index查找字串在目标串中出现的位置 12345678910package mainimport (	&quot;fmt&quot;  &quot;strings&quot;)func main() &amp;#123;  str1:&#x3D;&quot;hello&quot;  str2:&#x3D;&quot;l&quot;  fmt.Print(&quot;str2在str1中出现的位置:&quot;,strings.Ind">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Strings包">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/16/Strings%E5%8C%85/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="Strings包strings包中提供了各种操作字符串的方法，下面详细介绍 Index操作index查找字串在目标串中出现的位置 12345678910package mainimport (	&quot;fmt&quot;  &quot;strings&quot;)func main() &amp;#123;  str1:&#x3D;&quot;hello&quot;  str2:&#x3D;&quot;l&quot;  fmt.Print(&quot;str2在str1中出现的位置:&quot;,strings.Ind">
+<meta property="article:published_time" content="2020-11-16T13:02:04.754Z">
+<meta property="article:modified_time" content="2020-11-16T13:04:49.345Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="go语言">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/16/Strings包/"/>
+
+
+
+
+
+  <title>Strings包 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/Strings%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Strings包</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/Strings%E5%8C%85/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/Strings%E5%8C%85/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  775
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Strings包"><a href="#Strings包" class="headerlink" title="Strings包"></a>Strings包</h3><p>strings包中提供了各种操作字符串的方法，下面详细介绍</p>
+<h4 id="Index操作"><a href="#Index操作" class="headerlink" title="Index操作"></a>Index操作</h4><h5 id="index"><a href="#index" class="headerlink" title="index"></a>index</h5><p>查找字串在目标串中出现的位置</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str1:=<span class="string">"hello"</span></span><br><span class="line">  str2:=<span class="string">"l"</span></span><br><span class="line">  fmt.Print(<span class="string">"str2在str1中出现的位置:"</span>,strings.Index(str1,str2))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="LastIndex和LastIndexAny"><a href="#LastIndex和LastIndexAny" class="headerlink" title="LastIndex和LastIndexAny"></a>LastIndex和LastIndexAny</h5><p>查找最后一次出现的字符，以及任意一个最后出现的字符</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str1:=<span class="string">"hello"</span></span><br><span class="line">  str2:=<span class="string">"l"</span></span><br><span class="line">  str9:=<span class="string">"lo"</span></span><br><span class="line">  fmt.Print(<span class="string">"str2在str1中出现的位置:"</span>,strings.LastIndex(str1,str2))</span><br><span class="line">  fmt.Print(<span class="string">"str2在str1中出现的位置:"</span>,strings.LastIndex(str1,str9))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="trim操作"><a href="#trim操作" class="headerlink" title="trim操作"></a>trim操作</h4><h5 id="trim"><a href="#trim" class="headerlink" title="trim"></a>trim</h5><p>返回除去包含给定字符的前缀和后缀的字符串(如果给定包含多个字符，则都会去除)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  	<span class="comment">//trim去除给定字符的前缀和后缀</span></span><br><span class="line">	str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">	str7 := <span class="string">"go"</span></span><br><span class="line">	fmt.Println(<span class="string">"新的字符串是:"</span>, strings.Trim(str6, str7))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="trimLeft和trimRight"><a href="#trimLeft和trimRight" class="headerlink" title="trimLeft和trimRight"></a>trimLeft和trimRight</h5><p>只去除左边或者右边的 </p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">	str7 := <span class="string">"go"</span></span><br><span class="line">  fmt.Println(<span class="string">"去除左边后的字符串:"</span>, strings.TrimLeft(str6, str7))</span><br><span class="line">	fmt.Println(<span class="string">"去除右边以后的字符串:"</span>, strings.TrimRight(str6, str7))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="TrimPrefixx和Trimsuffix"><a href="#TrimPrefixx和Trimsuffix" class="headerlink" title="TrimPrefixx和Trimsuffix"></a>TrimPrefixx和Trimsuffix</h5><p>去除包含前缀或者后缀的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">	str7 := <span class="string">"go"</span></span><br><span class="line">	fmt.Println(<span class="string">"去除前缀后字符串是:"</span>, strings.TrimPrefix(str6, str7))</span><br><span class="line">	fmt.Println(<span class="string">"去除前缀后字符串是:"</span>, strings.TrimPrefix(str6, <span class="string">"g"</span>))</span><br><span class="line">	fmt.Println(<span class="string">"去除后缀后字符串是:"</span>, strings.TrimSuffix(str6, str7))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="TrimSpace"><a href="#TrimSpace" class="headerlink" title="TrimSpace"></a>TrimSpace</h5><p>去除前后空格</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  	fmt.Println(<span class="string">"去除空格后的字符串:"</span>, strings.TrimSpace(<span class="string">" golang "</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="replace操作"><a href="#replace操作" class="headerlink" title="replace操作"></a>replace操作</h4><h5 id="replace"><a href="#replace" class="headerlink" title="replace"></a>replace</h5><p>替换目标字符串中第一个符合模式串的,可以指定替换多少个</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">  	fmt.Println(<span class="string">"替换go以后的字符串:"</span>, strings.Replace(str6, <span class="string">"g"</span>, <span class="string">"t"</span>, <span class="number">3</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="ReplaceAll"><a href="#ReplaceAll" class="headerlink" title="ReplaceAll"></a>ReplaceAll</h5><p>替换所有字符，底层调用的是Replace，其中最后一个参数是-1，表示替换所有</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">  	fmt.Println(<span class="string">"替换go以后的字符串:"</span>, strings.ReplaceAll(str6, <span class="string">"g"</span>, <span class="string">"t"</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="大小写转换操作"><a href="#大小写转换操作" class="headerlink" title="大小写转换操作"></a>大小写转换操作</h4><h5 id="ToUpper-和ToLower"><a href="#ToUpper-和ToLower" class="headerlink" title="ToUpper 和ToLower"></a>ToUpper 和ToLower</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str6 := <span class="string">"gggoogolanggo"</span></span><br><span class="line">  fmt.Println(<span class="string">"转为大写后的字符串是:"</span>, strings.ToUpper(str6))</span><br><span class="line">	str8 := <span class="string">"GOLAND"</span></span><br><span class="line">	fmt.Println(<span class="string">"转为小写后的字符串是:"</span>, strings.ToLower(str8))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Repeat"><a href="#Repeat" class="headerlink" title="Repeat"></a>Repeat</h4><p>重复字符串之后输出,可以指定重复的次数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  str8 := <span class="string">"GOLAND"</span></span><br><span class="line">  fmt.Println(<span class="string">"重复3次以后的字符串是:"</span>, strings.Repeat(str8, <span class="number">3</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Join操作"><a href="#Join操作" class="headerlink" title="Join操作"></a>Join操作</h4><p>在字符串数组的每个空格之处添加指定的字符串</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  str:=[]<span class="keyword">string</span>&#123;<span class="string">"go"</span>,<span class="string">"java"</span>,<span class="string">"python"</span>&#125;</span><br><span class="line">  str1:=<span class="string">"c++"</span></span><br><span class="line">  fmt.Println(<span class="string">"链接以后的是:"</span>,strings.Join(str,str1))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Split操作"><a href="#Split操作" class="headerlink" title="Split操作"></a>Split操作</h4><h5 id="Split"><a href="#Split" class="headerlink" title="Split"></a>Split</h5><p>按给定字符切分字符串且删除给定字符</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  str6:=<span class="string">"gggooolang"</span></span><br><span class="line">  fmt.Println(<span class="string">"按g切分后字符串是:"</span>, strings.Split(str6, <span class="string">"g"</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="SplitN"><a href="#SplitN" class="headerlink" title="SplitN"></a>SplitN</h5><p>可以指定索引位置</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  str6:=<span class="string">"gggooolang"</span></span><br><span class="line">  fmt.Println(<span class="string">"按g切分后字符串是:"</span>, strings.SplitN(str6, <span class="string">"g"</span>,<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="SplitAfter和SplitAfterN"><a href="#SplitAfter和SplitAfterN" class="headerlink" title="SplitAfter和SplitAfterN"></a>SplitAfter和SplitAfterN</h5><p>按给定字符切分，删除的是字符后面的字符，同时也可以指定索引</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">  <span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  str6:=<span class="string">"gggooolang"</span></span><br><span class="line">  fmt.Println(<span class="string">"按g切分后字符串是:"</span>, strings.SplitAfter(str6, <span class="string">"g"</span>)</span><br><span class="line">  fmt.Println(<span class="string">"按g切分后字符串是:"</span>, strings.SplitAfterN(str6, <span class="string">"g"</span>，<span class="number">6</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag"># go语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/16/net%E5%8C%85/" rel="next" title="net包">
+                <i class="fa fa-chevron-left"></i> net包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/16/sync%E5%8C%85/" rel="prev" title="sync包">
+                sync包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Strings包"><span class="nav-number">1.</span> <span class="nav-text">Strings包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Index操作"><span class="nav-number">1.1.</span> <span class="nav-text">Index操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#index"><span class="nav-number">1.1.1.</span> <span class="nav-text">index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LastIndex和LastIndexAny"><span class="nav-number">1.1.2.</span> <span class="nav-text">LastIndex和LastIndexAny</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#trim操作"><span class="nav-number">1.2.</span> <span class="nav-text">trim操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#trim"><span class="nav-number">1.2.1.</span> <span class="nav-text">trim</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#trimLeft和trimRight"><span class="nav-number">1.2.2.</span> <span class="nav-text">trimLeft和trimRight</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TrimPrefixx和Trimsuffix"><span class="nav-number">1.2.3.</span> <span class="nav-text">TrimPrefixx和Trimsuffix</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TrimSpace"><span class="nav-number">1.2.4.</span> <span class="nav-text">TrimSpace</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#replace操作"><span class="nav-number">1.3.</span> <span class="nav-text">replace操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#replace"><span class="nav-number">1.3.1.</span> <span class="nav-text">replace</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ReplaceAll"><span class="nav-number">1.3.2.</span> <span class="nav-text">ReplaceAll</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大小写转换操作"><span class="nav-number">1.4.</span> <span class="nav-text">大小写转换操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ToUpper-和ToLower"><span class="nav-number">1.4.1.</span> <span class="nav-text">ToUpper 和ToLower</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Repeat"><span class="nav-number">1.5.</span> <span class="nav-text">Repeat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Join操作"><span class="nav-number">1.6.</span> <span class="nav-text">Join操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Split操作"><span class="nav-number">1.7.</span> <span class="nav-text">Split操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Split"><span class="nav-number">1.7.1.</span> <span class="nav-text">Split</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SplitN"><span class="nav-number">1.7.2.</span> <span class="nav-text">SplitN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SplitAfter和SplitAfterN"><span class="nav-number">1.7.3.</span> <span class="nav-text">SplitAfter和SplitAfterN</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">148k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

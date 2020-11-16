@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/05/25/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/25/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="url">设计模式（一）</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" itemprop="url">文件系统</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-25T22:08:22+08:00">
-                2020-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T21:42:08+08:00">
+                2020-11-05
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
                   </a>
                 </span>
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/05/25/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/25/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  1.6k
+                  1.2k
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6
+                  3
                 </span>
               
             </div>
@@ -403,291 +403,62 @@
 
       
         
-          
-            <h3 id="设计模式（一）"><a href="#设计模式（一）" class="headerlink" title="设计模式（一）"></a>设计模式（一）</h3><h4 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h4><h5 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h5><h5 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h5><h5 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h5><ul>
-<li><p>解决使用构造函数的时候，参数过多的问题</p>
-</li>
-<li><p>解决使用<code>set</code>设置的时候，参数间的依赖问题</p>
-</li>
-<li><p>解决想要创建不可变类的问题(意味着不能暴漏<code>set</code>)</p>
-</li>
-<li><p>使用例子如下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourcePoolConfig</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> maxTotal;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> maxIdle;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> minIdle;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">ResourcePoolConfig</span><span class="params">(Builder builder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = builder.name;</span><br><span class="line">    <span class="keyword">this</span>.maxTotal = builder.maxTotal;</span><br><span class="line">    <span class="keyword">this</span>.maxIdle = builder.maxIdle;</span><br><span class="line">    <span class="keyword">this</span>.minIdle = builder.minIdle;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//...省略getter方法...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//我们将Builder类设计成了ResourcePoolConfig的内部类。</span></span><br><span class="line">  <span class="comment">//我们也可以将Builder类设计成独立的非内部类ResourcePoolConfigBuilder。</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_MAX_TOTAL = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_MAX_IDLE = <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_MIN_IDLE = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxTotal = DEFAULT_MAX_TOTAL;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxIdle = DEFAULT_MAX_IDLE;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> minIdle = DEFAULT_MIN_IDLE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResourcePoolConfig <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 校验逻辑放到这里来做，包括必填项校验、依赖关系校验、约束条件校验等</span></span><br><span class="line">      <span class="keyword">if</span> (StringUtils.isBlank(name)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (maxIdle &gt; maxTotal) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (minIdle &gt; maxTotal || minIdle &gt; maxIdle) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> ResourcePoolConfig(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (StringUtils.isBlank(name)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.name = name;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setMaxTotal</span><span class="params">(<span class="keyword">int</span> maxTotal)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (maxTotal &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.maxTotal = maxTotal;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setMaxIdle</span><span class="params">(<span class="keyword">int</span> maxIdle)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (maxIdle &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.maxIdle = maxIdle;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Builder <span class="title">setMinIdle</span><span class="params">(<span class="keyword">int</span> minIdle)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (minIdle &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"..."</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">this</span>.minIdle = minIdle;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这段代码会抛出IllegalArgumentException，因为minIdle&gt;maxIdle</span></span><br><span class="line">ResourcePoolConfig config = <span class="keyword">new</span> ResourcePoolConfig.Builder()</span><br><span class="line">        .setName(<span class="string">"dbconnectionpool"</span>)</span><br><span class="line">        .setMaxTotal(<span class="number">16</span>)</span><br><span class="line">        .setMaxIdle(<span class="number">10</span>)</span><br><span class="line">        .setMinIdle(<span class="number">12</span>)</span><br><span class="line">        .build();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>和工厂模式的区别</p>
-<ul>
-<li>工厂模式是用来创建不同但是相关类型的对象（继承同一父类或者接口的一组子类），由给定的参数来决定创建哪种类型的对象。建造者模式是用来创建一种类型的复杂对象，通过设置不同的可选参数，“定制化”地创建不同的对象</li>
+          <h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>文件系统和文件<ul>
+<li>文件系统：一种用于持久性存储的系统抽象</li>
+<li>文件：文件系统中一个单元的相关数据在操作系统中的抽象</li>
+<li>文件属性</li>
+<li>文件头</li>
 </ul>
 </li>
-</ul>
-<h5 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h5><ul>
-<li>实现方式<ul>
-<li>深拷贝</li>
-<li>浅拷贝</li>
+<li>文件描述符<ul>
+<li>文件使用模式<ul>
+<li>使用程序必须在使用前先“打开”文件</li>
 </ul>
 </li>
-<li>原型模式针对创建成本比较大的对象，利用对已有对象进行复制的方式进行创建，以达到节省创建时间的目的。</li>
-</ul>
-<h4 id="结构型"><a href="#结构型" class="headerlink" title="结构型"></a>结构型</h4><h5 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h5><ul>
-<li>动态代理<ul>
-<li>基于接口</li>
-<li>基于继承</li>
+<li>内核跟踪每个进程打开的文件<ul>
+<li>操作系统为每个进程维护一个打开的文件表</li>
+<li>一个打开文件描述符是这个表中的索引</li>
 </ul>
 </li>
-<li>利用反射</li>
-<li>使用<ul>
-<li>监控、统计、鉴权、限流、事务、幂等、日志</li>
+<li>需要元数据来管理打开文件<ul>
+<li>文件指针：指向最近一次读写位置，每个打开了这个文件的进程都有这个指针</li>
+<li>文件打开计数：记录文件打开的次数</li>
+<li>文件磁盘位置：缓存数据访问信息</li>
+<li>访问权限：每个程序访问模式信息</li>
 </ul>
 </li>
-</ul>
-<h5 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h5><ul>
-<li><code>JDBC</code>驱动</li>
-<li>类似“组合优于继承”设计原则，这种理解方式更加通用，应用场景比较多。不管是哪种理解方式，它们的代码结构都是相同的，都是一种类之间的组合关系。</li>
-</ul>
-<h5 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h5><ul>
-<li>从 Java IO 的设计来看，装饰器模式相对于简单的组合关系，还有两个比较特殊的地方。第一个比较特殊的地方是：装饰器类和原始类继承同样的父类，这样我们可以对原始类“嵌套”多个装饰器</li>
-<li>第二个比较特殊的地方是：装饰器类是对功能的增强，这也是装饰器模式应用场景的一个重要特点</li>
-<li>代理模式中，代理类附加的是跟原始类无关的功能，而在装饰器模式中，装饰器类附加的是跟原始类相关的增强功能。</li>
-</ul>
-<h5 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h5><ul>
-<li>适配器模式有两种实现方式：类适配器和对象适配器。其中，类适配器使用继承关系来实现，对象适配器使用组合关系来实现</li>
-<li>如何使用<ul>
-<li>类适配器<ul>
-<li>如果 Adaptee 接口并不多，那两种实现方式都可以。</li>
-<li>如果 Adaptee 接口很多，而且 Adaptee 和 ITarget 接口定义大部分都相同，那我们推荐使用类适配器，因为 Adaptor 复用父类 Adaptee 的接口，比起对象适配器的实现方式，Adaptor 的代码量要少一些。</li>
-</ul>
-</li>
-<li>对象适配器<ul>
-<li>如果 Adaptee 接口很多，而且 Adaptee 和 ITarget 接口定义大部分都不相同，那我们推荐使用对象适配器，因为组合结构相对于继承更加灵活。</li>
+<li>用户视图<ul>
+<li>用户怎么访问文件<ul>
+<li>顺序访问</li>
+<li>随机访问：从中间读写</li>
+<li>快速访问：通过特征</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 类适配器: 基于继承</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ITarget</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">fc</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adaptee</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fa</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fb</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fc</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adaptor</span> <span class="keyword">extends</span> <span class="title">Adaptee</span> <span class="keyword">implements</span> <span class="title">ITarget</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.fa();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...重新实现f2()...</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 这里fc()不需要实现，直接继承自Adaptee，这是跟对象适配器最大的不同点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象适配器：基于组合</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ITarget</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">fc</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adaptee</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fa</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fb</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fc</span><span class="params">()</span> </span>&#123; <span class="comment">//... &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Adaptor</span> <span class="keyword">implements</span> <span class="title">ITarget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Adaptee adaptee;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Adaptor</span><span class="params">(Adaptee adaptee)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.adaptee = adaptee;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    adaptee.fa(); <span class="comment">//委托给Adaptee</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//...重新实现f2()...</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">fc</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    adaptee.fc();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用场景<ul>
-<li>二次封装有缺陷的类</li>
-<li>统一多个类的接口设计</li>
-<li>替换依赖的外部系统</li>
-<li>兼容老版本接口</li>
-<li>适配不同格式的数据</li>
+<li>文件的结构：<ul>
+<li>简单记录结构<ul>
+<li>列</li>
+<li>固定长度</li>
+<li>可变长度</li>
 </ul>
 </li>
-<li>区别<ul>
-<li>代理模式：代理模式在不改变原始类接口的条件下，为原始类定义一个代理类，主要目的是控制访问，而非加强功能，这是它跟装饰器模式最大的不同。</li>
-<li>桥接模式：桥接模式的目的是将接口部分和实现部分分离，从而让它们可以较为容易、也相对独立地加以改变。</li>
-<li>装饰器模式：装饰者模式在不改变原始类接口的情况下，对原始类功能进行增强，并且支持多个装饰器的嵌套使用。</li>
-<li>适配器模式：适配器模式是一种事后的补救策略。适配器提供跟原始类不同的接口，而代理模式、装饰器模式提供的都是跟原始类相同的接口。</li>
+<li>复杂结构<ul>
+<li>格式化的文档</li>
+<li>可执行文件</li>
 </ul>
 </li>
 </ul>
-<h5 id="门面模式"><a href="#门面模式" class="headerlink" title="门面模式"></a>门面模式</h5><ul>
-<li>使用场景<ul>
-<li>解决易用性问题</li>
-<li>解决性能问题</li>
-<li>解决分布式事务问题</li>
+</li>
+<li>系统访问接口</li>
+<li>操作系统内部视角</li>
 </ul>
 </li>
 </ul>
-<h5 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h5><ul>
-<li>组合模式和面向对象设计中的“组合关系（通过组合来组装两个类）”，完全是两码事。“组合模式”，主要是用来处理树形结构数据。</li>
-</ul>
-<h5 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h5><ul>
-<li>所谓“享元”，顾名思义就是被共享的单元。享元模式的意图是复用对象，节省内存，前提是享元对象是不可变对象</li>
-<li>那享元模式的原理是通过工厂模式，在工厂类中，通过一个 Map 来缓存已经创建过的享元对象，来达到复用的目的</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/05/02/278.%20%20First%20Bad%20Version/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/02/278.%20%20First%20Bad%20Version/" itemprop="url">278.  First Bad Version</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-02T03:59:56+08:00">
-                2020-05-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/05/02/278.%20%20First%20Bad%20Version/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/02/278.%20%20First%20Bad%20Version/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  180
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="278-First-Bad-Version"><a href="#278-First-Bad-Version" class="headerlink" title="278.  First Bad Version"></a>278.  First Bad Version</h4><ul>
-<li><p>题目描述</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">给定一个正整数n，表示从1到n的本本，当其中某个版本出现错误，则后面的都出现错误。给定一个API检测某个版本是否错误，尽可能少的调用此API确定第一次出错的版本。</span><br><span class="line">例子：</span><br><span class="line">Given n &#x3D; 5, and version &#x3D; 4 is the first bad version.</span><br><span class="line"></span><br><span class="line">call isBadVersion(3) -&gt; false</span><br><span class="line">call isBadVersion(5) -&gt; true</span><br><span class="line">call isBadVersion(4) -&gt; true</span><br><span class="line"></span><br><span class="line">Then 4 is the first bad version.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解答</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这是一个典型的可以使用二分查找的题目</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/05/02/278.%20%20First%20Bad%20Version/#more" rel="contents">
+            <a class="btn" href="/2020/11/05/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -738,7 +509,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/30/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E6%AD%BB%E9%94%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -757,7 +528,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/30/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">阿里面试题</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="url">死锁</a></h1>
         
 
         <div class="post-meta">
@@ -769,8 +540,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T22:46:14+08:00">
-                2020-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T20:02:22+08:00">
+                2020-11-05
               </time>
             
 
@@ -792,8 +563,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
                   </a>
                 </span>
 
@@ -810,8 +581,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/30/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/30/%E9%98%BF%E9%87%8C%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E6%AD%BB%E9%94%81/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E6%AD%BB%E9%94%81/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -833,7 +604,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  213
+                  1.6k
                 </span>
               
 
@@ -849,7 +620,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -871,24 +642,67 @@
 
       
         
-          
-            <h4 id="阿里面试题"><a href="#阿里面试题" class="headerlink" title="阿里面试题"></a>阿里面试题</h4><h5 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h5><ul>
-<li>http发送数据包的过程，路由转发的流程</li>
-<li>每个层的具体工作，为什么能找到具体的服务器</li>
+          <h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><h4 id="死锁问题"><a href="#死锁问题" class="headerlink" title="死锁问题"></a>死锁问题</h4><ul>
+<li>一组阻塞的进程持有一种资源等待获取另一个进程所占有的一个资源</li>
 </ul>
-<h5 id="java"><a href="#java" class="headerlink" title="java"></a>java</h5><ul>
-<li>ArrayList和LinkedList的区别和使用场景，为什么ArrayList随机访问速度快</li>
-<li>HashMap的实现，为什么会出现链表环，头插法和尾插法，hashmap初始容量为什么是16，扩容为什么是2倍，不是3倍，4倍？</li>
-<li>concurrentHashMap的实现，为什么jdk1.8改为使用synchronized，这个锁住的又是什么</li>
-<li>reenterntLock和synchronized的性能区别，和轻量级锁呢，重量级锁呢</li>
-<li>reentrantlock的底层是怎么实现的</li>
-<li>jvm创建线程的大小受什么影响</li>
+<h4 id="死锁模型"><a href="#死锁模型" class="headerlink" title="死锁模型"></a>死锁模型</h4><ul>
+<li>可重复使用的资源<ul>
+<li>在一个时间只能一个进程使用且不能被删除</li>
+<li>进程获得资源，后来释放由其他进程重用</li>
+<li>处理器，I/O通道，设备和数据结构</li>
+<li>如果每个进程拥有一个资源并请求其他资源，死锁可能发生</li>
 </ul>
-<h5 id="具体场景"><a href="#具体场景" class="headerlink" title="具体场景"></a>具体场景</h5><ul>
-<li>20G大小的文件包含不重复的单词，大小为2G的内存，如何快速判断单词是否在文件中。</li>
+</li>
+<li>使用资源<ul>
+<li>创建和销毁</li>
+<li>在I/O缓冲区的中断，信号，消息。信息</li>
+<li>如果接收消息阻塞可能发生死锁</li>
+<li>可能 少见的组合时间会发生死锁</li>
 </ul>
-
-          
+</li>
+<li>资源分配图<ul>
+<li>一组顶点V和边E的集合<ul>
+<li>V有两种类型<ul>
+<li>一种是包括系统中所欲的进程</li>
+<li>一种是包括系统中的所有资源类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>结论<ul>
+<li>图中不包含循环，则不会发生死锁</li>
+<li>如果有循环，则可能死锁，也不能不会发生死锁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="死锁特征（必要不充分条件）"><a href="#死锁特征（必要不充分条件）" class="headerlink" title="死锁特征（必要不充分条件）"></a>死锁特征（必要不充分条件）</h4><ul>
+<li>互斥：在一个时间内只有一个进程使用资源</li>
+<li>持有并等待：进程保持至少一个资源正在等待获取其他进程持有的额外资源</li>
+<li>不可抢占：一个资源只能被进程资源释放，进程已经完成了它的任务之后</li>
+<li>循环等待：</li>
+</ul>
+<h4 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h4><ul>
+<li>死锁预防<ul>
+<li>确保系统永远不会进入死锁状态（操作系统性能差）</li>
+<li>实现<ul>
+<li>互斥：共享资源不是必须的，必须占用非共享资源</li>
+<li>占有且等待：分配全部的资源，资源利用率低，可能发生饥饿</li>
+<li>不可抢占：分配不到资源则释放已经 持有的资源</li>
+<li>循环等待：对资源类型进行排序，按顺序申请资源</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E6%AD%BB%E9%94%81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -935,7 +749,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/30/MyBatis%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -954,7 +768,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/30/MyBatis%E5%9F%BA%E7%A1%80/" itemprop="url">MyBatis基础</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="url">信号量和管程</a></h1>
         
 
         <div class="post-meta">
@@ -966,8 +780,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T16:35:15+08:00">
-                2020-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T12:29:20+08:00">
+                2020-11-05
               </time>
             
 
@@ -977,28 +791,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MyBatis/" itemprop="url" rel="index">
-                    <span itemprop="name">MyBatis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1007,8 +799,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/30/MyBatis%E5%9F%BA%E7%A1%80/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/30/MyBatis%E5%9F%BA%E7%A1%80/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1030,7 +822,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  176
+                  615
                 </span>
               
 
@@ -1046,7 +838,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -1068,25 +860,78 @@
 
       
         
-          
-            <h4 id="MyBatis基础"><a href="#MyBatis基础" class="headerlink" title="MyBatis基础"></a>MyBatis基础</h4><ul>
-<li>逻辑分页和物理分页<ul>
-<li>物理分页依赖于具体的实体，比如Mysql，使用limit茶隼出分页结果，这总方式会频繁访问数据库</li>
-<li>逻辑分页是一次性查询出所有数据，使用的时候，将数据封装返回，这种方式比较占内存</li>
+          <h3 id="信号量和管程"><a href="#信号量和管程" class="headerlink" title="信号量和管程"></a>信号量和管程</h3><h4 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h4><ul>
+<li>并发问题：竞态条件</li>
+<li>同步<ul>
+<li>多线程共享公共数据的协调执行</li>
+<li>包括互斥和条件同步</li>
+<li>互斥：在同一时间只有一个线程可以执行临界区</li>
 </ul>
 </li>
-<li>实现延迟加载的原理<ul>
-<li>MyBatis延迟加载是使用动态代理实现的，通过代理拦截到指定方法，执行数据加载</li>
-</ul>
-</li>
-<li>一级缓存，二级缓存<ul>
-<li>一级缓存是sqlSession级别的，该对象中存储缓存数据，使用HashMap</li>
-<li>二级缓存是mapper级别的，多个sqlSession是共享二级缓存的。</li>
+<li>确保同步正确很难<ul>
+<li>需要高层次的编程抽象，比如锁</li>
+<li>从底层硬件支持编译，如禁用中断，原子操作等</li>
 </ul>
 </li>
 </ul>
-
-          
+<h4 id="信号量（semphere）"><a href="#信号量（semphere）" class="headerlink" title="信号量（semphere）"></a>信号量（semphere）</h4><ul>
+<li>信号量用一个整形（sem）表示，有两个原子操作<ul>
+<li>P（），sem减1，如果sem&lt;0,等待，否则继续</li>
+<li>V（）：sem加1，如果sem&lt;=0,唤醒一个等待的P</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号量的使用"><a href="#信号量的使用" class="headerlink" title="信号量的使用"></a>信号量的使用</h4><ul>
+<li><p>信号量是整数</p>
+</li>
+<li><p>信号量是被保护的变量</p>
+<ul>
+<li>初始化完成后。唯一改变一个信号量的值的办法是通过PV操作</li>
+<li>操作必须是原子</li>
+</ul>
+</li>
+<li><p>P操作会阻塞，V操作不会阻塞</p>
+</li>
+<li><p>两种类型信号量</p>
+<ul>
+<li>二进制信号量：0或者1</li>
+<li>计数信号量：可取任何非负值</li>
+</ul>
+</li>
+<li><p>用二进制信号量实现的互斥，初始值设为1</p>
+</li>
+<li><p>用二进制信号量实现的调度约束：初始值设为0</p>
+</li>
+</ul>
+<h4 id="信号量的实现"><a href="#信号量的实现" class="headerlink" title="信号量的实现"></a>信号量的实现</h4><ul>
+<li>使用硬件原语<ul>
+<li>禁用中断</li>
+<li>原子指令</li>
+</ul>
+</li>
+<li>用途<ul>
+<li>互斥和条件同步</li>
+<li>等待条件是独立的互斥</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>程序员必须精通信号量</li>
+<li>容易出错<ul>
+<li>使用的信号量已经被另一个线程占用</li>
+<li>忘记释放信号量</li>
+</ul>
+</li>
+<li>不能处理死锁的问题</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%92%8C%E7%AE%A1%E7%A8%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1133,7 +978,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/30/%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/05/%E5%90%8C%E6%AD%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1152,7 +997,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/30/%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/" itemprop="url">京东面试</a></h1>
+                <a class="post-title-link" href="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="url">同步</a></h1>
         
 
         <div class="post-meta">
@@ -1164,8 +1009,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-30T15:40:13+08:00">
-                2020-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-05T09:30:55+08:00">
+                2020-11-05
               </time>
             
 
@@ -1187,8 +1032,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
-                    <span itemprop="name">面试题</span>
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
                   </a>
                 </span>
 
@@ -1205,8 +1050,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/30/%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/30/%E4%BA%AC%E4%B8%9C%E9%9D%A2%E8%AF%95/" itemprop="commentCount"></span>
+                <a href="/2020/11/05/%E5%90%8C%E6%AD%A5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/05/%E5%90%8C%E6%AD%A5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1228,7 +1073,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  268
+                  718
                 </span>
               
 
@@ -1244,7 +1089,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -1266,44 +1111,285 @@
 
       
         
-          
-            <h4 id="京东面试"><a href="#京东面试" class="headerlink" title="京东面试"></a>京东面试</h4><h5 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h5><ul>
-<li>JDK和JRE的区别</li>
-<li>抽象类和接口</li>
-<li>如何保证集合类不被修改</li>
-<li>hashMap转成红黑树的条件</li>
-<li>红黑树的特点</li>
-<li>深克隆和浅克隆的区别和实现</li>
+          <h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><ul>
+<li>无论多个线程的指令序列怎么样交替执行，程序都必须正常工作<ul>
+<li>多线程程序具有不确定性和不可重现的特点</li>
+<li>调试难度很高</li>
 </ul>
-<h5 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h5><ul>
-<li>线程中start和run方法</li>
-<li>线程池的主要参数</li>
-<li>新线程到来的处理流程</li>
-<li>拒绝策略</li>
-<li>为什么不建议用线程池实现类</li>
+</li>
+<li>不确定性要求并行程序的正确性</li>
+<li>原子操作<ul>
+<li>原子操作是指一次不存在任何中断或者失败的执行<ul>
+<li>该执行成功结束</li>
+<li>或者根本没有执行</li>
+<li>并且不应该发现任何部分执行的状态</li>
 </ul>
-<h5 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h5><ul>
-<li>垃圾回收算法</li>
-<li>新生代和老年代使用的垃圾收集器</li>
+</li>
+<li>实际上操作往往不是原子的<ul>
+<li>有些操作看似是原子的，实际并不是，例如i++</li>
+<li>有时候，单条机器指令都不是原子的</li>
 </ul>
-<h5 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h5><ul>
-<li>spring中的事务管理，参数有哪些，哪些情况管理不到事务</li>
-<li>Bean自动装配的方式</li>
-<li>Bean的作用域</li>
-<li>spring mvc拦截器的使用时机</li>
-<li>mybatis的逻辑分页和物理分页</li>
-<li>mybatis是否支持延迟加载，原理是什么</li>
-<li>redis为什么是单线程的</li>
-<li>redis的持久化方式</li>
-<li>mysql的左外连接，右外连接和全连接的区别</li>
-<li>mysql的索引有哪些，平时使用到哪些</li>
-<li>怎么判断索引是否生效</li>
+</li>
 </ul>
-<h5 id="编程题"><a href="#编程题" class="headerlink" title="编程题"></a>编程题</h5><ul>
-<li>写一个反转链表并输出的程序</li>
+</li>
+<li>临界区<ul>
+<li>临界区指的是进程中的一段需要访问共享资源并且当另一个进程处于相应代码区域时便不会被执行的代码区域</li>
 </ul>
+</li>
+<li>互斥<ul>
+<li>当一个进程处于临界区并访问共享资源的时候，没有其他进程会处于临界区并且访问任何相同的共享资源</li>
+</ul>
+</li>
+<li>死锁<ul>
+<li>两个或以上的进程，在相互等待完成特定的任务，而最终没法将自身任务进行下去</li>
+</ul>
+</li>
+<li>饥饿<ul>
+<li>一个可执行的进程，被调度器持续忽略，以至于虽然处于可执行状态却不被执行</li>
+</ul>
+</li>
+</ul>
+<h4 id="临界区"><a href="#临界区" class="headerlink" title="临界区"></a>临界区</h4><ul>
+<li>互斥<ul>
+<li>同一时间临界区中最多存在一个线程</li>
+</ul>
+</li>
+<li>Progress<ul>
+<li>如果一个线程想要进入临界区，它最终会成功</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/05/%E5%90%8C%E6%AD%A5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/04/%E8%B0%83%E5%BA%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="url">调度</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-04T22:14:30+08:00">
+                2020-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/04/%E8%B0%83%E5%BA%A6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/04/%E8%B0%83%E5%BA%A6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  898
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h3><h4 id="内核运行调度程序的条件"><a href="#内核运行调度程序的条件" class="headerlink" title="内核运行调度程序的条件"></a>内核运行调度程序的条件</h4><ul>
+<li>一个进程从运行态切换到等待状态</li>
+<li>一个进程被终结了</li>
+</ul>
+<h4 id="调度策略"><a href="#调度策略" class="headerlink" title="调度策略"></a>调度策略</h4><ul>
+<li>不可抢占：调度程序必须等待事件结束</li>
+<li>可以抢占<ul>
+<li>调度程序在中断被相应后执行</li>
+<li>当前的进程从运行切换到就绪，或者一个进程从 等待切换到就绪</li>
+<li>当前运行的进程可以被换出</li>
+</ul>
+</li>
+</ul>
+<h4 id="调度原则"><a href="#调度原则" class="headerlink" title="调度原则"></a>调度原则</h4><ul>
+<li>调度策略<ul>
+<li>不可抢占</li>
+<li>可以抢占</li>
+</ul>
+</li>
+<li>程序执行模型<ul>
+<li>程序在CPU突发和I/O中交替<ul>
+<li>每一个调度决定都是关于在下一个CPU突发时将那个工作交给CPU</li>
+<li>在时间分片机制下，线程可能在结束当前CPU突发前被迫放弃CPU</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>比较调度算法的准则<ul>
+<li>CPU利用率</li>
+<li>吞吐量：单位时间内完成的进程数量</li>
+<li>周转时间：一个进程从初始化到结束，包括所有等待时间所花费的时间</li>
+<li>等待时间：进程在就绪队列中的总时间</li>
+<li>响应时间：从一个请求被提交到产生第一次响应所花费时间</li>
+</ul>
+</li>
+<li>吞吐量vs延迟</li>
+<li>公平的目标</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/04/%E8%B0%83%E5%BA%A6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1341,7 +1427,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
   </nav>
 
 
@@ -1391,7 +1477,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1402,7 +1488,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1413,7 +1499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1480,7 +1566,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.2k</span>
+    <span title="Site words total count">148k</span>
   
 </div>
 

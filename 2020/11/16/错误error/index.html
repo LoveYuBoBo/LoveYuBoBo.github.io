@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="错误和异常错误error错误指的是可能出现问题的地方出现了问题。比如打开一个文件时失败，这种情况在人们的意料之中 。 而异常指的是不应该出现问题的地方出现了问题。比如引用了空指针，这种情况在人们的意料之外。可见，错误是业务过程的一部分，而异常不是 。 Go中的错误也是一种类型。错误用内置的error 类型表示。就像其他类型的，如int，float64，。错误值可以存储在变量中，从函数中返回，等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="错误error">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/16/%E9%94%99%E8%AF%AFerror/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="错误和异常错误error错误指的是可能出现问题的地方出现了问题。比如打开一个文件时失败，这种情况在人们的意料之中 。 而异常指的是不应该出现问题的地方出现了问题。比如引用了空指针，这种情况在人们的意料之外。可见，错误是业务过程的一部分，而异常不是 。 Go中的错误也是一种类型。错误用内置的error 类型表示。就像其他类型的，如int，float64，。错误值可以存储在变量中，从函数中返回，等等。">
+<meta property="article:published_time" content="2020-11-16T13:02:04.712Z">
+<meta property="article:modified_time" content="2020-11-16T13:07:48.771Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="go语言">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/16/错误error/"/>
+
+
+
+
+
+  <title>错误error | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E9%94%99%E8%AF%AFerror/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">错误error</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/%E9%94%99%E8%AF%AFerror/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E9%94%99%E8%AF%AFerror/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  7.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  31
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="错误和异常"><a href="#错误和异常" class="headerlink" title="错误和异常"></a>错误和异常</h3><h4 id="错误error"><a href="#错误error" class="headerlink" title="错误error"></a>错误error</h4><p>错误指的是可能出现问题的地方出现了问题。比如打开一个文件时失败，这种情况在人们的意料之中 。</p>
+<p>而异常指的是不应该出现问题的地方出现了问题。比如引用了空指针，这种情况在人们的意料之外。可见，错误是业务过程的一部分，而异常不是 。</p>
+<p>Go中的错误也是一种类型。错误用内置的<code>error</code> 类型表示。就像其他类型的，如int，float64，。错误值可以存储在变量中，从函数中返回，等等。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"errors"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	error：内置的数据类型，内置的接口</span></span><br><span class="line"><span class="comment">		定义方法：Error()  string</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	使用go语言提供好的包：</span></span><br><span class="line"><span class="comment">		errors包下的函数：New()，创建一个error对象</span></span><br><span class="line"><span class="comment">		fmt包下的Errorf()函数：</span></span><br><span class="line"><span class="comment">			func Errorf(format string, a ...interface&#123;&#125;) error</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="comment">//1.创建一个error数据</span></span><br><span class="line">	err1 := errors.New(<span class="string">"自己创建玩的。。。"</span>)</span><br><span class="line">	fmt.Println(err1)</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>,err1)  <span class="comment">// *errors.errorString</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.另一个创建error的方法</span></span><br><span class="line">	err2 := fmt.Errorf(<span class="string">"错误的信息码：%d"</span>, <span class="number">100</span>)</span><br><span class="line">	fmt.Println(err2)</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>,err2)  <span class="comment">// *errors.errorString</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"-----------------------------------"</span>)</span><br><span class="line">	err3 := checkAge(<span class="number">-30</span>)</span><br><span class="line">	<span class="keyword">if</span> err3 != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err3)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">"程序。。。go on。。。"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设计一个函数：验证年龄是否合法，如果为负数，就返回一个error</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkAge</span><span class="params">(age <span class="keyword">int</span>)</span> <span class="title">error</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> age &lt; <span class="number">0</span>&#123;</span><br><span class="line">		<span class="comment">// 返回error对象</span></span><br><span class="line">		<span class="comment">// return errors.New("年龄不合法")</span></span><br><span class="line">		err := fmt.Errorf(<span class="string">"您给定的年龄是：%d,不合法"</span>, age)</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">"年龄是："</span>, age)</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="错误类型"><a href="#错误类型" class="headerlink" title="错误类型"></a>错误类型</h4><h5 id="内置error"><a href="#内置error" class="headerlink" title="内置error"></a>内置error</h5><p>Go 语言通过内置的错误接口提供了非常简单的错误处理机制。</p>
+<p>让我们再深入一点，看看如何定义错误类型的构建。错误是一个带有以下定义的接口类型，</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> error <span class="keyword">interface</span> &#123;</span><br><span class="line">    Error() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>它包含一个带有Error（）字符串的方法。任何实现这个接口的类型都可以作为一个错误使用。这个方法提供了对错误的描述。</p>
+<p>当打印错误时，fmt.Println函数在内部调用Error() 方法来获取错误的描述。这就是错误描述是如何在一行中打印出来的。</p>
+<p><strong>从错误中提取更多信息的不同方法</strong></p>
+<p>既然我们知道错误是一种接口类型，那么让我们看看如何提取更多关于错误的信息。</p>
+<p>在上面的例子中，我们仅仅是打印了错误的描述。如果我们想要的是导致错误的文件的实际路径。一种可能的方法是解析错误字符串。这是我们程序的输出，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open &#x2F;test.txt: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>我们可以解析这个错误消息并从中获取文件路径”/test.txt”。但这是一个糟糕的方法。在新版本的语言中，错误描述可以随时更改，我们的代码将会中断。</p>
+<p>是否有办法可靠地获取文件名？答案是肯定的，它可以做到，标准Go库使用不同的方式提供更多关于错误的信息。让我们一看一看。</p>
+<p>1.断言底层结构类型并从结构字段获取更多信息</p>
+<p>如果仔细阅读打开函数的文档，可以看到它返回的是PathError类型的错误。PathError是一个struct类型，它在标准库中的实现如下，</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> PathError <span class="keyword">struct</span> &#123;  </span><br><span class="line">    Op   <span class="keyword">string</span></span><br><span class="line">    Path <span class="keyword">string</span></span><br><span class="line">    Err  error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *PathError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123; <span class="keyword">return</span> e.Op + <span class="string">" "</span> + e.Path + <span class="string">": "</span> + e.Err.Error() &#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码中，您可以理解PathError通过声明<code>Error()string</code>方法实现了错误接口。该方法连接操作、路径和实际错误并返回它。这样我们就得到了错误信息，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open &#x2F;test.txt: No such file or directory</span><br></pre></td></tr></table></figure>
+
+<p>PathError结构的路径字段包含导致错误的文件的路径。让我们修改上面写的程序，并打印出路径。</p>
+<p>修改代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    f, err := os.Open(<span class="string">"/test.txt"</span>)</span><br><span class="line">    <span class="keyword">if</span> err, ok := err.(*os.PathError); ok &#123;</span><br><span class="line">        fmt.Println(<span class="string">"File at path"</span>, err.Path, <span class="string">"failed to open"</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(f.Name(), <span class="string">"opened successfully"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的程序中，我们使用类型断言获得错误接口的基本值。然后我们用错误来打印路径.这个程序输出,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File at path &#x2F;test.txt failed to open</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>断言底层结构类型，并使用方法获取更多信息</li>
+</ol>
+<p>获得更多信息的第二种方法是断言底层类型，并通过调用struct类型的方法获取更多信息。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> DNSError <span class="keyword">struct</span> &#123;  </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *DNSError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;  </span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *DNSError)</span> <span class="title">Timeout</span><span class="params">()</span> <span class="title">bool</span></span> &#123;  </span><br><span class="line">    ... </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *DNSError)</span> <span class="title">Temporary</span><span class="params">()</span> <span class="title">bool</span></span> &#123;  </span><br><span class="line">    ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的代码中可以看到，DNSError struct有两个方法Timeout() bool和Temporary() bool，它们返回一个布尔值，表示错误是由于超时还是临时的。</p>
+<p>让我们编写一个断言*DNSError类型的程序，并调用这些方法来确定错误是临时的还是超时的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"net"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    addr, err := net.LookupHost(<span class="string">"golangbot123.com"</span>)</span><br><span class="line">    <span class="keyword">if</span> err, ok := err.(*net.DNSError); ok &#123;</span><br><span class="line">        <span class="keyword">if</span> err.Timeout() &#123;</span><br><span class="line">            fmt.Println(<span class="string">"operation timed out"</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> err.Temporary() &#123;</span><br><span class="line">            fmt.Println(<span class="string">"temporary error"</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fmt.Println(<span class="string">"generic error: "</span>, err)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(addr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的程序中，我们正在尝试获取一个无效域名的ip地址，这是一个无效的域名。golangbot123.com。我们通过声明它来输入*net.DNSError来获得错误的潜在价值。</p>
+<p>在我们的例子中，错误既不是暂时的，也不是由于超时，因此程序会打印出来，</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">generic error:  lookup golangbot123.com: no such host</span><br></pre></td></tr></table></figure>
+
+<p>如果错误是临时的或超时的，那么相应的If语句就会执行，我们可以适当地处理它。</p>
+<p>3.直接比较</p>
+<p>获得更多关于错误的详细信息的第三种方法是直接与类型错误的变量进行比较。让我们通过一个例子来理解这个问题。</p>
+<p>filepath包的Glob函数用于返回与模式匹配的所有文件的名称。当模式出现错误时，该函数将返回一个错误ErrBadPattern。</p>
+<p>在filepath包中定义了ErrBadPattern，如下所述：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ErrBadPattern = errors.New(<span class="string">"syntax error in pattern"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>errors.New()用于创建新的错误。</p>
+<p>当模式出现错误时，由Glob函数返回ErrBadPattern。</p>
+<p>让我们写一个小程序来检查这个错误：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"path/filepath"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    files, error := filepath.Glob(<span class="string">"["</span>)</span><br><span class="line">    <span class="keyword">if</span> error != <span class="literal">nil</span> &amp;&amp; error == filepath.ErrBadPattern &#123;</span><br><span class="line">        fmt.Println(error)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(<span class="string">"matched files"</span>, files)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syntax error in pattern</span><br></pre></td></tr></table></figure>
+
+<p><strong>不要忽略错误</strong></p>
+<p>永远不要忽略一个错误。忽视错误会招致麻烦。让我重新编写一个示例，该示例列出了与模式匹配的所有文件的名称，而忽略了错误处理代码。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"path/filepath"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    files, _ := filepath.Glob(<span class="string">"["</span>)</span><br><span class="line">    fmt.Println(<span class="string">"matched files"</span>, files)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们从前面的例子中已经知道模式是无效的。我忽略了Glob函数返回的错误，方法是使用行号中的空白标识符。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matched files []</span><br></pre></td></tr></table></figure>
+
+<p>由于我们忽略了这个错误，输出看起来好像没有文件匹配这个模式，但是实际上这个模式本身是畸形的。所以不要忽略错误。</p>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	f, err := os.Open(<span class="string">"test.txt"</span>)  </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Println(err)  <span class="comment">// open test.txt: The system cannot find the file specified.</span></span><br><span class="line">		<span class="keyword">if</span> ins, ok := err.(*os.PathError);ok&#123;</span><br><span class="line">			fmt.Println(<span class="string">"1.Op:"</span>, ins.Op)  <span class="comment">// 1.Op: open</span></span><br><span class="line">			fmt.Println(<span class="string">"2.Path:"</span>, ins.Path)  <span class="comment">// 2.Path: test.txt</span></span><br><span class="line">			fmt.Println(<span class="string">"3.Err:"</span>, ins.Err)  <span class="comment">// 3.Err: The system cannot find the file specified.</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(f.Name(), <span class="string">"打开文件成功。。。"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"net"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	addr,err := net.LookupHost(<span class="string">"www.baidu.com"</span>)</span><br><span class="line">	fmt.Println(err)</span><br><span class="line">	<span class="keyword">if</span> ins, ok := err.(*net.DNSError);ok&#123;</span><br><span class="line">		<span class="keyword">if</span> ins.Timeout()&#123;</span><br><span class="line">			fmt.Println(<span class="string">"操作超时。。。"</span>)</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span> ins.Temporary()&#123;</span><br><span class="line">			fmt.Println(<span class="string">"临时性错误。。。"</span>)</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			fmt.Println(<span class="string">"通常错误。。。"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(addr)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例3：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"path/filepath"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	files,err := filepath.Glob(<span class="string">"["</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &amp;&amp; err == filepath.ErrBadPattern&#123;</span><br><span class="line">		fmt.Println(err)  <span class="comment">// syntax error in pattern</span></span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">"files:"</span>,files)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="自定义error"><a href="#自定义error" class="headerlink" title="自定义error"></a>自定义error</h5><p>创建自定义错误可以使用errors包下的New()函数，以及fmt包下的：Errorf()函数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//errors包：</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(text <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//fmt包：</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Errorf</span><span class="params">(format <span class="keyword">string</span>, a ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用New()函数创建自定义错误之前，让我们了解它是如何实现的。下面提供了错误包中的新功能的实现。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Package errors implements functions to manipulate errors.</span></span><br><span class="line">  <span class="keyword">package</span> errors</span><br><span class="line"></span><br><span class="line">  <span class="comment">// New returns an error that formats as the given text.</span></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">(text <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &amp;errorString&#123;text&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// errorString is a trivial implementation of error.</span></span><br><span class="line">  <span class="keyword">type</span> errorString <span class="keyword">struct</span> &#123;</span><br><span class="line">      s <span class="keyword">string</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="params">(e *errorString)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">      <span class="keyword">return</span> e.s</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>既然我们知道了New()函数是如何工作的，那么就让我们在自己的程序中使用它来创建一个自定义错误。</p>
+<p>我们将创建一个简单的程序，计算一个圆的面积，如果半径为负，将返回一个错误。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"errors"</span></span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"math"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">circleArea</span><span class="params">(radius <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> radius &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, errors.New(<span class="string">"Area calculation failed, radius is less than zero"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> math.Pi * radius * radius, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    radius := <span class="number">-20.0</span></span><br><span class="line">    area, err := circleArea(radius)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Printf(<span class="string">"Area of circle %0.2f"</span>, area)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Area calculation failed, radius is less than zero</span><br></pre></td></tr></table></figure>
+
+<p>使用Errorf向错误添加更多信息</p>
+<p>上面的程序运行得很好，但是如果我们打印出导致错误的实际半径，那就不好了。这就是fmt包的Errorf函数的用武之地。这个函数根据一个格式说明器格式化错误，并返回一个字符串作为值来满足错误。</p>
+<p>使用Errorf函数，修改程序。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"math"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">circleArea</span><span class="params">(radius <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> radius &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, fmt.Errorf(<span class="string">"Area calculation failed, radius %0.2f is less than zero"</span>, radius)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> math.Pi * radius * radius, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    radius := <span class="number">-20.0</span></span><br><span class="line">    area, err := circleArea(radius)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Printf(<span class="string">"Area of circle %0.2f"</span>, area)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Area calculation failed, radius <span class="number">-20.00</span> is less than zero</span><br></pre></td></tr></table></figure>
+
+<p>使用struct类型和字段提供关于错误的更多信息</p>
+<p>还可以使用将错误接口实现为错误的struct类型。这给我们提供了更多的错误处理的灵活性。在我们的示例中，如果我们想要访问导致错误的半径，那么现在唯一的方法是解析错误描述区域计算失败，半径-20.00小于零。这不是一种正确的方法，因为如果描述发生了变化，我们的代码就会中断。</p>
+<p>我们将使用在前面的教程中解释的标准库的策略，在“断言底层结构类型并从struct字段获取更多信息”，并使用struct字段来提供对导致错误的半径的访问。我们将创建一个实现错误接口的struct类型，并使用它的字段来提供关于错误的更多信息。</p>
+<p>第一步是创建一个struct类型来表示错误。错误类型的命名约定是，名称应该以文本Error结束。让我们把struct类型命名为areaError</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> areaError <span class="keyword">struct</span> &#123;  </span><br><span class="line">    err    <span class="keyword">string</span></span><br><span class="line">    radius <span class="keyword">float64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的struct类型有一个字段半径，它存储了为错误负责的半径的值，并且错误字段存储了实际的错误消息。</p>
+<p>下一步，是实现error 接口</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">"radius %0.2f: %s"</span>, e.radius, e.err)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码片段中，我们使用一个指针接收器区域错误来实现错误接口的Error() string方法。这个方法打印出半径和错误描述。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="string">"math"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> areaError <span class="keyword">struct</span> &#123;  </span><br><span class="line">    err    <span class="keyword">string</span></span><br><span class="line">    radius <span class="keyword">float64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> fmt.Sprintf(<span class="string">"radius %0.2f: %s"</span>, e.radius, e.err)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">circleArea</span><span class="params">(radius <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> radius &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, &amp;areaError&#123;<span class="string">"radius is negative"</span>, radius&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> math.Pi * radius * radius, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    radius := <span class="number">-20.0</span></span><br><span class="line">    area, err := circleArea(radius)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err, ok := err.(*areaError); ok &#123;</span><br><span class="line">            fmt.Printf(<span class="string">"Radius %0.2f is less than zero"</span>, err.radius)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Printf(<span class="string">"Area of circle %0.2f"</span>, area)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>程序输出：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Radius <span class="number">-20.00</span> is less than zero</span><br></pre></td></tr></table></figure>
+
+<p>使用结构类型的方法提供关于错误的更多信息</p>
+<p>在本节中，我们将编写一个程序来计算矩形的面积。如果长度或宽度小于0，这个程序将输出一个错误。</p>
+<p>第一步是创建一个结构来表示错误。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> areaError <span class="keyword">struct</span> &#123;  </span><br><span class="line">    err    <span class="keyword">string</span> <span class="comment">//error description</span></span><br><span class="line">    length <span class="keyword">float64</span> <span class="comment">//length which caused the error</span></span><br><span class="line">    width  <span class="keyword">float64</span> <span class="comment">//width which caused the error</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的错误结构类型包含一个错误描述字段，以及导致错误的长度和宽度。</p>
+<p>现在我们有了错误类型，让我们实现错误接口，并在错误类型上添加一些方法来提供关于错误的更多信息。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> e.err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">lengthNegative</span><span class="params">()</span> <span class="title">bool</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> e.length &lt; <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">widthNegative</span><span class="params">()</span> <span class="title">bool</span></span> &#123;  </span><br><span class="line">    <span class="keyword">return</span> e.width &lt; <span class="number">0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的代码片段中，我们返回<code>Error() string</code> 方法的错误描述。当长度小于0时，lengthNegative() bool方法返回true;当宽度小于0时，widthNegative() bool方法返回true。这两种方法提供了更多关于误差的信息，在这种情况下，他们说面积计算是否失败，因为长度是负的，还是宽度为负的。因此，我们使用了struct错误类型的方法来提供更多关于错误的信息。</p>
+<p>下一步是写出面积计算函数。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rectArea</span><span class="params">(length, width <span class="keyword">float64</span>)</span> <span class="params">(<span class="keyword">float64</span>, error)</span></span> &#123;  </span><br><span class="line">    err := <span class="string">""</span></span><br><span class="line">    <span class="keyword">if</span> length &lt; <span class="number">0</span> &#123;</span><br><span class="line">        err += <span class="string">"length is less than zero"</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> width &lt; <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err == <span class="string">""</span> &#123;</span><br><span class="line">            err = <span class="string">"width is less than zero"</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            err += <span class="string">", width is less than zero"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> err != <span class="string">""</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, &amp;areaError&#123;err, length, width&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> length * width, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的rectArea函数检查长度或宽度是否小于0，如果它返回一个错误消息，则返回矩形的面积为nil。</p>
+<p>主函数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    length, width := <span class="number">-5.0</span>, <span class="number">-9.0</span></span><br><span class="line">    area, err := rectArea(length, width)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err, ok := err.(*areaError); ok &#123;</span><br><span class="line">            <span class="keyword">if</span> err.lengthNegative() &#123;</span><br><span class="line">                fmt.Printf(<span class="string">"error: length %0.2f is less than zero\n"</span>, err.length)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> err.widthNegative() &#123;</span><br><span class="line">                fmt.Printf(<span class="string">"error: width %0.2f is less than zero\n"</span>, err.width)</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(err)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    fmt.Println(<span class="string">"area of rect"</span>, area)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">error: length <span class="number">-5.00</span> is less than zero  </span><br><span class="line">error: width <span class="number">-9.00</span> is less than zero</span><br></pre></td></tr></table></figure>
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	自定义错误：</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	radius := <span class="number">-3.0</span></span><br><span class="line">	area,err := circleArea(radius)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">if</span> err,ok := err.(*areaError);ok&#123;</span><br><span class="line">			fmt.Printf(<span class="string">"半径是：%.2f\n"</span>, err.radius)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">"圆形的面积是："</span>, area)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//1.定义一个结构体，表示错误的类型</span></span><br><span class="line"><span class="keyword">type</span> areaError <span class="keyword">struct</span> &#123;</span><br><span class="line">	msg <span class="keyword">string</span></span><br><span class="line">	radius <span class="keyword">float64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.实现error接口，就是实现Error()方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fmt.Sprintf(<span class="string">"error: 半径，%.2f, %s"</span>, e.radius, e.msg)	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">circleArea</span><span class="params">(radius <span class="keyword">float64</span>)</span><span class="params">(<span class="keyword">float64</span>, error)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> radius &lt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>,&amp;areaError&#123;msg:<span class="string">"半径是非法的"</span>, radius: radius&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> math.Pi * radius * radius, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	length, width := <span class="number">6.7</span>, <span class="number">-9.1</span></span><br><span class="line">	area, err := rectArea(length, width)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">		<span class="keyword">if</span> err, ok := err.(*areaError);ok&#123;</span><br><span class="line">			<span class="keyword">if</span> err.lengthNegative()&#123;</span><br><span class="line">				fmt.Printf(<span class="string">"error:长度，%.2f, 小于零\n"</span>, err.length)</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> err.widthNegative()&#123;</span><br><span class="line">				fmt.Printf(<span class="string">"error:宽度，%.2f, 小于零\n"</span>, err.width)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(<span class="string">"矩形的面积是："</span>, area)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> areaError <span class="keyword">struct</span> &#123;</span><br><span class="line">	msg <span class="keyword">string</span>  <span class="comment">// 错误的描述</span></span><br><span class="line">	length <span class="keyword">float64</span>  <span class="comment">// 发生错误的时候，矩形的长度</span></span><br><span class="line">	width <span class="keyword">float64</span>  <span class="comment">// 发生错误的时候，矩形的宽度</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">Error</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> e.msg</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">lengthNegative</span><span class="params">()</span> <span class="title">bool</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> e.length &lt; <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e *areaError)</span> <span class="title">widthNegative</span><span class="params">()</span> <span class="title">bool</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> e.width &lt; <span class="number">0</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">rectArea</span><span class="params">(length, width <span class="keyword">float64</span>)</span><span class="params">(<span class="keyword">float64</span>,error)</span></span>&#123;</span><br><span class="line">	msg := <span class="string">""</span></span><br><span class="line">	<span class="keyword">if</span> length &lt; <span class="number">0</span> &#123;</span><br><span class="line">		msg = <span class="string">"长度小于零"</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> width &lt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> msg == <span class="string">""</span>&#123;</span><br><span class="line">			msg = <span class="string">"宽度小于零"</span></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			msg += <span class="string">", 宽度也小于零"</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> msg != <span class="string">""</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>,&amp;areaError&#123;msg:msg,length:length,width:width&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> length * width, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="panic-和recover"><a href="#panic-和recover" class="headerlink" title="panic()和recover()"></a>panic()和recover()</h4><p>Golang中引入两个内置函数panic和recover来触发和终止异常处理流程，同时引入关键字defer来延迟执行defer后面的函数。 一直等到包含defer语句的函数执行完毕时，延迟函数（defer后的函数）才会被执行，而不管包含defer语句的函数是通过return的正常结束，还是由于panic导致的异常结束。你可以在一个函数中执行多条defer语句，它们的执行顺序与声明顺序相反。 当程序运行时，如果遇到引用空指针、下标越界或显式调用panic函数等情况，则先触发panic函数的执行，然后调用延迟函数。调用者继续传递panic，因此该过程一直在调用栈中重复发生：函数停止执行，调用延迟执行函数等。如果一路在延迟函数中没有recover函数的调用，则会到达该协程的起点，该协程结束，然后终止其他所有协程，包括主协程（类似于C语言中的主线程，该协程ID为1）。</p>
+<p>panic： 1、内建函数 2、假如函数F中书写了panic语句，会终止其后要执行的代码，在panic所在函数F内如果存在要执行的defer函数列表，按照defer的逆序执行 3、返回函数F的调用者G，在G中，调用函数F语句之后的代码不会执行，假如函数G中存在要执行的defer函数列表，按照defer的逆序执行，这里的defer 有点类似 try-catch-finally 中的 finally 4、直到goroutine整个退出，并报告错误</p>
+<p>recover： 1、内建函数 2、用来控制一个goroutine的panicking行为，捕获panic，从而影响应用的行为 3、一般的调用建议 a). 在defer函数中，通过recever来终止一个gojroutine的panicking过程，从而恢复正常代码的执行 b). 可以获取通过panic传递的error</p>
+<p>简单来讲：go中可以抛出一个panic的异常，然后在defer中通过recover捕获这个异常，然后正常处理。</p>
+<p>错误和异常从Golang机制上讲，就是error和panic的区别。很多其他语言也一样，比如C++/Java，没有error但有errno，没有panic但有throw。</p>
+<p>Golang错误和异常是可以互相转换的：</p>
+<ol>
+<li>错误转异常，比如程序逻辑上尝试请求某个URL，最多尝试三次，尝试三次的过程中请求失败是错误，尝试完第三次还不成功的话，失败就被提升为异常了。</li>
+<li>异常转错误，比如panic触发的异常被recover恢复后，将返回值中error类型的变量进行赋值，以便上层函数继续走错误处理流程。</li>
+</ol>
+<p><strong>什么情况下用错误表达，什么情况下用异常表达，就得有一套规则，否则很容易出现一切皆错误或一切皆异常的情况。</strong></p>
+<p>以下给出异常处理的作用域（场景）：</p>
+<ol>
+<li>空指针引用</li>
+<li>下标越界</li>
+<li>除数为0</li>
+<li>不应该出现的分支，比如default</li>
+<li>输入不应该引起函数错误</li>
+</ol>
+<p>其他场景我们使用错误处理，这使得我们的函数接口很精炼。对于异常，我们可以选择在一个合适的上游去recover，并打印堆栈信息，使得部署后的程序不会终止。</p>
+<p><strong>说明： Golang错误处理方式一直是很多人诟病的地方，有些人吐槽说一半的代码都是”if err != nil { / 打印 &amp;&amp; 错误处理 / }”，严重影响正常的处理逻辑。当我们区分错误和异常，根据规则设计函数，就会大大提高可读性和可维护性。</strong></p>
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	panic：词义"恐慌"</span></span><br><span class="line"><span class="comment">	recover："恢复"</span></span><br><span class="line"><span class="comment">	go语言利用panic()，recover()，实现程序中的极特殊的异常的处理</span></span><br><span class="line"><span class="comment">		panic()，让当前的程序进入恐慌，中断程序的执行</span></span><br><span class="line"><span class="comment">		recover()，让程序恢复，必须在defer函数中执行</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span> msg := <span class="built_in">recover</span>();msg != <span class="literal">nil</span>&#123;</span><br><span class="line">			fmt.Println(msg, <span class="string">"程序恢复了。。。"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	funA()</span><br><span class="line">	<span class="keyword">defer</span> myprint(<span class="string">"defer main: 3..."</span>)</span><br><span class="line">	funB()</span><br><span class="line">	<span class="keyword">defer</span> myprint(<span class="string">"defer main: 4..."</span>)</span><br><span class="line">	fmt.Println(<span class="string">"main...over..."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">myprint</span><span class="params">(s <span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">funA</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"我是一个函数funA()..."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">funB</span><span class="params">()</span></span>&#123; <span class="comment">// 外围函数</span></span><br><span class="line">	fmt.Println(<span class="string">"我是函数funB()..."</span>)</span><br><span class="line">	<span class="keyword">defer</span> myprint(<span class="string">"defer funB(): 1..."</span>)</span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">1</span>; i&lt;=<span class="number">10</span>;i++&#123;</span><br><span class="line">		fmt.Println(<span class="string">"i:"</span>, i)</span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">5</span> &#123;</span><br><span class="line">			<span class="comment">// 让程序中断</span></span><br><span class="line">			<span class="built_in">panic</span>(<span class="string">"funB函数，恐慌了"</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="comment">// 当外围函数的代码中发生了运行恐慌，只有其中所有的已经defer的函数全部都执行完毕后，该运行恐慌才会真正被扩展至调用处</span></span><br><span class="line">	<span class="keyword">defer</span> myprint(<span class="string">"defer funB(): 2..."</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在实际工程项目中，我们希望通过程序的错误信息快速定位问题，但是又不喜欢错误处理代码写的冗余而又啰嗦。<code>Go</code>语言没有提供像<code>Java</code>、<code>C#</code>语言中的<code>try...catch</code>异常处理方式，而是通过函数返回值逐层往上抛。这种设计，鼓励工程师在代码中显式的检查错误，而非忽略错误，好处就是避免漏掉本应处理的错误。但是带来一个弊端，让代码啰嗦。</p>
+<h4 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h4><h5 id="不使用error"><a href="#不使用error" class="headerlink" title="不使用error"></a>不使用error</h5><ul>
+<li>失败原因只有一个</li>
+</ul>
+<p>我们看一个案例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *AgentContext)</span> <span class="title">CheckHostType</span><span class="params">(host_type <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> host_type &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"virtual_machine"</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"bare_metal"</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> errors.New(<span class="string">"CheckHostType ERROR:"</span> + host_type)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看出，该函数失败的原因只有一个，所以返回值的类型应该为bool，而不是error，重构一下代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *AgentContext)</span> <span class="title">IsValidHostType</span><span class="params">(hostType <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> hostType == <span class="string">"virtual_machine"</span> || hostType == <span class="string">"bare_metal"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>说明：大多数情况，导致失败的原因不止一种，尤其是对I/O操作而言，用户需要了解更多的错误信息，这时的返回值类型不再是简单的bool，而是error。</p>
+<ul>
+<li>没有失败时，不使用error</li>
+</ul>
+<p>error在Golang中是如此的流行，以至于很多人设计函数时不管三七二十一都使用error，即使没有一个失败原因。 我们看一下示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *CniParam)</span> <span class="title">setTenantId</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    self.TenantId = self.PodNs</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于上面的函数设计，就会有下面的调用代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">err := self.setTenantId()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// log</span></span><br><span class="line">    <span class="comment">// free resource</span></span><br><span class="line">    <span class="keyword">return</span> errors.New(...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据我们的正确姿势，重构一下代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(self *CniParam)</span> <span class="title">setTenantId</span><span class="params">()</span></span> &#123;</span><br><span class="line">    self.TenantId = self.PodNs</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>于是调用代码变为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.setTenantId()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>上层函数不关心error</p>
+<p>对于一些资源清理相关的函数（destroy/delete/clear），如果子函数出错，打印日志即可，而无需将错误进一步反馈到上层函数，因为一般情况下，上层函数是不关心执行结果的，或者即使关心也无能为力，于是我们建议将相关函数设计为不返回error。</p>
+</li>
+</ul>
+<h5 id="error放在返回值列表最后"><a href="#error放在返回值列表最后" class="headerlink" title="error放在返回值列表最后"></a>error放在返回值列表最后</h5><p>对于返回值类型error，用来传递错误信息，在Golang中通常放在最后一个。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">resp, err := http.Get(url)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> nill, err</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>bool作为返回值类型时也一样。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">value, ok := cache.Lookup(key) </span><br><span class="line"><span class="keyword">if</span> !ok &#123;</span><br><span class="line">    <span class="comment">// ...cache[key] does not exist… </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="错误值统一定义"><a href="#错误值统一定义" class="headerlink" title="错误值统一定义"></a>错误值统一定义</h5><p>很多人写代码时，到处return errors.New(value)，而错误value在表达同一个含义时也可能形式不同，比如“记录不存在”的错误value可能为：</p>
+<ol>
+<li>“record is not existed.”</li>
+<li>“record is not exist!”</li>
+<li>“###record is not existed！！！”</li>
+<li>…</li>
+</ol>
+<p>这使得相同的错误value撒在一大片代码里，当上层函数要对特定错误value进行统一处理时，需要漫游所有下层代码，以保证错误value统一，不幸的是有时会有漏网之鱼，而且这种方式严重阻碍了错误value的重构。</p>
+<p>于是，我们可以参考C/C++的错误码定义文件，在Golang的每个包中增加一个错误对象定义文件，如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ERR_EOF = errors.New(<span class="string">"EOF"</span>)</span><br><span class="line"><span class="keyword">var</span> ERR_CLOSED_PIPE = errors.New(<span class="string">"io: read/write on closed pipe"</span>)</span><br><span class="line"><span class="keyword">var</span> ERR_NO_PROGRESS = errors.New(<span class="string">"multiple Read calls return no data or error"</span>)</span><br><span class="line"><span class="keyword">var</span> ERR_SHORT_BUFFER = errors.New(<span class="string">"short buffer"</span>)</span><br><span class="line"><span class="keyword">var</span> ERR_SHORT_WRITE = errors.New(<span class="string">"short write"</span>)</span><br><span class="line"><span class="keyword">var</span> ERR_UNEXPECTED_EOF = errors.New(<span class="string">"unexpected EOF"</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="层层都加日志"><a href="#层层都加日志" class="headerlink" title="层层都加日志"></a>层层都加日志</h5><p>层层都加日志非常方便故障定位。</p>
+<p>说明：至于通过测试来发现故障，而不是日志，目前很多团队还很难做到。如果你或你的团队能做到，那么请忽略这个姿势。</p>
+<h5 id="使用defer"><a href="#使用defer" class="headerlink" title="使用defer"></a>使用defer</h5><p>我们一般通过判断error的值来处理错误，如果当前操作失败，需要将本函数中已经create的资源destroy掉，示例代码如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deferDemo</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    err := createResource1()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE1_FAILED</span><br><span class="line">    &#125;</span><br><span class="line">    err = createResource2()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        destroyResource1()</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE2_FAILED</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    err = createResource3()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        destroyResource1()</span><br><span class="line">        destroyResource2()</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE3_FAILED</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    err = createResource4()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        destroyResource1()</span><br><span class="line">        destroyResource2()</span><br><span class="line">        destroyResource3()</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE4_FAILED</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当Golang的代码执行时，如果遇到defer的闭包调用，则压入堆栈。当函数返回时，会按照后进先出的顺序调用闭包。 <strong>对于闭包的参数是值传递，而对于外部变量却是引用传递，所以闭包中的外部变量err的值就变成外部函数返回时最新的err值。</strong> 根据这个结论，我们重构上面的示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">deferDemo</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    err := createResource1()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE1_FAILED</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            destroyResource1()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    err = createResource2()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE2_FAILED</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            destroyResource2()</span><br><span class="line">                   &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    err = createResource3()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE3_FAILED</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            destroyResource3()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">    err = createResource4()</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ERR_CREATE_RESOURCE4_FAILED</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="不要立即返回错误"><a href="#不要立即返回错误" class="headerlink" title="不要立即返回错误"></a>不要立即返回错误</h5><p>如果错误的发生是偶然性的，或由不可预知的问题导致。一个明智的选择是重新尝试失败的操作，有时第二次或第三次尝试时会成功。在重试时，我们需要限制重试的时间间隔或重试的次数，防止无限制的重试。</p>
+<p>两个案例：</p>
+<ol>
+<li>我们平时上网时，尝试请求某个URL，有时第一次没有响应，当我们再次刷新时，就有了惊喜。</li>
+<li>团队的一个QA曾经建议当Neutron的attach操作失败时，最好尝试三次，这在当时的环境下验证果然是有效的。</li>
+</ol>
+<h5 id="不忽略有用的返回值"><a href="#不忽略有用的返回值" class="headerlink" title="不忽略有用的返回值"></a>不忽略有用的返回值</h5><p>通常，当函数返回non-nil的error时，其他的返回值是未定义的(undefined)，这些未定义的返回值应该被忽略。然而，有少部分函数在发生错误时，仍然会返回一些有用的返回值。比如，当读取文件发生错误时，Read函数会返回可以读取的字节数以及错误信息。对于这种情况，应该将读取到的字符串和错误信息一起打印出来。</p>
+<p><strong>说明：对函数的返回值要有清晰的说明，以便于其他人使用。</strong></p>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><h5 id="坚持速错"><a href="#坚持速错" class="headerlink" title="坚持速错"></a>坚持速错</h5><p>速错，简单来讲就是“让它挂”，只有挂了你才会第一时间知道错误。在早期开发以及任何发布阶段之前，最简单的同时也可能是最好的方法是调用panic函数来中断程序的执行以强制发生错误，使得该错误不会被忽略，因而能够被尽快修复。</p>
+<h5 id="恢复异常"><a href="#恢复异常" class="headerlink" title="恢复异常"></a>恢复异常</h5><p>在Golang中，某个Goroutine如果panic了，并且没有recover，那么整个Golang进程就会异常退出。所以，一旦Golang程序部署后，在任何情况下发生的异常都不应该导致程序异常退出，我们在上层函数中加一个延迟执行的recover调用来达到这个目的，并且是否进行recover需要根据环境变量或配置文件来定，默认需要recover。 这个姿势类似于C语言中的断言，但还是有区别：一般在Release版本中，断言被定义为空而失效，但需要有if校验存在进行异常保护，尽管契约式设计中不建议这样做。在Golang中，recover完全可以终止异常展开过程，省时省力。</p>
+<p>我们在调用recover的延迟函数中以最合理的方式响应该异常：</p>
+<ol>
+<li>打印堆栈的异常调用信息和关键的业务信息，以便这些问题保留可见；</li>
+<li>将异常转换为错误，以便调用者让程序恢复到健康状态并继续安全运行。</li>
+</ol>
+<p>我们看一个简单的例子：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcA</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p := <span class="built_in">recover</span>(); p != <span class="literal">nil</span> &#123;</span><br><span class="line">            fmt.Printf(<span class="string">"panic recover! p: %v"</span>, p)</span><br><span class="line">            debug.PrintStack()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    <span class="keyword">return</span> funcB()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcB</span><span class="params">()</span> <span class="title">error</span></span> &#123;</span><br><span class="line">    <span class="comment">// simulation</span></span><br><span class="line">    <span class="built_in">panic</span>(<span class="string">"foo"</span>)</span><br><span class="line">    <span class="keyword">return</span> errors.New(<span class="string">"success"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">()</span></span> &#123;</span><br><span class="line">    err := funcA()</span><br><span class="line">    <span class="keyword">if</span> err == <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"err is nil\\n"</span>)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        fmt.Printf(<span class="string">"err is %v\\n"</span>, err)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们期望test函数的输出是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">err is foog</span><br></pre></td></tr></table></figure>
+
+<p>实际上test函数的输出是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">err is <span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是panic异常处理机制不会自动将错误信息传递给error，所以要在funcA函数中进行显式的传递，代码如下所示：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">funcA</span><span class="params">()</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">    <span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">if</span> p := <span class="built_in">recover</span>(); p != <span class="literal">nil</span> &#123;</span><br><span class="line">            fmt.Println(<span class="string">"panic recover! p:"</span>, p)</span><br><span class="line">            str, ok := p.(<span class="keyword">string</span>)</span><br><span class="line">            <span class="keyword">if</span> ok &#123;</span><br><span class="line">                err = errors.New(str)</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                err = errors.New(<span class="string">"panic"</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            debug.PrintStack()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;()</span><br><span class="line">    <span class="keyword">return</span> funcB()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用异常处理"><a href="#使用异常处理" class="headerlink" title="使用异常处理"></a>使用异常处理</h5><p>当某些不应该发生的场景发生时，我们就应该调用panic函数来触发异常。比如，当程序到达了某条逻辑上不可能到达的路径：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> s := suit(drawCard()); s &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Spades"</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Hearts"</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Diamonds"</span>:</span><br><span class="line">    <span class="comment">// ... </span></span><br><span class="line">    <span class="keyword">case</span> <span class="string">"Clubs"</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">        <span class="built_in">panic</span>(fmt.Sprintf(<span class="string">"invalid suit %v"</span>, s))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用panic设计"><a href="#使用panic设计" class="headerlink" title="使用panic设计"></a>使用panic设计</h5><p>入参不应该有问题一般指的是硬编码，我们先看这两个函数（Compile和MustCompile），其中MustCompile函数是对Compile函数的包装：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">MustCompile</span><span class="params">(str <span class="keyword">string</span>)</span> *<span class="title">Regexp</span></span> &#123;</span><br><span class="line">    regexp, error := Compile(str)</span><br><span class="line">    <span class="keyword">if</span> error != <span class="literal">nil</span> &#123;</span><br><span class="line">        <span class="built_in">panic</span>(<span class="string">`regexp: Compile(`</span> + quote(str) + <span class="string">`): `</span> + error.Error())</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> regexp</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以，对于同时支持用户输入场景和硬编码场景的情况，一般支持硬编码场景的函数是对支持用户输入场景函数的包装。 对于只支持硬编码单一场景的情况，函数设计时直接使用panic，即返回值类型列表中不会有error，这使得函数的调用处理非常方便（没有了乏味的”if err != nil {/ 打印 &amp;&amp; 错误处理 /}”代码块）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag"># go语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/16/%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="next" title="运算符">
+                <i class="fa fa-chevron-left"></i> 运算符
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/16/%E9%9B%86%E5%90%88map/" rel="prev" title="集合map">
+                集合map <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#错误和异常"><span class="nav-number">1.</span> <span class="nav-text">错误和异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误error"><span class="nav-number">1.1.</span> <span class="nav-text">错误error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误类型"><span class="nav-number">1.2.</span> <span class="nav-text">错误类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#内置error"><span class="nav-number">1.2.1.</span> <span class="nav-text">内置error</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义error"><span class="nav-number">1.2.2.</span> <span class="nav-text">自定义error</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#panic-和recover"><span class="nav-number">0.1.</span> <span class="nav-text">panic()和recover()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理"><span class="nav-number">0.2.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#不使用error"><span class="nav-number">0.2.1.</span> <span class="nav-text">不使用error</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#error放在返回值列表最后"><span class="nav-number">0.2.2.</span> <span class="nav-text">error放在返回值列表最后</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#错误值统一定义"><span class="nav-number">0.2.3.</span> <span class="nav-text">错误值统一定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#层层都加日志"><span class="nav-number">0.2.4.</span> <span class="nav-text">层层都加日志</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用defer"><span class="nav-number">0.2.5.</span> <span class="nav-text">使用defer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不要立即返回错误"><span class="nav-number">0.2.6.</span> <span class="nav-text">不要立即返回错误</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不忽略有用的返回值"><span class="nav-number">0.2.7.</span> <span class="nav-text">不忽略有用的返回值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理"><span class="nav-number">0.3.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#坚持速错"><span class="nav-number">0.3.1.</span> <span class="nav-text">坚持速错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#恢复异常"><span class="nav-number">0.3.2.</span> <span class="nav-text">恢复异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用异常处理"><span class="nav-number">0.3.3.</span> <span class="nav-text">使用异常处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用panic设计"><span class="nav-number">0.3.4.</span> <span class="nav-text">使用panic设计</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">148k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

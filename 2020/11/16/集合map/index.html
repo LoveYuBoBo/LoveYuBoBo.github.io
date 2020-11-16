@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="集合mapmap初始化map是Go中的内置类型，它将一个值与一个键关联起来。可以使用相应的键检索值。 Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值 Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，我们无法决定它的返回顺序，这是因为 Map 是使用 hash 表来实现的，也是引用类型 使用m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合map">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/16/%E9%9B%86%E5%90%88map/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="集合mapmap初始化map是Go中的内置类型，它将一个值与一个键关联起来。可以使用相应的键检索值。 Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值 Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，我们无法决定它的返回顺序，这是因为 Map 是使用 hash 表来实现的，也是引用类型 使用m">
+<meta property="article:published_time" content="2020-11-16T13:02:04.720Z">
+<meta property="article:modified_time" content="2020-11-16T13:07:59.713Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="go语言">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/16/集合map/"/>
+
+
+
+
+
+  <title>集合map | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E9%9B%86%E5%90%88map/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">集合map</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/%E9%9B%86%E5%90%88map/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E9%9B%86%E5%90%88map/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  3.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="集合map"><a href="#集合map" class="headerlink" title="集合map"></a>集合map</h3><h4 id="map初始化"><a href="#map初始化" class="headerlink" title="map初始化"></a>map初始化</h4><p>map是Go中的内置类型，它将一个值与一个键关联起来。可以使用相应的键检索值。</p>
+<p>Map 是一种无序的键值对的集合。Map 最重要的一点是通过 key 来快速检索数据，key 类似于索引，指向数据的值 Map 是一种集合，所以我们可以像迭代数组和切片那样迭代它。不过，Map 是无序的，我们无法决定它的返回顺序，这是因为 Map 是使用 hash 表来实现的，也是引用类型</p>
+<p>使用map过程中需要注意的几点：</p>
+<ul>
+<li>map是无序的，每次打印出来的map都会不一样，它不能通过index获取，而必须通过key获取</li>
+<li>map的长度是不固定的，也就是和slice一样，也是一种引用类型</li>
+<li>内置的len函数同样适用于map，返回map拥有的key的数量</li>
+<li>map的key可以是所有可比较的类型，如布尔型、整数型、浮点型、复杂型、字符串型……也可以键。</li>
+</ul>
+<p>map 是一种无序的基于 key-value 的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。</p>
+<p>Go 语言中 map 的定义语法如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">map</span>[KeyType]ValueType</span><br></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li>KeyType：表示键的类型</li>
+<li>ValueType：表示键对应的值的类型</li>
+</ul>
+<p>map 类型的变量默认初始值为 nil，需要使用 make()函数来分配内存。语法为：</p>
+<p>make：用于 slice、map 和 channel 的初始化</p>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//1、初始化方法一：make创建map类型的数据</span></span><br><span class="line">	<span class="keyword">var</span> userinfo = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line"></span><br><span class="line">	userinfo[<span class="string">"username"</span>] = <span class="string">"张三"</span></span><br><span class="line">	userinfo[<span class="string">"age"</span>] = <span class="string">"20"</span></span><br><span class="line">	userinfo[<span class="string">"sex"</span>] = <span class="string">"男"</span></span><br><span class="line">	<span class="comment">// fmt.Println(userinfo)  // map[age:20 sex:男 username:张三]</span></span><br><span class="line">	fmt.Println(userinfo[<span class="string">"username"</span>])  <span class="comment">// 张三</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//2、初始化方法二：map 支持在声明的时候填充元素</span></span><br><span class="line">	<span class="keyword">var</span> userinfo2 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"李四"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"20"</span>,</span><br><span class="line">		<span class="string">"sex"</span>: <span class="string">"男"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(userinfo2)  <span class="comment">// map[age:20 sex:男 username:李四]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//3、初始化方法二：map 支持在声明的时候填充元素</span></span><br><span class="line">	userinfo3 := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"李四"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"20"</span>,</span><br><span class="line">		<span class="string">"sex"</span>: <span class="string">"男"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(userinfo3)  <span class="comment">// map[age:20 sex:男 username:李四]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	map: 映射，是一种专门用于存储键值对的集合，属于引用类型</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	存储特点：</span></span><br><span class="line"><span class="comment">		A：存储的是无序的键值对</span></span><br><span class="line"><span class="comment">		B：键不能重复，并且和value值是一一对应的</span></span><br><span class="line"><span class="comment">			map中的key不能重复，如果重复，那么新的value会覆盖原来的，程序不会报错</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	语法结构：</span></span><br><span class="line"><span class="comment">		1、创建map</span></span><br><span class="line"><span class="comment">			var map[key类型]value类型</span></span><br><span class="line"><span class="comment">				nil map，无法直接使用</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			var map2 = make(map[key类型]value类型)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			var map3 = map[key类型]value类型&#123;key:value, key:value, key:value...&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	每种数据类型：</span></span><br><span class="line"><span class="comment">		int: 0 </span></span><br><span class="line"><span class="comment">		float: 0.0 -&gt; 0</span></span><br><span class="line"><span class="comment">		string: ""</span></span><br><span class="line"><span class="comment">		array：[00000]</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		slice: nil</span></span><br><span class="line"><span class="comment">		map: nil</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 创建map</span></span><br><span class="line">	<span class="keyword">var</span> map1 <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>  <span class="comment">// 没有初始化，nil</span></span><br><span class="line">	<span class="keyword">var</span> map2 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)  <span class="comment">// 创建</span></span><br><span class="line">	<span class="keyword">var</span> map3 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;<span class="string">"Go"</span>: <span class="number">98</span>, <span class="string">"Python"</span>: <span class="number">87</span>, <span class="string">"Java"</span>: <span class="number">79</span>, <span class="string">"Html"</span>: <span class="number">93</span>&#125;</span><br><span class="line">	fmt.Println(map1)  <span class="comment">// map[]</span></span><br><span class="line">	fmt.Println(map2)  <span class="comment">// map[]</span></span><br><span class="line">	fmt.Println(map3)  <span class="comment">// map[Go:98 Html:93 Java:79 Python:87]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(map1 == <span class="literal">nil</span>)  <span class="comment">// true</span></span><br><span class="line">	fmt.Println(map2 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line">	fmt.Println(map3 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> map1 == <span class="literal">nil</span>&#123;</span><br><span class="line">		map1 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)</span><br><span class="line">		fmt.Println(map1 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="map的CRUD"><a href="#map的CRUD" class="headerlink" title="map的CRUD"></a>map的CRUD</h4><p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//map类型数据的crud</span></span><br><span class="line">	<span class="comment">//1、创建、修改map类型的数据</span></span><br><span class="line">	<span class="keyword">var</span> userinfo = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	userinfo[<span class="string">"username"</span>] = <span class="string">"张三"</span></span><br><span class="line">	userinfo[<span class="string">"age"</span>] = <span class="string">"20"</span></span><br><span class="line">	fmt.Println(userinfo)  <span class="comment">// map[age:20 username:张三]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//2、创建、修改map类型的数据</span></span><br><span class="line">	<span class="keyword">var</span> userinfo2 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"张三"</span>,</span><br><span class="line">		<span class="string">"age"</span>:      <span class="string">"20"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	userinfo2[<span class="string">"username"</span>] = <span class="string">"李四"</span></span><br><span class="line">	fmt.Println(userinfo)  <span class="comment">// map[age:20 username:张三]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//3、获取、查找map类型的数据</span></span><br><span class="line">	<span class="keyword">var</span> userinfo3 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"张三"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"20"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(userinfo3[<span class="string">"username"</span>])  <span class="comment">// 获取</span></span><br><span class="line">	v, ok := userinfo3[<span class="string">"age"</span>]</span><br><span class="line">	fmt.Println(v, ok)  <span class="comment">// 20 true</span></span><br><span class="line">	v2, ok2 := userinfo3[<span class="string">"xxx"</span>]</span><br><span class="line">	fmt.Println(v2, ok2)  <span class="comment">//  false</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//4、删除map数据里面的key以及对应的值</span></span><br><span class="line">	<span class="keyword">var</span> userinfo4 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"张三"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"20"</span>,</span><br><span class="line">		<span class="string">"sex"</span>: <span class="string">"男"</span>,</span><br><span class="line">		<span class="string">"height"</span>: <span class="string">"180cm"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(userinfo4)  <span class="comment">// map[age:20 height:180cm sex:男 username:张三]</span></span><br><span class="line">	<span class="built_in">delete</span>(userinfo4, <span class="string">"sex"</span>)</span><br><span class="line">	fmt.Println(userinfo4)  <span class="comment">// map[age:20 height:180cm username:张三]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	map: 映射，是一种专门用于存储键值对的集合，属于引用类型</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	存储特点：</span></span><br><span class="line"><span class="comment">		A：存储的是无序的键值对</span></span><br><span class="line"><span class="comment">		B：键不能重复，并且和value值是一一对应的</span></span><br><span class="line"><span class="comment">			map中的key不能重复，如果重复，那么新的value会覆盖原来的，程序不会报错</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	语法结构：</span></span><br><span class="line"><span class="comment">		1、创建map</span></span><br><span class="line"><span class="comment">			var map[key类型]value类型</span></span><br><span class="line"><span class="comment">				nil map，无法直接使用</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			var map2 = make(map[key类型]value类型)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			var map3 = map[key类型]value类型&#123;key:value, key:value, key:value...&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		2、添加/修改</span></span><br><span class="line"><span class="comment">			map[key] = value</span></span><br><span class="line"><span class="comment">				如果key不存在，就是添加数据</span></span><br><span class="line"><span class="comment">				如果key存在，就是修改数据</span></span><br><span class="line"><span class="comment">			</span></span><br><span class="line"><span class="comment">		3、获取</span></span><br><span class="line"><span class="comment">			map[key] -&gt; value</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			value,ok := map[key]</span></span><br><span class="line"><span class="comment">				根据key获取对应的value</span></span><br><span class="line"><span class="comment">					如果key存在，value就是对应的数据，ok为true</span></span><br><span class="line"><span class="comment">					如果key不存在，value就是值类型的默认值，ok为false</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		4、删除数据</span></span><br><span class="line"><span class="comment">			delete(map, key)</span></span><br><span class="line"><span class="comment">				如果key存在，就可以直接删除</span></span><br><span class="line"><span class="comment">				如果key不存在，删除失败</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		5、长度</span></span><br><span class="line"><span class="comment">			len()</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	每种数据类型：</span></span><br><span class="line"><span class="comment">		int: 0 </span></span><br><span class="line"><span class="comment">		float: 0.0 -&gt; 0</span></span><br><span class="line"><span class="comment">		string: ""</span></span><br><span class="line"><span class="comment">		array：[00000]</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		slice: nil</span></span><br><span class="line"><span class="comment">		map: nil</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1.创建map</span></span><br><span class="line">	<span class="keyword">var</span> map1 <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>  <span class="comment">// 没有初始化，nil</span></span><br><span class="line">	<span class="keyword">var</span> map2 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)  <span class="comment">// 创建</span></span><br><span class="line">	<span class="keyword">var</span> map3 = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;<span class="string">"Go"</span>: <span class="number">98</span>, <span class="string">"Python"</span>: <span class="number">87</span>, <span class="string">"Java"</span>: <span class="number">79</span>, <span class="string">"Html"</span>: <span class="number">93</span>&#125;</span><br><span class="line">	fmt.Println(map1)  <span class="comment">// map[]</span></span><br><span class="line">	fmt.Println(map2)  <span class="comment">// map[]</span></span><br><span class="line">	fmt.Println(map3)  <span class="comment">// map[Go:98 Html:93 Java:79 Python:87]</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(map1 == <span class="literal">nil</span>)  <span class="comment">// true</span></span><br><span class="line">	fmt.Println(map2 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line">	fmt.Println(map3 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2.nil的map不能直接存储数值</span></span><br><span class="line">	<span class="keyword">if</span> map1 == <span class="literal">nil</span>&#123;</span><br><span class="line">		map1 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)</span><br><span class="line">		fmt.Println(map1 == <span class="literal">nil</span>)  <span class="comment">// false</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3.存储键值对到map中</span></span><br><span class="line">	<span class="comment">// map1[key] = value</span></span><br><span class="line">	map1[<span class="number">1</span>] = <span class="string">"hello"</span>  <span class="comment">// panic: assignment to entry in nil map</span></span><br><span class="line">	map1[<span class="number">2</span>] = <span class="string">"world"</span></span><br><span class="line">	map1[<span class="number">3</span>] = <span class="string">"memeda"</span></span><br><span class="line">	map1[<span class="number">4</span>] = <span class="string">"王二狗"</span></span><br><span class="line">	map1[<span class="number">5</span>] = <span class="string">"ruby"</span></span><br><span class="line">	map1[<span class="number">6</span>] = <span class="string">"三胖思密达"</span></span><br><span class="line">	map1[<span class="number">7</span>] = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4.获取数据，根据key获取对应的value值</span></span><br><span class="line">	<span class="comment">// 根据key获取对应的value，如果key存在，获取数值，如果key不存在，获取的是value值类型的零值</span></span><br><span class="line">	fmt.Println(map1)</span><br><span class="line">	fmt.Println(map1[<span class="number">4</span>])  <span class="comment">// 王二狗 根据key为4，获取对应的value值</span></span><br><span class="line">	fmt.Println(map1[<span class="number">40</span>]) <span class="comment">// "" </span></span><br><span class="line"></span><br><span class="line">	v1, ok := map1[<span class="number">40</span>]</span><br><span class="line">	<span class="keyword">if</span> ok &#123;</span><br><span class="line">		fmt.Println(<span class="string">"对应的数值是："</span>, v1)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		fmt.Println(<span class="string">"操作的key不存在，获取到的是零值："</span>, v1)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5.修改数据</span></span><br><span class="line">	fmt.Println(map1)</span><br><span class="line">	map1[<span class="number">3</span>] = <span class="string">"如花"</span></span><br><span class="line">	fmt.Println(map1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 6.删除数据</span></span><br><span class="line">	<span class="built_in">delete</span>(map1,<span class="number">3</span>)</span><br><span class="line">	fmt.Println(map1)</span><br><span class="line">	<span class="built_in">delete</span>(map1, <span class="number">30</span>)</span><br><span class="line">	fmt.Println(map1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 7.长度</span></span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(map1))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="map的长度"><a href="#map的长度" class="headerlink" title="map的长度"></a>map的长度</h4><p>使用len函数可以确定map的长度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(map)  &#x2F;&#x2F; 可以得到map的长度</span><br></pre></td></tr></table></figure>
+
+<h4 id="map的遍历"><a href="#map的遍历" class="headerlink" title="map的遍历"></a>map的遍历</h4><ul>
+<li>使用ok-idiom</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map[key]</span><br></pre></td></tr></table></figure>
+
+<p>但是当key如果不存在的时候，我们会得到该value值类型的默认值，比如string类型得到空字符串，int类型得到0。但是程序不会报错。</p>
+<p>所以我们可以使用ok-idiom获取值，可知道key/value是否存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value, ok :&#x3D; map[key]</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">	m[<span class="string">"a"</span>] = <span class="number">1</span></span><br><span class="line">	x, ok := m[<span class="string">"b"</span>]</span><br><span class="line">	fmt.Println(x, ok)</span><br><span class="line">	x, ok = m[<span class="string">"a"</span>]</span><br><span class="line">	fmt.Println(x, ok)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">0 false</span><br><span class="line">1 true</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例1：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> userinfo = <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"username"</span>: <span class="string">"李四"</span>,</span><br><span class="line">		<span class="string">"age"</span>: <span class="string">"20"</span>,</span><br><span class="line">		<span class="string">"sex"</span>: <span class="string">"男"</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(userinfo)  <span class="comment">// map[age:20 sex:男 username:李四]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//遍历map</span></span><br><span class="line">	<span class="keyword">for</span> k,v := <span class="keyword">range</span> userinfo&#123;</span><br><span class="line">		fmt.Printf(<span class="string">"key：%v value:%v\n"</span>, k, v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>示例2：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"sort"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	map的遍历：</span></span><br><span class="line"><span class="comment">		使用：for range</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">			数组，切片：index，value</span></span><br><span class="line"><span class="comment">			map: key, value</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	map1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)</span><br><span class="line">	map1[<span class="number">1</span>] = <span class="string">"红孩儿"</span></span><br><span class="line">	map1[<span class="number">2</span>] = <span class="string">"小钻风"</span></span><br><span class="line">	map1[<span class="number">3</span>] = <span class="string">"白骨精"</span></span><br><span class="line">	map1[<span class="number">4</span>] = <span class="string">"白素贞"</span></span><br><span class="line">	map1[<span class="number">5</span>] = <span class="string">"金角大王"</span></span><br><span class="line">	map1[<span class="number">6</span>] = <span class="string">"王二狗"</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.遍历map</span></span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> map1&#123;</span><br><span class="line">		fmt.Println(k, v)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"--------------------"</span>)</span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">1</span>;i&lt;=<span class="built_in">len</span>(map1);i++&#123;</span><br><span class="line">		fmt.Println(i,<span class="string">"-----&gt;"</span>,map1[i])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"--------------------"</span>)</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	1.获取所有的key，--&gt;切片/数组</span></span><br><span class="line"><span class="comment">	2.进行排序</span></span><br><span class="line"><span class="comment">	3.遍历key，--&gt;map[key]</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	keys := <span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">0</span>,<span class="built_in">len</span>(map1))</span><br><span class="line">	fmt.Println(keys)  <span class="comment">// []</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k,_ := <span class="keyword">range</span> map1&#123;</span><br><span class="line">		keys = <span class="built_in">append</span>(keys, k)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(keys)  <span class="comment">// [4 5 6 1 2 3]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 冒泡排序，或者使用sort包下的排序方法</span></span><br><span class="line">	sort.Ints(keys)</span><br><span class="line">	fmt.Println(keys)  <span class="comment">// [1 2 3 4 5 6]</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _,key := <span class="keyword">range</span> keys&#123;</span><br><span class="line">		fmt.Println(key,map1[key])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 对数组排序</span></span><br><span class="line">	s1 := []<span class="keyword">string</span>&#123;<span class="string">"Apple"</span>, <span class="string">"Windows"</span>, <span class="string">"Orange"</span>, <span class="string">"abc"</span>, <span class="string">"王二狗"</span>, <span class="string">"acd"</span>, <span class="string">"acc"</span>&#125;</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">	sort.Strings(s1)</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="map结合切片"><a href="#map结合切片" class="headerlink" title="map结合切片"></a>map结合切片</h4><p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	map和slice的结合使用：</span></span><br><span class="line"><span class="comment">		1.创建map用于存储人的信息</span></span><br><span class="line"><span class="comment">			name，age, sex, address</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">		2.每个map存储一个人的信息</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		3.将这些map存入到slice中</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		4.打印遍历输出</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.创建map存储第一个人的信息</span></span><br><span class="line">	map1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	map1[<span class="string">"name"</span>] = <span class="string">"王二狗"</span></span><br><span class="line">	map1[<span class="string">"age"</span>] = <span class="string">"30"</span></span><br><span class="line">	map1[<span class="string">"sex"</span>] = <span class="string">"男性"</span></span><br><span class="line">	map1[<span class="string">"address"</span>] = <span class="string">"北京市XX路XX号"</span></span><br><span class="line">	fmt.Println(map1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.第二个人</span></span><br><span class="line">	map2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	map2[<span class="string">"name"</span>] = <span class="string">"李小花"</span></span><br><span class="line">	map2[<span class="string">"age"</span>] = <span class="string">"20"</span></span><br><span class="line">	map2[<span class="string">"sex"</span>] = <span class="string">"女性"</span></span><br><span class="line">	map2[<span class="string">"address"</span>] = <span class="string">"上海市。。。"</span></span><br><span class="line">	fmt.Println(map2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.第三个人</span></span><br><span class="line">	map3 := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>&#123;<span class="string">"name"</span>: <span class="string">"ruby"</span>, <span class="string">"age"</span>:<span class="string">"30"</span>, <span class="string">"sex"</span>: <span class="string">"女性"</span>, <span class="string">"address"</span>: <span class="string">"杭州市"</span>&#125;</span><br><span class="line">	fmt.Println(map3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//将map存入到slice中</span></span><br><span class="line">	s1 := <span class="built_in">make</span>([]<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>,<span class="number">0</span>,<span class="number">3</span>)</span><br><span class="line">	s1 = <span class="built_in">append</span>(s1, map1)</span><br><span class="line">	s1 = <span class="built_in">append</span>(s1, map2)</span><br><span class="line">	s1 = <span class="built_in">append</span>(s1, map3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 遍历切片</span></span><br><span class="line">	<span class="keyword">for</span> i, val := <span class="keyword">range</span> s1 &#123;</span><br><span class="line">		<span class="comment">//val: map1, map2, map3</span></span><br><span class="line">		fmt.Printf(<span class="string">"第 %d 个人的信息是：\n"</span>, i+<span class="number">1</span>)</span><br><span class="line">		fmt.Printf(<span class="string">"\t姓名：%s\n"</span>, val[<span class="string">"name"</span>])</span><br><span class="line">		fmt.Printf(<span class="string">"\t年龄：%s\n"</span>, val[<span class="string">"age"</span>])</span><br><span class="line">		fmt.Printf(<span class="string">"\t性别：%s\n"</span>, val[<span class="string">"sex"</span>])</span><br><span class="line">		fmt.Printf(<span class="string">"\t地址：%s\n"</span>, val[<span class="string">"address"</span>])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="元素为map类型的切片"><a href="#元素为map类型的切片" class="headerlink" title="元素为map类型的切片"></a>元素为map类型的切片</h5><p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 我们想在切片里面放一系列用户的信息，这时候我们就可以定义一个元素为map类型的切片</span></span><br><span class="line">	<span class="comment">// var userinfo = []string&#123;"张三", "李四"&#125;</span></span><br><span class="line">	<span class="keyword">var</span> userinfo = <span class="built_in">make</span>([]<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>, <span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line">	<span class="comment">// fmt.Println(userinfo[0])  // map[] map不初始化的默认值为nil</span></span><br><span class="line">	<span class="comment">// fmt.Println(userinfo[0] == nil)  // true</span></span><br><span class="line">	<span class="keyword">if</span> userinfo[<span class="number">0</span>] == <span class="literal">nil</span> &#123;</span><br><span class="line">		userinfo[<span class="number">0</span>] = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">		userinfo[<span class="number">0</span>][<span class="string">"username"</span>] = <span class="string">"张三"</span></span><br><span class="line">		userinfo[<span class="number">0</span>][<span class="string">"age"</span>] = <span class="string">"20"</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> userinfo[<span class="number">1</span>] == <span class="literal">nil</span> &#123;</span><br><span class="line">		userinfo[<span class="number">1</span>] = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">		userinfo[<span class="number">1</span>][<span class="string">"username"</span>] = <span class="string">"李四"</span></span><br><span class="line">		userinfo[<span class="number">1</span>][<span class="string">"age"</span>] = <span class="string">"22"</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> userinfo[<span class="number">2</span>] == <span class="literal">nil</span> &#123;</span><br><span class="line">		userinfo[<span class="number">2</span>] = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">		userinfo[<span class="number">2</span>][<span class="string">"username"</span>] = <span class="string">"王五"</span></span><br><span class="line">		userinfo[<span class="number">2</span>][<span class="string">"age"</span>] = <span class="string">"27"</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(userinfo)  <span class="comment">// [map[age:20 username:张三] map[age:22 username:李四] map[age:27 username:王五]]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 遍历</span></span><br><span class="line">	<span class="keyword">for</span> _,v := <span class="keyword">range</span> userinfo &#123;</span><br><span class="line">		<span class="keyword">for</span> key, value := <span class="keyword">range</span> v &#123;</span><br><span class="line">			fmt.Printf(<span class="string">"key:%v---value:%v\n"</span>, key, value)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="值为切片类型的map"><a href="#值为切片类型的map" class="headerlink" title="值为切片类型的map"></a>值为切片类型的map</h5><p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> userinfo = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">string</span>)</span><br><span class="line">	userinfo[<span class="string">"hobby"</span>] = []<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"吃饭"</span>,</span><br><span class="line">		<span class="string">"睡觉"</span>,</span><br><span class="line">		<span class="string">"敲代码"</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	userinfo[<span class="string">"work"</span>] = []<span class="keyword">string</span>&#123;</span><br><span class="line">		<span class="string">"php"</span>,</span><br><span class="line">		<span class="string">"golang"</span>,</span><br><span class="line">		<span class="string">"前端"</span>,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// fmt.Println(userinfo)</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, value := <span class="keyword">range</span> userinfo &#123;</span><br><span class="line">		<span class="keyword">for</span> _,v := <span class="keyword">range</span> value &#123;</span><br><span class="line">			fmt.Println(v)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="map是引用类型"><a href="#map是引用类型" class="headerlink" title="map是引用类型"></a>map是引用类型</h4><p>与切片相似，映射是引用类型。当将映射分配给一个新变量时，它们都指向相同的内部数据结构。因此，一个的变化会反映另一个。</p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    personSalary := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>&#123;</span><br><span class="line">        <span class="string">"steve"</span>: <span class="number">12000</span>,</span><br><span class="line">        <span class="string">"jamie"</span>: <span class="number">15000</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    personSalary[<span class="string">"mike"</span>] = <span class="number">9000</span></span><br><span class="line">    fmt.Println(<span class="string">"Original person salary"</span>, personSalary)</span><br><span class="line">    newPersonSalary := personSalary</span><br><span class="line">    newPersonSalary[<span class="string">"mike"</span>] = <span class="number">18000</span></span><br><span class="line">    fmt.Println(<span class="string">"Person salary changed"</span>, personSalary)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Original person salary map[steve:12000 jamie:15000 mike:9000]  </span><br><span class="line">Person salary changed map[steve:12000 jamie:15000 mike:18000]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>map不能使用==操作符进行比较。==只能用来检查map是否为空。否则会报错：invalid operation: map1 == map2 (map can only be comparedto nil)</p>
+</blockquote>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		值类型：改变变量副本值的时候，不会改变变量本身的值（基本数据类型、数组）</span></span><br><span class="line"><span class="comment">		引用类型：改变变量副本值的时候，会改变变量本身的值（切片、map）</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// map类型也是引用数据类型</span></span><br><span class="line">	<span class="keyword">var</span> userinfo1 = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	userinfo1[<span class="string">"username"</span>] = <span class="string">"张三"</span></span><br><span class="line">	userinfo1[<span class="string">"age"</span>] = <span class="string">"20"</span></span><br><span class="line">	userinfo2 := userinfo1</span><br><span class="line"></span><br><span class="line">	userinfo2[<span class="string">"username"</span>] = <span class="string">"李四"</span></span><br><span class="line">	fmt.Println(userinfo1)  <span class="comment">// map[age:20 username:李四]</span></span><br><span class="line">	fmt.Println(userinfo2)  <span class="comment">// map[age:20 username:李四]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	一 数据类型：</span></span><br><span class="line"><span class="comment">		基本数据类型：int，float，string，bool</span></span><br><span class="line"><span class="comment">		复合数据类型：array，slice，map，function，pointer，struct。。。</span></span><br><span class="line"><span class="comment">			array：[size]数据类型</span></span><br><span class="line"><span class="comment">			slice：[]数据类型</span></span><br><span class="line"><span class="comment">			map：map[key的类型]value的类型</span></span><br><span class="line"><span class="comment">		</span></span><br><span class="line"><span class="comment">	二 存储特点：</span></span><br><span class="line"><span class="comment">		值类型：int，float，string，bool，array，struct</span></span><br><span class="line"><span class="comment">		引用类型：slice，map</span></span><br><span class="line"><span class="comment">			make(), slice, map, chan</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	map1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">string</span>)</span><br><span class="line">	map2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">float64</span>)</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, map1)</span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, map2)</span><br><span class="line"></span><br><span class="line">	map3 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)  <span class="comment">// map[string]map[string]string</span></span><br><span class="line">	m1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	m1[<span class="string">"name"</span>] = <span class="string">"王二狗"</span></span><br><span class="line">	m1[<span class="string">"age"</span>] = <span class="string">"30"</span></span><br><span class="line">	m1[<span class="string">"salary"</span>] = <span class="string">"3000"</span></span><br><span class="line">	map3[<span class="string">"hr"</span>] = m1</span><br><span class="line"></span><br><span class="line">	m2 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	m2[<span class="string">"name"</span>] = <span class="string">"ruby"</span></span><br><span class="line">	m2[<span class="string">"age"</span>] = <span class="string">"28"</span></span><br><span class="line">	m2[<span class="string">"salary"</span>] = <span class="string">"8000"</span></span><br><span class="line">	map3[<span class="string">"总经理"</span>] = m2</span><br><span class="line"></span><br><span class="line">	fmt.Println(map3)</span><br><span class="line"></span><br><span class="line">	fmt.Println(<span class="string">"------------------"</span>)</span><br><span class="line"></span><br><span class="line">	map4 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line">	map4[<span class="string">"王二狗"</span>] = <span class="string">"矮矬穷"</span></span><br><span class="line">	map4[<span class="string">"李小花"</span>] = <span class="string">"白富美"</span></span><br><span class="line">	map4[<span class="string">"ruby"</span>] = <span class="string">"住在隔壁"</span></span><br><span class="line"></span><br><span class="line">	fmt.Println(map4)</span><br><span class="line"></span><br><span class="line">	map5 := map4</span><br><span class="line">	fmt.Println(map5)</span><br><span class="line"></span><br><span class="line">	map5[<span class="string">"王二狗"</span>] = <span class="string">"高富帅"</span></span><br><span class="line">	fmt.Println(map4)</span><br><span class="line">	fmt.Println(map5)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="map的排序"><a href="#map的排序" class="headerlink" title="map的排序"></a>map的排序</h4><p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"sort"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//map的排序</span></span><br><span class="line">	map1 := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>, <span class="number">10</span>)</span><br><span class="line">	map1[<span class="number">10</span>] = <span class="number">100</span></span><br><span class="line">	map1[<span class="number">1</span>] = <span class="number">13</span></span><br><span class="line">	map1[<span class="number">4</span>] = <span class="number">56</span></span><br><span class="line">	map1[<span class="number">8</span>] = <span class="number">90</span></span><br><span class="line">	map1[<span class="number">11</span>] = <span class="number">70</span></span><br><span class="line">	map1[<span class="number">20</span>] = <span class="number">54</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		8 90</span></span><br><span class="line"><span class="comment">		1 13</span></span><br><span class="line"><span class="comment">		4 56</span></span><br><span class="line"><span class="comment">		20 54</span></span><br><span class="line"><span class="comment">		10 100</span></span><br><span class="line"><span class="comment">		11 70</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">for</span> key, value := <span class="keyword">range</span> map1 &#123;</span><br><span class="line">		fmt.Println(key, value)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//需求：按照key升序输出map的key-&gt;value</span></span><br><span class="line">	<span class="comment">//1、把map的key放在切片里面</span></span><br><span class="line">	<span class="keyword">var</span> keySlice []<span class="keyword">int</span></span><br><span class="line">	<span class="keyword">for</span> key, _ := <span class="keyword">range</span> map1 &#123;</span><br><span class="line">		keySlice = <span class="built_in">append</span>(keySlice, key)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(keySlice)  <span class="comment">// [10 4 11 20 1 8]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//2、让key进行升序排序</span></span><br><span class="line">	sort.Ints(keySlice)</span><br><span class="line">	fmt.Println(keySlice)  <span class="comment">// [1 4 8 10 11 20]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//3、循环遍历key输出map的值</span></span><br><span class="line">	<span class="keyword">for</span> _,v := <span class="keyword">range</span> keySlice &#123;</span><br><span class="line">		fmt.Println(<span class="string">"key=%v value=%v"</span>, v, map1[v])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><h5 id="统计字符串中单词出现的次数"><a href="#统计字符串中单词出现的次数" class="headerlink" title="统计字符串中单词出现的次数"></a>统计字符串中单词出现的次数</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"strings"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 写一个程序，统计一个字符串中每个单词出现的次数，比如：“how do you do”中 how=1 do=2 you=1</span></span><br><span class="line">	<span class="keyword">var</span> str = <span class="string">"how do you do"</span></span><br><span class="line">	<span class="keyword">var</span> strSlice = strings.Split(str, <span class="string">" "</span>)</span><br><span class="line">	fmt.Println(strSlice)  <span class="comment">// [how do you do]</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> strMap = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> strSlice &#123;</span><br><span class="line">		strMap[v]++</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	fmt.Println(strMap)  <span class="comment">// map[do:2 how:1 you:1]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag"># go语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/16/%E9%94%99%E8%AF%AFerror/" rel="next" title="错误error">
+                <i class="fa fa-chevron-left"></i> 错误error
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/16/ioutil%E5%8C%85/" rel="prev" title="ioutil包">
+                ioutil包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#集合map"><span class="nav-number">1.</span> <span class="nav-text">集合map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#map初始化"><span class="nav-number">1.1.</span> <span class="nav-text">map初始化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map的CRUD"><span class="nav-number">1.2.</span> <span class="nav-text">map的CRUD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map的长度"><span class="nav-number">1.3.</span> <span class="nav-text">map的长度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map的遍历"><span class="nav-number">1.4.</span> <span class="nav-text">map的遍历</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map结合切片"><span class="nav-number">1.5.</span> <span class="nav-text">map结合切片</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#元素为map类型的切片"><span class="nav-number">1.5.1.</span> <span class="nav-text">元素为map类型的切片</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#值为切片类型的map"><span class="nav-number">1.5.2.</span> <span class="nav-text">值为切片类型的map</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map是引用类型"><span class="nav-number">1.6.</span> <span class="nav-text">map是引用类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map的排序"><span class="nav-number">1.7.</span> <span class="nav-text">map的排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#案例"><span class="nav-number">1.8.</span> <span class="nav-text">案例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#统计字符串中单词出现的次数"><span class="nav-number">1.8.1.</span> <span class="nav-text">统计字符串中单词出现的次数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">148k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/564.%20Find%20the%20Closest%20Palindrome/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/27/678.%20Valid%20Parenthesis%20String/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/564.%20Find%20the%20Closest%20Palindrome/" itemprop="url">564. Find the Closest Palindrome</a></h1>
+                <a class="post-title-link" href="/2020/04/27/678.%20Valid%20Parenthesis%20String/" itemprop="url">678. Valid Parenthesis String</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T19:20:27+08:00">
+                2020-04-27
               </time>
             
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/564.%20Find%20the%20Closest%20Palindrome/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/564.%20Find%20the%20Closest%20Palindrome/" itemprop="commentCount"></span>
+                <a href="/2020/04/27/678.%20Valid%20Parenthesis%20String/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/678.%20Valid%20Parenthesis%20String/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  216
+                  444
                 </span>
               
 
@@ -403,31 +403,19 @@
 
       
         
-          
-            <h2 id="564-Find-the-Closest-Palindrome"><a href="#564-Find-the-Closest-Palindrome" class="headerlink" title="564. Find the Closest Palindrome"></a>564. Find the Closest Palindrome</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given an integer n, find the closest integer (not including itself), which is a palindrome.</p>
-<p>The ‘closest’ is defined as absolute difference minimized between two integers.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;123&quot;</span><br><span class="line">Output: &quot;121&quot;</span><br></pre></td></tr></table></figure>
-
-
-
+          <h4 id="678-Valid-Parenthesis-String"><a href="#678-Valid-Parenthesis-String" class="headerlink" title="678. Valid Parenthesis String"></a>678. Valid Parenthesis String</h4><ul>
+<li><p>问题描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">给定一个字符串，包含&#39;(&#39; &#39;)&#39;和&#39;*&#39;，其中&#39;*&#39;可以和左括号和右括号匹配，判断字符串是否是一个可行的匹配串</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>  <strong>Note:</strong></p>
-<ol>
-<li>The input <strong>n</strong> is a positive integer represented by string, whose length will not exceed 18.</li>
-<li>If there is a tie, return the smaller one as answer.</li>
-</ol>
-<ul>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">nearestPalindromic</span><span class="params">(String n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n.length() &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> String.valueOf(Integer.parseInt(n)-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = n.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> m = s1.length;</span><br><span class="line">        <span class="keyword">int</span> left =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[left] != s1[right])&#123;</span><br><span class="line">                s1[right] = s1[left];</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        Integer i = Integer.parseInt( String.valueOf(s1));</span><br><span class="line">        Integer j = Integer.parseInt( n);</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= j )&#123;</span><br><span class="line">            String s = String.valueOf(<span class="number">2</span>*j-i);</span><br><span class="line">            <span class="keyword">if</span>(isPalindromic(s))&#123;</span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf(s1);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalindromic</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length()&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = s.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> m = s1.length;</span><br><span class="line">        <span class="keyword">int</span> left =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = m-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s1[left] != s1[right])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果没有*,可以简单的使用一个栈就可以完成检测，但是由于存在*，还需要一个栈保存*，也就是说需要两个栈，分别保存&#39;(&#39;和&#39;*&#39;,当遇到右括号，首先考虑取出保存&#39;(&#39;的栈中的栈顶元素，随后分别比较两个栈中的元素。</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/27/678.%20Valid%20Parenthesis%20String/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -474,7 +462,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/557.%20Reverse%20Words%20in%20a%20String%20III/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/27/238.%20Product%20of%20Array%20Except%20Self/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -493,7 +481,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/557.%20Reverse%20Words%20in%20a%20String%20III/" itemprop="url">557. Reverse Words in a String III</a></h1>
+                <a class="post-title-link" href="/2020/04/27/238.%20Product%20of%20Array%20Except%20Self/" itemprop="url">238. Product of Array Except Self</a></h1>
         
 
         <div class="post-meta">
@@ -505,8 +493,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T17:48:21+08:00">
+                2020-04-27
               </time>
             
 
@@ -546,8 +534,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/557.%20Reverse%20Words%20in%20a%20String%20III/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/557.%20Reverse%20Words%20in%20a%20String%20III/" itemprop="commentCount"></span>
+                <a href="/2020/04/27/238.%20Product%20of%20Array%20Except%20Self/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/238.%20Product%20of%20Array%20Except%20Self/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -569,7 +557,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  147
+                  236
                 </span>
               
 
@@ -607,26 +595,19 @@
 
       
         
-          
-            <h2 id="557-Reverse-Words-in-a-String-III"><a href="#557-Reverse-Words-in-a-String-III" class="headerlink" title="557. Reverse Words in a String III"></a>557. Reverse Words in a String III</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Let&#39;s take LeetCode contest&quot;</span><br><span class="line">Output: &quot;s&#39;teL ekat edoCteeL tsetnoc&quot;</span><br></pre></td></tr></table></figure>
-
-
-
+          <h4 id="238-Product-of-Array-Except-Self"><a href="#238-Product-of-Array-Except-Self" class="headerlink" title="238. Product of Array Except Self"></a>238. Product of Array Except Self</h4><ul>
+<li><p>问题描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定一个数组，输出一个同样大小的数组，使输出数组对应位置的值是给定数组除了对应位置的其他所有值的乘积</span><br><span class="line">例子：</span><br><span class="line">Input:  [1,2,3,4]</span><br><span class="line">Output: [24,12,8,6]</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>  <strong>Note:</strong> In the string, each word is separated by single space and there will not be any extra space in the string.</p>
-<ul>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        String[] s1 = s.trim().split(<span class="string">" "</span>);</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; s1.length ;i++)&#123;</span><br><span class="line">            <span class="keyword">char</span>[] tmp = s1[i].toCharArray();</span><br><span class="line">            <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> right = tmp.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">               <span class="keyword">char</span> t = tmp[left];</span><br><span class="line">               tmp[left] = tmp[right];</span><br><span class="line">               tmp[right] = t;</span><br><span class="line">               left++;</span><br><span class="line">               right--;</span><br><span class="line">        &#125;</span><br><span class="line">            sb.append(tmp).append(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以使用两个数组分别保存某个具体位置的前缀乘积和后缀乘积，最后，将这两个数组对应位置相乘就是结果</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/27/238.%20Product%20of%20Array%20Except%20Self/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -673,7 +654,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/541.%20Reverse%20String%20II/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/27/221.%20%20Maximal%20Square/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -692,7 +673,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/541.%20Reverse%20String%20II/" itemprop="url">541. Reverse String II</a></h1>
+                <a class="post-title-link" href="/2020/04/27/221.%20%20Maximal%20Square/" itemprop="url">221.  Maximal Square</a></h1>
         
 
         <div class="post-meta">
@@ -704,8 +685,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T17:08:00+08:00">
+                2020-04-27
               </time>
             
 
@@ -745,8 +726,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/541.%20Reverse%20String%20II/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/541.%20Reverse%20String%20II/" itemprop="commentCount"></span>
+                <a href="/2020/04/27/221.%20%20Maximal%20Square/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/221.%20%20Maximal%20Square/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -768,7 +749,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  178
+                  340
                 </span>
               
 
@@ -806,30 +787,19 @@
 
       
         
-          
-            <h2 id="541-Reverse-String-II"><a href="#541-Reverse-String-II" class="headerlink" title="541. Reverse String II"></a>541. Reverse String II</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string and an integer k, you need to reverse the first k characters for every 2k characters counting from the start of the string. If there are less than k characters left, reverse all of them. If there are less than 2k but greater than or equal to k characters, then reverse the first k characters and left the other as original.</p>
+          <h4 id="221-Maximal-Square"><a href="#221-Maximal-Square" class="headerlink" title="221.  Maximal Square"></a>221.  Maximal Square</h4><ul>
+<li><p>问题描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">给定一个二维数组，其中只有0和1，找出最大的只含1的方阵</span><br><span class="line">例子：</span><br><span class="line">Input: </span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line">1 0 1 1 1</span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 0 0 1 0</span><br><span class="line"></span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>  <strong>Example:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s &#x3D; &quot;abcdefg&quot;, k &#x3D; 2</span><br><span class="line">Output: &quot;bacdfeg&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>  <strong>Restrictions:</strong></p>
-<ol>
-<li>The string consists of lower English letters only.</li>
-<li>Length of the given string and k will in the range [1, 10000]</li>
-</ol>
-<ul>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseStr</span><span class="params">(String s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j, m;</span><br><span class="line">        <span class="keyword">int</span> N = c.length;</span><br><span class="line">        <span class="keyword">char</span> tmp;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; N)&#123;</span><br><span class="line">            <span class="comment">// 防止越界</span></span><br><span class="line">            j = Math.min(N - <span class="number">1</span>, i + k - <span class="number">1</span>);</span><br><span class="line">            m = i;</span><br><span class="line">            <span class="keyword">while</span>(m &lt; j)&#123;</span><br><span class="line">                tmp = c[m];</span><br><span class="line">                c[m] = c[j];</span><br><span class="line">                c[j] = tmp;</span><br><span class="line">                ++m;</span><br><span class="line">                --j;</span><br><span class="line">            &#125;</span><br><span class="line">            i += <span class="number">2</span>*k; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
+<li><p>解答</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用动态规划，初始化dp[<span class="number">0</span>][j]和dp[i][<span class="number">0</span>]，数值和二维数组的数值相等</span><br><span class="line">dp[i][j]的值视该处的值而定，如果等于<span class="number">0</span>，则为<span class="number">0</span>，如果不等于<span class="number">0</span>，则是对角线，上边，左边三者的最小值加上<span class="number">1</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/27/221.%20%20Maximal%20Square/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -876,7 +846,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/344.%20Reverse%20String/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/27/560.%20Subarray%20Sum%20Equals%20K/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -895,7 +865,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/344.%20Reverse%20String/" itemprop="url">344. Reverse String</a></h1>
+                <a class="post-title-link" href="/2020/04/27/560.%20Subarray%20Sum%20Equals%20K/" itemprop="url">560. Subarray Sum Equals K</a></h1>
         
 
         <div class="post-meta">
@@ -907,8 +877,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T01:57:37+08:00">
+                2020-04-27
               </time>
             
 
@@ -948,8 +918,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/344.%20Reverse%20String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/344.%20Reverse%20String/" itemprop="commentCount"></span>
+                <a href="/2020/04/27/560.%20Subarray%20Sum%20Equals%20K/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/560.%20Subarray%20Sum%20Equals%20K/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -971,7 +941,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  97
+                  219
                 </span>
               
 
@@ -1009,20 +979,23 @@
 
       
         
-          
-            <h2 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a>344. Reverse String</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Write a function that reverses a string. The input string is given as an array of characters <code>char[]</code>.</p>
-<p>Do not allocate extra space for another array, you must do this by <strong>modifying the input array <a href="https://en.wikipedia.org/wiki/In-place_algorithm" target="_blank" rel="noopener">in-place</a></strong> with O(1) extra memory.</p>
-<p>You may assume all the characters consist of <a href="https://en.wikipedia.org/wiki/ASCII#Printable_characters" target="_blank" rel="noopener">printable ascii characters</a>.</p>
+          <h4 id="560-Subarray-Sum-Equals-K"><a href="#560-Subarray-Sum-Equals-K" class="headerlink" title="560. Subarray Sum Equals K"></a>560. Subarray Sum Equals K</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">给定一个数组和一个整数，求出数组中连续数字求和等于k的所有可能</span><br><span class="line">例子：</span><br><span class="line">Input:nums &#x3D; [1,1,1], k &#x3D; 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>  right = s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">char</span> tmp = s[left];</span><br><span class="line">            s[left] = s[right];</span><br><span class="line">            s[right] = tmp;</span><br><span class="line">            left++;</span><br><span class="line">            right--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.首先想到的是暴力法</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i; j &lt; nums.length;j++)&#123;</span><br><span class="line">                sum +=nums[j];</span><br><span class="line">                <span class="keyword">if</span>(sum == k)&#123;</span><br><span class="line">                    result++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.暴力法时间复杂度太高，尝试优化以下，使用hashmap存储结果</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/27/560.%20Subarray%20Sum%20Equals%20K/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1069,7 +1042,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/27/1143.%20%20Longest%20Common%20Subsequence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1088,7 +1061,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/" itemprop="url">151. Reverse Words in a String</a></h1>
+                <a class="post-title-link" href="/2020/04/27/1143.%20%20Longest%20Common%20Subsequence/" itemprop="url">1143.  Longest Common Subsequence</a></h1>
         
 
         <div class="post-meta">
@@ -1100,8 +1073,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T01:30:26+08:00">
+                2020-04-27
               </time>
             
 
@@ -1141,8 +1114,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/151.%20Reverse%20Words%20in%20a%20String/" itemprop="commentCount"></span>
+                <a href="/2020/04/27/1143.%20%20Longest%20Common%20Subsequence/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/1143.%20%20Longest%20Common%20Subsequence/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1202,37 +1175,19 @@
 
       
         
-          
-            <h2 id="151-Reverse-Words-in-a-String"><a href="#151-Reverse-Words-in-a-String" class="headerlink" title="151. Reverse Words in a String"></a>151. Reverse Words in a String</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given an input string, reverse the string word by word.</p>
+          <h4 id="1143-Longest-Common-Subsequence"><a href="#1143-Longest-Common-Subsequence" class="headerlink" title="1143.  Longest Common Subsequence"></a>1143.  Longest Common Subsequence</h4><ul>
+<li><p>题目描述</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">给定两个字符串，求出最长公共字串的长度</span><br><span class="line">例子</span><br><span class="line">Input: text1 &#x3D; &quot;abcde&quot;, text2 &#x3D; &quot;ace&quot; </span><br><span class="line">Output: 3  </span><br><span class="line">Explanation: The longest common subsequence is &quot;ace&quot; and its length is 3.</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>  <strong>Example 1:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;the sky is blue&quot;</span><br><span class="line">Output: &quot;blue is sky the&quot;</span><br></pre></td></tr></table></figure>
-
-<p>  <strong>Example 2:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;  hello world!  &quot;</span><br><span class="line">Output: &quot;world! hello&quot;</span><br><span class="line">Explanation: Your reversed string should not contain leading or trailing spaces.</span><br></pre></td></tr></table></figure>
-
-<p>  <strong>Example 3:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a good   example&quot;</span><br><span class="line">Output: &quot;example good a&quot;</span><br><span class="line">Explanation: You need to reduce multiple spaces between two words to a single space in the reversed string.</span><br></pre></td></tr></table></figure>
-
-
-
-<p>  <strong>Note:</strong></p>
-<ul>
-<li>A word is defined as a sequence of non-space characters.</li>
-<li>Input string may contain leading or trailing spaces. However, your reversed string should not contain leading or trailing spaces.</li>
-<li>You need to reduce multiple spaces between two words to a sin</li>
-</ul>
-<ul>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">reverseWords</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s== <span class="keyword">null</span> || s.isEmpty())&#123;</span><br><span class="line">            <span class="keyword">return</span> s;</span><br><span class="line">        &#125;</span><br><span class="line">        String[] s1 = s.trim().split(<span class="string">" "</span>); </span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = s1.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!s1[i].trim().isEmpty())&#123;</span><br><span class="line">                sb.append(s1[i]).append(<span class="string">" "</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString().trim();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-          
+<li><p>解答</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">使用动态规划，如果text1[i] &#x3D;&#x3D; text2[j],则dp[i][j] &#x3D; dp[i-1][j-1]+1</span><br><span class="line">否则dp[i][j] &#x3D; Math.max(dp[i-1][j],dp[i][j-1])</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/27/1143.%20%20Longest%20Common%20Subsequence/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1270,7 +1225,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
   </nav>
 
 
@@ -1320,7 +1275,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1331,7 +1286,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1342,7 +1297,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1409,7 +1364,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.2k</span>
+    <span title="Site words total count">148k</span>
   
 </div>
 

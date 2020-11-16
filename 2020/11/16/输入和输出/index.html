@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="输入和输出打印输出fmt包 导入包 1import &quot;fmt&quot;      fmt包实现了类似C语言printf和scanf的格式化I&#x2F;O。格式化verb（’verb’）源自C语言但更简单。 详见官网fmt的API：https:&#x2F;&#x2F;golang.google.cn&#x2F;pkg&#x2F;fmt&#x2F;  常用打印函数打印： func Print(a …interface{}) (n int, err error) 格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="输入和输出">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/16/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="输入和输出打印输出fmt包 导入包 1import &quot;fmt&quot;      fmt包实现了类似C语言printf和scanf的格式化I&#x2F;O。格式化verb（’verb’）源自C语言但更简单。 详见官网fmt的API：https:&#x2F;&#x2F;golang.google.cn&#x2F;pkg&#x2F;fmt&#x2F;  常用打印函数打印： func Print(a …interface{}) (n int, err error) 格式">
+<meta property="og:image" content="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/fmtpackage.png">
+<meta property="og:image" content="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/bufio1.png">
+<meta property="og:image" content="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/bufio2.png">
+<meta property="article:published_time" content="2020-11-16T13:02:04.696Z">
+<meta property="article:modified_time" content="2020-11-16T13:07:28.030Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="go语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/fmtpackage.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/16/输入和输出/"/>
+
+
+
+
+
+  <title>输入和输出 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">输入和输出</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E8%BE%93%E5%85%A5%E5%92%8C%E8%BE%93%E5%87%BA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  732
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="输入和输出"><a href="#输入和输出" class="headerlink" title="输入和输出"></a>输入和输出</h3><h4 id="打印输出"><a href="#打印输出" class="headerlink" title="打印输出"></a>打印输出</h4><h5 id="fmt包"><a href="#fmt包" class="headerlink" title="fmt包"></a>fmt包</h5><ul>
+<li><p>导入包</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>fmt包实现了类似C语言printf和scanf的格式化I/O。格式化verb（’verb’）源自C语言但更简单。</p>
+<p>详见官网fmt的API：<a href="https://golang.google.cn/pkg/fmt/" target="_blank" rel="noopener">https://golang.google.cn/pkg/fmt/</a></p>
+<p><a href="https://github.com/rubyhan1314/Golang-100-Days/blob/master/Day01-15(Go语言基础)/img/fmtpackage.png" target="_blank" rel="noopener"><img src="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/fmtpackage.png" alt="fmtpackage"></a></p>
+<h5 id="常用打印函数"><a href="#常用打印函数" class="headerlink" title="常用打印函数"></a>常用打印函数</h5><p><strong>打印：</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Print" target="_blank" rel="noopener">func Print(a …interface{}) (n int, err error)</a></p>
+<p><strong>格式化打印：</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Printf" target="_blank" rel="noopener">func Printf(format string, a …interface{}) (n int, err error)</a></p>
+<p><strong>打印后换行</strong></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Println" target="_blank" rel="noopener">func Println(a …interface{}) (n int, err error)</a></p>
+<p>格式化打印中的常用占位符：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">格式化打印占位符：</span><br><span class="line">			%v,原样输出</span><br><span class="line">			%T，打印类型</span><br><span class="line">			%t,bool类型</span><br><span class="line">			%s，字符串</span><br><span class="line">			%f，浮点</span><br><span class="line">			%d，10进制的整数</span><br><span class="line">			%b，2进制的整数</span><br><span class="line">			%o，8进制</span><br><span class="line">			%x，%X，16进制</span><br><span class="line">				%x：0-9，a-f</span><br><span class="line">				%X：0-9，A-F</span><br><span class="line">			%c，打印字符</span><br><span class="line">			%p，打印地址</span><br><span class="line">			。。。</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	输入和输出：</span></span><br><span class="line"><span class="comment">		fmt包：输入，输出</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		输出：</span></span><br><span class="line"><span class="comment">			Print()  // 打印</span></span><br><span class="line"><span class="comment">			Printf()  // 格式化打印</span></span><br><span class="line"><span class="comment">			Println()  // 打印之后换行</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		格式化打印占位符：</span></span><br><span class="line"><span class="comment">			%v,原样输出</span></span><br><span class="line"><span class="comment">			%T，打印类型</span></span><br><span class="line"><span class="comment">			%t,bool类型</span></span><br><span class="line"><span class="comment">			%s，字符串</span></span><br><span class="line"><span class="comment">			%f，浮点</span></span><br><span class="line"><span class="comment">			%d，10进制的整数</span></span><br><span class="line"><span class="comment">			%b，2进制的整数</span></span><br><span class="line"><span class="comment">			%o，8进制</span></span><br><span class="line"><span class="comment">			%x，%X，16进制</span></span><br><span class="line"><span class="comment">				%x：0-9，a-f</span></span><br><span class="line"><span class="comment">				%X：0-9，A-F</span></span><br><span class="line"><span class="comment">			%c，打印字符</span></span><br><span class="line"><span class="comment">			%p，打印地址</span></span><br><span class="line"><span class="comment">			。。。</span></span><br><span class="line"><span class="comment">		输入：</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	a := <span class="number">100</span>  <span class="comment">// int</span></span><br><span class="line">	b := <span class="number">3.14</span>  <span class="comment">// float64</span></span><br><span class="line">	c := <span class="literal">true</span>  <span class="comment">// bool</span></span><br><span class="line">	d := <span class="string">"Hello"</span>  <span class="comment">// string</span></span><br><span class="line">	e := <span class="string">`Ruby`</span>  <span class="comment">// string</span></span><br><span class="line">	f := <span class="string">'A'</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T, %b\n"</span>, a, a)</span><br><span class="line">	fmt.Printf(<span class="string">"%T, %f\n"</span>, b, b)</span><br><span class="line">	fmt.Printf(<span class="string">"%T, %t\n"</span>, c, c)</span><br><span class="line">	fmt.Printf(<span class="string">"%T, %s\n"</span>, d, d)</span><br><span class="line">	fmt.Printf(<span class="string">"%T, %s\n"</span>, e, e)</span><br><span class="line">	fmt.Printf(<span class="string">"%T, %d, %c\n"</span>, f, f, f)</span><br><span class="line">	fmt.Println(<span class="string">"---------------------"</span>)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, a)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, b)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, c)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, d)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, e)</span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, f)</span><br><span class="line">	fmt.Printf(<span class="string">"----------------------"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h4><h5 id="fmt包读取键盘输入"><a href="#fmt包读取键盘输入" class="headerlink" title="fmt包读取键盘输入"></a>fmt包读取键盘输入</h5><p>常用方法：</p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Scan" target="_blank" rel="noopener">func Scan(a …interface{}) (n int, err error)</a></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Scanf" target="_blank" rel="noopener">func Scanf(format string, a …interface{}) (n int, err error)</a></p>
+<p><a href="https://golang.google.cn/pkg/fmt/#Scanln" target="_blank" rel="noopener">func Scanln(a …interface{}) (n int, err error)</a></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	输入：</span></span><br><span class="line"><span class="comment">		Scanln()</span></span><br><span class="line"><span class="comment">		Scanf()</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> x <span class="keyword">int</span></span><br><span class="line">	<span class="keyword">var</span> y <span class="keyword">float64</span></span><br><span class="line">	fmt.Println(<span class="string">"请输入一个整数，一个浮点类型："</span>)</span><br><span class="line">	fmt.Scanln(&amp;x, &amp;y)  <span class="comment">// 读取键盘的输入，通过操作地址，赋值给x和y，阻塞式</span></span><br><span class="line">	fmt.Printf(<span class="string">"a的数值：%d, b的数值：%f\n"</span>, x, y)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS D:\goproject\src\go_code\chapter02\homework01&gt; <span class="keyword">go</span> run .\main.<span class="keyword">go</span></span><br><span class="line">请输入一个整数，一个浮点类型：</span><br><span class="line"><span class="number">100</span> <span class="number">3.14</span></span><br><span class="line">a的数值：<span class="number">100</span>, b的数值：<span class="number">3.140000</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="bufio包读取"><a href="#bufio包读取" class="headerlink" title="bufio包读取"></a>bufio包读取</h5><p><a href="https://golang.google.cn/pkg/bufio/" target="_blank" rel="noopener">https://golang.google.cn/pkg/bufio/</a></p>
+<p>bufio包中都是IO操作的方法：</p>
+<p>先创建Reader对象：</p>
+<p><a href="https://github.com/rubyhan1314/Golang-100-Days/blob/master/Day01-15(Go语言基础)/img/bufio1.png" target="_blank" rel="noopener"><img src="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/bufio1.png" alt="bufio1"></a></p>
+<p>然后就可以各种读取了：</p>
+<p><a href="https://github.com/rubyhan1314/Golang-100-Days/blob/master/Day01-15(Go语言基础)/img/bufio2.png" target="_blank" rel="noopener"><img src="https://github.com/rubyhan1314/Golang-100-Days/raw/master/Day01-15(Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80)/img/bufio2.png" alt="bufio2"></a></p>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"bufio"</span></span><br><span class="line">	<span class="string">"os"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	输入：</span></span><br><span class="line"><span class="comment">		Scanln()</span></span><br><span class="line"><span class="comment">		Scanf()</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">		bufio包</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// var x int</span></span><br><span class="line">	<span class="comment">// var y float64</span></span><br><span class="line">	<span class="comment">// fmt.Println("请输入一个整数，一个浮点类型：")</span></span><br><span class="line">	<span class="comment">// fmt.Scanln(&amp;x, &amp;y)  // 读取键盘的输入，通过操作地址，赋值给x和y，阻塞式</span></span><br><span class="line">	<span class="comment">// fmt.Printf("a的数值：%d, b的数值：%f\n", x, y)</span></span><br><span class="line">	fmt.Println(<span class="string">"请输入一个字符串："</span>)</span><br><span class="line">	reader := bufio.NewReader(os.Stdin)</span><br><span class="line">	s1, _ := reader.ReadString(<span class="string">'\n'</span>)</span><br><span class="line">	fmt.Println(<span class="string">"读到的数据："</span>, s1)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行效果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PS D:\goproject\src\go_code\chapter02\homework01&gt; <span class="keyword">go</span> run .\main.<span class="keyword">go</span></span><br><span class="line">请输入一个字符串：</span><br><span class="line">hello world</span><br><span class="line">读到的数据： hello world</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag"># go语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/16/%E7%BB%93%E6%9E%84%E4%BD%93/" rel="next" title="结构体">
+                <i class="fa fa-chevron-left"></i> 结构体
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/16/%E8%BF%90%E7%AE%97%E7%AC%A6/" rel="prev" title="运算符">
+                运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入和输出"><span class="nav-number">1.</span> <span class="nav-text">输入和输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打印输出"><span class="nav-number">1.1.</span> <span class="nav-text">打印输出</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fmt包"><span class="nav-number">1.1.1.</span> <span class="nav-text">fmt包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用打印函数"><span class="nav-number">1.1.2.</span> <span class="nav-text">常用打印函数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#键盘输入"><span class="nav-number">1.2.</span> <span class="nav-text">键盘输入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fmt包读取键盘输入"><span class="nav-number">1.2.1.</span> <span class="nav-text">fmt包读取键盘输入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bufio包读取"><span class="nav-number">1.2.2.</span> <span class="nav-text">bufio包读取</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">148k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

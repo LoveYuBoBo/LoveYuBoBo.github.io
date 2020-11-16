@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/5.%20Longest%20Palindromic%20Substring/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/5.%20Longest%20Palindromic%20Substring/" itemprop="url">5. Longest Palindromic Substring</a></h1>
+                <a class="post-title-link" href="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">CopyOnWriteArrayList源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T23:13:49+08:00">
+                2020-04-25
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/5.%20Longest%20Palindromic%20Substring/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/5.%20Longest%20Palindromic%20Substring/" itemprop="commentCount"></span>
+                <a href="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  362
+                  184
                 </span>
               
 
@@ -381,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -403,30 +403,23 @@
 
       
         
-          
-            <h2 id="5-Longest-Palindromic-Substring"><a href="#5-Longest-Palindromic-Substring" class="headerlink" title="5. Longest Palindromic Substring"></a>5. Longest Palindromic Substring</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string <strong>s</strong>, find the longest palindromic substring in <strong>s</strong>. You may assume that the maximum length of <strong>s</strong> is 1000.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Note: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>solution</strong></p>
+          <h4 id="CopyOnWriteArrayList源码阅读"><a href="#CopyOnWriteArrayList源码阅读" class="headerlink" title="CopyOnWriteArrayList源码阅读"></a><code>CopyOnWriteArrayList</code>源码阅读</h4><ul>
+<li>继承结构如图</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425171630266.png" alt="image-20200425171630266"></p>
 <ul>
-<li><p><strong>brute-force</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  String maxStr = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isValid(s, i, j) == <span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxStr.length()) &#123; <span class="comment">// update maxStr</span></span><br><span class="line">          maxStr = s.substring(i, j + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxStr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> n = hi - lo + <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">    <span class="keyword">if</span> (s.charAt(lo + i) != s.charAt(hi - i)) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p><code>toArray()</code>返回的是复制的一份</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Object[] toArray() &#123;</span><br><span class="line">        <span class="keyword">return</span> getArray().clone();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>dp</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">longestPalindrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (s == <span class="keyword">null</span> || s.length() == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  <span class="keyword">boolean</span>[][] dp = generateDP(s);</span><br><span class="line">  <span class="comment">// Check each substring</span></span><br><span class="line">  <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span>[] maxIdx = <span class="keyword">new</span> <span class="keyword">int</span>[] &#123; <span class="number">0</span>, <span class="number">0</span> &#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">      <span class="keyword">if</span> (dp[i][j] == <span class="keyword">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxLen) &#123;</span><br><span class="line">          maxLen = j - i + <span class="number">1</span>;</span><br><span class="line">          maxIdx[<span class="number">0</span>] = i;</span><br><span class="line">          maxIdx[<span class="number">1</span>] = j;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> s.substring(maxIdx[<span class="number">0</span>], maxIdx[<span class="number">1</span>] + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span>[][] generateDP(String s) &#123;</span><br><span class="line">  <span class="keyword">int</span> n = s.length();</span><br><span class="line">  <span class="keyword">boolean</span>[][] dp = <span class="keyword">new</span> <span class="keyword">boolean</span>[n][n];</span><br><span class="line">  <span class="comment">// Init</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123; <span class="comment">// diagonal</span></span><br><span class="line">    dp[i][i] = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; ++i) &#123; <span class="comment">// one line below diagonal</span></span><br><span class="line">    dp[i][i + <span class="number">1</span>] = (s.charAt(i) == s.charAt(i + <span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// DP</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = n - <span class="number">3</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">2</span>; j &lt; n; ++j) &#123;</span><br><span class="line">      dp[i][j] = dp[i + <span class="number">1</span>][j - <span class="number">1</span>] &amp;&amp; s.charAt(i) == s.charAt(j);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> dp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-
-          
+<li><p>所有的增删改方法都使用<code>synchronized</code>,且每次都会复制一份再修改，如<code>set</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//写操作的时候加锁</span></span><br><span class="line">    <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">        Object[] es = getArray();</span><br><span class="line">        <span class="comment">//找到index处的元素</span></span><br><span class="line">        <span class="comment">//如果不相等，则需要修改</span></span><br><span class="line">        E oldValue = elementAt(es, index);</span><br><span class="line">        <span class="keyword">if</span> (oldValue != element) &#123;</span><br><span class="line">            <span class="comment">//修改的时候先把原来的数组clone一份</span></span><br><span class="line">            es = es.clone();</span><br><span class="line">            es[index] = element;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//保证volatile的语义</span></span><br><span class="line">        setArray(es);</span><br><span class="line">        <span class="keyword">return</span> oldValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/CopyOnWriteArrayList%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -473,7 +466,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -492,7 +485,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/" itemprop="url">3. Longest Substring Without Repeating Characters</a></h1>
+                <a class="post-title-link" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">ThreadPoolExcutor源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -504,8 +497,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T22:05:49+08:00">
+                2020-04-25
               </time>
             
 
@@ -527,8 +520,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -545,8 +538,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/3.%20Longest%20Substring%20Without%20Repeating%20Characters/" itemprop="commentCount"></span>
+                <a href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -568,7 +561,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  203
+                  702
                 </span>
               
 
@@ -584,7 +577,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -606,26 +599,23 @@
 
       
         
-          
-            <h2 id="3-Longest-Substring-Without-Repeating-Characters"><a href="#3-Longest-Substring-Without-Repeating-Characters" class="headerlink" title="3. Longest Substring Without Repeating Characters"></a>3. Longest Substring Without Repeating Characters</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a string, find the length of the <strong>longest substring</strong> without repeating characters.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcabcbb&quot;</span><br><span class="line">Output: 3 </span><br><span class="line">Explanation: The answer is &quot;abc&quot;, with the length of 3.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;bbbbb&quot;</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The answer is &quot;b&quot;, with the length of 1.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;pwwkew&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The answer is &quot;wke&quot;, with the length of 3. </span><br><span class="line">             Note that the answer must be a substring, &quot;pwke&quot; is a subsequence and not a substring.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() &lt;= <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> s.length();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = s.toCharArray();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s1.length; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i-<span class="number">1</span>; j &gt;=<span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>( s1[i] == s1[j])&#123;</span><br><span class="line">                    dp[i] = Math.min(i-j,dp[i-<span class="number">1</span>]+<span class="number">1</span>) ;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[i] = dp[i-<span class="number">1</span>] +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;dp.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] &gt; result)&#123;</span><br><span class="line">                result = dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+          <h4 id="ThreadPoolExcutor源码阅读"><a href="#ThreadPoolExcutor源码阅读" class="headerlink" title="ThreadPoolExcutor源码阅读"></a><code>ThreadPoolExcutor</code>源码阅读</h4><ul>
+<li>继承结构如下</li>
 </ul>
-
-          
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425160729243.png" alt="image-20200425160729243"></p>
+<ul>
+<li><p><code>Executor</code>接口只有一个方法<code>execute()</code></p>
+</li>
+<li><p>构造方法如下</p>
+</li>
+<li>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/ThreadPoolExcutor%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -672,7 +662,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/1108.%20Defanging%20an%20IP%20Address/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -691,7 +681,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/1108.%20Defanging%20an%20IP%20Address/" itemprop="url">1108. Defanging an IP Address</a></h1>
+                <a class="post-title-link" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">Thread源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -703,8 +693,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:20+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T21:16:35+08:00">
+                2020-04-25
               </time>
             
 
@@ -726,8 +716,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -744,8 +734,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/1108.%20Defanging%20an%20IP%20Address/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/1108.%20Defanging%20an%20IP%20Address/" itemprop="commentCount"></span>
+                <a href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -767,7 +757,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  122
+                  268
                 </span>
               
 
@@ -805,33 +795,26 @@
 
       
         
-          
-            <h2 id="1108-Defanging-an-IP-Address"><a href="#1108-Defanging-an-IP-Address" class="headerlink" title="1108. Defanging an IP Address"></a>1108. Defanging an IP Address</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a valid (IPv4) IP <code>address</code>, return a defanged version of that IP address.</p>
-<p>A <em>defanged IP address</em> replaces every period <code>&quot;.&quot;</code> with <code>&quot;[.]&quot;</code>.</p>
+          <h4 id="Thread源码阅读"><a href="#Thread源码阅读" class="headerlink" title="Thread源码阅读"></a><code>Thread</code>源码阅读</h4><ul>
+<li><p><code>Thread</code>实现了<code>Runnable</code>接口，该接口中只有一个抽象方法<code>run()</code></p>
 </li>
-</ul>
-<p>  <strong>Example 1:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: address &#x3D; &quot;1.1.1.1&quot;</span><br><span class="line">Output: &quot;1[.]1[.]1[.]1&quot;</span><br></pre></td></tr></table></figure>
-
-<p>  <strong>Example 2:</strong></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: address &#x3D; &quot;255.100.50.0&quot;</span><br><span class="line">Output: &quot;255[.]100[.]50[.]0&quot;</span><br></pre></td></tr></table></figure>
+<li><p>提供了私有构造方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Thread</span><span class="params">(ThreadGroup g, Runnable target, String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                  <span class="keyword">long</span> stackSize, AccessControlContext acc,</span></span></span><br><span class="line"><span class="function"><span class="params">                  <span class="keyword">boolean</span> inheritThreadLocals)</span></span></span><br></pre></td></tr></table></figure>
 
 
-
-<p>  <strong>Constraints:</strong></p>
-<ul>
-<li>The given <code>address</code> is a valid IPv4 address.</li>
-</ul>
-<ul>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">defangIPaddr</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] s1 = address.toCharArray();</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : s1)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'.'</span>)&#123;</span><br><span class="line">                sb.append(<span class="string">'['</span>);</span><br><span class="line">                sb.append(<span class="string">'.'</span>);</span><br><span class="line">                sb.append(<span class="string">']'</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                sb.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-
-          
+<ul>
+<li><p><code>start()使用synchronized</code>修饰</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//0表示线程是新建的，所以Thread建立的线程不允许重复start</span></span><br><span class="line">       <span class="keyword">if</span> (threadStatus != <span class="number">0</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> IllegalThreadStateException();</span><br><span class="line">       group.add(<span class="keyword">this</span>);</span><br><span class="line">  </span><br><span class="line">       <span class="keyword">boolean</span> started = <span class="keyword">false</span>;</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//这个start0是一个native方法</span></span><br><span class="line">           start0();</span><br><span class="line">           started = <span class="keyword">true</span>;</span><br><span class="line">       &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               <span class="keyword">if</span> (!started) &#123;</span><br><span class="line">                   group.threadStartFailed(<span class="keyword">this</span>);</span><br><span class="line">               &#125;</span><br><span class="line">           &#125; <span class="keyword">catch</span> (Throwable ignore) &#123;</span><br><span class="line">       </span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/Thread%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -878,7 +861,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/687.%20Longest%20%20Univalue%20%20Path/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -897,7 +880,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/687.%20Longest%20%20Univalue%20%20Path/" itemprop="url">687. Longest  Univalue  Path</a></h1>
+                <a class="post-title-link" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url">HashMap源码阅读</a></h1>
         
 
         <div class="post-meta">
@@ -909,8 +892,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:12+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-25T17:40:47+08:00">
+                2020-04-25
               </time>
             
 
@@ -932,8 +915,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">源码阅读</span>
                   </a>
                 </span>
 
@@ -950,8 +933,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/687.%20Longest%20%20Univalue%20%20Path/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/687.%20Longest%20%20Univalue%20%20Path/" itemprop="commentCount"></span>
+                <a href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -973,7 +956,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  152
+                  1.7k
                 </span>
               
 
@@ -989,7 +972,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  8
                 </span>
               
             </div>
@@ -1011,19 +994,27 @@
 
       
         
-          
-            <h2 id="687-Longest-Univalue-Path"><a href="#687-Longest-Univalue-Path" class="headerlink" title="687. Longest  Univalue  Path"></a>687. Longest  Univalue  Path</h2><ul>
-<li><p><strong>description</strong></p>
-<p>Given a binary tree, find the length of the longest path where each node in the path has the same value. This path may or may not pass through the root.</p>
-<p>The length of path between two nodes is represented by the number of edges between them.</p>
-</li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> ans;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestUnivaluePath</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        BFS(root);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.ans;         </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">BFS</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> l = BFS(root.left);</span><br><span class="line">        <span class="keyword">int</span> r = BFS(root.right);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> leftPath = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> rightPath =<span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.left !=<span class="keyword">null</span> &amp;&amp; root.left.val == root.val)&#123;</span><br><span class="line">            leftPath = l +<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root.right != <span class="keyword">null</span> &amp;&amp; root.right.val == root.val)&#123;</span><br><span class="line">            rightPath= r+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ans = Math.max(ans,leftPath+rightPath);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> Math.max(leftPath,rightPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+          <h4 id="HashMap源码阅读"><a href="#HashMap源码阅读" class="headerlink" title="HashMap源码阅读"></a>HashMap源码阅读</h4><ul>
+<li>HashMap的继承结构如下:</li>
 </ul>
-
-          
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425114712643.png" alt="image-20200425114712643"></p>
+<ul>
+<li><p><code>HashMap</code>中的变量有如下这些</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20200425120236019.png" alt="image-20200425120236019"></p>
+<ul>
+<li>其中默认容量是16</li>
+<li>最大容量是2^30，原因是最高位是符号位，同时要保证容量是2的次方数，所以是2^30</li>
+<li>list转化为tree的阈值是8，也就是链表长度超过8以后就转化为树(红黑树)</li>
+<li>tree转化为list的阈值是6，也就是tree中元素小于6就会转化为list</li>
+<li><code>MIN_TREEIFY_CAPACITY</code>是64，也就是hashTable中元素超过64个才会转换成tree</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/25/HashMap%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1070,7 +1061,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/17/225.%20Implement%20Stack%20using%20Queues/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1089,7 +1080,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/17/225.%20Implement%20Stack%20using%20Queues/" itemprop="url">225. Implement Stack using Queues</a></h1>
+                <a class="post-title-link" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url">线程池</a></h1>
         
 
         <div class="post-meta">
@@ -1101,8 +1092,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T07:46:02+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T22:35:23+08:00">
+                2020-04-24
               </time>
             
 
@@ -1124,8 +1115,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">线程池</span>
                   </a>
                 </span>
 
@@ -1142,8 +1133,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/17/225.%20Implement%20Stack%20using%20Queues/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/225.%20Implement%20Stack%20using%20Queues/" itemprop="commentCount"></span>
+                <a href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1165,7 +1156,7 @@
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  280
+                  123
                 </span>
               
 
@@ -1203,34 +1194,31 @@
 
       
         
-          
-            <h3 id="225-Implement-Stack-using-Queues"><a href="#225-Implement-Stack-using-Queues" class="headerlink" title="225. Implement Stack using Queues"></a>225. Implement Stack using Queues</h3><ul>
-<li><p><strong>description</strong></p>
-<p>Share</p>
-<p>Implement the following operations of a stack using queues.</p>
-<ul>
-<li>push(x) – Push element x onto stack.</li>
-<li>pop() – Removes the element on top of the stack.</li>
-<li>top() – Get the top element.</li>
-<li>empty() – Return whether the stack is empty.</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyStack stack &#x3D; new MyStack();</span><br><span class="line"></span><br><span class="line">stack.push(1);</span><br><span class="line">stack.push(2);  </span><br><span class="line">stack.top();   &#x2F;&#x2F; returns 2</span><br><span class="line">stack.pop();   &#x2F;&#x2F; returns 2</span><br><span class="line">stack.empty(); &#x2F;&#x2F; returns false</span><br></pre></td></tr></table></figure>
-
-<p><strong>Notes:</strong></p>
-<ul>
-<li>You must use <em>only</em> standard operations of a queue – which means only <code>push to back</code>, <code>peek/pop from front</code>, <code>size</code>, and <code>is empty</code> operations are valid.</li>
-<li>Depending on your language, queue may not be supported natively. You may simulate a queue by using a list or deque (double-ended queue), as long as you use only standard operations of a queue.</li>
-<li>You may assume that all operations are valid (for example, no pop or top operations will be called on an empty stack).</li>
+          <h4 id="线程池基础"><a href="#线程池基础" class="headerlink" title="线程池基础"></a>线程池基础</h4><h5 id="常用的线程池"><a href="#常用的线程池" class="headerlink" title="常用的线程池"></a>常用的线程池</h5><ul>
+<li><code>Executors</code><ul>
+<li><code>newFixedThreadPool</code>:无界队列</li>
+<li><code>newCachedThreaPool</code>：线程无上限</li>
+<li><code>newSingleThredPool</code>:无界队列</li>
+<li><code>newScheduledThreadPool</code>：线程无上限</li>
 </ul>
 </li>
-<li><p><strong>solution</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line">    Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    Queue&lt;Integer&gt; q2 = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x onto stack. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(q1.isEmpty())&#123;</span><br><span class="line">            q1.add(x);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(!q1.isEmpty())&#123;</span><br><span class="line">                q2.add(q1.poll());</span><br><span class="line">            &#125;</span><br><span class="line">            q1.add(x);</span><br><span class="line">            <span class="keyword">while</span>(!q2.isEmpty())&#123;</span><br><span class="line">                q1.add(q2.poll());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element on top of the stack and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.poll();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the top element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the stack is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><code>ThreadPoolExecutor</code></li>
 </ul>
-
-          
+<h5 id="线程池重要参数"><a href="#线程池重要参数" class="headerlink" title="线程池重要参数"></a>线程池重要参数</h5><ul>
+<li><code>corePoolSize</code>:核心线程数</li>
+<li><code>maxinumPoolSize</code>：最大线程数</li>
+<li><code>keepAliveTime</code>:线程最大空闲时间</li>
+<li><code>workQueue</code>：任务队列</li>
+<li><code>threadFactory</code>：线程工厂</li>
+<li><code>handler</code>：拒绝策略</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/24/%E7%BA%BF%E7%A8%8B%E6%B1%A0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1268,7 +1256,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/18/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/16/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/18/">下一页</a>
   </nav>
 
 
@@ -1318,7 +1306,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1329,7 +1317,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1340,7 +1328,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1407,7 +1395,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.2k</span>
+    <span title="Site words total count">148k</span>
   
 </div>
 

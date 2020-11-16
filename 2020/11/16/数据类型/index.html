@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+<script type="text/javascript" src="js/src/clicklove.js"></script>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="go语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据类型Go 语言中数据类型分为：基本数据类型和复合数据类型 基本数据类型有： 整型、浮点型、布尔型、字符串 复合数据类型有： 数组、切片、结构体、函数、map、通道（channel）、接口等 基本数据类型以下是go中可用的基本数据类型：  bool Numeric Types int8, int16, int32, int64, int uint8, uint16, uint32, uint64">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据类型">
+<meta property="og:url" content="https://ijavaweb.github.io/2020/11/16/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="学习小记">
+<meta property="og:description" content="数据类型Go 语言中数据类型分为：基本数据类型和复合数据类型 基本数据类型有： 整型、浮点型、布尔型、字符串 复合数据类型有： 数组、切片、结构体、函数、map、通道（channel）、接口等 基本数据类型以下是go中可用的基本数据类型：  bool Numeric Types int8, int16, int32, int64, int uint8, uint16, uint32, uint64">
+<meta property="article:published_time" content="2020-11-16T13:02:04.655Z">
+<meta property="article:modified_time" content="2020-11-16T13:06:39.471Z">
+<meta property="article:author" content="ijavaweb">
+<meta property="article:tag" content="go语言">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":18,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"fadeIn | fadeOut | flipXIn | flipXOut | flipYIn | flipYOut | flipBounceXIn | flipBounceXOut | flipBounceYIn | flipBounceYOut swoopIn | swoopOut | whirlIn | whirlOut | shrinkIn | shrinkOut | expandIn | expandOut bounceIn | bounceOut | bounceUpIn | bounceUpOut | bounceDownIn | bounceDownOut | bounceLeftIn | bounceLeftOut | bounceRightIn | bounceRightOut slideUpIn | slideUpOut | slideDownIn | slideDownOut | slideLeftIn | slideLeftOut | slideRightIn | slideRightOut slideUpBigIn | slideUpBigOut | slideDownBigIn | slideDownBigOut | slideLeftBigIn | slideLeftBigOut | slideRightBigIn | slideRightBigOut perspectiveUpIn | perspectiveUpOut | perspectiveDownIn | perspectiveDownOut | perspectiveLeftIn | perspectiveLeftOut | perspectiveRightIn | perspectiveRightOut","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ijavaweb.github.io/2020/11/16/数据类型/"/>
+
+
+
+
+
+  <title>数据类型 | 学习小记</title>
+  
+
+
+
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/love.min.js"></script>
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">学习小记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>Go 语言中数据类型分为：基本数据类型和复合数据类型</p>
+<p><strong>基本数据类型有：</strong></p>
+<p>整型、浮点型、布尔型、字符串</p>
+<p><strong>复合数据类型有：</strong></p>
+<p>数组、切片、结构体、函数、map、通道（channel）、接口等</p>
+<h4 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h4><p>以下是go中可用的基本数据类型：</p>
+<ul>
+<li>bool</li>
+<li>Numeric Types<ul>
+<li>int8, int16, int32, int64, int</li>
+<li>uint8, uint16, uint32, uint64, uint</li>
+<li>float32, float64</li>
+<li>complex64, complex128</li>
+<li>byte</li>
+<li>rune</li>
+</ul>
+</li>
+<li>string</li>
+</ul>
+<h5 id="布尔型bool"><a href="#布尔型bool" class="headerlink" title="布尔型bool"></a>布尔型bool</h5><p>布尔型的值只可以是常量 true 或者 false。一个简单的例子：var b bool，默认值为 false。</p>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 布尔类型</span></span><br><span class="line">	<span class="keyword">var</span> b1 <span class="keyword">bool</span></span><br><span class="line">	fmt.Println(b1)  <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">	b1 = <span class="literal">true</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T,%t\n"</span>, b1, b1)  <span class="comment">// bool,true</span></span><br><span class="line">	b2 := <span class="literal">false</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T,%t\n"</span>, b2, b2)  <span class="comment">// bool,false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		Go语言中以bool类型进行声明布尔型数据，布尔型数据只有true(真)和false(假)两个值</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		注意：</span></span><br><span class="line"><span class="comment">		1.布尔类型变量的默认值为false</span></span><br><span class="line"><span class="comment">		2.Go 语言中不允许将整型强制转换为布尔型</span></span><br><span class="line"><span class="comment">		3.布尔型无法参与数值运算，也无法与其他类型进行转换</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.布尔类型变量的默认值为 false</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">bool</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, b) <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.string类型变量的默认值为空</span></span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, s)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.int类型变量的默认值为0</span></span><br><span class="line">	<span class="keyword">var</span> i <span class="keyword">int</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, i) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.float类型变量的默认值为0</span></span><br><span class="line">	<span class="keyword">var</span> f <span class="keyword">float32</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v\n"</span>, f) <span class="comment">// 0</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//5.Go 语言中不允许将整型强制转换为布尔型</span></span><br><span class="line">	<span class="comment">// var a = 1</span></span><br><span class="line">	<span class="comment">// if a &#123; // 错误写法</span></span><br><span class="line">	<span class="comment">// 	fmt.Printf("true")</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//6. 布尔型无法参与数值运算，也无法与其他类型进行转换</span></span><br><span class="line">	<span class="comment">// var s = "this is str"</span></span><br><span class="line">	<span class="comment">// if s &#123; // 错误写法</span></span><br><span class="line">	<span class="comment">// 	fmt.Printf("true")</span></span><br><span class="line">	<span class="comment">// &#125;</span></span><br><span class="line">	<span class="keyword">var</span> f1 = <span class="literal">false</span></span><br><span class="line">	<span class="keyword">if</span> f1 &#123; <span class="comment">// 正确写法</span></span><br><span class="line">		fmt.Printf(<span class="string">"true"</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"false"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h5><ul>
+<li>整数型</li>
+</ul>
+<p>整型分为以下两个大类：</p>
+<p>有符号整型按长度分为：int8、int16、int32、int64</p>
+<p>对应的无符号整型：uint8、uint16、uint32、uint64</p>
+<p>【注意】：当我在定义整型的时候，直接使用int，var a int，int对应的到底是int32还是int64呢？这由底层平台操作系统的位数来决定，如果是32位操作系统，int默认对应int32，如果是64位操作系统，int默认对应int64。另外，int8 相当于 byte，int32 相当于 rune。</p>
+<ul>
+<li>int8 有符号 8 位整型 (-128 到 127) 长度：8bit</li>
+<li>int16 有符号 16 位整型 (-32768 到 32767)</li>
+<li>int32 有符号 32 位整型 (-2147483648 到 2147483647)</li>
+<li>int64 有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</li>
+<li>uint8 无符号 8 位整型 (0 到 255) 8位都用于表示数值：</li>
+<li>uint16 无符号 16 位整型 (0 到 65535)</li>
+<li>uint32 无符号 32 位整型 (0 到 4294967295)</li>
+<li>uint64 无符号 64 位整型 (0 到 18446744073709551615)</li>
+<li>byte  相当于int8</li>
+<li>rune  相当于int32</li>
+</ul>
+<blockquote>
+<p>int和uint:根据底层平台，表示32或64位整数。除非需要使用特定大小的整数，否则通常应该使用int来表示整数。 大小:32位系统32位，64位系统64位。 范围:-2147483648到2147483647的32位系统和-9223372036854775808到9223372036854775807的64位系统。</p>
+</blockquote>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	整数：int</span></span><br><span class="line"><span class="comment">		有符号：最高位表示符号位，0正常，1负数，其余位表示数值</span></span><br><span class="line"><span class="comment">			int8: (-128 到 127)</span></span><br><span class="line"><span class="comment">			int16: (-32768 到 32767)</span></span><br><span class="line"><span class="comment">			int32: (-2147483648 到 2147483647)</span></span><br><span class="line"><span class="comment">			int64: (-9223372936854775808 到 9223372036854775807)</span></span><br><span class="line"><span class="comment">		无符号：所有的位表示数值</span></span><br><span class="line"><span class="comment">			uint8: (0 到 255)</span></span><br><span class="line"><span class="comment">			uint16: (0 到 65535)</span></span><br><span class="line"><span class="comment">			uint32: (0 到 4294967295)</span></span><br><span class="line"><span class="comment">			uint64: (0 到 18446744073709551615)</span></span><br><span class="line"><span class="comment">		int, uint 默认值与操作系统的位数有关，如果是64位操作系统，则int 相当于 int64</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		byte: 相当于 uint8</span></span><br><span class="line"><span class="comment">		rune：相当于 int32</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">var</span> i3 <span class="keyword">int</span></span><br><span class="line">	i3 = <span class="number">1000</span></span><br><span class="line">	fmt.Println(i3)  <span class="comment">// 1000</span></span><br><span class="line">	<span class="comment">// 语法角度：int, int64不认为是一种类型</span></span><br><span class="line">	<span class="comment">// var i4 int64</span></span><br><span class="line">	<span class="comment">// i4 = i3  // cannot use i3 (type int) as type int64 in assignment</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> i5 <span class="keyword">uint8</span></span><br><span class="line">	i5 = <span class="number">100</span></span><br><span class="line">	<span class="keyword">var</span> i6 <span class="keyword">byte</span></span><br><span class="line">	i6 = i5</span><br><span class="line">	fmt.Println(i5, i6)  <span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> i7 = <span class="number">100</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T, %d\n"</span>, i7, i7)  <span class="comment">// int, 100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><p>Go语言支持两种浮点型数：float32 和 float64。这两种浮点型数据格式遵循IEEE 754标准：float32 的浮点数的最大范围约为 3.4e38，可以使用常量定义：math.MaxFloat32。float64的浮点数的最大范围约为1.8e308，可以使用一个常量定义：math.MaxFloat64。</p>
+<ul>
+<li><p>float32</p>
+<p>IEEE-754 32位浮点型数</p>
+</li>
+<li><p>float64</p>
+<p>IEEE-754 64位浮点型数</p>
+</li>
+<li><p>complex64</p>
+<p>32 位实数和虚数</p>
+</li>
+<li><p>complex128</p>
+<p>64 位实数和虚数</p>
+</li>
+</ul>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 浮点</span></span><br><span class="line">	<span class="keyword">var</span> f1 <span class="keyword">float32</span></span><br><span class="line">	f1 = <span class="number">3.14</span></span><br><span class="line">	<span class="keyword">var</span> f2 <span class="keyword">float64</span></span><br><span class="line">	f2 = <span class="number">4.67</span></span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">"%T, %.2f\n"</span>, f1, f1)  <span class="comment">// float32, 3.14</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T, %.3f\n"</span>, f2, f2)  <span class="comment">// float64, 4.670</span></span><br><span class="line">	fmt.Println(f1)  <span class="comment">// 3.14</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> f3 = <span class="number">2.55</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, f3)  <span class="comment">// float64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"unsafe"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1.定义float类型</span></span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">float32</span> = <span class="number">3.12</span></span><br><span class="line">	fmt.Printf(<span class="string">"值：%v---%f，类型%T\n"</span>, a, a, a) <span class="comment">// 值：3.12---3.120000，类型float32</span></span><br><span class="line">	fmt.Println(unsafe.Sizeof(a))           <span class="comment">// float32 占用4个字节</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">float64</span> = <span class="number">3.12</span></span><br><span class="line">	fmt.Printf(<span class="string">"值：%v---%f，类型%T\n"</span>, b, b, b) <span class="comment">// 值：3.12---3.120000，类型float64</span></span><br><span class="line">	fmt.Println(unsafe.Sizeof(b))           <span class="comment">// float64 占用8个字节</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. %f 输出float类型  %.2f 输出数据的时候保留2位小数</span></span><br><span class="line">	<span class="keyword">var</span> c <span class="keyword">float64</span> = <span class="number">3.1415925535</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v--%f--%.2f\n"</span>, c, c, c) <span class="comment">// 3.1415925535--3.141593--3.14</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 64位系统中，浮点数默认是 float64</span></span><br><span class="line">	f1 := <span class="number">3.1345656456</span></span><br><span class="line">	fmt.Printf(<span class="string">"%f--%T\n"</span>, f1, f1) <span class="comment">// 3.134566--float64</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. Golang 科学计数法表示浮点类型</span></span><br><span class="line">	<span class="keyword">var</span> f2 <span class="keyword">float32</span> = <span class="number">3.14e2</span>        <span class="comment">// 表示f2等于3.14*10的2次方</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v--%T\n"</span>, f2, f2) <span class="comment">// 314--float32</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> f3 <span class="keyword">float32</span> = <span class="number">3.14e-2</span>       <span class="comment">// 表示f3等于3.14除以10的2次方</span></span><br><span class="line">	fmt.Printf(<span class="string">"%v--%T\n"</span>, f3, f3) <span class="comment">// 0.0314--float32</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5. Golang 中 float 精度丢失问题</span></span><br><span class="line">	<span class="comment">// 几乎所有的编程语言都有精度丢失这个问题，这是典型的二进制浮点数精度损失问题，在定长条件下，二进制小数和</span></span><br><span class="line">	<span class="comment">// 十进制小数互转可能有精度丢失</span></span><br><span class="line">	<span class="keyword">var</span> f4 <span class="keyword">float64</span> = <span class="number">1129.6</span></span><br><span class="line">	fmt.Println(f4 * <span class="number">100</span>) <span class="comment">// 112959.99999999999</span></span><br><span class="line"></span><br><span class="line">	m1 := <span class="number">8.2</span></span><br><span class="line">	m2 := <span class="number">3.8</span></span><br><span class="line">	fmt.Println(m1 - m2) <span class="comment">// 期望是 4.4，结果打印出了 4.3999999999999995</span></span><br><span class="line">	<span class="comment">// 注意：解决float类型的精度丢失问题，最简单的方法是使用第三方包：github.com/shopspring/decimal</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 6. 将int类型转换成float类型</span></span><br><span class="line">	d := <span class="number">10</span></span><br><span class="line">	e := <span class="keyword">float64</span>(a)</span><br><span class="line">	fmt.Printf(<span class="string">"a的类型是%T,b的类型是%T"</span>, d, e) <span class="comment">// a的类型是int,b的类型是float64</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 7. 将float32转成float64类型</span></span><br><span class="line">	<span class="keyword">var</span> a1 <span class="keyword">float32</span> = <span class="number">23.4</span></span><br><span class="line">	a2 := <span class="keyword">float64</span>(a1)</span><br><span class="line">	fmt.Printf(<span class="string">"a1的类型是%T，a2的类型是%T\n"</span>, a1, a2) <span class="comment">// a的类型是int,b的类型是float64a1的类型是float32，a2的类型是float64</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 8. float类型转换成int类型（不建议这样做）</span></span><br><span class="line">	<span class="keyword">var</span> c1 <span class="keyword">float32</span> = <span class="number">23.45</span></span><br><span class="line">	c2 := <span class="keyword">int</span>(c1)</span><br><span class="line">	fmt.Printf(<span class="string">"c2的值：%v c2的类型：%T"</span>, c2, c2) <span class="comment">// c2的值：23 c2的类型：int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>使用第三方包来解决精度损失问题：</strong></p>
+<p><a href="https://github.com/shopspring/decimal" target="_blank" rel="noopener">https://github.com/shopspring/decimal</a></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/shopspring/decimal"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 加法</span></span><br><span class="line">	<span class="keyword">var</span> num1 <span class="keyword">float64</span> = <span class="number">3.1</span></span><br><span class="line">	<span class="keyword">var</span> num2 <span class="keyword">float64</span> = <span class="number">4.2</span></span><br><span class="line">	d1 := decimal.NewFromFloat(num1).Add(decimal.NewFromFloat(<span class="keyword">float64</span>(num2)))</span><br><span class="line">	fmt.Println(d1) <span class="comment">// 7.3</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 减法</span></span><br><span class="line">	m1 := <span class="number">8.2</span></span><br><span class="line">	m2 := <span class="number">3.8</span></span><br><span class="line">	m3 := decimal.NewFromFloat(m1).Sub(decimal.NewFromFloat(m2))</span><br><span class="line">	fmt.Println(m3) <span class="comment">// 4.4</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 乘法 Mul  除法 Div  用法均与上述类似</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>3、其他</strong></p>
+<ul>
+<li><p>byte</p>
+<p>类似 uint8</p>
+</li>
+<li><p>rune</p>
+<p>类似 int32</p>
+</li>
+<li><p>uint</p>
+<p>32 或 64 位</p>
+</li>
+<li><p>int</p>
+<p>与 uint 一样大小</p>
+</li>
+<li><p>uintptr</p>
+<p>无符号整型，用于存放一个指针</p>
+</li>
+</ul>
+<h5 id="字符串型"><a href="#字符串型" class="headerlink" title="字符串型"></a>字符串型</h5><p>​    见字符串专属笔记！</p>
+<h4 id="数据类型之间的转换"><a href="#数据类型之间的转换" class="headerlink" title="数据类型之间的转换"></a>数据类型之间的转换</h4><p>语法格式：Type(Value)</p>
+<p>常数：在有需要的时候，会自动转型</p>
+<p>变量：需要手动转型 T(V)</p>
+<p>注意点：兼容类型可以转换</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	数据类型转换：Type Convert</span></span><br><span class="line"><span class="comment">	go语言是静态语言，定义，赋值，运算必须类型一致</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	语法格式：Type(Value)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	注意点：兼容类型可以转换</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	常数：在有需要的时候，自动转型</span></span><br><span class="line"><span class="comment">	变量：需要手动转型</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">var</span> a <span class="keyword">int8</span></span><br><span class="line">	a = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">int16</span></span><br><span class="line">	b = <span class="keyword">int16</span>(a)</span><br><span class="line">	fmt.Println(a,b)</span><br><span class="line"></span><br><span class="line">	f1 := <span class="number">4.83</span></span><br><span class="line">	<span class="keyword">var</span> c <span class="keyword">int</span></span><br><span class="line">	fmt.Println(f1, c)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="复合类型-派生类型"><a href="#复合类型-派生类型" class="headerlink" title="复合类型(派生类型)"></a>复合类型(派生类型)</h4><p>1、指针类型（Pointer） 2、数组类型 3、结构化类型(struct) 4、Channel 类型 5、函数类型 6、切片类型 7、接口类型（interface） 8、Map 类型</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go%E8%AF%AD%E8%A8%80/" rel="tag"># go语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/11/16/%E6%8C%87%E9%92%88/" rel="next" title="指针">
+                <i class="fa fa-chevron-left"></i> 指针
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/16/%E6%95%B0%E7%BB%84Array/" rel="prev" title="数组Array">
+                数组Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="ijavaweb" />
+            
+              <p class="site-author-name" itemprop="name">ijavaweb</p>
+              <p class="site-description motion-element" itemprop="description">悔不当初不如放手一搏</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7Carchive">
+              
+                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ijavaweb" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="ijavaweb@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#布尔型bool"><span class="nav-number">1.1.1.</span> <span class="nav-text">布尔型bool</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#整型"><span class="nav-number">1.1.2.</span> <span class="nav-text">整型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#浮点型"><span class="nav-number">1.1.3.</span> <span class="nav-text">浮点型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串型"><span class="nav-number">1.1.4.</span> <span class="nav-text">字符串型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型之间的转换"><span class="nav-number">1.2.</span> <span class="nav-text">数据类型之间的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复合类型-派生类型"><span class="nav-number">1.3.</span> <span class="nav-text">复合类型(派生类型)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ijavaweb</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">148k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: '8qyOA8EOlbmfOhe7X0WAMQTY-gzGzoHsz',
+        appKey: 'VD3M3qQEndXYcKfyMDsB6toT',
+        placeholder: 'Just go go',
+        avatar:'/images/avatar.png',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

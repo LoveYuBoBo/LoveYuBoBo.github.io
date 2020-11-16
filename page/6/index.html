@@ -270,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/go%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -289,7 +289,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="url">elasticSearch学习（三）</a></h1>
+                <a class="post-title-link" href="/2020/11/16/go%E6%8E%A5%E5%8F%A3/" itemprop="url">go接口</a></h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T22:54:46+08:00">
-                2020-07-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/elasticSearch/" itemprop="url" rel="index">
-                    <span itemprop="name">elasticSearch</span>
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
                   </a>
                 </span>
 
@@ -342,221 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><h4 id="文档元数据"><a href="#文档元数据" class="headerlink" title="文档元数据"></a>文档元数据</h4><ul>
-<li><code>_index</code>：表明文档存放在哪里</li>
-<li><code>_type</code>: 文档表示的对象类别</li>
-<li><code>_id</code>文档唯一标识</li>
-</ul>
-<h4 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h4><ul>
-<li><p>通过提供id</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">put /&#123;index&#125;/&#123;type&#125;/&#123;id&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"field"</span>:<span class="string">"value"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不添加id的时候，使用自增id</p>
-</li>
-</ul>
-<h4 id="取回文档"><a href="#取回文档" class="headerlink" title="取回文档"></a>取回文档</h4><ul>
-<li>使用<code>get</code>,带上元数据参数，<code>get</code>请求会返回整个文档</li>
-<li>获取部分文档，可以通过<code>_source</code>指定返回的字段</li>
-<li>使用<code>_mget</code>批量获取文档</li>
-</ul>
-<h4 id="检查文档是否存在"><a href="#检查文档是否存在" class="headerlink" title="检查文档是否存在"></a>检查文档是否存在</h4><ul>
-<li>使用<code>head</code>代替<code>get</code>,只返回一个状态码</li>
-</ul>
-<h4 id="更新文档"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档</h4><ul>
-<li>文档一旦创建是不能更改的，如果需要更新文档，只能重新索引，旧的文档也不会立刻删除，只是无法访问到</li>
-<li>部分更新，同样是更新然后重索引，不过是在分片内部进行，减少了交互操作</li>
-</ul>
-<h4 id="创建新文档"><a href="#创建新文档" class="headerlink" title="创建新文档"></a>创建新文档</h4><ul>
-<li>通过元数据唯一表示一个文档，在创建新文档的时候，通过元数据来区别，判断是否已经存在相同的文档，也可以使用自增id</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%89%EF%BC%89/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="url">elasticSearch学习（二）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T21:14:32+08:00">
-                2020-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/elsticSearch/" itemprop="url" rel="index">
-                    <span itemprop="name">elsticSearch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/" itemprop="commentCount"></span>
+                <a href="/2020/11/16/go%E6%8E%A5%E5%8F%A3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/go%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -594,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -616,27 +403,298 @@
 
       
         
-          <h3 id="mapping定义"><a href="#mapping定义" class="headerlink" title="mapping定义"></a>mapping定义</h3><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
-<li>只有使用<code>post</code>命令写入文档，<code>es</code>才会自动为其创建<code>id</code>，而使用<code>put</code>的时候不会创建</li>
-<li><code>update</code>一个文档，只能使用<code>post</code>，<code>put</code>只能用来<code>index</code>或者<code>create</code></li>
-<li><code>index</code>一个已经存在的文档，旧的文档会被删除，新的文档再被写入且版本号加一</li>
-<li>当创建一个新的文档到不存在的索引中，默认情况会创建相应的索引，且可以设置<code>mapping</code></li>
-<li><code>ES7</code>中合法的<code>type</code>是<code>_doc</code></li>
-<li>精确值和全文本的本质区别在于是否会被<code>Analyzer</code>分词</li>
-<li><code>Analyzer</code>由三部分组成，分别是<code>Character filter+Tokenizer+Token Filter</code></li>
+          
+            <h4 id="go语言接口"><a href="#go语言接口" class="headerlink" title="go语言接口"></a>go语言接口</h4><h5 id="接口的定义"><a href="#接口的定义" class="headerlink" title="接口的定义"></a>接口的定义</h5><ul>
+<li><p>接口是一系列方法签名(方法名，参数，返回值)的集合</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> error <span class="keyword">interface</span> &#123;</span><br><span class="line">  Error() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="接口的类型"><a href="#接口的类型" class="headerlink" title="接口的类型"></a>接口的类型</h5><ul>
+<li>带有方法的接口（用<strong>iface</strong>结构体表示）</li>
+<li>空接口（<strong>eface</strong>表示）</li>
+</ul>
+<h5 id="接口的实现"><a href="#接口的实现" class="headerlink" title="接口的实现"></a>接口的实现</h5><ul>
+<li><p>在需要实现接口的地方实现接口中的方法,实现如下，其中结构体是实现接口的</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义实现接口的结构体</span></span><br><span class="line"><span class="keyword">type</span> RPCError <span class="keyword">struct</span> &#123;</span><br><span class="line"> 	Code <span class="keyword">int64</span></span><br><span class="line">  Message <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过实现接口中的方法就可以实现接口</span></span><br><span class="line">fun(e *RPCError) Error() <span class="keyword">string</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> fmt.Println(<span class="string">"%s,code=%d"</span>,e.Message,e.Code)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="为什么可以这样实现"><a href="#为什么可以这样实现" class="headerlink" title="为什么可以这样实现"></a>为什么可以这样实现</h5><ul>
+<li>go中接口的实现都是隐式的，也就是说不需要显式申明实现某个接口</li>
+<li>因为go中编译器只会在使用的时候在进行类型检查</li>
+</ul>
+<h5 id="接口的使用场景"><a href="#接口的使用场景" class="headerlink" title="接口的使用场景"></a>接口的使用场景</h5><ul>
+<li><p>使用的<strong>注意事项</strong></p>
+<ul>
+<li>接口作为参数，意味着go会将传入参数转换为接口，也就是说定义了接口作为入参，就只能接受接口接口作为参数（即使传入其他类型也会被转换为接口）</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义接口作为入参</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Print</span><span class="params">(v <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">  fmt.Print(v)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//此处传入结构体作为参数，但是会被转换为interface</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">type</span> Test <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line">  v:=Test&#123;&#125;</span><br><span class="line">  Print(v)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>同一个结构体通过指针和结构体同时实现接口会报错</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个接口</span></span><br><span class="line"><span class="keyword">type</span> SayHello <span class="keyword">interface</span>&#123;</span><br><span class="line">  Say() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义一个结构体</span></span><br><span class="line"><span class="keyword">type</span> Person <span class="keyword">struct</span> &#123;</span><br><span class="line">  Name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//通过两种方式实现接口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span><span class="params">(p Person)</span> <span class="title">Say</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"hello"</span>+ p.Name</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span><span class="params">(p *Person)</span> <span class="title">Say</span><span class="params">()</span> <span class="title">string</span></span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">"hello word"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量定义</p>
+</li>
+<li><p>函数入参</p>
+</li>
+<li><p>函数返回值</p>
+</li>
+</ul>
+<h5 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h5><ul>
+<li><p><strong>eface</strong>的实现</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//仅包含指向类型和数据的指针</span></span><br><span class="line"><span class="keyword">type</span> eface <span class="keyword">struct</span> &#123;</span><br><span class="line">  _type *_type</span><br><span class="line">  data unsafe.Pointer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>iface</strong>的实现</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//包含itab类型和指向数据的指针</span></span><br><span class="line"><span class="keyword">type</span> iface <span class="keyword">struct</span>&#123;</span><br><span class="line">  tab *itab</span><br><span class="line">  data unsafe.Pointer</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两种接口实现的区别</p>
+<ul>
+<li><p>主要在_type和itab类型的区别</p>
+</li>
+<li><p>itab结构体中包含_type结构体，该结构体表示go语言运行时候的类型表示</p>
+</li>
+<li><p>两个结构体主要如下</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//size字段存储类型占用的空间</span></span><br><span class="line"><span class="comment">//hash用于存储类型的hash值，可以快速判断类型是否相等</span></span><br><span class="line"><span class="comment">//equal字段用于判断该类型下的对象是否相等</span></span><br><span class="line"><span class="keyword">type</span> _type <span class="keyword">struct</span> &#123;</span><br><span class="line">  size <span class="keyword">uintptr</span></span><br><span class="line">  hash <span class="keyword">uint32</span></span><br><span class="line">  equal <span class="function"><span class="keyword">func</span><span class="params">(unsafe.Pointer,unsafe.Pointer)</span> <span class="title">bool</span></span></span><br><span class="line">  ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//inter和_type字段表示类型</span></span><br><span class="line"><span class="comment">//hash是对_type字段hash的拷贝</span></span><br><span class="line"><span class="comment">//fun字段是动态大小的数组，存储函数指针</span></span><br><span class="line"><span class="keyword">type</span> itab <span class="keyword">struct</span> &#123;</span><br><span class="line">  inter *interfacetype</span><br><span class="line">  _type *_type</span><br><span class="line">  hash <span class="keyword">uint32</span></span><br><span class="line">  fun [<span class="number">1</span>]<span class="keyword">uintptr</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="接口的作用"><a href="#接口的作用" class="headerlink" title="接口的作用"></a>接口的作用</h5><ul>
+<li><p>接口实现多态，go不是面向对象的语言，但是可以实现面向对象的特性</p>
+<ul>
+<li>struct实现封装，并且因为结构体中可以定义方法，因此可以把struct看成是不支持继承的“类”</li>
+<li>而多态可以认为是通过接口实现的</li>
+</ul>
+</li>
+<li><p>泛型编程</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span> &#123;</span><br><span class="line">  Len() <span class="keyword">int</span></span><br><span class="line">  Less(i,j <span class="keyword">int</span>) <span class="keyword">bool</span></span><br><span class="line">  Swap(i,j <span class="keyword">int</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//只要实现了Interface接口的任何数据类型都可以使用Sort方法</span></span><br><span class="line"><span class="comment">//体现出了泛型编程的特点</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Sort</span><span class="params">(data Interface)</span></span> &#123;</span><br><span class="line">  n:=data.Len()</span><br><span class="line">  maxDepth := <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i := n; i &gt; <span class="number">0</span>; i &gt;&gt;= <span class="number">1</span> &#123;</span><br><span class="line">    maxDepth++</span><br><span class="line">  &#125;</span><br><span class="line">  maxDepth *= <span class="number">2</span></span><br><span class="line">  quickSort(data, <span class="number">0</span>, n, maxDepth)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
 </ul>
 <ul>
-<li><code>match</code>和<code>match_phrase</code>的区别，``match<code>中</code>terms<code>之间是</code>or<code>的关系，而</code>match_phrase<code>的</code>terms<code>是</code>and<code>的关系且</code>term`之间的关系也会影响查询</li>
-<li>如果希望<code>match_phrase</code>匹配更多的结果，可以增加<code>slot</code>参数</li>
-<li>如果<code>mapping</code>的<code>dynamic</code>设置为<code>stric</code>，索引一个包含新新增字段的文档时会报错</li>
-<li>如果<code>mapping</code>的<code>dynamic</code>设置为<code>false</code>，索引一个包含新新增字段的文档时，文档会被索引，且新字段在<code>_source</code>中可见，但是该字段无法被搜索。</li>
-<li>不能所以修改字段类型，修稿字段类型都会造成<code>reindex</code></li>
-<li>可以在<code>mapping</code>文件中为<code>indexing</code>和<code>searching</code>指定不同的<code>Analyzer</code></li>
-<li>字段类型为<code>text</code>的时候，也不一定会被全文搜索，因为可以为其字段指定 <code>not index</code></li>
+<li><p>隐藏实现细节</p>
+<ul>
+<li>通过返回一个接口，提供给用户一组操作方法，而不需要知道更多的细节</li>
+</ul>
+</li>
+</ul>
+<h5 id="接口和nil的比较"><a href="#接口和nil的比较" class="headerlink" title="接口和nil的比较"></a>接口和nil的比较</h5><ul>
+<li>通过分析可以知道，接口变量保存了两个指针，一个指针指向值的类型，另外一个指针指向实际的值，只有两个指针都是nil，接口才是nil，即使传入一个仅包含nil的其他数据类型，此接口也不为nil，因为其中的_type指针指向具体的类型</li>
+</ul>
+<h5 id="接口断言和动态派发"><a href="#接口断言和动态派发" class="headerlink" title="接口断言和动态派发"></a>接口断言和动态派发</h5><ul>
+<li><p>断言</p>
+<ul>
+<li>非空接口</li>
+<li>空接口</li>
+</ul>
+</li>
+<li><p>动态派发:就是在运行期间选择具体多态的过程(也就是说在编译期间不能确认接口类型，需要在运行期间确认)，类似于java中的重载</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/12/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/12/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/" itemprop="url">控制单元设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-12T10:34:35+08:00">
+                2020-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/12/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/12/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  399
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="控制单元设计"><a href="#控制单元设计" class="headerlink" title="控制单元设计"></a>控制单元设计</h3><h4 id="组合逻辑设计"><a href="#组合逻辑设计" class="headerlink" title="组合逻辑设计"></a>组合逻辑设计</h4><h5 id="组合逻辑控制单元框图"><a href="#组合逻辑控制单元框图" class="headerlink" title="组合逻辑控制单元框图"></a>组合逻辑控制单元框图</h5><ul>
+<li><p>CU外特性</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111215530760.png" alt="image-20201111215530760"></p>
+<h5 id="微操作的节拍安排"><a href="#微操作的节拍安排" class="headerlink" title="微操作的节拍安排"></a>微操作的节拍安排</h5><ul>
+<li><p>采用同步控制方式</p>
+</li>
+<li><p>取指周期位操作节拍安排</p>
+</li>
+<li><p>间址周期位操作节拍安排</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111220442147.png" alt="image-20201111220442147"></p>
+</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/07/08/elasticSearch%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%BA%8C%EF%BC%89/#more" rel="contents">
+            <a class="btn" href="/2020/11/12/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83%E8%AE%BE%E8%AE%A1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -687,7 +745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/11/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -706,7 +764,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/" itemprop="url">字节跳动面试</a></h1>
+                <a class="post-title-link" href="/2020/11/11/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83/" itemprop="url">控制单元</a></h1>
         
 
         <div class="post-meta">
@@ -718,196 +776,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-06T15:07:44+08:00">
-                2020-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/06/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E9%9D%A2%E8%AF%95/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  168
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="字节跳动面试"><a href="#字节跳动面试" class="headerlink" title="字节跳动面试"></a>字节跳动面试</h2><ul>
-<li><p>redis为什么快</p>
-</li>
-<li><p>redis有没有并发问题</p>
-</li>
-<li><p>redis的数据结构</p>
-</li>
-<li><p>sorted set的使用场景和底层实现，复杂度</p>
-</li>
-<li><p>mybatis的缓存</p>
-</li>
-<li><p>spring boot和spring的优劣势</p>
-</li>
-<li><p>mysql的索引</p>
-</li>
-<li><pre><code>tb_score
-id name course score
-1  小明  语文    81
-2  小明  数学    78
-3  小红  数学    90
-...
-
-获取所有课程得分均大于80分的学生的平均得分</code></pre></li>
-<li><p>有一个 1GB 大小的文件，文件里每一行是一个词，每个词的大小不超过 16B，内存大小限制是 1MB，要求返回频数最高的 100 个词</p>
-</li>
-<li><p>二叉树的对称性判断，判断一颗二叉树是否对称</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="url">秒杀系统设计</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-01T20:26:51+08:00">
-                2020-07-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-11T23:32:25+08:00">
+                2020-11-11
               </time>
             
 
@@ -929,8 +799,8 @@ id name course score
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">网站开发</span>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
                   </a>
                 </span>
 
@@ -947,8 +817,8 @@ id name course score
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/07/01/%E7%A7%92%E6%9D%80%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/" itemprop="commentCount"></span>
+                <a href="/2020/11/11/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -970,7 +840,246 @@ id name course score
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  409
+                  248
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="控制单元"><a href="#控制单元" class="headerlink" title="控制单元"></a>控制单元</h3><h5 id="控制单元的功能"><a href="#控制单元的功能" class="headerlink" title="控制单元的功能"></a>控制单元的功能</h5><ul>
+<li><p>微操作指令</p>
+<ul>
+<li><p>工作周期</p>
+<ul>
+<li>取指周期</li>
+<li>间址周期</li>
+<li>执行周期</li>
+<li>中断周期</li>
+</ul>
+</li>
+<li><p>三类指令周期</p>
+<ul>
+<li><p>非访存类周期</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111174648984.png" alt="image-20201111174648984"></p>
+</li>
+<li><p>访存类周期</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111174659994.png" alt="image-20201111174659994"></p>
+</li>
+<li><p>转移周期</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111174715370.png" alt="image-20201111174715370"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>中断操作周期</p>
+<ul>
+<li><p>保存断点</p>
+<ul>
+<li><p>程序断点存入“0”地址</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111174925491.png" alt="image-20201111174925491"></p>
+</li>
+<li><p>程序断点进栈</p>
+<ul>
+<li><p>修改栈顶</p>
+</li>
+<li><p>写操作</p>
+</li>
+<li><p>保存PC</p>
+</li>
+<li><p>保存到MAR</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111175037450.png" alt="image-20201111175037450"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>形成中断向量入口地址</p>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/11/%E6%8E%A7%E5%88%B6%E5%8D%95%E5%85%83/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/11/%E6%95%B0%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/11/%E6%95%B0%E5%AD%97/" itemprop="url">数字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-11T17:33:49+08:00">
+                2020-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/11/%E6%95%B0%E5%AD%97/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/%E6%95%B0%E5%AD%97/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  97
                 </span>
               
 
@@ -1009,36 +1118,18 @@ id name course score
       
         
           
-            <h3 id="秒杀系统设计"><a href="#秒杀系统设计" class="headerlink" title="秒杀系统设计"></a>秒杀系统设计</h3><p>现在很多电商平台都会有秒杀功能，在短时间内，少数参加秒杀的商品会由大量请求到达。很明显，后端db不可能扛得住这么大的压力，这时，缓存，负载均衡，集群等是解决问题的好办法。</p>
-<h4 id="需要解决的问题"><a href="#需要解决的问题" class="headerlink" title="需要解决的问题"></a>需要解决的问题</h4><ul>
-<li>高性能</li>
-<li>一致性，特别是库存一致性</li>
-<li>高可用</li>
+            <h3 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h3><h4 id="无符号数和有符号数"><a href="#无符号数和有符号数" class="headerlink" title="无符号数和有符号数"></a>无符号数和有符号数</h4><h5 id="无符号数"><a href="#无符号数" class="headerlink" title="无符号数"></a>无符号数</h5><ul>
+<li>寄存器的位数，反映无符号数的表示范围</li>
 </ul>
-<h4 id="细节处理"><a href="#细节处理" class="headerlink" title="细节处理"></a>细节处理</h4><ul>
-<li>nginx，高性能web服务器，能达到几万的并发，但是tomcat只有几百的并发，这个时候可以水平扩展tomcat</li>
-<li>秒杀商品的详情等静态资源存放到cdn中，进一步减轻服务器压力</li>
-<li>倒数时间，秒杀系统一般都会有一个秒杀倒计时，但是不可能时时刻刻请求服务端来获取倒计时，这是时候，可以采用本地计时的方式，定时获取后端时间并更新</li>
-<li>秒杀按钮，秒杀没开始的时候，按钮应该置灰</li>
+<h5 id="有符号数"><a href="#有符号数" class="headerlink" title="有符号数"></a>有符号数</h5><ul>
+<li>机器数与真值</li>
+<li>补码:最大的好处是把减法转为加法</li>
 </ul>
-<h4 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h4><p>限流分为i前端限流和后端限流，尽可能使到达后端的流量使有效流量</p>
-<ul>
-<li>前端限流<ul>
-<li>按钮点击频率限制</li>
+<h4 id="数的定点表示和浮点表示"><a href="#数的定点表示和浮点表示" class="headerlink" title="数的定点表示和浮点表示"></a>数的定点表示和浮点表示</h4><h5 id="定点表示"><a href="#定点表示" class="headerlink" title="定点表示"></a>定点表示</h5><ul>
+<li>小数点按约定方式标出</li>
+<li>小数定点机和整数定点机</li>
 </ul>
-</li>
-<li>后端限流<ul>
-<li>同一ip一个时间段允许一定频谱的访问</li>
-<li>加入消息队列，后端根据消费能力取消息来消费</li>
-</ul>
-</li>
-</ul>
-<h4 id="库存预热"><a href="#库存预热" class="headerlink" title="库存预热"></a>库存预热</h4><ul>
-<li>redis集群缓存数据，秒杀结束在异步写入数据库</li>
-<li>并发问题：使用lua脚本，lua脚本类似事务，有一定的原子性</li>
-<li>预扣库存的方式，将订单扔到延时队列中，超时失效</li>
-</ul>
-
+<h5 id="浮点表示"><a href="#浮点表示" class="headerlink" title="浮点表示"></a>浮点表示</h5>
           
         
       
@@ -1086,7 +1177,7 @@ id name course score
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ijavaweb">
@@ -1105,7 +1196,7 @@ id name course score
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" itemprop="url">排序算法及时间复杂度</a></h1>
+                <a class="post-title-link" href="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/" itemprop="url">CPU的结构和功能</a></h1>
         
 
         <div class="post-meta">
@@ -1117,8 +1208,8 @@ id name course score
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-30T23:12:37+08:00">
-                2020-06-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-11T17:33:49+08:00">
+                2020-11-11
               </time>
             
 
@@ -1128,6 +1219,28 @@ id name course score
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机组成原理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1136,8 +1249,8 @@ id name course score
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" itemprop="commentCount"></span>
+                <a href="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1159,7 +1272,7 @@ id name course score
                   <span class="post-meta-item-text">字数统计字&#58;</span>
                 
                 <span title="字数统计">
-                  2.6k
+                  1.1k
                 </span>
               
 
@@ -1175,7 +1288,7 @@ id name course score
                   <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11
+                  3
                 </span>
               
             </div>
@@ -1197,27 +1310,48 @@ id name course score
 
       
         
-          <h1 id="常见的排序算法"><a href="#常见的排序算法" class="headerlink" title="常见的排序算法"></a>常见的排序算法</h1><h2 id="各种算法比较"><a href="#各种算法比较" class="headerlink" title="各种算法比较"></a>各种算法比较</h2><p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/2510824-fe7ee389e47ba067.webp" alt=""></p>
-<h2 id="具体分析"><a href="#具体分析" class="headerlink" title="具体分析"></a>具体分析</h2><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
-<li><p>比较相邻的元素。如果前一个比后一个大，就交换它们两个</p>
-</li>
-<li><p>对每一对相邻元素作同样的工作，直到最后一对；</p>
-</li>
-<li><p>针对所有的元素重复以上的步骤，除了最后一个；</p>
-</li>
-<li><p>重复直到排序完成。</p>
-</li>
-<li><p><strong>为了优化算法，可以设立一个布尔标识，每趟排序开始前设为false，如果该趟排序发生了交换就置为true，如果一趟排序结束标识仍为false表示该趟排序没有发生交换，即数组已经有序，可以提前结束排序</strong></p>
+          <h3 id="CPU的结构和功能"><a href="#CPU的结构和功能" class="headerlink" title="CPU的结构和功能"></a>CPU的结构和功能</h3><h4 id="CPU的结构"><a href="#CPU的结构" class="headerlink" title="CPU的结构"></a>CPU的结构</h4><h5 id="CPU的功能"><a href="#CPU的功能" class="headerlink" title="CPU的功能"></a>CPU的功能</h5><ul>
+<li>控制器的功能</li>
+<li>运算器的功能</li>
+</ul>
+<h5 id="CPU结构"><a href="#CPU结构" class="headerlink" title="CPU结构"></a>CPU结构</h5><ul>
+<li><p>CPU与系统总线</p>
+<p><img src="https://raw.githubusercontent.com/ijavaweb/blogImages/master/img/image-20201111151533850.png" alt="image-20201111151533850"></p>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] bubbleSort(<span class="keyword">int</span>[] array) &#123;</span><br><span class="line">     <span class="keyword">if</span> (array.length == <span class="number">0</span>)</span><br><span class="line">         <span class="keyword">return</span> array;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; array.length; i++)&#123;  </span><br><span class="line">         <span class="keyword">boolean</span> isSwap = <span class="keyword">false</span>;</span><br><span class="line">         <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; array.length - <span class="number">1</span> - i; j++) </span><br><span class="line">             <span class="keyword">if</span> (array[j + <span class="number">1</span>] &lt; array[j]) &#123;</span><br><span class="line">                 <span class="keyword">int</span> temp = array[j + <span class="number">1</span>];</span><br><span class="line">                 array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">                 array[j] = temp;</span><br><span class="line">                 isSwap = <span class="keyword">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">         <span class="keyword">if</span>(!isSwap)</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> array;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>最好情况是本来有序，最坏情况是本来逆序</li>
+<h5 id="CPU的寄存器"><a href="#CPU的寄存器" class="headerlink" title="CPU的寄存器"></a>CPU的寄存器</h5><ul>
+<li>用户可见的寄存器<ul>
+<li>通用寄存器：存放操作数，可作某种寻址方式所需的专用寄存器</li>
+<li>数据寄存器：存放操作数，两个寄存器拼接存放双倍字长数据</li>
+<li>地址寄存器：存放地址，其位数应该满足最大的地址范围，用于特殊的寻址方式</li>
+<li>条件码寄存器：存放条件码，可作程序分支的依据</li>
+</ul>
+</li>
+<li>控制和状态寄存器<ul>
+<li>控制寄存器<ul>
+<li>用户不可见：MAR，MDR，IR</li>
+<li>用户可见：PC</li>
+</ul>
+</li>
+<li>状态寄存器<ul>
+<li>状态寄存器：存放条件码</li>
+<li>PSW寄存器：存放程序状态字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="控制单元CU和中断系统"><a href="#控制单元CU和中断系统" class="headerlink" title="控制单元CU和中断系统"></a>控制单元CU和中断系统</h5><ul>
+<li>CU：产生全部指令的微操作命令序列<ul>
+<li>组合逻辑设计：硬连接逻辑</li>
+<li>微程序设计：存储逻辑</li>
+</ul>
+</li>
+<li>中断系统</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2020/06/30/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8F%8A%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/#more" rel="contents">
+            <a class="btn" href="/2020/11/11/CPU%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1259,7 +1393,7 @@ id name course score
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
   </nav>
 
 
@@ -1309,7 +1443,7 @@ id name course score
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">118</span>
+                  <span class="site-state-item-count">144</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1320,7 +1454,7 @@ id name course score
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1331,7 +1465,7 @@ id name course score
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1398,7 +1532,7 @@ id name course score
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">78.2k</span>
+    <span title="Site words total count">148k</span>
   
 </div>
 
