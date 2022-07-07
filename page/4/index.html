@@ -270,6 +270,342 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E6%8C%87%E9%92%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ijavaweb">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="学习小记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/16/%E6%8C%87%E9%92%88/" itemprop="url">指针</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">go语言</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/16/%E6%8C%87%E9%92%88/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E6%8C%87%E9%92%88/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计字&#58;</span>
+                
+                <span title="字数统计">
+                  4.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
+                
+                <span title="阅读时长">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h3><h4 id="关于指针"><a href="#关于指针" class="headerlink" title="关于指针"></a>关于指针</h4><p>​    通过前面的教程我们知道变量是用来存储数据的，变量的本质是给存储数据的内存地址起了一个好记的别名。比如我们定义了一个变量 a:=10，这个时候可以直接通过 a 这个变量来读取内存中保存的 10 这个值。在计算机底层 a 这个变量其实对应了一个内存地址。</p>
+<p>​    指针也是一个变量，但它是一种特殊的变量，它存储的数据不是一个普通的值，而是一个变量的内存地址。</p>
+<p>​    变量三要素，地址、类型、值，值类型变量中存储的是数据，而引用类型变量中存储的是另一个变量的地址。指针变量可以用来指向一个值类型变量的地址。如果变量本身就是一个引用类型变量，那么就没有必要再用一个指针变量指向它。</p>
+<p>指针是存储另一个变量的内存地址的变量。</p>
+<p>我们都知道，变量是一种使用方便的占位符，用于引用计算机内存地址。</p>
+<p>一个指针变量可以指向任何一个值的内存地址它指向那个值的内存地址。</p>
+<p>变量b的值为156，存储在内存地址0x1040a124。变量a持有b的地址，现在a被认为指向b。</p>
+<p>【注意】：指针只对值传递类型的变量使用，对于引用传递类型的变量，没必要使用指针。</p>
+<p>示例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// 指针也是一个变量，但它是一种特俗的变量，它存储的数据不是一个普通的值，而是另一个变量的地址</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line">	<span class="keyword">var</span> p = &amp;a</span><br><span class="line">	fmt.Printf(<span class="string">"a的值：%v a的类型：%T a的地址：%p\n"</span>, a, a, &amp;a)  <span class="comment">//a的值：10 a的类型：int a的地址：0xc00000a0b0</span></span><br><span class="line">	fmt.Printf(<span class="string">"p的值：%v p的类型：%T p的地址：%p"</span>, p, p, p)  <span class="comment">//p的值：0xc00000a0b0 p的类型：*int p的地址：0xc00000a0b0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="指针地址和指针类型"><a href="#指针地址和指针类型" class="headerlink" title="指针地址和指针类型"></a>指针地址和指针类型</h4><p>每个变量在运行时都拥有一个地址，这个地址代表变量在内存中的位置。Go 语言中使用&amp;字符放在变量前面对变量进行<strong>取地址</strong>操作。Go 语言中的值类型（int、float、bool、string、array、struct）都有对应的指针类型，如<code>*int、*int64、*string</code>等。</p>
+<p>取变量指针的语法如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptr := &amp;v  <span class="comment">// 比如v的类型为T</span></span><br></pre></td></tr></table></figure>
+
+<p>则其中：</p>
+<ul>
+<li>v：代表被取地址的变量，类型为T，一般为<strong>值类型变量</strong></li>
+<li>ptr：<code>用于接收地址的变量，ptr 的类型就为*T，称做 T 的指针类型。*代表指针</code></li>
+</ul>
+<p>Go 语言的取地址符是 &amp;，放到一个变量前使用就会返回相应变量的内存地址。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">10</span>   </span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"变量的地址: %x\n"</span>, &amp;a  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="空指针"><a href="#空指针" class="headerlink" title="空指针"></a>空指针</h5><p><strong>Go 空指针</strong> 当一个指针被定义后没有分配到任何变量时，它的值为 nil。 nil 指针也称为空指针。 nil在概念上和其它语言的null、None、nil、NULL一样，都指代零值或空值。 一个指针变量通常缩写为 ptr。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(ptr != <span class="literal">nil</span>)     <span class="comment">/* ptr 不是空指针 */</span></span><br><span class="line"><span class="keyword">if</span>(ptr == <span class="literal">nil</span>)    <span class="comment">/* ptr 是空指针 */</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="声明指针"><a href="#声明指针" class="headerlink" title="声明指针"></a>声明指针</h4><p>声明指针，*T是指针变量的类型，它指向T类型的值。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> var_name *<span class="keyword">var</span>-<span class="keyword">type</span></span><br></pre></td></tr></table></figure>
+
+<p>var-type 为指针类型，var_name 为指针变量名，* 号用于指定变量是作为一个指针。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ip *<span class="keyword">int</span>        <span class="comment">/* 指向整型*/</span></span><br><span class="line"><span class="keyword">var</span> fp *<span class="keyword">float32</span>    <span class="comment">/* 指向浮点型 */</span></span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="keyword">var</span> a <span class="keyword">int</span>= <span class="number">20</span>   <span class="comment">/* 声明实际变量 */</span></span><br><span class="line">   <span class="keyword">var</span> ip *<span class="keyword">int</span>        <span class="comment">/* 声明指针变量 */</span></span><br><span class="line"></span><br><span class="line">   ip = &amp;a  <span class="comment">/* 指针变量的存储地址 */</span></span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"a 变量的地址是: %x\n"</span>, &amp;a  )</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 指针变量的存储地址 */</span></span><br><span class="line">   fmt.Printf(<span class="string">"ip 变量的存储地址: %x\n"</span>, ip )</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 使用指针访问值 */</span></span><br><span class="line">   fmt.Printf(<span class="string">"*ip 变量的值: %d\n"</span>, *ip )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a 变量的地址是: <span class="number">20818</span>a220</span><br><span class="line">ip 变量的存储地址: <span class="number">20818</span>a220</span><br><span class="line">*ip 变量的值: <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> name <span class="keyword">int8</span></span><br><span class="line"><span class="keyword">type</span> first <span class="keyword">struct</span> &#123;</span><br><span class="line">	a <span class="keyword">int</span></span><br><span class="line">	b <span class="keyword">bool</span></span><br><span class="line">	name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a := <span class="built_in">new</span>(first)</span><br><span class="line">	a.a = <span class="number">1</span></span><br><span class="line">	a.name = <span class="number">11</span></span><br><span class="line">	fmt.Println(a.b, a.a, a.name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">false 1 11</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>未初始化的变量自动赋上初始值</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> name <span class="keyword">int8</span></span><br><span class="line"><span class="keyword">type</span> first <span class="keyword">struct</span> &#123;</span><br><span class="line">	a <span class="keyword">int</span></span><br><span class="line">	b <span class="keyword">bool</span></span><br><span class="line">	name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> a = first&#123;<span class="number">1</span>, <span class="literal">false</span>, <span class="number">2</span>&#125;</span><br><span class="line">	<span class="keyword">var</span> b *first = &amp;a</span><br><span class="line">	fmt.Println(a.b, a.a, a.name, &amp;a, b.a, &amp;b, (*b).a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">false 1 2 &amp;&#123;1 false 2&#125; 1 0xc042068018 1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>获取指针地址在指针变量前加&amp;的方式</p>
+</blockquote>
+<p>示例代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	指针：pointer</span></span><br><span class="line"><span class="comment">		存储了另一个变量的内存地址的变量</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1.定义一个int类型的变量</span></span><br><span class="line">	a := <span class="number">10</span></span><br><span class="line">	fmt.Println(<span class="string">"a的数值是："</span>, a)  <span class="comment">// a的数值是： 10</span></span><br><span class="line">	fmt.Printf(<span class="string">"%T\n"</span>, a)  <span class="comment">// int</span></span><br><span class="line">	fmt.Printf(<span class="string">"a的地址是：%p\n"</span>, &amp;a)  <span class="comment">// a的地址是：0xc000010090</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2.创建一个指针变量，用于存储变量a的地址</span></span><br><span class="line">	<span class="keyword">var</span> p1 *<span class="keyword">int</span></span><br><span class="line">	fmt.Println(p1)  <span class="comment">// &lt;nil&gt;, 空指针</span></span><br><span class="line">	p1 = &amp;a  <span class="comment">// p1指向了a的内存地址</span></span><br><span class="line">	fmt.Println(<span class="string">"p1的数值："</span>, p1)  <span class="comment">// p1中存储的是a的地址，p1的数值： 0xc000010090</span></span><br><span class="line">	fmt.Printf(<span class="string">"p1自己的地址：%p\n"</span>, &amp;p1)  <span class="comment">// p1自己的地址：0xc000006030</span></span><br><span class="line">	<span class="comment">// 获取指针指向的变量的数值</span></span><br><span class="line">	fmt.Println(<span class="string">"p1的数值，是a的地址，该地址存储的数据："</span>, *p1)  <span class="comment">// p1的数值，是a的地址，该地址存储的数据： 10</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3.操作变量，更改数值，并不会改变地址</span></span><br><span class="line">	a = <span class="number">100</span></span><br><span class="line">	fmt.Println(a)  <span class="comment">// 100</span></span><br><span class="line">	fmt.Printf(<span class="string">"%p\n"</span>, &amp;a)  <span class="comment">// 0xc000010090</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4.通过指针，改变变量的数值</span></span><br><span class="line">	*p1 = <span class="number">200</span></span><br><span class="line">	fmt.Println(a)  <span class="comment">// 200</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 5.指针的指针</span></span><br><span class="line">	<span class="keyword">var</span> p2 **<span class="keyword">int</span></span><br><span class="line">	fmt.Println(p2)</span><br><span class="line">	p2 = &amp;p1</span><br><span class="line">	fmt.Printf(<span class="string">"%T,%T,%T\n"</span>, a, p1, p2)  <span class="comment">// int,*int,**int</span></span><br><span class="line">	fmt.Println(<span class="string">"p2的数值："</span>, p2)  <span class="comment">// p2的数值： 0xc000006030，是p1的地址</span></span><br><span class="line">	fmt.Printf(<span class="string">"p2自己的地址：%p\n"</span>, &amp;p2)  <span class="comment">// p2自己的地址：0xc000006038</span></span><br><span class="line">	fmt.Println(<span class="string">"p2中存储的地址，对应的数值，就是p1的地址，对应的数据："</span>, *p2)  <span class="comment">// 0xc000010090</span></span><br><span class="line">	fmt.Println(<span class="string">"p2中存储的地址，对应的数值，再获取对应的数值："</span>, **p2)  <span class="comment">// 200</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="指针取值"><a href="#指针取值" class="headerlink" title="指针取值"></a>指针取值</h4><p>获取一个指针意味着访问指针指向的变量的值。语法是：*a</p>
+<p>示例1：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main  </span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    b := <span class="number">255</span></span><br><span class="line">    a := &amp;b</span><br><span class="line">    fmt.Println(<span class="string">"address of b is"</span>, a)</span><br><span class="line">    fmt.Println(<span class="string">"value of b is"</span>, *a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	a := <span class="number">10</span></span><br><span class="line">	p := &amp;a  <span class="comment">//p的指针变量 类型 *int</span></span><br><span class="line">	<span class="comment">// *p：表示取出p这个变量对应的内存地址的值</span></span><br><span class="line">	fmt.Println(p)  <span class="comment">//a的地址 0xc0000100a8</span></span><br><span class="line">	fmt.Println(*p)  <span class="comment">//*p表示打印a对应的值 10</span></span><br><span class="line">	*p = <span class="number">30</span>  <span class="comment">//改变p这个变量对应的内存地址的值</span></span><br><span class="line">	fmt.Println(a)  <span class="comment">//30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>示例3：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">(x <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	x = <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">(x *<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	*x = <span class="number">40</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">5</span></span><br><span class="line">	fun1(a)</span><br><span class="line">	fmt.Println(a)  <span class="comment">//5</span></span><br><span class="line">	fun2(&amp;a)</span><br><span class="line">	fmt.Println(a)  <span class="comment">//40</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="new和make"><a href="#new和make" class="headerlink" title="new和make"></a>new和make</h4><p>​        在Go语言中对于引用类型的变量，我们在使用的时候不仅要声明它，还要为它分配内存空间，否则我们的值就没办法存储。而对于值类型的声明不需要分配内存空间，是因为它们在声明的时候已经默认分配好了内存空间。要分配内存，就引出来今天的new和make。Go语言中 new 和 make 是内建的两个函数，主要用来分配内存。</p>
+<h5 id="new函数"><a href="#new函数" class="headerlink" title="new函数"></a>new函数</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//实际开发中 new函数不太常用，使用 new函数得到的是一个指针类型，并且该指针对应的值为零值</span></span><br><span class="line">	<span class="keyword">var</span> a = <span class="built_in">new</span>(<span class="keyword">int</span>)  <span class="comment">//a是一个指针变量，类型是 *int的指针类型，指针变量对应的值是0</span></span><br><span class="line">	fmt.Printf(<span class="string">"a的值：%v，a的类型：%T，a存储的地址对应的值：%v\n"</span>, a, a, *a)  <span class="comment">//a的值：0xc00000a0b0，a的类型：*int，a存储的地址对应的值：0</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	错误的写法：</span></span><br><span class="line"><span class="comment">		var a *int //指针变量是引用数据类型，需要分配内存空间后才可以进行赋值</span></span><br><span class="line"><span class="comment">		*a = 100</span></span><br><span class="line"><span class="comment">		fmt.Println(*a)</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="comment">//new方法给指针变量分配存储空间</span></span><br><span class="line">	<span class="keyword">var</span> b *<span class="keyword">int</span></span><br><span class="line">	b = <span class="built_in">new</span>(<span class="keyword">int</span>)  <span class="comment">// 为指针变量b分配内存空间</span></span><br><span class="line">	*b = <span class="number">100</span></span><br><span class="line">	fmt.Println(*b)  <span class="comment">// 100</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="make函数"><a href="#make函数" class="headerlink" title="make函数"></a>make函数</h5><p>make 也是用于内存分配的，区别于 new，它只用于slice、map以及channel的内存创建，而且它返回的类型就是这三个类型本身，而不是他们的指针类型，因为这三种类型就是引用类型，所以就没有必要返回他们的指针了。make函数的函数签名如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">make</span><span class="params">(t Type, size ...IntegerType)</span> <span class="title">Type</span></span></span><br></pre></td></tr></table></figure>
+
+<p>make 函数是无可替代的，我们在使用 slice、map以及 channel 的时候，都需要使用make进行初始化，然后才可以对它们进行操作。这个我们在前面的教程中都有说明，关于channel，我们会在后续的章节详细说明。</p>
+<ul>
+<li>make函数初始化切片：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">make()</span></span><br><span class="line"><span class="comment">		func make(t Type, size ... IntegerType) Type</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		第一个参数：类型</span></span><br><span class="line"><span class="comment">			slice, map, chan</span></span><br><span class="line"><span class="comment">		第二个参数：长度len</span></span><br><span class="line"><span class="comment">			实际存储元素的数量</span></span><br><span class="line"><span class="comment">		第三个参数：容量cap</span></span><br><span class="line"><span class="comment">			最多能够存储的元素的数量</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	s3 := <span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">3</span>,<span class="number">8</span>)  <span class="comment">// 必须指定初始化大小</span></span><br><span class="line">	fmt.Println(s3)  <span class="comment">// [0 0 0]</span></span><br><span class="line">	fmt.Printf(<span class="string">"容量：%d,长度：%d\n"</span>, <span class="built_in">cap</span>(s3), <span class="built_in">len</span>(s3))  <span class="comment">// 容量：8,长度：3</span></span><br><span class="line">	s3[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">	s3[<span class="number">1</span>] = <span class="number">2</span></span><br><span class="line">	s3[<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">	fmt.Println(s3)  <span class="comment">// [1 2 3]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>make函数初始化map：</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 使用map函数创建集合</span></span><br><span class="line">	countryCapitalMap := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">string</span>)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// map 插入 key-value 对，各个国家对应的首都</span></span><br><span class="line">	countryCapitalMap[<span class="string">"France"</span>] = <span class="string">"Paris"</span></span><br><span class="line">	countryCapitalMap[<span class="string">"Italy"</span>] = <span class="string">"Rome"</span></span><br><span class="line">	countryCapitalMap[<span class="string">"Japan"</span>] = <span class="string">"Tokyo"</span></span><br><span class="line">	countryCapitalMap[<span class="string">"India"</span>] = <span class="string">"New Delhi"</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 使用 key 输出 map 值</span></span><br><span class="line">	<span class="keyword">for</span> country := <span class="keyword">range</span> countryCapitalMap &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Capital of"</span>,country,<span class="string">"is"</span>,countryCapitalMap[country])</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 查看元素在集合中是否存在</span></span><br><span class="line">	captial, ok := countryCapitalMap[<span class="string">"United States"</span>]</span><br><span class="line">	<span class="comment">/* 如果 ok 是 true, 则存在，否则不存在 */</span></span><br><span class="line">	<span class="keyword">if</span>(ok)&#123;</span><br><span class="line">		fmt.Println(<span class="string">"Capital of United States is"</span>, captial)</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		fmt.Println(<span class="string">"Capital of United States is not present"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>make函数初始化channel</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<h5 id="new与make的区别"><a href="#new与make的区别" class="headerlink" title="new与make的区别"></a>new与make的区别</h5><ul>
+<li>二者都是用来做内存分配的</li>
+<li>make只用于slice、map以及channel的初始化，返回的还是这三个引用类型本身</li>
+<li>而 new 用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针 </li>
+</ul>
+<h4 id="操作指针改变变量的数值"><a href="#操作指针改变变量的数值" class="headerlink" title="操作指针改变变量的数值"></a>操作指针改变变量的数值</h4><p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    b :&#x3D; 255</span><br><span class="line">    a :&#x3D; &amp;b</span><br><span class="line">    fmt.Println(&quot;address of b is&quot;, a)</span><br><span class="line">    fmt.Println(&quot;value of b is&quot;, *a)</span><br><span class="line">    *a++</span><br><span class="line">    fmt.Println(&quot;new value of b is&quot;, b)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">address of b is 0x1040a124  </span><br><span class="line">value of b is 255  </span><br><span class="line">new value of b is 256</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用指针传递函数的参数"><a href="#使用指针传递函数的参数" class="headerlink" title="使用指针传递函数的参数"></a>使用指针传递函数的参数</h4><p>示例代码</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (  </span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">change</span><span class="params">(val *<span class="keyword">int</span>)</span></span> &#123;  </span><br><span class="line">    *val = <span class="number">55</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    a := <span class="number">58</span></span><br><span class="line">    fmt.Println(<span class="string">"value of a before function call is"</span>,a)</span><br><span class="line">    b := &amp;a</span><br><span class="line">    change(b)</span><br><span class="line">    fmt.Println(<span class="string">"value of a after function call is"</span>, a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">value of a before function call is 58  </span><br><span class="line">value of a after function call is 55</span><br></pre></td></tr></table></figure>
+
+<p><strong>不要将一个指向数组的指针传递给函数。使用切片。</strong></p>
+<p>假设我们想对函数内的数组进行一些修改，并且对调用者可以看到函数内的数组所做的更改。一种方法是将一个指向数组的指针传递给函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func modify(arr *[3]int) &#123;  </span><br><span class="line">    (*arr)[0] &#x3D; 90</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    a :&#x3D; [3]int&#123;89, 90, 91&#125;</span><br><span class="line">    modify(&amp;a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[90 90 91]</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func modify(arr *[3]int) &#123;  </span><br><span class="line">    arr[0] &#x3D; 90</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    a :&#x3D; [3]int&#123;89, 90, 91&#125;</span><br><span class="line">    modify(&amp;a)</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[90 90 91]</span><br></pre></td></tr></table></figure>
+
+<p><strong>虽然将指针传递给一个数组作为函数的参数并对其进行修改，但这并不是实现这一目标的惯用方法。我们有切片。</strong></p>
+<p>示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (  </span><br><span class="line">    &quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func modify(sls []int) &#123;  </span><br><span class="line">    sls[0] &#x3D; 90</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;  </span><br><span class="line">    a :&#x3D; [3]int&#123;89, 90, 91&#125;</span><br><span class="line">    modify(a[:])</span><br><span class="line">    fmt.Println(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[90 90 91]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Go不支持指针算法。</p>
+<p>package main</p>
+<p>func main() {<br>b := […]int{109, 110, 111} p := &amp;b p++ }</p>
+<p>nvalid operation: p++ (non-numeric type *[3]int)</p>
+</blockquote>
+<p><strong>指针数组</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">const MAX int &#x3D; 3</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">   a :&#x3D; []int&#123;10,100,200&#125;</span><br><span class="line">   var i int</span><br><span class="line"></span><br><span class="line">   for i &#x3D; 0; i &lt; MAX; i++ &#123;</span><br><span class="line">      fmt.Printf(&quot;a[%d] &#x3D; %d\n&quot;, i, a[i] )</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">a[0] &#x3D; 10</span><br><span class="line">a[1] &#x3D; 100</span><br><span class="line">a[2] &#x3D; 200</span><br></pre></td></tr></table></figure>
+
+<p>有一种情况，我们可能需要保存数组，这样我们就需要使用到指针。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> MAX <span class="keyword">int</span> = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   a := []<span class="keyword">int</span>&#123;<span class="number">10</span>,<span class="number">100</span>,<span class="number">200</span>&#125;</span><br><span class="line">   <span class="keyword">var</span> i <span class="keyword">int</span></span><br><span class="line">   <span class="keyword">var</span> ptr [MAX]*<span class="keyword">int</span>;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>  i = <span class="number">0</span>; i &lt; MAX; i++ &#123;</span><br><span class="line">      ptr[i] = &amp;a[i] <span class="comment">/* 整数地址赋值给指针数组 */</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>  i = <span class="number">0</span>; i &lt; MAX; i++ &#123;</span><br><span class="line">      fmt.Printf(<span class="string">"a[%d] = %d\n"</span>, i,*ptr[i] )</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">a[<span class="number">0</span>] = <span class="number">10</span></span><br><span class="line">a[<span class="number">1</span>] = <span class="number">100</span></span><br><span class="line">a[<span class="number">2</span>] = <span class="number">200</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">   <span class="comment">/* 定义局部变量 */</span></span><br><span class="line">   <span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">100</span></span><br><span class="line">   <span class="keyword">var</span> b <span class="keyword">int</span>= <span class="number">200</span></span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"交换前 a 的值 : %d\n"</span>, a )</span><br><span class="line">   fmt.Printf(<span class="string">"交换前 b 的值 : %d\n"</span>, b )</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* 调用函数用于交换值</span></span><br><span class="line"><span class="comment">   * &amp;a 指向 a 变量的地址</span></span><br><span class="line"><span class="comment">   * &amp;b 指向 b 变量的地址</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   swap(&amp;a, &amp;b);</span><br><span class="line"></span><br><span class="line">   fmt.Printf(<span class="string">"交换后 a 的值 : %d\n"</span>, a )</span><br><span class="line">   fmt.Printf(<span class="string">"交换后 b 的值 : %d\n"</span>, b )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">swap</span><span class="params">(x *<span class="keyword">int</span>, y *<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">   <span class="keyword">var</span> temp <span class="keyword">int</span></span><br><span class="line">   temp = *x    <span class="comment">/* 保存 x 地址的值 */</span></span><br><span class="line">   *x = *y      <span class="comment">/* 将 y 赋值给 x */</span></span><br><span class="line">   *y = temp    <span class="comment">/* 将 temp 赋值给 y */</span></span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">交换前 a 的值 : <span class="number">100</span></span><br><span class="line">交换前 b 的值 : <span class="number">200</span></span><br><span class="line">交换后 a 的值 : <span class="number">200</span></span><br><span class="line">交换后 b 的值 : <span class="number">100</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	指针作为参数：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	参数的传递：值传递，引用传递</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	a := <span class="number">10</span></span><br><span class="line">	fmt.Println(<span class="string">"fun1()函数调用前，a："</span>, a)</span><br><span class="line">	fun1(a)</span><br><span class="line">	fmt.Println(<span class="string">"fun1()函数调用后，a："</span>, a)</span><br><span class="line"></span><br><span class="line">	fun2(&amp;a)</span><br><span class="line">	fmt.Println(<span class="string">"fun2()函数调用后，a："</span>, a)</span><br><span class="line"></span><br><span class="line">	arr1 := [<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">	fmt.Println(<span class="string">"fun3()函数调用前："</span>, arr1)</span><br><span class="line">	fun3(arr1)</span><br><span class="line">	fmt.Println(<span class="string">"fun3()函数调用后："</span>, arr1)</span><br><span class="line"></span><br><span class="line">	fun4(&amp;arr1)</span><br><span class="line">	fmt.Println(<span class="string">"fun4()函数调用后："</span>, arr1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun4</span><span class="params">(p2 *[4]<span class="keyword">int</span>)</span></span>&#123;  <span class="comment">// 引用传递</span></span><br><span class="line">	fmt.Println(<span class="string">"fun4()函数中的数组指针："</span>, p2)</span><br><span class="line">	p2[<span class="number">0</span>] = <span class="number">200</span></span><br><span class="line">	fmt.Println(<span class="string">"fun4()函数中的数组指针："</span>, p2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun3</span><span class="params">(arr2 [4]<span class="keyword">int</span>)</span></span>&#123;  <span class="comment">// 值传递</span></span><br><span class="line">	fmt.Println(<span class="string">"fun3()函数中数组的："</span>, arr2)</span><br><span class="line">	arr2[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">	fmt.Println(<span class="string">"fun3()函数中修改数组："</span>, arr2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">(p1 *<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"fun2()函数中，p1："</span>, *p1)</span><br><span class="line">	*p1 = <span class="number">200</span></span><br><span class="line">	fmt.Println(<span class="string">"fun2()函数中，修改p1："</span>, *p1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">(num <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"fun1()函数中，num的值："</span>, num)</span><br><span class="line">	num = <span class="number">100</span></span><br><span class="line">	fmt.Println(<span class="string">"fun1()函数中修改num："</span>, num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="复杂指针"><a href="#复杂指针" class="headerlink" title="复杂指针"></a>复杂指针</h4><h5 id="指针的指针"><a href="#指针的指针" class="headerlink" title="指针的指针"></a>指针的指针</h5><p>如果一个指针变量存放的又是另一个指针变量的地址，则称这个指针变量为指向指针的指针变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var ptr **int;</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">   var a int</span><br><span class="line">   var ptr *int</span><br><span class="line">   var pptr **int</span><br><span class="line"></span><br><span class="line">   a &#x3D; 3000</span><br><span class="line"></span><br><span class="line">   &#x2F;* 指针 ptr 地址 *&#x2F;</span><br><span class="line">   ptr &#x3D; &amp;a</span><br><span class="line"></span><br><span class="line">   &#x2F;* 指向指针 ptr 地址 *&#x2F;</span><br><span class="line">   pptr &#x3D; &amp;ptr</span><br><span class="line"></span><br><span class="line">   &#x2F;* 获取 pptr 的值 *&#x2F;</span><br><span class="line">   fmt.Printf(&quot;变量 a &#x3D; %d\n&quot;, a )</span><br><span class="line">   fmt.Printf(&quot;指针变量 *ptr &#x3D; %d\n&quot;, *ptr )</span><br><span class="line">   fmt.Printf(&quot;指向指针的指针变量 **pptr &#x3D; %d\n&quot;, **pptr)</span><br><span class="line">&#125;</span><br><span class="line">结果</span><br><span class="line">变量 a &#x3D; 3000</span><br><span class="line">指针变量 *ptr &#x3D; 3000</span><br><span class="line">指向指针的指针变量 **pptr &#x3D; 3000</span><br></pre></td></tr></table></figure>
+
+<h5 id="数组指针和指针数组"><a href="#数组指针和指针数组" class="headerlink" title="数组指针和指针数组"></a>数组指针和指针数组</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	数组指针：首先是一个指针，一个数组的地址</span></span><br><span class="line"><span class="comment">		*[4]Type</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	指针数组：首先是一个数组，存储的数据类型是指针</span></span><br><span class="line"><span class="comment">		[4]*Type</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		*[5]float64, 指针，一个存储了5个浮点类型数据的数组的指针</span></span><br><span class="line"><span class="comment">		*[3]string, 指针，数组的指针，存储了3个字符串</span></span><br><span class="line"><span class="comment">		[3]*string, 数组，存储了3个字符串的指针地址的数组</span></span><br><span class="line"><span class="comment">		[5]*float64, 数组，存储了5个浮点数据的地址的数组</span></span><br><span class="line"><span class="comment">		*[5]*float64, 指针，一个数组的指针，存储了5个float类型的数据的指针地址的数组的指针</span></span><br><span class="line"><span class="comment">		*[3]*string, 指针，存储了3个字符串的指针地址的数组的指针</span></span><br><span class="line"><span class="comment">		**[4]string, 指针，存储了4个字符串数据的数组的指针的指针</span></span><br><span class="line"><span class="comment">		**[4]*string, 指针，存储了4个字符串的指针地址的数组的指针的指针</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.创建一个普通的数组</span></span><br><span class="line">	arr1 := [<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;</span><br><span class="line">	fmt.Println(arr1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.创建一个指针，存储该数组的地址 ---&gt; 数组指针</span></span><br><span class="line">	<span class="keyword">var</span> p1 *[<span class="number">4</span>]<span class="keyword">int</span></span><br><span class="line">	p1 = &amp;arr1</span><br><span class="line">	fmt.Println(p1)  <span class="comment">// &amp;[1 2 3 4]</span></span><br><span class="line">	fmt.Printf(<span class="string">"%p\n"</span>, p1)  <span class="comment">// 数组arr1的地址  0xc00000e400</span></span><br><span class="line">	fmt.Printf(<span class="string">"%p\n"</span>, &amp;p1)  <span class="comment">// p1指针自己的地址  0xc000006030</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//3.根据数组指针，操作数组</span></span><br><span class="line">	(*p1)[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">	fmt.Println(arr1)  <span class="comment">// [100 2 3 4]</span></span><br><span class="line">	<span class="comment">// 简化写法</span></span><br><span class="line">	p1[<span class="number">0</span>] = <span class="number">200</span></span><br><span class="line">	fmt.Println(arr1)  <span class="comment">// [200 2 3 4]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.指针数组</span></span><br><span class="line">	a := <span class="number">1</span></span><br><span class="line">	b := <span class="number">2</span></span><br><span class="line">	c := <span class="number">3</span></span><br><span class="line">	d := <span class="number">4</span></span><br><span class="line">	arr2 := [<span class="number">4</span>]<span class="keyword">int</span>&#123;a,b,c,d&#125;</span><br><span class="line">	arr3 := [<span class="number">4</span>]*<span class="keyword">int</span>&#123;&amp;a,&amp;b,&amp;c,&amp;d&#125;</span><br><span class="line">	fmt.Println(arr2)</span><br><span class="line">	fmt.Println(arr3)</span><br><span class="line">	arr2[<span class="number">0</span>] = <span class="number">100</span></span><br><span class="line">	fmt.Println(arr2)  <span class="comment">// [100 2 3 4]</span></span><br><span class="line">	fmt.Println(a)  <span class="comment">// 1</span></span><br><span class="line">	*arr3[<span class="number">0</span>] = <span class="number">200</span></span><br><span class="line">	fmt.Println(arr3)  <span class="comment">// [0xc0000100d8 0xc0000100e0 0xc0000100e8 0xc0000100f0]</span></span><br><span class="line">	fmt.Println(a)  <span class="comment">// 200</span></span><br><span class="line"></span><br><span class="line">	b = <span class="number">1000</span></span><br><span class="line">	fmt.Println(arr2)  <span class="comment">// [100 2 3 4]</span></span><br><span class="line">	fmt.Println(arr3)  <span class="comment">// [0xc0000a40c0 0xc0000a40c8 0xc0000a40d0 0xc0000a40d8]</span></span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="built_in">len</span>(arr3);i++&#123;</span><br><span class="line">		fmt.Println(*arr3[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="函数指针和指针函数"><a href="#函数指针和指针函数" class="headerlink" title="函数指针和指针函数"></a>函数指针和指针函数</h5><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	函数指针：一个指针，指向了一个函数的指针</span></span><br><span class="line"><span class="comment">		因为go语言中，function，默认看作一个指针，没有*</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		slice，map，function</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	指针函数：一个函数，该函数的返回值是一个指针</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">var</span> a <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">	a = fun1</span><br><span class="line">	a()</span><br><span class="line"></span><br><span class="line">	arr1 := fun2()</span><br><span class="line">	fmt.Printf(<span class="string">"arr1的类型：%T，地址：%p，数值：%v\n"</span>, arr1, &amp;arr1, arr1)  <span class="comment">// arr1的类型：[4]int，地址：0xc00000e420，数值：[5 6 7 8]</span></span><br><span class="line"></span><br><span class="line">	arr2 := fun3()</span><br><span class="line">	fmt.Printf(<span class="string">"arr2的类型：%T，地址：%p，数值：%v\n"</span>, arr2, &amp;arr2, arr2)  <span class="comment">// arr2的类型：*[4]int，地址：0xc000006030，数值：&amp;[5 6 7 8]</span></span><br><span class="line">	fmt.Printf(<span class="string">"arr2指针中存储的数组的地址：%p\n"</span>, arr2)  <span class="comment">// arr2指针中存储的数组的地址：0xc00009e1c0</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun3</span><span class="params">()</span><span class="params">(*[4]<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	arr := [<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">	<span class="keyword">return</span> &amp;arr</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun2</span><span class="params">()</span><span class="params">([4]<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	arr := [<span class="number">4</span>]<span class="keyword">int</span>&#123;<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>&#125;</span><br><span class="line">	<span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fun1</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"fun1()......"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E5%BA%8F%E5%88%97%E5%8C%96%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1360,378 +1696,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ijavaweb.github.io/2020/11/16/%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ijavaweb">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="学习小记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/16/%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86/" itemprop="url">包的管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-16T21:02:04+08:00">
-                2020-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/go%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
-                    <span itemprop="name">go语言</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/11/16/%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/11/16/%E5%8C%85%E7%9A%84%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计字&#58;</span>
-                
-                <span title="字数统计">
-                  3.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长分钟 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="包的管理"><a href="#包的管理" class="headerlink" title="包的管理"></a>包的管理</h3><h4 id="关于包的使用："><a href="#关于包的使用：" class="headerlink" title="关于包的使用："></a>关于包的使用：</h4><ul>
-<li>一个目录下的统计文件归属一个包，package的声明要一致</li>
-<li>package声明的包和对应的目录名可以不一致，但习惯上还是写成一致的</li>
-<li>包可以嵌套</li>
-<li>同包下的函数不需要导入包，可以直接使用</li>
-<li>导入包的时候，路径要从src下开始写</li>
-</ul>
-<p>Go语言使用包（package）这种语法元素来组织源码，所有语法可见性均定义在package这个级别，与Java 、python等语言相比，这算不上什么创新，但与C传统的include相比，则是显得“先进”了许多。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">myblog</span><br><span class="line">├── conf</span><br><span class="line">│   └── app.conf</span><br><span class="line">├── controllers</span><br><span class="line">│   ├── aboutme_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── add_article_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── album_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── base_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── <span class="keyword">default</span>.<span class="keyword">go</span></span><br><span class="line">│   ├── delete_article_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── exit_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── home_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── login_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── register_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── show_article_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── tags_controller.<span class="keyword">go</span></span><br><span class="line">│   ├── update_article_controller.<span class="keyword">go</span></span><br><span class="line">│   └── upload_controller.<span class="keyword">go</span></span><br><span class="line">├── main.<span class="keyword">go</span></span><br><span class="line">├── models</span><br><span class="line">│   ├── album_model.<span class="keyword">go</span></span><br><span class="line">│   ├── article_model.<span class="keyword">go</span></span><br><span class="line">│   ├── home_model.<span class="keyword">go</span></span><br><span class="line">│   ├── tags_model.<span class="keyword">go</span></span><br><span class="line">│   └── user_model.<span class="keyword">go</span></span><br><span class="line">├── myblogweb</span><br><span class="line">├── routers</span><br><span class="line">│   └── router.<span class="keyword">go</span></span><br><span class="line">├── static</span><br><span class="line">│   ├── css</span><br><span class="line">│   │   ├── blogsheet.css</span><br><span class="line">│   │   └── lib</span><br><span class="line">│   │       ├── highlight.css</span><br><span class="line">│   │       └── login.css</span><br><span class="line">│   ├── img</span><br><span class="line">│   ├── js</span><br><span class="line">│   │   ├── blog.js</span><br><span class="line">│   │   ├── lib</span><br><span class="line">│   │   │   ├── jquery<span class="number">-3.3</span><span class="number">.1</span>.min.js</span><br><span class="line">│   │   │   └── jquery.url.js</span><br><span class="line">│   │   └── reload.min.js</span><br><span class="line">│   └── upload</span><br><span class="line">│       └── img</span><br><span class="line">│           └── <span class="number">2018</span></span><br><span class="line">│               └── <span class="number">12</span></span><br><span class="line">│                   └── <span class="number">11</span></span><br><span class="line">│                       ├── <span class="number">1544511378</span>-bee2.png</span><br><span class="line">├── tests</span><br><span class="line">│   └── default_test.<span class="keyword">go</span></span><br><span class="line">├── utils</span><br><span class="line">│   ├── myUtils.<span class="keyword">go</span></span><br><span class="line">│   └── mysqlUtils.<span class="keyword">go</span></span><br><span class="line">└── views</span><br><span class="line">    ├── aboultme.html</span><br><span class="line">    ├── album.html</span><br><span class="line">    ├── block</span><br><span class="line">    │   ├── home_block.html</span><br><span class="line">    │   └── nav.html</span><br><span class="line">    ├── home.html</span><br><span class="line">    ├── index.tpl</span><br><span class="line">    ├── login.html</span><br><span class="line">    ├── register.html</span><br><span class="line">    ├── show_article.html</span><br><span class="line">    ├── tags.html</span><br><span class="line">    └── write_article.html</span><br></pre></td></tr></table></figure>
-
-<p>Go 语言的源码复用建立在包（package）基础之上。包通过 package, import, GOPATH 操作完成。</p>
-<h4 id="main包"><a href="#main包" class="headerlink" title="main包"></a>main包</h4><p>Go 语言的入口 main() 函数所在的包（package）叫 main，main 包想要引用别的代码，需要import导入！</p>
-<h4 id="package"><a href="#package" class="headerlink" title="package"></a>package</h4><p>src 目录是以代码包的形式组织并保存 Go 源码文件的。每个代码包都和 src 目录下的文件夹一一对应。每个子目录都是一个代码包。</p>
-<blockquote>
-<p>代码包包名和文件目录名，不要求一致。比如文件目录叫 hello，但是代码包包名可以声明为 “main”，但是同一个目录下的源码文件第一行声明的所属包，必须一致！</p>
-</blockquote>
-<p>同一个目录下的所有.go文件的第一行添加 包定义，以标记该文件归属的包，演示语法：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> 包名</span><br></pre></td></tr></table></figure>
-
-<p>包需要满足：</p>
-<ul>
-<li>一个目录下的同级文件归属一个包。也就是说，在同一个包下面的所有文件的package名，都是一样的。</li>
-<li>在同一个包下面的文件<code>package</code>名都建议设为是该目录名，但也可以不是。也就是说，包名可以与其目录不同名。</li>
-<li>包名为 main 的包为应用程序的入口包，其他包不能使用。</li>
-</ul>
-<blockquote>
-<p>在同一个包下面的文件属于同一个工程文件，不用<code>import</code>包，可以直接使用</p>
-</blockquote>
-<p>包可以嵌套定义，对应的就是嵌套目录，但包名应该与所在的目录一致，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 文件：qf&#x2F;ruby&#x2F;tool.go中</span><br><span class="line">package ruby</span><br><span class="line">&#x2F;&#x2F; 可以被导出的函数</span><br><span class="line">func FuncPublic() &#123;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; 不可以被导出的函数</span><br><span class="line">func funcPrivate() &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>包中，通过标识符首字母是否大写，来确定是否可以被导出。首字母大写才可以被导出，视为 public 公共的资源。</p>
-<h4 id="import导包方式"><a href="#import导包方式" class="headerlink" title="import导包方式"></a>import导包方式</h4><p>要引用其他包，可以使用 import 关键字，可以单个导入或者批量导入，语法演示：</p>
-<ul>
-<li>单行导入</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单个导入</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"package"</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>多行导入</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 批量导入</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">"package1"</span></span><br><span class="line">  <span class="string">"package2"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>点操作导入</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import(</span><br><span class="line">	. &quot;fmt&quot;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>这个点操作的含义就是这个包导入之后在你调用这个包的函数时，你可以省略前缀的包名，也就是前面你调</p>
-<p>用的<code>fmt.Println(&quot;hello world&quot;)</code>可以省略的写成<code>Println(&quot;hello world&quot;)</code></p>
-<ul>
-<li>起别名</li>
-</ul>
-<p>别名操作顾名思义我们可以把包命名成另一个我们用起来容易记忆的名字。导入时，可以为包定义别名，语法演示：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  p1 <span class="string">"package1"</span></span><br><span class="line">  p2 <span class="string">"package2"</span></span><br><span class="line">  )</span><br><span class="line"><span class="comment">// 使用时：别名操作，调用包函数时前缀变成了我们的前缀</span></span><br><span class="line">p1.Method()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>匿名导入</li>
-</ul>
-<p>_ 操作 如果仅仅需要导入包时执行初始化操作，并不需要使用包内的其他函数，常量等资源。则可以在导入包时，匿名导入。</p>
-<p>这个操作经常是让很多人费解的一个操作符，请看下面这个import：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">   <span class="string">"database/sql"</span></span><br><span class="line">   _ <span class="string">"github.com/ziutek/mymysql/godrv"</span></span><br><span class="line">   <span class="comment">// _操作，其实是引入该包，而不直接使用包里面的函数，仅仅是调用了该包里的init()</span></span><br><span class="line"> )</span><br></pre></td></tr></table></figure>
-
-<p>_操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的init函数。也就是说，使用下划线作为包的别名，会仅仅执行init()。</p>
-<blockquote>
-<p>导入的包的路径名，可以是相对路径也可以是绝对路径，推荐使用绝对路径（起始于工程根目录）。</p>
-</blockquote>
-<h4 id="GOPATH环境变量"><a href="#GOPATH环境变量" class="headerlink" title="GOPATH环境变量"></a>GOPATH环境变量</h4><p>import导入时，会从GO的安装目录（也就是GOROOT环境变量设置的目录）和GOPATH环境变量设置的目录中，检索 src/package 来导入包。如果不存在，则导入失败。 GOROOT，就是GO内置的包所在的位置。 GOPATH，就是我们自己定义的包的位置。</p>
-<p>通常我们在开发Go项目时，调试或者编译构建时，需要设置GOPATH指向我们的项目目录，目录中的src目录中的包就可以被导入了。</p>
-<h4 id="init-包初始化"><a href="#init-包初始化" class="headerlink" title="init() 包初始化"></a>init() 包初始化</h4><p>init()函数和main()函数</p>
-<ul>
-<li><p>main包中init()函数优先于main()函数执行</p>
-</li>
-<li><p>这两个函数都是go语言中的保留函数。init()用于初始化信息，main()用于作为程序的入口</p>
-</li>
-<li><p>这两个函数定义的时候：不能有参数、返回值。只能由go程序自动调用，不能被引用</p>
-</li>
-<li><p>init()函数可以定义在任意的包中，可以有多个。main()函数只能在main()包下，并且只能有一个</p>
-</li>
-<li><p>执行顺序</p>
-<p>​    A：先执行init()函数，后执行main()函数</p>
-<p>​    B：对于同一个go文件中，调用顺序是从上到下的，也就是说，先写的先被执行，后写的后被执行</p>
-<p>​    C：对于同一个包下，将文件名按照字符串进行排序，之后顺序调用各个文件中init()函数</p>
-<p>​    D：对于不同包下：</p>
-<p>​        如果不存在依赖，按照main包中import的顺序来调用对应包中init()函数</p>
-<p>​        如果存在依赖，最后被依赖的最先被初始化</p>
-<p>​            导入顺序：main 依赖—&gt;依赖 A —&gt;依赖 B —&gt;依赖 C</p>
-<p>​            init() 执行顺序：C —&gt; B —&gt; A —&gt; main</p>
-</li>
-<li><p>存在依赖的包之间，不能循环导入</p>
-</li>
-<li><p>一个包可以被其他多个包import，但是只能被初始化一次</p>
-</li>
-<li><p>_操作，其实是引入该包，而不直接使用包里面的函数，仅仅是调用了该包里的init()</p>
-</li>
-</ul>
-<p>下面我们详细的来介绍一下这两个函数：init()、main() 是 go 语言中的保留函数。我们可以在源码中，定义 init() 函数。此函数会在包被导入时执行，例如如果是在 main 中导入包，包中存在 init()，那么 init() 中的代码会在 main() 函数执行前执行，用于初始化包所需要的特定资料。例如： 包源码：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">src/userPackage/tool.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> userPackage</span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"tool init"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>主函数源码：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">src/main.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">"userPackage"</span></span><br><span class="line">  )</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">"main run"</span>)</span><br><span class="line">  <span class="comment">// 使用userPackage</span></span><br><span class="line">  userPackage.SomeFunc()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>执行时，会先输出 “tool init”，再输出 “main run”。</p>
-<p>下面我们详细的来介绍一下init()、main() 这两个函数。在 go 语言中的区别如下： </p>
-<p><strong>相同点：</strong></p>
-<p>两个函数在定义时不能有任何的参数和返回值。 </p>
-<p>该函数只能由 go 程序自动调用，不可以被引用。</p>
-<p><strong>不同点：</strong></p>
-<p>init 可以应用于任意包中，且可以重复定义多个。 </p>
-<p>main 函数只能用于 main 包中，且只能定义一个。</p>
-<p><strong>两个函数的执行顺序：</strong></p>
-<p>在 main 包中的 go 文件默认总是会被执行。</p>
-<p>对同一个 go 文件的 init( ) 调用顺序是从上到下的。</p>
-<p>对同一个 package 中的不同文件，将文件名按字符串进行“从小到大”排序，之后顺序调用各文件中的init()函数。</p>
-<p>对于不同的 package，如果不相互依赖的话，按照 main 包中 import 的顺序调用其包中的 init() 函数。</p>
-<p>如果 package 存在依赖，调用顺序为最后被依赖的最先被初始化，例如：导入顺序 main –&gt; A –&gt; B –&gt; C，则初始化顺序为 C –&gt; B –&gt; A –&gt; main，一次执行对应的 init 方法。main 包总是被最后一个初始化，因为它总是依赖别的包。</p>
-<p>避免出现循环 import，例如：A –&gt; B –&gt; C –&gt; A。</p>
-<p>一个包被其它多个包 import，但只能被初始化一次</p>
-<h4 id="管理外部包"><a href="#管理外部包" class="headerlink" title="管理外部包"></a>管理外部包</h4><p>go允许import不同代码库的代码。对于import要导入的外部的包，可以使用 go get 命令取下来放到GOPATH对应的目录中去。</p>
-<p>举个例子，比如说我们想通过go语言连接mysql数据库，那么需要先下载mysql的数据包，打开终端并输入以下命令：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:~ ruby$ <span class="keyword">go</span> get github.com/<span class="keyword">go</span>-sql-driver/mysql</span><br></pre></td></tr></table></figure>
-
-<p>安装之后，就可以在gopath目录的src下，看到对应的文件包目录。</p>
-<blockquote>
-<p>也就是说，对于go语言来讲，其实并不关心你的代码是内部还是外部的，总之都在GOPATH里，任何import包的路径都是从GOPATH开始的；唯一的区别，就是内部依赖的包是开发者自己写的，外部依赖的包是go get下来的。</p>
-</blockquote>
-<h4 id="Go-Modules管理依赖"><a href="#Go-Modules管理依赖" class="headerlink" title="Go Modules管理依赖"></a>Go Modules管理依赖</h4><h5 id="Golang中包的介绍和定义"><a href="#Golang中包的介绍和定义" class="headerlink" title="Golang中包的介绍和定义"></a>Golang中包的介绍和定义</h5><p>Golang中的包可以分为三种：1、系统内置包；2、自定义包；3、第三方包</p>
-<ul>
-<li>系统内置包：Golang 语言给我们提供的内置包，引入后可以直接使用，如fmt、strconv、strings、sort、errors、time、encoding/json、os、io等</li>
-<li>自定义包：开发者自己写的包</li>
-<li>第三方包：属于自定义包的一种，需要下载安装到本地后才可以使用，如前面给大家介绍的”github.com/shopspring/decimal“包解决float精度丢失问题。</li>
-</ul>
-<h5 id="Golang包管理工具go-mod"><a href="#Golang包管理工具go-mod" class="headerlink" title="Golang包管理工具go mod"></a>Golang包管理工具go mod</h5><p>在Golang1.11版本之前如果我们要自定义包的话必须把项目放在GOPATH目录。Go1.11版本之后无需手动配置环境变量，使用go mod管理项目，也不需要非得把项目放到GOPATH指定目录下，你可以在你磁盘得任何位置新建一个项目，Go1.13以后可以彻底不要GOPATH了。</p>
-<ul>
-<li>go mod init 初始化项目</li>
-</ul>
-<p><code>go mod init 项目名称</code></p>
-<p>假如我们的golang项目文件要放在itying这个文件夹，我们需要在itying文件夹里面使用go mod命令生成一个go.mod文件</p>
-<p>示例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir itying</span><br><span class="line">cd itying</span><br><span class="line">go mod init itying</span><br></pre></td></tr></table></figure>
-
-<h5 id="自定义包"><a href="#自定义包" class="headerlink" title="自定义包"></a>自定义包</h5><ul>
-<li>导入自定义包</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mkdir golang</span><br><span class="line">cd golang</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> mod init golang</span><br><span class="line"></span><br><span class="line">mkdir main</span><br><span class="line">cd main</span><br><span class="line">touch main.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">mkdir tools</span><br><span class="line">cd tools</span><br><span class="line">touch tool.<span class="keyword">go</span></span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">cd main</span><br><span class="line">vim main</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
-<p>// 伪代码模拟导入自定义包<br>package main<br>import (<br>    “golang/tools”  # 导入自定义包<br>)<br>​```</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">前面学的go项目，依赖于GOPATH环境变量，必须将新项目放在GOPATH定义文件的src里面，否则检测不到。这实在太过麻烦了。我新创建的项目就希望随便放，怎么办？使用go modules管理依赖。</span><br><span class="line"></span><br><span class="line">go modules可用于一个项目的全部包管理，使用方法如下：</span><br><span class="line"></span><br><span class="line">- 设置镜像下载源：powershell终端窗口：$env:GOPROXY &#x3D; &quot;https:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;goproxy&#x2F;&quot;</span><br><span class="line"></span><br><span class="line">- 在任意一个地方新建一个文件夹，testgo</span><br><span class="line"></span><br><span class="line">- go mod init testgo  初始化testgo项目文件，使用go mod来管理该项目下的所有包</span><br><span class="line"></span><br><span class="line">  - 初始化后，会生成两个文件，gomod 和 gosum</span><br><span class="line"></span><br><span class="line">- testgo项目的目录文件如下：</span><br><span class="line"></span><br><span class="line">- testgo</span><br><span class="line"></span><br><span class="line">  - main</span><br><span class="line"></span><br><span class="line">    - main.go</span><br><span class="line"></span><br><span class="line">      &#96;&#96;&#96;go</span><br><span class="line">      package main</span><br><span class="line">      </span><br><span class="line">      import (</span><br><span class="line">      	&quot;testgo&#x2F;utils&quot;</span><br><span class="line">      )</span><br><span class="line">      </span><br><span class="line">      func main() &#123;</span><br><span class="line">      	utils.New()</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>utils</p>
-<ul>
-<li><p>util.go</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> utils</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"utils.New"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>gomod</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module testgo</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> <span class="number">1.14</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>gosum</p>
-</li>
-</ul>
-<h5 id="导入第三方包"><a href="#导入第三方包" class="headerlink" title="导入第三方包"></a>导入第三方包</h5><p>我们可以在 <a href="https://pkg.go.dev/" target="_blank" rel="noopener">https://pkg.go.dev/</a> 查找常见的 golang 第三方包</p>
-<p>找到我们需要下载安装的第三方包的地址</p>
-<p>比如前面给大家演示的解决 float 精度损失的包 decimal</p>
-<p><a href="https://github.com/shopspring/decimal" target="_blank" rel="noopener">https://github.com/shopspring/decimal</a></p>
-<p>安装这个包：</p>
-<p>第一种方法：go get 包名称（全局）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> get github.com/shopspring/decimal  <span class="comment">// 下载到本地GOPATH路径</span></span><br></pre></td></tr></table></figure>
-
-<p>第二种方法：go mod download （全局）</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> mod download  <span class="comment">// 下载到本地GOPATH路径  $GOPATH$/pkg/mod/github.com/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">注意：</span></span><br><span class="line"><span class="comment">执行go mod download命令，会将项目中所有需要的第三方包进行下载，下载到本地GOPATH路径中，并会在go.mod文件中进行关联</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<p>依赖包会自动下载到$GOPATH/pkg/mod，多个项目可以共享缓存的mod，注意使用 go mod download 的时候首先需要在你的项目里面引入第三方包</p>
-<p>第三种方法：go mod vendor，将项目需要的依赖复制到当前项目的vendor下（本项目）</p>
-<ul>
-<li>如果GOPATH中有decimal包，而项目中的vendor目录下没有该包，无法执行成功，需要执行go mod vendor将decimal复制到vendor目录下。</li>
-<li>如果项目里面引入了第三方包，而本地没有该包，执行go mod vendor，会将该包下载到GOPATH中，并复制到vendor目录中。</li>
-<li>如果项目创建了vendor目录，那么第三方包都会到vendor目录下查找，如果vendor中不存在，就是不存在，并不会再到GOPATH中查找。vendor就相当于该项目的一个私有第三方包仓库。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> mod vendor  <span class="comment">// 将项目需要的包从GOPATH路径复制到vendor目录</span></span><br></pre></td></tr></table></figure>
-
-<p>将依赖复制到当前项目的verdor下，注意使用go mod verdor 的时候首先需要在你的项目里面引入第三方包</p>
-<p>【总结】我使用go mod对golang进行包的管理，go mod init 命令进行初始化，go mod download命令进行第三方包的下载，默认会将第三方包下载到GOPATH指定的路径中。在实际开发中，最好使用go mod verdor创建一个项目专属的verdor目录，go mod verdor命令会将GOPATH目录中的第三方包复制一份到verdor目录，后面下载第三方包时，使用go mod verdor 命令进行下载，会直接将第三方包下载到verdor目录中。</p>
-<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><ul>
-<li><p>可以通过go install 来编译包文件。</p>
-</li>
-<li><p>一个非main包在编译后会生成一个.a文件（在临时目录下生成，除非使用go install安装到<code>$GOROOT</code>或<code>$GOPATH</code>下，否则你看不到.a），用于后续可执行程序链接使用。比如Go标准库中的包对应的源码部分路径在：<code>$GOROOT/src</code>，而标准库中包编译后的.a文件路径在<code>$GOROOT/pkg/darwin_amd64</code>下。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1786,7 +1750,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">144</span>
+                  <span class="site-state-item-count">145</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1797,7 +1761,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1808,7 +1772,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1861,7 +1825,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
